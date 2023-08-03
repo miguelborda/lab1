@@ -1,0 +1,3 @@
+Base de Datos PostgreSQL --> 9.3
+xampp --> 8.2.4
+php laravel  --> 9.52.7

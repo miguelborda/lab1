@@ -1,0 +1,2 @@
+composer create-project --prefer-dist laravel/laravel pat1 "5.0"  --> creacion proyecto con nombre pat1 y version 5.0
+

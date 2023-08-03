@@ -1,0 +1,82 @@
+git comandos git:
+
+git init    --> inicia el proyecto(donde se tiene la dirección)
+
+git status -s   -->> muestra el estado de los archivos del proyecto
+
+git add "nombrearchivo"   --> agrega un archivo en el gestor interno
+
+git add .  --> agrega todos los archivos al gestor interno
+
+
+----------------------------------------------------------------------------------------
+$ git commit -am "primer commit con lección 30"
+Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: unable to auto-detect email address (got 'PC-STAR@DESKTOP-AE6LS96.(none)')
+----------------------------------------------------------------------------------------
+
+…or create a new repository on the command line
+echo "# CursoDjango-TiendaOnline" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin git@github.com:miguelborda/CursoDjango-TiendaOnline.git
+git push -u origin main
+…or push an existing repository from the command line
+git remote add origin git@github.com:miguelborda/CursoDjango-TiendaOnline.git
+git branch -M main
+git push -u origin main
+…or import code from another repository
+You can initialize this repository with code from a Subversion, Mercurial, or TFS project.
+
+----------------------------------------------------------------------------------------
+
+git log --online  --> muestra todas los commits realizados
+
+git commit -m "first commit"
+
+git tag 15-09-20v1 -m "version 1 del proyecto" --> comando para crear un tag
+
+git push --tags   --> comando para subir los tags a github
+
+git clone https://github.com/Juan......   --> comando para clonar el proyecto
+
+----------------------------------------------------------------------------------------
+
+git branch nuevarama   --> comando que crea una nueva rama
+
+git branch  --> muestra las ramas que hay en el proyecto
+
+git checkout nombre_rama --> mueve a la rama que se desea trabajar
+
+git merge nombre_rama  --> para hacer un merge primero se debe estar en la rama master
+
+----------------------------------------------------------------------------------------------
+DESPUES DE CREAR REPOSITORIO EN LA PAGINA SIN readme
+git init
+git remote add origin https://github.com/miguelborda/pato1.git
+git status
+git add .
+git status
+git commit -m "primer"
+git push origin master
+
+
+
+
+git log  		--> muestra todos los commits
+git pull origin master  --> descarga todos los cambios realizados en el repositorio
+
+
