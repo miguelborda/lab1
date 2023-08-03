@@ -61,7 +61,7 @@
                     <hr>
                     <div class="pie-form">
                         <div class="titulo">
-                          Bienvenido
+                          Bienvenido Usuario
                         </div>
                         <hr>
                         <a href="#">Olvido su contraseña?</a>
