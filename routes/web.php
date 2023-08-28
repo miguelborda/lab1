@@ -5,6 +5,8 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Sistemas\UserController;
+use App\Http\Controllers\DiagnosticoController;
+
 
 
 $middlewares[] = 'auth';
@@ -42,5 +44,14 @@ Route::get('/admin', [AdminController::class, 'index'])
 Route::middleware($middlewares)->group(function()
 {
     Route::get('/Usuarios', [UserController::class, 'index'])
-    ->name('sistemas.usuarios.index');
+    ->name('sistemas.usuarios.index');    
 });
+
+Route::get('/Edit', [DiagnosticoController::class, 'edit'])->name('Diagnostico.edit');
+
+Route::get('/diagnostico', [DiagnosticoController::class, 'index'])->name('diagnostico.index');
+    
+Route::get('/diagnosticocrear', [DiagnosticoController::class, 'create'])->name('Diagnostico.create');
+
+
+    
