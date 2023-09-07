@@ -6,6 +6,12 @@ use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Sistemas\UserController;
 use App\Http\Controllers\DiagnosticoController;
+use App\Http\Controllers\AreaController;
+use App\Http\Controllers\DistritoController;
+use App\Http\Controllers\EstablecimientoController;
+use App\Http\Controllers\MunicipioController;
+use App\Http\Controllers\SecretariaregionalController;
+use App\Http\Controllers\SectorController;
 
 
 
@@ -53,11 +59,42 @@ Route::middleware($middlewares)->group(function()
     ->name('patologia.diagnosticos.index');    
 });
 
-Route::get('/Edit', [DiagnosticoController::class, 'edit'])->name('Diagnostico.edit');
+Route::middleware($middlewares)->group(function()
+{
+    Route::get('/Areas', [AreaController::class, 'index'])
+    ->name('patologia.areas.index');    
+});
 
-//Route::get('/diagnostico', [DiagnosticoController::class, 'index'])->name('diagnostico.index');
-    
-Route::get('/diagnosticocrear', [DiagnosticoController::class, 'create'])->name('Diagnostico.create');
+Route::middleware($middlewares)->group(function()
+{
+    Route::get('/Distritos', [DistritoController::class, 'index'])
+    ->name('patologia.distritos.index');    
+});
+
+Route::middleware($middlewares)->group(function()
+{
+    Route::get('/Establecimientos', [EstablecimientoController::class, 'index'])
+    ->name('patologia.establecimientos.index');    
+});
+
+Route::middleware($middlewares)->group(function()
+{
+    Route::get('/Municipios', [MunicipioController::class, 'index'])
+    ->name('patologia.municipios.index');    
+});
+
+Route::middleware($middlewares)->group(function()
+{
+    Route::get('/Secretariaregional', [SecretariaregionalController::class, 'index'])
+    ->name('patologia.secretariaregional.index');    
+});
+
+Route::middleware($middlewares)->group(function()
+{
+    Route::get('/Sectores', [SectorController::class, 'index'])
+    ->name('patologia.sector.index');    
+});
+
 
 
     

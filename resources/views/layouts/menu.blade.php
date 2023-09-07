@@ -49,4 +49,34 @@
       <a href="{{ route('patologia.diagnosticos.index') }}"> Diagnosticos </a>
     </li>
   </ul>
+  <ul id="ddmenu_1" class="collapse dropdown-nav">
+    <li>
+      <a href="{{ route('patologia.areas.index') }}"> Areas </a>
+    </li>
+  </ul>
+  <ul id="ddmenu_1" class="collapse dropdown-nav">
+    <li>
+      <a href="{{ route('patologia.distritos.index') }}"> Distritos </a>
+    </li>
+  </ul>
+  <ul id="ddmenu_1" class="collapse dropdown-nav">
+    <li>
+      <a href="{{ route('patologia.establecimientos.index') }}"> Establecimientos </a>
+    </li>
+  </ul>
+  <ul id="ddmenu_1" class="collapse dropdown-nav">
+    <li>
+      <a href="{{ route('patologia.municipios.index') }}"> Municipios </a>
+    </li>
+  </ul>
+  <ul id="ddmenu_1" class="collapse dropdown-nav">
+    <li>
+      <a href="{{ route('patologia.secretariaregional.index') }}"> Secretaria Regional </a>
+    </li>
+  </ul>
+  <ul id="ddmenu_1" class="collapse dropdown-nav">
+    <li>
+      <a href="{{ route('patologia.sector.index') }}"> Sectores </a>
+    </li>
+  </ul>
 </li>

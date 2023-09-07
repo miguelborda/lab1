@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Diagnosticos')
+@section('title', 'Municipios')
 @push('style')
     <link rel="stylesheet" href="css/datatable.css" />
 @endpush
@@ -9,7 +9,7 @@
     <div class="row align-items-center" style="height: 60px">
       <div class="col-md-6">
         <div class="titlemb-30">
-          <h2>Diagnosticos</h2>
+          <h2>Municipios</h2>
         </div>
       </div>
       <div class="col-md-6" style="text-align: right;">
@@ -28,23 +28,23 @@
 		            <table class="table hover" id="myTable">
 		              <thead>
 		                <tr>
-		                  <th><h6>CODIGO</h6></th>
-		                  <th><h6>DESCRIPCION</h6></th>
+		                  <th><h6>ID</h6></th>
+		                  <th><h6>NOMBRE MUNICIPIO</h6></th>
 		                  <th><h6>Accion</h6></th>
 		                </tr>
 		                <!-- end table row-->
 		              </thead>
 		              <tbody>
-		              	@foreach($diagnosticos as $diagnostico)
+		              	@foreach($municipios as $municipio)
 		                <tr>
 		                  <td class="min-width">
-		                    <p>{{$diagnostico->codigo_diagnostico}}</p>
+		                    <p>{{$municipio->id_municipio}}</p>
 		                  </td>
 		                  <td class="min-width">
-		                    <p>{{$diagnostico->descripcion_diagnostico}}</p>
+		                    <p>{{$municipio->nombre_municipio}}</p>
 		                  </td>		                  
 						  <td>
-		                  	@if($diagnostico->trial602 === 'F')
+		                  	@if($municipio->trial602 === 'F')
 		                        <a href="" class="text-danger"><i class="lni lni-thumbs-down"></i></a>
                             @else
 		                        <a href="" class="text-blue"><i class="lni lni-thumbs-up"></i></a>
