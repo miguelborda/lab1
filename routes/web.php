@@ -47,9 +47,15 @@ Route::middleware($middlewares)->group(function()
     ->name('sistemas.usuarios.index');    
 });
 
+Route::middleware($middlewares)->group(function()
+{
+    Route::get('/Diagnosticos', [DiagnosticoController::class, 'index'])
+    ->name('patologia.diagnosticos.index');    
+});
+
 Route::get('/Edit', [DiagnosticoController::class, 'edit'])->name('Diagnostico.edit');
 
-Route::get('/diagnostico', [DiagnosticoController::class, 'index'])->name('diagnostico.index');
+//Route::get('/diagnostico', [DiagnosticoController::class, 'index'])->name('diagnostico.index');
     
 Route::get('/diagnosticocrear', [DiagnosticoController::class, 'create'])->name('Diagnostico.create');
 

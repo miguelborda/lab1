@@ -11,32 +11,44 @@ class DiagnosticoController extends Controller
     
     public function index()
     {
-        //        
-        return "index diagnostico";
-    }   
+        $diagnosticos=Diagnostico::all();
+        return view("patologia.diagnosticos.index", [
+            'diagnosticos'   =>  $diagnosticos
+        ]);
+    }
+
+    
     public function create()
     {
         //
-        return "crear";       
-    }    
+    }
+
+    
     public function store(Request $request)
     {
         //
-    }    
-    public function show(Diagnostico $diagnostico)
+    }
+
+    
+    public function show(Diagnosticos $diagnosticos)
     {
         //
-    }    
-    public function edit(Diagnostico $diagnostico)
+    }
+
+    
+    public function edit(Diagnosticos $diagnosticos)
     {
         //
-        return "aqui se actualiza";
-    }    
-    public function update(Request $request, Diagnostico $diagnostico)
+    }
+
+    
+    public function update(Request $request, Diagnosticos $diagnosticos)
     {
         //
-    }    
-    public function destroy(Diagnostico $diagnostico)
+    }
+
+    
+    public function destroy(Diagnosticos $diagnosticos)
     {
         //
     }
