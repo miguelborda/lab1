@@ -22,7 +22,16 @@
       <a href="{{ route('sistemas.usuarios.index') }}"> Usuarios </a>
     </li>
   </ul>
-  
+  <ul id="ddmenu_1" class="collapse dropdown-nav">
+    <li>
+      <a href="{{ route('sistemas.personas.index') }}"> Personas </a>
+    </li>
+  </ul>
+  <ul id="ddmenu_1" class="collapse dropdown-nav">
+    <li>
+      <a href="{{ route('sistemas.roles.index') }}"> Roles </a>
+    </li>
+  </ul>
 </li>
 
 <li class="nav-item nav-item-has-children">

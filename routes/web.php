@@ -12,8 +12,8 @@ use App\Http\Controllers\EstablecimientoController;
 use App\Http\Controllers\MunicipioController;
 use App\Http\Controllers\SecretariaregionalController;
 use App\Http\Controllers\SectorController;
-
-
+use App\Http\Controllers\Sistemas\PersonaController;
+use App\Http\Controllers\Sistemas\RoleController;
 
 $middlewares[] = 'auth';
 
@@ -51,6 +51,12 @@ Route::middleware($middlewares)->group(function()
 {
     Route::get('/Usuarios', [UserController::class, 'index'])
     ->name('sistemas.usuarios.index');    
+
+    Route::get('/Personas', [PersonaController::class, 'index'])
+    ->name('sistemas.personas.index');    
+    
+    Route::get('/Roles', [RoleController::class, 'index'])
+    ->name('sistemas.roles.index');    
 });
 
 Route::middleware($middlewares)->group(function()
@@ -98,3 +104,4 @@ Route::middleware($middlewares)->group(function()
 
 
     
+
