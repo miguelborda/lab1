@@ -14,6 +14,8 @@ use App\Http\Controllers\SecretariaregionalController;
 use App\Http\Controllers\SectorController;
 use App\Http\Controllers\Sistemas\PersonaController;
 use App\Http\Controllers\Sistemas\RoleController;
+use App\Http\Controllers\PacienteController;
+use App\Http\Controllers\Formulario1Controller;
 
 $middlewares[] = 'auth';
 
@@ -101,7 +103,16 @@ Route::middleware($middlewares)->group(function()
     ->name('patologia.sector.index');    
 });
 
+Route::middleware($middlewares)->group(function()
+{
+    Route::get('/Pacientes', [PacienteController::class, 'index'])
+    ->name('patologia.paciente.index');    
+});
 
-
+Route::middleware($middlewares)->group(function()
+{
+    Route::get('/Formulario1s', [Formulario1Controller::class, 'index'])
+    ->name('patologia.formulario1.index');    
+});
     
 

@@ -88,4 +88,14 @@
       <a href="{{ route('patologia.sector.index') }}"> Sectores </a>
     </li>
   </ul>
+  <ul id="ddmenu_1" class="collapse dropdown-nav">
+    <li>
+      <a href="{{ route('patologia.paciente.index') }}"> Pacientes </a>
+    </li>
+  </ul>
+  <ul id="ddmenu_1" class="collapse dropdown-nav">
+    <li>
+      <a href="{{ route('patologia.formulario1.index') }}"> Formulario1s </a>
+    </li>
+  </ul>
 </li>
