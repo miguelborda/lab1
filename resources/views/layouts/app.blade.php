@@ -12,11 +12,11 @@
     <title>@yield('title') - SIS-HDB</title>
 
     <!-- ========== All CSS files linkup ========= -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="assets/css/lineicons.css" />
-    <link rel="stylesheet" href="assets/css/materialdesignicons.min.css" />
-    <link rel="stylesheet" href="assets/css/fullcalendar.css" />
-    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/css/lineicons.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/css/materialdesignicons.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/css/fullcalendar.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/css/main.css')}}" />
     @stack('style')
   </head>
   <body>
@@ -24,7 +24,7 @@
     <aside class="sidebar-nav-wrapper">
       <div class="navbar-logo">
         <a href="index.html">
-          <img style="width: 200px" src="assets/images/logo/logo.png" alt="logo" />
+          <img style="width: 200px" src="{{asset('assets/images/logo/logo.png')}}" alt="logo" />
         </a>
       </div>
       <nav class="sidebar-nav">
@@ -199,7 +199,7 @@
                         <h6>{{ Auth::user()->email }}</h6>
                         <div class="image">
                           <img
-                            src="assets/images/profile/profile-image.png"
+                            src="{{asset('assets/images/profile/profile-image.png')}}"
                             alt=""
                           />
                           <span class="status"></span>
@@ -293,15 +293,15 @@
     <!-- ======== main-wrapper end =========== -->
 
     <!-- ========= All Javascript files linkup ======== -->
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/Chart.min.js"></script>
-    <script src="assets/js/dynamic-pie-chart.js"></script>
-    <script src="assets/js/moment.min.js"></script>
-    <script src="assets/js/fullcalendar.js"></script>
-    <script src="assets/js/jvectormap.min.js"></script>
-    <script src="assets/js/world-merc.js"></script>
-    <script src="assets/js/polyfill.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('assets/js/Chart.min.js')}}"></script>
+    <script src="{{asset('assets/js/dynamic-pie-chart.js')}}"></script>
+    <script src="{{asset('assets/js/moment.min.js')}}"></script>
+    <script src="{{asset('assets/js/fullcalendar.js')}}"></script>
+    <script src="{{asset('assets/js/jvectormap.min.js')}}"></script>
+    <script src="{{asset('assets/js/world-merc.js')}}"></script>
+    <script src="{{asset('assets/js/polyfill.js')}}"></script>
+    <script src="{{asset('assets/js/main.js')}}"></script>
     <script src="js/jquery.js"></script>
     @stack('script')
   </body>
