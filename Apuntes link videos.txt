@@ -1,0 +1,9 @@
+https://www.youtube.com/watch?v=BAu_9xTRYi4  --> login con jetstream
+
+https://www.youtube.com/watch?v=qiRfo9e8Ejg  --> implementar dashboard ADMINLTE
+
+https://www.youtube.com/watch?v=Dk_QsJ68pDE --> comandos para tiempo en php
+
+https://www.youtube.com/watch?v=xSF-UP8nzGM --> error de parametros edit
+
+https://youtu.be/U330c1C48NI --> crud laravel parte1

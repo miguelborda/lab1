@@ -3,3 +3,7 @@ composer create-project --prefer-dist laravel/laravel pat1 "5.0"  --> creacion p
 php artisan --version  --> version de laravel
 
 composer global require laravel/installer   --> instalacion de componentes
+
+composer require laravelcollective/html  --> paquete para crear formularios _recom spatie/laravel-html
+
+

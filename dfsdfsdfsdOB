@@ -1,0 +1,47 @@
+[33mcommit ec57da3db765314a2a49970b8dd3ca62538437ef[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: miguelborda <miguelangelbg20@gmail.com>
+Date:   Sun Sep 10 19:16:26 2023 -0400
+
+    8vo index pacientes y formulario1
+
+[33mcommit 36102f7027b043f56a0fdb41b9bf946613b21097[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: miguelborda <miguelangelbg20@gmail.com>
+Date:   Sat Sep 9 01:00:56 2023 -0400
+
+    7mo index personas, roles
+
+[33mcommit da4473fac4b0b398c9f6219d267b02fc470789a8[m
+Author: miguelborda <miguelangelbg20@gmail.com>
+Date:   Thu Sep 7 01:12:09 2023 -0400
+
+    6to index areas,dist,est,mun...
+
+[33mcommit 4e2cc7cfb4a1e67aa6dcda3e110a8eb5e88b0bb7[m
+Author: miguelborda <miguelangelbg20@gmail.com>
+Date:   Wed Sep 6 23:50:29 2023 -0400
+
+    5to mod pato-diagnosticos
+
+[33mcommit 2705a21933bcddb298e241664c370ed111d709ce[m
+Author: miguelborda <miguelangelbg20@gmail.com>
+Date:   Mon Aug 28 13:39:51 2023 -0400
+
+    4to models y controllers
+
+[33mcommit c8e3c44f4178579f8da0e7563d0e0329cd544a01[m
+Author: miguelborda <miguelangelbg20@gmail.com>
+Date:   Mon Aug 28 00:55:05 2023 -0400
+
+    3er creando modelsimple
+
+[33mcommit ef978760fa057bb7b03c7b7df8f16ebef5d0b2c1[m
+Author: miguelborda <miguelangelbg20@gmail.com>
+Date:   Thu Aug 3 15:07:50 2023 -0400
+
+    2do modif loginblade
+
+[33mcommit be2f1c27d17d256c79922d2bca56d8d8dd9bc154[m
+Author: miguelborda <miguelangelbg20@gmail.com>
+Date:   Thu Aug 3 00:32:03 2023 -0400
+
+    1er Inter-BD usuarios

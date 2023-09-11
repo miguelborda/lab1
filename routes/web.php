@@ -93,8 +93,10 @@ Route::middleware($middlewares)->group(function()
 
 Route::middleware($middlewares)->group(function()
 {
-    Route::get('/Secretariaregional', [SecretariaregionalController::class, 'index'])
-    ->name('patologia.secretariaregional.index');    
+    //Route::get('/Secretariaregional', [SecretariaregionalController::class, 'index'])
+    //->name('patologia.secretariaregional.index');        ----> prueb controlador unico
+
+    Route::resource('/Secretariaregional', SecretariaregionalController::class)->names('patologia.secretariaregional');
 });
 
 Route::middleware($middlewares)->group(function()

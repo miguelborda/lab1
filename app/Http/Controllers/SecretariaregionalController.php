@@ -20,12 +20,19 @@ class SecretariaregionalController extends Controller
     
     public function create()
     {
-        //
+        return view('patologia.secretariaregional.create');
     }
 
-        public function store(Request $request)
+    
+    public function store(Request $request)
     {
-        //
+        $request->validate(
+            ['codigo_regional'=>'required',
+             'nom_secretaria_regional'=>'required']
+        );
+
+        $secretariaregional = Secretariaregional::create($request->all());
+        return redirect()->route('patologia.secretariaregional.edit', $secretariaregional);
     }
 
     
@@ -37,7 +44,8 @@ class SecretariaregionalController extends Controller
     
     public function edit(Secretariaregional $secretariaregional)
     {
-        //
+        
+        return view('patologia.secretariaregional.edit');
     }
 
     

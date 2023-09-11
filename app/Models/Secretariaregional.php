@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Secretariaregional extends Model
 {
     use HasFactory;
+    protected $fillable=['codigo_regional','nom_secretaria_regional'];
 }

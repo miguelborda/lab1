@@ -14,7 +14,8 @@
       </div>
       <div class="col-md-6" style="text-align: right;">
         <div class="titlemb-30">
-          <button type="button" class="btn btn-primary btn-lg">Nuevo</button>
+        <a href="{{route('patologia.secretariaregional.create')}}" class="btn btn-primary btn-lg">Nuevo</a>  
+		
         </div>
       </div>
     </div>
@@ -30,7 +31,8 @@
 		                <tr>
 		                  <th><h6>CODIGO</h6></th>
 		                  <th><h6>NOMBRE SECRETARIA REGIONAL</h6></th>
-		                  <th><h6>Accion</h6></th>
+		                  <th><h6>EDITAR</h6></th>
+						  <th><h6>ELIMINAR</h6></th>
 		                </tr>
 		                <!-- end table row-->
 		              </thead>
@@ -43,13 +45,15 @@
 		                  <td class="min-width">
 		                    <p>{{$secre->nom_secretaria_regional}}</p>
 		                  </td>		                  
-						  <td>
-		                  	@if($secre->trial973 === 'F')
-		                        <a href="" class="text-danger"><i class="lni lni-thumbs-down"></i></a>
-                            @else
-		                        <a href="" class="text-blue"><i class="lni lni-thumbs-up"></i></a>
-                            @endif
-                            <button type="button" class="btn btn-primary btn-sm">Editar</button>
+						  <td width="15px">		                  	
+                            <a href="{{route('patologia.secretariaregional.edit',[($secre->codigo_regional)])}}" class="btn btn-primary btn-sm">Editar</a>
+		                  </td>
+						  <td width="15px">		                  	
+                            <form action="{{route('patologia.secretariaregional.destroy',[($secre->codigo_regional)])}}" method="POST">
+								@method('delete')
+								@csrf
+								<input type="submit" value="Eliminar" class="btn btn-danger btn-sm">
+							</form>
 		                  </td>
 		                </tr>
 		                @endforeach
