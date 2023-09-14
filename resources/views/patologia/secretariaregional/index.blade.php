@@ -21,6 +21,12 @@
     </div>
     <!-- end row -->
   </div>
+@if (session('mensaje'))
+	<div class="alert alert-success">
+		<strong>{{session('mensaje')}}</strong>
+	</div>
+@endif
+
 <div class="tables-wrapper">
     <div class="row">
       	<div class="col-lg-12">
@@ -37,19 +43,19 @@
 		                <!-- end table row-->
 		              </thead>
 		              <tbody>
-		              	@foreach($secretariaregionals as $secre)
+		              	@foreach($secretariaregionals as $secretariaregional)
 		                <tr>
 		                  <td class="min-width">
-		                    <p>{{$secre->codigo_regional}}</p>
+		                    <p>{{$secretariaregional->codigo_regional}}</p>
 		                  </td>
 		                  <td class="min-width">
-		                    <p>{{$secre->nom_secretaria_regional}}</p>
+		                    <p>{{$secretariaregional->nom_secretaria_regional}}</p>
 		                  </td>		                  
 						  <td width="15px">		                  	
-                            <a href="{{route('patologia.secretariaregional.edit',[($secre->codigo_regional)])}}" class="btn btn-primary btn-sm">Editar</a>
+                            <a href="{{route('patologia.secretariaregional.edit',$secretariaregional)}}" class="btn btn-primary btn-sm">Editar</a>
 		                  </td>
 						  <td width="15px">		                  	
-                            <form action="{{route('patologia.secretariaregional.destroy',[($secre->codigo_regional)])}}" method="POST">
+                            <form action="{{route('patologia.secretariaregional.destroy',$secretariaregional)}}" method="POST">
 								@method('delete')
 								@csrf
 								<input type="submit" value="Eliminar" class="btn btn-danger btn-sm">

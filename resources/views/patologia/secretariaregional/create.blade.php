@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Secretaria Regional')
+@section('title', 'Secretaria Regional Crear')
 @push('style')
     <link rel="stylesheet" href="css/datatable.css" />
 @endpush
@@ -9,7 +9,7 @@
     <div class="row align-items-center" style="height: 60px">
         <div class="col-md-6">
             <div class="titlemb-30">
-                <h2>Secretaria Regional</h2>
+                <h2>Secretaria Regional Crear</h2>
             </div>
         </div>      
     </div>
@@ -19,20 +19,20 @@
     <div class="card-body">
         {!! Form::open(['route'=>'patologia.secretariaregional.store']) !!}
             <div class="form-group">
-                {!! Form::label('codigo_regional', 'codigo_regional') !!}
-                {!! Form::textarea('codigo_regional', null, ['class' => 'form-group', 'placeholder' => 'Codigo']) !!}
+                <strong>{!! Form::label('codigo_regional', 'Codigo') !!}</strong>                
+                {!! Form::text('codigo_regional', null, ['class' => 'form-control', 'placeholder' => 'Ingrese Codigo de Secretaria Regional']) !!}
                 <small class="text-danger">{{ $errors->first('codigo_regional') }}</small>                
                 
             </div>
+            <br>
             <div class="form-group">
-                {!! Form::label('nom_secretaria_regional', 'nom_secretaria_regional') !!}
-                {!! Form::textarea('nom_secretaria_regional', null, ['class' => 'form-group', 'placeholder' => 'Nombre secretaria']) !!}
+                <strong>{!! Form::label('nom_secretaria_regional', 'Nombre Secretaria Regional') !!}</strong>                
+                {!! Form::text('nom_secretaria_regional', null, ['class' => 'form-control', 'placeholder' => 'Ingrese Nombre de Secretaria Regional']) !!}
                 @error('nom_secretaria_regional')
                     <span class="text-danger">{{$message}}</span>
                 @enderror
             </div>            
-            <div class="form-group{{ $errors->has('inputname') ? ' has-error' : '' }}">            
-            </div>
+            <br>
             {!! Form::submit('Guardar',['class'=>'btn btn-primary']) !!}
 
         {!! Form::close() !!} 

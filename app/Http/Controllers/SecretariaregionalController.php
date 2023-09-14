@@ -32,7 +32,7 @@ class SecretariaregionalController extends Controller
         );
 
         $secretariaregional = Secretariaregional::create($request->all());
-        return redirect()->route('patologia.secretariaregional.edit', $secretariaregional);
+        return redirect()->route('patologia.secretariaregional.edit', $secretariaregional)->with('mensaje','Se registró exitosamente');
     }
 
     
@@ -43,20 +43,27 @@ class SecretariaregionalController extends Controller
 
     
     public function edit(Secretariaregional $secretariaregional)
-    {
+    {        
         
-        return view('patologia.secretariaregional.edit');
+        return view('patologia.secretariaregional.edit',compact('secretariaregional'));
     }
 
     
     public function update(Request $request, Secretariaregional $secretariaregional)
     {
-        //
+        $request->validate(
+            ['codigo_regional'=>'required',
+             'nom_secretaria_regional'=>'required']
+        );
+        $secretariaregional->update($request->all());
+        return redirect()->route('patologia.secretariaregional.edit',$secretariaregional)->with('mensaje','Se actualizaron los datos');
     }
 
     
     public function destroy(Secretariaregional $secretariaregional)
     {
-        //
+
+        $secretariaregional->delete();
+        return redirect()->route('patologia.secretariaregional.index')->with('mensaje','borrado');
     }
 }
