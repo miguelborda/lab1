@@ -97,6 +97,8 @@ Route::middleware($middlewares)->group(function()
     //->name('patologia.secretariaregional.index');        ----> prueb controlador unico
 
     Route::resource('/Secretariaregional', SecretariaregionalController::class)->names('patologia.secretariaregional');    
+    //Route::put('Secretariaregional/{id}', SecretariaregionalController::class, 'update')->name('patologia.secretariaregional.update');
+
 });
 
 Route::middleware($middlewares)->group(function()

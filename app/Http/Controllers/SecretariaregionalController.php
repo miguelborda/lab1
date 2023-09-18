@@ -32,7 +32,7 @@ class SecretariaregionalController extends Controller
         );
 
         $secretariaregional = Secretariaregional::create($request->all());
-        return redirect()->route('patologia.secretariaregional.edit', $secretariaregional)->with('mensaje','Se registró exitosamente');
+        return redirect()->route('patologia.secretariaregional.index')->with('mensaje','Se creó exitosamente');
     }
 
     
@@ -42,28 +42,44 @@ class SecretariaregionalController extends Controller
     }
 
     
-    public function edit(Secretariaregional $secretariaregional)
-    {        
-        
+    public function edit($id)
+    {           
+        $secretariaregional=Secretariaregional::find($id);
+        //echo $secretariaregional;
+        //$secretariaregional=Secretariaregional::all();  
+        //dd($secretariaregional);   
+        //$valor=Secretariaregional::where('codigo_regional',$secretariaregional)->first();
+        //dd($valor);
+        //return view("patologia.secretariaregional.edit", [
+        //    'secretariaregional'   =>  $secretariaregional
+        //]);
+        //$valor1=Secretariaregional::where('$secretariaregional.id==id')
         return view('patologia.secretariaregional.edit',compact('secretariaregional'));
+        //return($secretariaregional);
+        //echo $data;
+        //print($data);
     }
 
     
-    public function update(Request $request, Secretariaregional $secretariaregional)
+    public function update(Request $request, $id)
     {
-        $request->validate(
-            ['codigo_regional'=>'required',
-             'nom_secretaria_regional'=>'required']
-        );
-        $secretariaregional->update($request->all());
-        return redirect()->route('patologia.secretariaregional.edit',$secretariaregional)->with('mensaje','Se actualizaron los datos');
+        Secretariaregional::find($id)->update($request->all());
+        //echo $request;
+        return redirect()->route('patologia.secretariaregional.index')->with('mensaje','Se actualizó exitosamente');
+        //$request->validate(
+          //  ['codigo_regional'=>'required',
+          //   'nom_secretaria_regional'=>'required']
+        //);
+        //$secretariaregional->update($request->all());
+        //return redirect()->route('patologia.secretariaregional.edit',$secretariaregional)->with('mensaje','Se actualizaron los datos');
     }
 
     
-    public function destroy(Secretariaregional $secretariaregional)
+    public function destroy($id)
     {
 
-        $secretariaregional->delete();
+        //$secretariaregional->delete(); 
+        Secretariaregional::destroy($id);
         return redirect()->route('patologia.secretariaregional.index')->with('mensaje','borrado');
     }
 }

@@ -51,11 +51,11 @@
 		                  <td class="min-width">
 		                    <p>{{$secretariaregional->nom_secretaria_regional}}</p>
 		                  </td>		                  
-						  <td width="15px">		                  	
+						  <td width="15px">								  			   
                             <a href="{{route('patologia.secretariaregional.edit',$secretariaregional)}}" class="btn btn-primary btn-sm">Editar</a>
 		                  </td>
 						  <td width="15px">		                  	
-                            <form action="{{route('patologia.secretariaregional.destroy',$secretariaregional)}}" method="POST">
+                            <form action="{{route('patologia.secretariaregional.destroy',$secretariaregional->id)}}" method="POST">
 								@method('delete')
 								@csrf
 								<input type="submit" value="Eliminar" class="btn btn-danger btn-sm">
