@@ -52,71 +52,66 @@ Route::get('/admin', [AdminController::class, 'index'])
 Route::middleware($middlewares)->group(function()
 {
     Route::get('/Usuarios', [UserController::class, 'index'])
-    ->name('sistemas.usuarios.index');    
+    ->name('sistemas.usuarios.index');
 
     Route::get('/Personas', [PersonaController::class, 'index'])
-    ->name('sistemas.personas.index');    
-    
+    ->name('sistemas.personas.index');
+
     Route::get('/Roles', [RoleController::class, 'index'])
-    ->name('sistemas.roles.index');    
+    ->name('sistemas.roles.index');
 });
 
 Route::middleware($middlewares)->group(function()
 {
-    Route::get('/Diagnosticos', [DiagnosticoController::class, 'index'])
-    ->name('patologia.diagnosticos.index');    
+    // Route::get('/Diagnosticos', [DiagnosticoController::class, 'index'])->name('patologia.diagnosticos.index');
+
+    Route::resource('/Diagnosticos', DiagnosticoController::class)->names('patologia.diagnosticos');
 });
 
 Route::middleware($middlewares)->group(function()
-{
-    Route::get('/Areas', [AreaController::class, 'index'])
-    ->name('patologia.areas.index');    
+{    
+    Route::resource('/Areas', AreaController::class)->names('patologia.areas');
 });
 
 Route::middleware($middlewares)->group(function()
 {
     Route::get('/Distritos', [DistritoController::class, 'index'])
-    ->name('patologia.distritos.index');    
+    ->name('patologia.distritos.index');
 });
 
 Route::middleware($middlewares)->group(function()
 {
     Route::get('/Establecimientos', [EstablecimientoController::class, 'index'])
-    ->name('patologia.establecimientos.index');    
+    ->name('patologia.establecimientos.index');
 });
 
 Route::middleware($middlewares)->group(function()
 {
     Route::get('/Municipios', [MunicipioController::class, 'index'])
-    ->name('patologia.municipios.index');    
+    ->name('patologia.municipios.index');
 });
 
 Route::middleware($middlewares)->group(function()
 {
-    //Route::get('/Secretariaregional', [SecretariaregionalController::class, 'index'])
-    //->name('patologia.secretariaregional.index');        ----> prueb controlador unico
-
-    Route::resource('/Secretariaregional', SecretariaregionalController::class)->names('patologia.secretariaregional');    
-    //Route::put('Secretariaregional/{id}', SecretariaregionalController::class, 'update')->name('patologia.secretariaregional.update');
-
+    Route::resource('/Secretariaregional', SecretariaregionalController::class)->names('patologia.secretariaregional');
 });
 
 Route::middleware($middlewares)->group(function()
 {
     Route::get('/Sectores', [SectorController::class, 'index'])
-    ->name('patologia.sector.index');    
+    ->name('patologia.sector.index');
 });
 
 Route::middleware($middlewares)->group(function()
 {
     Route::get('/Pacientes', [PacienteController::class, 'index'])
-    ->name('patologia.paciente.index');    
+    ->name('patologia.paciente.index');
 });
 
 Route::middleware($middlewares)->group(function()
 {
     Route::get('/Formulario1s', [Formulario1Controller::class, 'index'])
-    ->name('patologia.formulario1.index');    
+    ->name('patologia.formulario1.index');
 });
-    
+
 

@@ -4,7 +4,7 @@
 @push('style')
     <link rel="stylesheet" href="css/datatable.css" />
 @endpush
-@section('content') 
+@section('content')
 <div class="title-wrapper pt-30">
     <div class="row align-items-center" style="height: 60px">
       <div class="col-md-6">
@@ -14,8 +14,8 @@
       </div>
       <div class="col-md-6" style="text-align: right;">
         <div class="titlemb-30">
-        <a href="{{route('patologia.secretariaregional.create')}}" class="btn btn-primary btn-lg">Nuevo</a>  
-		
+        <a href="{{route('patologia.secretariaregional.create')}}" class="btn btn-primary btn-lg">Nuevo</a>
+
         </div>
       </div>
     </div>
@@ -50,12 +50,12 @@
 		                  </td>
 		                  <td class="min-width">
 		                    <p>{{$secretariaregional->nom_secretaria_regional}}</p>
-		                  </td>		                  
-						  <td width="15px">								  			   
-                            <a href="{{route('patologia.secretariaregional.edit',$secretariaregional)}}" class="btn btn-primary btn-sm">Editar</a>
 		                  </td>
-						  <td width="15px">		                  	
-                            <form action="{{route('patologia.secretariaregional.destroy',$secretariaregional->id)}}" method="POST">
+						  <td width="15px">
+                            <a href="{{ route('patologia.secretariaregional.edit', $secretariaregional->id) }}" class="btn btn-warning btn-sm">Editar</a>
+                        </td>
+						  <td width="15px">
+                            <form action="{{ route('patologia.secretariaregional.destroy',$secretariaregional->id)}}" method="POST">
 								@method('delete')
 								@csrf
 								<input type="submit" value="Eliminar" class="btn btn-danger btn-sm">
