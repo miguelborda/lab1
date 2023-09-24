@@ -78,14 +78,12 @@ Route::middleware($middlewares)->group(function()
 
 Route::middleware($middlewares)->group(function()
 {
-    Route::get('/Establecimientos', [EstablecimientoController::class, 'index'])
-    ->name('patologia.establecimientos.index');
+    Route::resource('/Establecimientos', EstablecimientoController::class)->names('patologia.establecimientos');
 });
 
 Route::middleware($middlewares)->group(function()
 {
-    Route::get('/Municipios', [MunicipioController::class, 'index'])
-    ->name('patologia.municipios.index');
+    Route::resource('/Municipios', MunicipioController::class)->names('patologia.municipios');
 });
 
 Route::middleware($middlewares)->group(function()
@@ -95,8 +93,7 @@ Route::middleware($middlewares)->group(function()
 
 Route::middleware($middlewares)->group(function()
 {
-    Route::get('/Sectores', [SectorController::class, 'index'])
-    ->name('patologia.sector.index');
+    Route::resource('/Sector', SectorController::class)->names('patologia.sector');
 });
 
 Route::middleware($middlewares)->group(function()

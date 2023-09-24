@@ -16,40 +16,43 @@ class MunicipioController extends Controller
             'municipios'   =>  $municipios
         ]);
     }
-
-    
+        
     public function create()
     {
-        //
-    }
-
+        return view('patologia.municipios.create');
+    }        
     
     public function store(Request $request)
     {
-        //
-    }
-
+        $request->validate(
+            ['codigo_municipio'=>'required',
+             'nombre_municipio'=>'required']
+        ); 
+        $municipio = Municipio::create($request->all());
+        return redirect()->route('patologia.municipios.index')->with('mensaje','Se creó exitosamente');
+    }       
     
     public function show(Municipio $municipio)
     {
         //
     }
-
     
-    public function edit(Municipio $municipio)
-    {
-        //
-    }
-
+    public function edit($id)
+    {       
+        $municipio=Municipio::find($id);
+        return view('patologia.municipios.edit',compact('municipio'));
+    }    
     
-    public function update(Request $request, Municipio $municipio)
+    public function update(Request $request, $id)
     {
-        //
-    }
-
-    
-    public function destroy(Municipio $municipio)
+        $municipio = request()->except(['_token','_method']);
+        Municipio::where('id','=',$id)->update($municipio);
+        return redirect()->route('patologia.municipios.index')->with('mensaje', 'Se actualizó exitosamente');
+    }   
+        
+    public function destroy($id)
     {
-        //
+        Municipio::destroy($id);
+        return redirect()->route('patologia.municipios.index')->with('mensaje','Borrado con éxito');
     }
 }

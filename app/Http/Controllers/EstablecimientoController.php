@@ -16,40 +16,43 @@ class EstablecimientoController extends Controller
             'establecimientos'   =>  $establecimientos
         ]);
     }
-
-    
+       
     public function create()
     {
-        //
-    }
-
-    
+        return view('patologia.establecimientos.create');
+    }    
+        
     public function store(Request $request)
     {
-        //
-    }
-
+        $request->validate(
+            ['codigo_establecimiento'=>'required',
+             'nombre_establecimiento'=>'required']
+        ); 
+        $establecimiento = Establecimiento::create($request->all());
+        return redirect()->route('patologia.establecimientos.index')->with('mensaje','Se creó exitosamente');
+    }       
     
     public function show(Establecimiento $establecimiento)
     {
         //
-    }
-
+    }   
     
-    public function edit(Establecimiento $establecimiento)
-    {
-        //
-    }
-
+    public function edit($id)
+    {       
+        $establecimiento=Establecimiento::find($id);
+        return view('patologia.establecimientos.edit',compact('establecimiento'));
+    }    
     
-    public function update(Request $request, Establecimiento $establecimiento)
+    public function update(Request $request, $id)
     {
-        //
-    }
-
+        $establecimiento = request()->except(['_token','_method']);
+        Establecimiento::where('id','=',$id)->update($establecimiento);
+        return redirect()->route('patologia.establecimientos.index')->with('mensaje', 'Se actualizó exitosamente');
+    }   
     
-    public function destroy(Establecimiento $establecimiento)
+    public function destroy($id)
     {
-        //
+        Establecimiento::destroy($id);
+        return redirect()->route('patologia.establecimientos.index')->with('mensaje','Borrado con éxito');
     }
 }
