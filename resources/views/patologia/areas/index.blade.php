@@ -14,12 +14,18 @@
       </div>
       <div class="col-md-6" style="text-align: right;">
         <div class="titlemb-30">
-          <button type="button" class="btn btn-primary btn-lg">Nuevo</button>
+		{{-- <button type="button" class="btn btn-primary btn-lg">Nuevo</button> --}}
+          <a href="{{ route('patologia.areas.create') }}" class="btn btn-primary btn-lg">Nuevo</a>
         </div>
       </div>
     </div>
     <!-- end row -->
   </div>
+@if (session('mensaje'))
+	<div class="alert alert-success">
+		<strong>{{session('mensaje')}}</strong>
+	</div>
+@endif  
 <div class="tables-wrapper">
     <div class="row">
       	<div class="col-lg-12">
@@ -30,7 +36,8 @@
 		                <tr>
 		                  <th><h6>CODIGO</h6></th>
 		                  <th><h6>NOMBRE DE AREA</h6></th>
-		                  <th><h6>Accion</h6></th>
+		                  <th><h6>EDITAR</h6></th>
+						  <th><h6>ELIMINAR</h6></th>
 		                </tr>
 		                <!-- end table row-->
 		              </thead>
@@ -43,13 +50,15 @@
 		                  <td class="min-width">
 		                    <p>{{$area->nombre_area}}</p>
 		                  </td>		                  
-						  <td>
-		                  	@if($area->trial602 === 'F')
-		                        <a href="" class="text-danger"><i class="lni lni-thumbs-down"></i></a>
-                            @else
-		                        <a href="" class="text-blue"><i class="lni lni-thumbs-up"></i></a>
-                            @endif
-                            <button type="button" class="btn btn-primary btn-sm">Editar</button>
+						  <td width="15px">
+                            <a href="{{ route('patologia.areas.edit', $area->id) }}" class="btn btn-warning btn-sm">Editar</a>
+                          </td>
+						  <td width="15px">
+                            <form action="{{ route('patologia.areas.destroy',$area->id)}}" method="POST">
+								@method('delete')
+								@csrf
+								<input type="submit" value="Eliminar" class="btn btn-danger btn-sm">
+							</form>
 		                  </td>
 		                </tr>
 		                @endforeach

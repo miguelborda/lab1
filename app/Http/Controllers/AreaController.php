@@ -15,41 +15,45 @@ class AreaController extends Controller
         return view("patologia.areas.index", [
             'areas'   =>  $areas
         ]);
-    }
-
+    }    
     
     public function create()
     {
-        //
-    }
-
-    
+        return view('patologia.areas.create');
+    }    
+        
     public function store(Request $request)
     {
-        //
-    }
-
+        $request->validate(
+            ['codigo_area'=>'required',
+             'nombre_area'=>'required']
+        ); 
+        $area = Area::create($request->all());
+        return redirect()->route('patologia.areas.index')->with('mensaje','Se creó exitosamente');
+    }       
     
     public function show(Area $area)
     {
         //
     }
-
+            
+    public function edit($id)
+    {       
+        $area=Area::find($id);
+        return view('patologia.areas.edit',compact('area'));
+    }    
     
-    public function edit(Area $area)
+    public function update(Request $request, $id)
     {
-        //
-    }
-
+        $area = request()->except(['_token','_method']);
+        Area::where('id','=',$id)->update($area);
+        return redirect()->route('patologia.areas.index')->with('mensaje', 'Se actualizó exitosamente');
+    }   
     
-    public function update(Request $request, Area $area)
+    public function destroy($id)
     {
-        //
-    }
-
-    
-    public function destroy(Area $area)
-    {
-        //
+        Area::destroy($id);
+        return redirect()->route('patologia.areas.index')->with('mensaje','Borrado con éxito');
     }
 }
+

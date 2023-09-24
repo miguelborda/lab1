@@ -15,41 +15,46 @@ class DistritoController extends Controller
         return view("patologia.distritos.index", [
             'distritos'   =>  $distritos
         ]);
-    }
-
+    }    
     
     public function create()
     {
-        //
-    }
-
+        return view('patologia.distritos.create');
+    }    
     
     public function store(Request $request)
     {
-        //
+        $request->validate(
+            ['codigo_distrito'=>'required',
+             'nombre_distrito'=>'required']
+        ); 
+        $distrito = Distrito::create($request->all());
+        return redirect()->route('patologia.distritos.index')->with('mensaje','Se creó exitosamente');
     }
-
     
     public function show(Distrito $distrito)
     {
         //
     }
-
-    
-    public function edit(Distrito $distrito)
+        
+    public function edit($id)
+    {       
+        $distrito=Distrito::find($id);
+        return view('patologia.distritos.edit',compact('distrito'));
+    }    
+        
+    public function update(Request $request, $id)
     {
-        //
-    }
-
+        $distrito = request()->except(['_token','_method']);
+        Distrito::where('id','=',$id)->update($distrito);
+        return redirect()->route('patologia.distritos.index')->with('mensaje', 'Se actualizó exitosamente');
+    }   
     
-    public function update(Request $request, Distrito $distrito)
+    public function destroy($id)
     {
-        //
-    }
-
-    
-    public function destroy(Distrito $distrito)
-    {
-        //
+        Distrito::destroy($id);
+        return redirect()->route('patologia.distritos.index')->with('mensaje','Borrado con éxito');
     }
 }
+
+

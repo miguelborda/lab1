@@ -22,6 +22,11 @@
     </div>
     <!-- end row -->
   </div>
+@if (session('mensaje'))
+	<div class="alert alert-success">
+		<strong>{{session('mensaje')}}</strong>
+	</div>
+@endif  
 <div class="tables-wrapper">
     <div class="row">
       	<div class="col-lg-12">
