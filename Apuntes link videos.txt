@@ -7,3 +7,5 @@ https://www.youtube.com/watch?v=Dk_QsJ68pDE --> comandos para tiempo en php
 https://www.youtube.com/watch?v=xSF-UP8nzGM --> error de parametros edit
 
 https://youtu.be/U330c1C48NI --> crud laravel parte1
+
+https://www.youtube.com/watch?v=-Tpdf8A4dzQ  --> inputs de fecha y tiempo

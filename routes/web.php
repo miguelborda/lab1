@@ -97,9 +97,8 @@ Route::middleware($middlewares)->group(function()
 });
 
 Route::middleware($middlewares)->group(function()
-{
-    Route::get('/Pacientes', [PacienteController::class, 'index'])
-    ->name('patologia.paciente.index');
+{    
+    Route::resource('/Pacientes', PacienteController::class)->names('patologia.paciente');
 });
 
 Route::middleware($middlewares)->group(function()
