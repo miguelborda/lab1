@@ -8,7 +8,10 @@ use Illuminate\Http\Request;
 
 class EstablecimientoController extends Controller
 {
-    
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $establecimientos=Establecimiento::all();
@@ -28,7 +31,8 @@ class EstablecimientoController extends Controller
             ['codigo_establecimiento'=>'required',
              'nombre_establecimiento'=>'required']
         ); 
-        $establecimiento = Establecimiento::create($request->all());
+        $user = auth()->user();       
+        $establecimiento = Establecimiento::create(array_merge($request->all(), ['userid_creator' => $user->id],['username_creator' => $user->email]));
         return redirect()->route('patologia.establecimientos.index')->with('mensaje','Se creó exitosamente');
     }       
     
@@ -45,8 +49,10 @@ class EstablecimientoController extends Controller
     
     public function update(Request $request, $id)
     {
+        $hoy = date('Y-m-d H:i:s');
         $establecimiento = request()->except(['_token','_method']);
-        Establecimiento::where('id','=',$id)->update($establecimiento);
+        $user = auth()->user();        
+        Establecimiento::where('id', $id)->update(array_merge($establecimiento, ['userid_lastupdated' => $user->id],['username_lastupdated' => $user->email],['updated_at' => $hoy]));           
         return redirect()->route('patologia.establecimientos.index')->with('mensaje', 'Se actualizó exitosamente');
     }   
     

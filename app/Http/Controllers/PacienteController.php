@@ -8,7 +8,11 @@ use Illuminate\Http\Request;
 
 class PacienteController extends Controller
 {
-    
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $ayer=('2009-10-11');
@@ -38,8 +42,14 @@ class PacienteController extends Controller
              'nombre_paciente'=>'required',
              'apellido_paciente'=>'required']
         ); 
-        $paciente = Paciente::create($request->all());
-        return redirect()->route('patologia.paciente.index')->with('mensaje','Se creó exitosamente');
+
+        $user = auth()->user();
+
+        // Crea el registro del paciente y asocia la ID del usuario
+        $paciente = Paciente::create(array_merge($request->all(), ['userid_creator' => $user->id],['username_creator' => $user->email]));
+        //$paciente = Paciente::create($request->all());
+        return redirect()->route('patologia.paciente.index')->with('mensaje','Se creó exitosamente');    
+
     }       
     
     public function show(Paciente $paciente)
@@ -55,8 +65,10 @@ class PacienteController extends Controller
 
     public function update(Request $request, $id)
     {
+        $hoy = date('Y-m-d H:i:s');
         $paciente = request()->except(['_token','_method']);
-        Paciente::where('id','=',$id)->update($paciente);
+        $user = auth()->user();        
+        Paciente::where('id', $id)->update(array_merge($paciente, ['userid_lastupdated' => $user->id],['username_lastupdated' => $user->email],['updated_at' => $hoy]));           
         return redirect()->route('patologia.paciente.index')->with('mensaje', 'Se actualizó exitosamente');
     }       
     

@@ -8,7 +8,10 @@ use Illuminate\Http\Request;
 
 class MunicipioController extends Controller
 {
-    
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $municipios=Municipio::all();
@@ -28,7 +31,8 @@ class MunicipioController extends Controller
             ['codigo_municipio'=>'required',
              'nombre_municipio'=>'required']
         ); 
-        $municipio = Municipio::create($request->all());
+        $user = auth()->user();        
+        $municipio = Municipio::create(array_merge($request->all(), ['userid_creator' => $user->id],['username_creator' => $user->email]));        
         return redirect()->route('patologia.municipios.index')->with('mensaje','Se creó exitosamente');
     }       
     
@@ -45,8 +49,10 @@ class MunicipioController extends Controller
     
     public function update(Request $request, $id)
     {
+        $hoy = date('Y-m-d H:i:s');
         $municipio = request()->except(['_token','_method']);
-        Municipio::where('id','=',$id)->update($municipio);
+        $user = auth()->user();        
+        Municipio::where('id', $id)->update(array_merge($municipio, ['userid_lastupdated' => $user->id],['username_lastupdated' => $user->email],['updated_at' => $hoy]));           
         return redirect()->route('patologia.municipios.index')->with('mensaje', 'Se actualizó exitosamente');
     }   
         

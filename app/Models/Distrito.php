@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Distrito extends Model
 {
     use HasFactory;
-    protected $fillable=['codigo_distrito','nombre_distrito'];
+    protected $fillable=['codigo_distrito','nombre_distrito','userid_creator','username_creator','updated_at'];
 }

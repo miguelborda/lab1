@@ -30,8 +30,6 @@ Route::get('/register', [RegisterController::class, 'create'])
 Route::post('/register', [RegisterController::class, 'store'])
     ->name('register.store');
 
-
-
 Route::get('/login', [SessionsController::class, 'create'])
     ->middleware('guest')
     ->name('login.index');
@@ -42,7 +40,6 @@ Route::post('/login', [SessionsController::class, 'store'])
 Route::get('/logout', [SessionsController::class, 'destroy'])
     ->middleware('auth')
     ->name('login.destroy');
-
 
 Route::get('/admin', [AdminController::class, 'index'])
     ->middleware('auth.admin')

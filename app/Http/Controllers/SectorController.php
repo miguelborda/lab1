@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 class SectorController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $sectors=Sector::all();
@@ -27,7 +31,8 @@ class SectorController extends Controller
             ['codigo_sector'=>'required',
              'nombre_sector'=>'required']
         ); 
-        $sector = Sector::create($request->all());
+        $user = auth()->user();       
+        $sector = Sector::create(array_merge($request->all(), ['userid_creator' => $user->id],['username_creator' => $user->email]));                
         return redirect()->route('patologia.sector.index')->with('mensaje','Se creó exitosamente');
     }       
     
@@ -44,8 +49,10 @@ class SectorController extends Controller
     
     public function update(Request $request, $id)
     {
+        $hoy = date('Y-m-d H:i:s');
         $sector = request()->except(['_token','_method']);
-        Sector::where('id','=',$id)->update($sector);
+        $user = auth()->user();        
+        Sector::where('id', $id)->update(array_merge($sector, ['userid_lastupdated' => $user->id],['username_lastupdated' => $user->email],['updated_at' => $hoy]));           
         return redirect()->route('patologia.sector.index')->with('mensaje', 'Se actualizó exitosamente');
     }   
     

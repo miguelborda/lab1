@@ -8,7 +8,10 @@ use Illuminate\Http\Request;
 
 class SecretariaregionalController extends Controller
 {
-
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $secretariaregionals=Secretariaregional::all();
@@ -31,8 +34,8 @@ class SecretariaregionalController extends Controller
             ['codigo_regional'=>'required',
              'nom_secretaria_regional'=>'required']
         );
-
-        $secretariaregional = Secretariaregional::create($request->all());
+        $user = auth()->user();       
+        $secretariaregional = Secretariaregional::create(array_merge($request->all(), ['userid_creator' => $user->id],['username_creator' => $user->email]));        
         return redirect()->route('patologia.secretariaregional.index')->with('mensaje','Se creó exitosamente');
     }
 
@@ -49,32 +52,14 @@ class SecretariaregionalController extends Controller
 
         return view('patologia.secretariaregional.edit',compact('secretariaregional'));
 
-    }
+    }   
 
-
-    // public function update(Request $request, $id)
-    // {
-    //     dd($request()->all());
-
-    //     dd($id);
-
-    //     Secretariaregional::find($id)->update($request->all());
-    //     //echo $request;
-    //     return redirect()->route('patologia.secretariaregional.index')->with('mensaje','Se actualizó exitosamente');
-    //     //$request->validate(
-    //       //  ['codigo_regional'=>'required',
-    //       //   'nom_secretaria_regional'=>'required']
-    //     //);
-    //     //$secretariaregional->update($request->all());
-    //     //return redirect()->route('patologia.secretariaregional.edit',$secretariaregional)->with('mensaje','Se actualizaron los datos');
-    // }
-
-
-
-    public function update(Request $request, $id){
+    public function update(Request $request, $id)
+    {
+        $hoy = date('Y-m-d H:i:s');
         $secretariaregional = request()->except(['_token','_method']);
-        Secretariaregional::where('id','=',$id)->update($secretariaregional);
-
+        $user = auth()->user();        
+        Secretariaregional::where('id', $id)->update(array_merge($secretariaregional, ['userid_lastupdated' => $user->id],['username_lastupdated' => $user->email],['updated_at' => $hoy]));        
         return redirect()->route('patologia.secretariaregional.index')->with('mensaje', 'Se actualizó exitosamente');
     }
 

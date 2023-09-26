@@ -8,7 +8,10 @@ use Illuminate\Http\Request;
 
 class DiagnosticoController extends Controller
 {
-
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $diagnosticos=Diagnostico::all();
@@ -31,8 +34,8 @@ class DiagnosticoController extends Controller
             ['codigo_diagnostico'=>'required',
              'descripcion_diagnostico'=>'required']
         ); 
-
-        $diagnostico = Diagnostico::create($request->all());
+        $user = auth()->user();       
+        $diagnostico = Diagnostico::create(array_merge($request->all(), ['userid_creator' => $user->id],['username_creator' => $user->email]));
         return redirect()->route('patologia.diagnosticos.index')->with('mensaje','Se creó exitosamente');
     }    
 
@@ -55,8 +58,10 @@ class DiagnosticoController extends Controller
 
     public function update(Request $request, $id)
     {
+        $hoy = date('Y-m-d H:i:s');
         $diagnostico = request()->except(['_token','_method']);
-        Diagnostico::where('id','=',$id)->update($diagnostico);
+        $user = auth()->user();        
+        Diagnostico::where('id', $id)->update(array_merge($diagnostico, ['userid_lastupdated' => $user->id],['username_lastupdated' => $user->email],['updated_at' => $hoy]));   
         return redirect()->route('patologia.diagnosticos.index')->with('mensaje', 'Se actualizó exitosamente');
     }   
 
