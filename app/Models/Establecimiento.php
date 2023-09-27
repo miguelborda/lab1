@@ -8,5 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Establecimiento extends Model
 {
     use HasFactory;
-    protected $fillable=['codigo_establecimiento','nombre_establecimiento','userid_creator','username_creator','updated_at'];
+    protected $fillable=['codigo_establecimiento','nombre_establecimiento',
+    'userid_creator','username_creator','updated_at'];
 }

@@ -14,7 +14,7 @@ class SectorController extends Controller
     }
     public function index()
     {
-        $sectors=Sector::all();
+        $sectors=Sector::where('estado', true)->get();
         return view("patologia.sector.index", [
             'sectors'   =>  $sectors
         ]);
@@ -55,10 +55,15 @@ class SectorController extends Controller
         Sector::where('id', $id)->update(array_merge($sector, ['userid_lastupdated' => $user->id],['username_lastupdated' => $user->email],['updated_at' => $hoy]));           
         return redirect()->route('patologia.sector.index')->with('mensaje', 'Se actualizó exitosamente');
     }   
-    
+        
     public function destroy($id)
     {
-        Sector::destroy($id);
-        return redirect()->route('patologia.sector.index')->with('mensaje','Borrado con éxito');
+        $sector = Sector::find($id);
+        if (!$sector) {
+            return redirect()->route('patologia.sector.index')->with('mensaje', 'No se encontró el sector');
+        }
+        $sector->estado = FALSE; // Cambia el estado a inactivo
+        $sector->save();
+        return redirect()->route('patologia.sector.index')->with('mensaje', 'El sector se marcó como inactivo');
     }
 }

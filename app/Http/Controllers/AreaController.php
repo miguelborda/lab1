@@ -12,13 +12,14 @@ class AreaController extends Controller
     {
         $this->middleware('auth');
     }
+
     public function index()
     {
-        $areas=Area::all();
+        $areas = Area::where('estado', true)->get();
         return view("patologia.areas.index", [
-            'areas'   =>  $areas
+            'areas' => $areas
         ]);
-    }    
+    }
     
     public function create()
     {
@@ -56,10 +57,15 @@ class AreaController extends Controller
         return redirect()->route('patologia.areas.index')->with('mensaje', 'Se actualizó exitosamente');
     }   
     
+    
     public function destroy($id)
     {
-        Area::destroy($id);
-        return redirect()->route('patologia.areas.index')->with('mensaje','Borrado con éxito');
+        $area = Area::find($id);
+        if (!$area) {
+            return redirect()->route('patologia.areas.index')->with('mensaje', 'No se encontró el area');
+        }
+        $area->estado = FALSE; // Cambia el estado a inactivo
+        $area->save();
+        return redirect()->route('patologia.areas.index')->with('mensaje', 'El area se marcó como inactivo');
     }
 }
-

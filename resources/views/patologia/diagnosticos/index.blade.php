@@ -55,7 +55,7 @@
                             <a href="{{ route('patologia.diagnosticos.edit', $diagnostico->id) }}" class="btn btn-warning btn-sm">Editar</a>
                         </td>
 						  <td width="15px">
-                            <form action="{{ route('patologia.diagnosticos.destroy',$diagnostico->id)}}" method="POST">
+						  	<form action="{{ route('patologia.diagnosticos.destroy', $diagnostico->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este registro?');">
 								@method('delete')
 								@csrf
 								<input type="submit" value="Eliminar" class="btn btn-danger btn-sm">

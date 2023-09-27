@@ -14,11 +14,11 @@ class MunicipioController extends Controller
     }
     public function index()
     {
-        $municipios=Municipio::all();
+        $municipios=Municipio::where('estado', true)->get();
         return view("patologia.municipios.index", [
             'municipios'   =>  $municipios
         ]);
-    }
+    }    
         
     public function create()
     {
@@ -58,7 +58,12 @@ class MunicipioController extends Controller
         
     public function destroy($id)
     {
-        Municipio::destroy($id);
-        return redirect()->route('patologia.municipios.index')->with('mensaje','Borrado con éxito');
+        $municipio = Municipio::find($id);
+        if (!$municipio) {
+            return redirect()->route('patologia.municipios.index')->with('mensaje', 'No se encontró el municipio');
+        }
+        $municipio->estado = FALSE; // Cambia el estado a inactivo
+        $municipio->save();
+        return redirect()->route('patologia.municipios.index')->with('mensaje', 'El municipio se marcó como inactivo');
     }
 }

@@ -52,12 +52,13 @@
 						  <td width="15px">
                             <a href="{{ route('patologia.distritos.edit', $distrito->id) }}" class="btn btn-warning btn-sm">Editar</a>
                           </td>
-						  <td width="15px">
-                            <form action="{{ route('patologia.distritos.destroy',$distrito->id)}}" method="POST">
+						  <td width="15px">						  
+						  	<form action="{{ route('patologia.distritos.destroy', $distrito->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este registro?');">
 								@method('delete')
 								@csrf
 								<input type="submit" value="Eliminar" class="btn btn-danger btn-sm">
 							</form>
+		                  </td>
 		                  </td>
 		                </tr>
 		                @endforeach

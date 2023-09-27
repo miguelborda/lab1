@@ -14,12 +14,11 @@ class DiagnosticoController extends Controller
     }
     public function index()
     {
-        $diagnosticos=Diagnostico::all();
+        $diagnosticos=Diagnostico::where('estado', true)->get();
         return view("patologia.diagnosticos.index", [
             'diagnosticos'   =>  $diagnosticos
         ]);
     }
-
 
     public function create()
     {
@@ -64,11 +63,15 @@ class DiagnosticoController extends Controller
         Diagnostico::where('id', $id)->update(array_merge($diagnostico, ['userid_lastupdated' => $user->id],['username_lastupdated' => $user->email],['updated_at' => $hoy]));   
         return redirect()->route('patologia.diagnosticos.index')->with('mensaje', 'Se actualizó exitosamente');
     }   
-
-
+    
     public function destroy($id)
     {
-        Diagnostico::destroy($id);
-        return redirect()->route('patologia.diagnosticos.index')->with('mensaje','borrado');
+        $diagnostico = Diagnostico::find($id);
+        if (!$diagnostico) {
+            return redirect()->route('patologia.diagnosticos.index')->with('mensaje', 'No se encontró el diagnostico');
+        }
+        $diagnostico->estado = FALSE; // Cambia el estado a inactivo
+        $diagnostico->save();
+        return redirect()->route('patologia.diagnosticos.index')->with('mensaje', 'El diagnostico se marcó como inactivo');
     }
 }

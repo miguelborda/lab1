@@ -14,7 +14,7 @@ class SecretariaregionalController extends Controller
     }
     public function index()
     {
-        $secretariaregionals=Secretariaregional::all();
+        $secretariaregionals=Secretariaregional::where('estado', true)->get();
 
         return view("patologia.secretariaregional.index", [
             'secretariaregionals'   =>  $secretariaregionals
@@ -62,14 +62,16 @@ class SecretariaregionalController extends Controller
         Secretariaregional::where('id', $id)->update(array_merge($secretariaregional, ['userid_lastupdated' => $user->id],['username_lastupdated' => $user->email],['updated_at' => $hoy]));        
         return redirect()->route('patologia.secretariaregional.index')->with('mensaje', 'Se actualizó exitosamente');
     }
-
-
-
+    
     public function destroy($id)
     {
-
-        //$secretariaregional->delete();
-        Secretariaregional::destroy($id);
-        return redirect()->route('patologia.secretariaregional.index')->with('mensaje','borrado');
+        $secretariaregional = Secretariaregional::find($id);
+        if (!$secretariaregional) {
+            return redirect()->route('patologia.secretariaregional.index')->with('mensaje', 'No se encontró el secretariaregional');
+        }
+        $secretariaregional->estado = FALSE; // Cambia el estado a inactivo
+        $secretariaregional->save();
+        return redirect()->route('patologia.secretariaregional.index')->with('mensaje', 'El secretariaregional se marcó como inactivo');
     }
+
 }

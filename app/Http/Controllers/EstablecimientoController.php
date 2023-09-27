@@ -14,11 +14,11 @@ class EstablecimientoController extends Controller
     }
     public function index()
     {
-        $establecimientos=Establecimiento::all();
+        $establecimientos=Establecimiento::where('estado', true)->get();
         return view("patologia.establecimientos.index", [
             'establecimientos'   =>  $establecimientos
         ]);
-    }
+    }    
        
     public function create()
     {
@@ -54,11 +54,16 @@ class EstablecimientoController extends Controller
         $user = auth()->user();        
         Establecimiento::where('id', $id)->update(array_merge($establecimiento, ['userid_lastupdated' => $user->id],['username_lastupdated' => $user->email],['updated_at' => $hoy]));           
         return redirect()->route('patologia.establecimientos.index')->with('mensaje', 'Se actualizó exitosamente');
-    }   
+    }      
     
     public function destroy($id)
     {
-        Establecimiento::destroy($id);
-        return redirect()->route('patologia.establecimientos.index')->with('mensaje','Borrado con éxito');
+        $establecimiento = Establecimiento::find($id);
+        if (!$establecimiento) {
+            return redirect()->route('patologia.establecimientos.index')->with('mensaje', 'No se encontró el establecimiento');
+        }
+        $establecimiento->estado = FALSE; // Cambia el estado a inactivo
+        $establecimiento->save();
+        return redirect()->route('patologia.establecimientos.index')->with('mensaje', 'El establecimiento se marcó como inactivo');
     }
 }

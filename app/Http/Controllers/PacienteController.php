@@ -19,7 +19,7 @@ class PacienteController extends Controller
         $hoy=date('Y-m-d');        
         $actuals=abs(strtotime($ayer)-strtotime($hoy));  
         
-        $pacientes=Paciente::all();
+        $pacientes=Paciente::where('estado', true)->get();
         return view("patologia.pacientes.index", [
             'pacientes'   =>  $pacientes,            
             'hoy' => $hoy
@@ -71,10 +71,15 @@ class PacienteController extends Controller
         Paciente::where('id', $id)->update(array_merge($paciente, ['userid_lastupdated' => $user->id],['username_lastupdated' => $user->email],['updated_at' => $hoy]));           
         return redirect()->route('patologia.paciente.index')->with('mensaje', 'Se actualizó exitosamente');
     }       
-    
+        
     public function destroy($id)
     {
-        Paciente::destroy($id);
-        return redirect()->route('patologia.paciente.index')->with('mensaje','Borrado con éxito');
+        $paciente = Paciente::find($id);
+        if (!$paciente) {
+            return redirect()->route('patologia.paciente.index')->with('mensaje', 'No se encontró el paciente');
+        }
+        $paciente->estado = FALSE; // Cambia el estado a inactivo
+        $paciente->save();
+        return redirect()->route('patologia.paciente.index')->with('mensaje', 'El paciente se marcó como inactivo');
     }
 }

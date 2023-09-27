@@ -14,11 +14,11 @@ class DistritoController extends Controller
     }
     public function index()
     {
-        $distritos=Distrito::all();
+        $distritos=Distrito::where('estado', true)->get();
         return view("patologia.distritos.index", [
             'distritos'   =>  $distritos
         ]);
-    }    
+    }       
     
     public function create()
     {
@@ -54,12 +54,17 @@ class DistritoController extends Controller
         $user = auth()->user();        
         Distrito::where('id', $id)->update(array_merge($distrito, ['userid_lastupdated' => $user->id],['username_lastupdated' => $user->email],['updated_at' => $hoy]));           
         return redirect()->route('patologia.distritos.index')->with('mensaje', 'Se actualizó exitosamente');
-    }   
+    }       
     
     public function destroy($id)
     {
-        Distrito::destroy($id);
-        return redirect()->route('patologia.distritos.index')->with('mensaje','Borrado con éxito');
+        $distrito = Distrito::find($id);
+        if (!$distrito) {
+            return redirect()->route('patologia.distritos.index')->with('mensaje', 'No se encontró el distrito');
+        }
+        $distrito->estado = FALSE; // Cambia el estado a inactivo
+        $distrito->save();
+        return redirect()->route('patologia.distritos.index')->with('mensaje', 'El distrito se marcó como inactivo');
     }
 }
 
