@@ -19,7 +19,7 @@
 
 <div class="card">
     <div class="card-body">
-        <form method="POST" action="{{ route('patologia.areas.update', $area->id) }}">
+        <form method="POST" action="{{ route('patologia.areas.update', $area->id) }}" onsubmit="return confirm('¿Estás seguro de que deseas modificar este registro?');">
             @csrf
             @method('PUT')
 
@@ -37,15 +37,18 @@
                 @enderror
             </div>
             <br>
-            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+            <button type="submit" id="confirm-button" class="btn btn-primary">Guardar Cambios</button>                      
+            
         </form>
     </div>
 </div>
 @endsection
 
 @push('script')
+    
     <script src="js/datatable.js"></script>
     <script>
         $('#myTable').DataTable();
     </script>
+    
 @endpush

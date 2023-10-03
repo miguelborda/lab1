@@ -25,7 +25,7 @@
 
 <div class="card">
     <div class="card-body">
-        <form method="POST" action="{{ route('patologia.secretariaregional.update', $secretariaregional->id) }}">
+        <form method="POST" action="{{ route('patologia.secretariaregional.update', $secretariaregional->id) }}" onsubmit="return confirm('¿Estás seguro de que deseas modificar este registro?');">
             @csrf
             @method('PUT')
 

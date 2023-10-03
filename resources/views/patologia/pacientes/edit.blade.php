@@ -19,7 +19,7 @@
 
 <div class="card">
     <div class="card-body">
-        <form method="POST" action="{{ route('patologia.paciente.update', $paciente->id) }}">
+        <form method="POST" action="{{ route('patologia.paciente.update', $paciente->id) }}" onsubmit="return confirm('¿Estás seguro de que deseas modificar este registro?');">
             @csrf
             @method('PUT')
 

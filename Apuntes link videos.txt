@@ -9,3 +9,5 @@ https://www.youtube.com/watch?v=xSF-UP8nzGM --> error de parametros edit
 https://youtu.be/U330c1C48NI --> crud laravel parte1
 
 https://www.youtube.com/watch?v=-Tpdf8A4dzQ  --> inputs de fecha y tiempo
+
+https://www.youtube.com/watch?v=szOBsrC2qFs --> error de escucha de servicio postgres
