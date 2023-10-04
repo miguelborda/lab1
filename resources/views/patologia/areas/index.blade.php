@@ -16,7 +16,9 @@
         <div class="titlemb-30">
 		{{-- <button type="button" class="btn btn-primary btn-lg">Nuevo</button> --}}
           <a href="{{ route('patologia.areas.create') }}" class="btn btn-primary btn-lg">Nuevo</a>
-        </div>
+		{{-- <button type="button" class="btn btn-success btn-lg" target="_blank">Imprimir Lista</button> --}}
+		<a href="{{ route('patologia.areas.pdf') }}" class="btn btn-success btn-lg" target="_blank">Imprimir Lista</a>
+        </div>		
       </div>
     </div>
     <!-- end row -->

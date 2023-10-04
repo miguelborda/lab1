@@ -64,8 +64,9 @@ Route::middleware($middlewares)->group(function()
 });
 
 Route::middleware($middlewares)->group(function()
-{    
-    Route::resource('/Areas', AreaController::class)->names('patologia.areas');
+{   
+    Route::get('Areas/pdf', [AreaController::class, 'pdf'])->name('patologia.areas.pdf');     
+    Route::resource('/Areas', AreaController::class)->names('patologia.areas');    
 });
 
 Route::middleware($middlewares)->group(function()

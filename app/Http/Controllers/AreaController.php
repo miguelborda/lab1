@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Area;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
+
 
 class AreaController extends Controller
 {
@@ -21,6 +23,16 @@ class AreaController extends Controller
         ]);
     }
     
+    public function pdf()
+    {
+        $areas = Area::all();
+        $pdf = Pdf::loadView('patologia.areas.pdf', compact('areas'));
+        return $pdf->stream();
+        //return $pdf->download('invoice.pdf');  --> para descargar pdf
+
+
+    }
+
     public function create()
     {
         return view('patologia.areas.create');
