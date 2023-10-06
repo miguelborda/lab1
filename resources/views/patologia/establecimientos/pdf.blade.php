@@ -34,24 +34,24 @@ tr.odd {
       <img src="images/HBhospitalamigo.jpg" alt="" width="100px" height="100px" style="float: left;">      
       <br><br>
   </div>
-    <h1 class="text-center">LISTADO DE AREAS</h1><br>
+    <h1 class="text-center">LISTADO DE ESTABLECIMIENTOS</h1><br>
     <table class="table table-striped">
         <thead class="cabecera">
           <tr>
               <th style="text-align: center"><h6>CODIGO</h6></th>
-              <th><h6>NOMBRE DE AREA</h6></th>              
+              <th><h6>NOMBRE DE ESTABLECIMIENTO</h6></th>              
           </tr><br>
           <!-- end table row-->
         </thead>
         <tbody>
-        @foreach($areas as $key => $area)
+        @foreach($establecimientos as $key => $establecimiento)
           <tr class="{{ $key % 2 == 0 ? 'even' : 'odd' }}">
               <td class="min-width" style="text-align: center; ">
-                  <p>{{$area->codigo_area}}</p>
-              </td>
-              <td class="min-width">
-                  <p>{{$area->nombre_area}}</p>
-              </td>
+                <p>{{$establecimiento->codigo_establecimiento}}</p>
+		          </td>
+		          <td class="min-width">
+		            <p>{{$establecimiento->nombre_establecimiento}}</p>
+		          </td>	
           </tr>
           @endforeach
           <!-- end table row -->

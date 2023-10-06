@@ -17,7 +17,7 @@
 		{{-- <button type="button" class="btn btn-primary btn-lg">Nuevo</button> --}}
           <a href="{{ route('patologia.areas.create') }}" class="btn btn-primary btn-lg">Nuevo</a>
 		{{-- <button type="button" class="btn btn-success btn-lg" target="_blank">Imprimir Lista</button> --}}
-		<a href="{{ route('patologia.areas.pdf') }}" class="btn btn-success btn-lg" target="_blank">Imprimir Lista</a>
+		<a href="{{ route('patologia.areas.pdf') }}" class="btn btn-success btn-lg" target="_blank">Imprimir Lista</a> 
         </div>		
       </div>
     </div>
@@ -33,7 +33,7 @@
       	<div class="col-lg-12">
         	<div class="card-style mb-30">
 				<div class="table-wrapper table-responsive">
-		            <table class="table hover" id="myTable">
+		            <table class="table table-striped" id="myTable" >
 		              <thead>
 		                <tr>
 		                  <th><h6>CODIGO</h6></th>

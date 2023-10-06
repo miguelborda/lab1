@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Sector;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
+
 
 class SectorController extends Controller
 {
@@ -18,7 +20,14 @@ class SectorController extends Controller
         return view("patologia.sector.index", [
             'sectors'   =>  $sectors
         ]);
-    }        
+    }   
+    public function pdf()
+    {
+        $sectors = Sector::all();
+        $pdf = Pdf::loadView('patologia.sector.pdf', compact('sectors'));
+        return $pdf->stream();
+        //return $pdf->download('invoice.pdf');  --> para descargar pdf
+    }     
     
     public function create()
     {

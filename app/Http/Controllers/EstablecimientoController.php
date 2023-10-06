@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Establecimiento;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class EstablecimientoController extends Controller
 {
@@ -19,7 +20,14 @@ class EstablecimientoController extends Controller
             'establecimientos'   =>  $establecimientos
         ]);
     }    
-       
+    public function pdf()
+    {
+        $establecimientos = Establecimiento::all();
+        $pdf = Pdf::loadView('patologia.establecimientos.pdf', compact('establecimientos'));
+        return $pdf->stream();
+        //return $pdf->download('invoice.pdf');  --> para descargar pdf
+    } 
+    
     public function create()
     {
         return view('patologia.establecimientos.create');

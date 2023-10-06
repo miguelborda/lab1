@@ -29,8 +29,6 @@ class AreaController extends Controller
         $pdf = Pdf::loadView('patologia.areas.pdf', compact('areas'));
         return $pdf->stream();
         //return $pdf->download('invoice.pdf');  --> para descargar pdf
-
-
     }
 
     public function create()

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Municipio;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
+
 
 class MunicipioController extends Controller
 {
@@ -18,7 +20,14 @@ class MunicipioController extends Controller
         return view("patologia.municipios.index", [
             'municipios'   =>  $municipios
         ]);
-    }    
+    }   
+    public function pdf()
+    {
+        $municipios = Municipio::all();
+        $pdf = Pdf::loadView('patologia.municipios.pdf', compact('municipios'));
+        return $pdf->stream();
+        //return $pdf->download('invoice.pdf');  --> para descargar pdf
+    } 
         
     public function create()
     {

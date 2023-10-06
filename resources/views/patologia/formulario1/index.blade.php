@@ -25,7 +25,7 @@
       	<div class="col-lg-12">
         	<div class="card-style mb-30">
 				<div class="table-wrapper table-responsive">
-		            <table class="table hover" id="myTable">
+		            <table class="table table-striped" id="myTable">
 		              <thead>
 		                <tr>
 		                  <th><h6>ID</h6></th>

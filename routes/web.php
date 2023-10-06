@@ -60,6 +60,7 @@ Route::middleware($middlewares)->group(function()
 
 Route::middleware($middlewares)->group(function()
 {
+    Route::get('Diagnosticos/pdf', [DiagnosticoController::class, 'pdf'])->name('patologia.diagnosticos.pdf');     
     Route::resource('/Diagnosticos', DiagnosticoController::class)->names('patologia.diagnosticos');
 });
 
@@ -71,31 +72,37 @@ Route::middleware($middlewares)->group(function()
 
 Route::middleware($middlewares)->group(function()
 {
+    Route::get('Distritos/pdf', [DistritoController::class, 'pdf'])->name('patologia.distritos.pdf');     
     Route::resource('/Distritos', DistritoController::class)->names('patologia.distritos');
 });
 
 Route::middleware($middlewares)->group(function()
 {
+    Route::get('Establecimientos/pdf', [EstablecimientoController::class, 'pdf'])->name('patologia.establecimientos.pdf');     
     Route::resource('/Establecimientos', EstablecimientoController::class)->names('patologia.establecimientos');
 });
 
 Route::middleware($middlewares)->group(function()
 {
+    Route::get('Municipios/pdf', [MunicipioController::class, 'pdf'])->name('patologia.municipios.pdf');     
     Route::resource('/Municipios', MunicipioController::class)->names('patologia.municipios');
 });
 
 Route::middleware($middlewares)->group(function()
 {
+    Route::get('Secretariaregional/pdf', [SecretariaregionalController::class, 'pdf'])->name('patologia.secretariaregional.pdf');     
     Route::resource('/Secretariaregional', SecretariaregionalController::class)->names('patologia.secretariaregional');
 });
 
 Route::middleware($middlewares)->group(function()
 {
+    Route::get('Sector/pdf', [SectorController::class, 'pdf'])->name('patologia.sector.pdf');     
     Route::resource('/Sector', SectorController::class)->names('patologia.sector');
 });
 
 Route::middleware($middlewares)->group(function()
-{    
+{   
+    Route::get('Pacientes/pdf', [PacienteController::class, 'pdf'])->name('patologia.paciente.pdf');      
     Route::resource('/Pacientes', PacienteController::class)->names('patologia.paciente');
 });
 

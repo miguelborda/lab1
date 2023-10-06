@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Paciente;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
+
 
 class PacienteController extends Controller
 {
@@ -23,11 +25,16 @@ class PacienteController extends Controller
         return view("patologia.pacientes.index", [
             'pacientes'   =>  $pacientes,            
             'hoy' => $hoy
+        ]);             
+    }
 
-        ]);      
-        
-        
-        
+    public function pdf()
+    {
+        $hoy=date('Y-m-d');        
+        $pacientes = Paciente::all();
+        $pdf = Pdf::loadView('patologia.pacientes.pdf', compact('pacientes','hoy'));
+        return $pdf->stream();
+        //return $pdf->download('invoice.pdf');  --> para descargar pdf
     }
     
     public function create()

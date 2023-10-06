@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Secretariaregional;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
+
 
 class SecretariaregionalController extends Controller
 {
@@ -20,7 +22,13 @@ class SecretariaregionalController extends Controller
             'secretariaregionals'   =>  $secretariaregionals
         ]);
     }
-
+    public function pdf()
+    {
+        $secretariaregionals = Secretariaregional::all();
+        $pdf = Pdf::loadView('patologia.secretariaregional.pdf', compact('secretariaregionals'));
+        return $pdf->stream();
+        //return $pdf->download('invoice.pdf');  --> para descargar pdf
+    }   
 
     public function create()
     {

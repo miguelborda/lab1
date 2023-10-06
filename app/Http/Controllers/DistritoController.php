@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Distrito;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
+
 
 class DistritoController extends Controller
 {
@@ -20,6 +22,14 @@ class DistritoController extends Controller
         ]);
     }       
     
+    public function pdf()
+    {
+        $distritos = Distrito::all();
+        $pdf = Pdf::loadView('patologia.distritos.pdf', compact('distritos'));
+        return $pdf->stream();
+        //return $pdf->download('invoice.pdf');  --> para descargar pdf
+    }
+
     public function create()
     {
         return view('patologia.distritos.create');

@@ -14,8 +14,11 @@
       </div>
       <div class="col-md-6" style="text-align: right;">
         <div class="titlemb-30">
-		{{-- <button type="button" class="btn btn-primary btn-lg">Nuevo</button> --}}
-          <a href="{{ route('patologia.paciente.create') }}" class="btn btn-primary btn-lg">Nuevo</a>        </div>
+			{{-- <button type="button" class="btn btn-primary btn-lg">Nuevo</button> --}}
+          	<a href="{{ route('patologia.paciente.create') }}" class="btn btn-primary btn-lg">Nuevo</a>        
+		  	{{-- <button type="button" class="btn btn-success btn-lg" target="_blank">Imprimir Lista</button> --}}
+			<a href="{{ route('patologia.paciente.pdf') }}" class="btn btn-success btn-lg" target="_blank">Imprimir Lista</a> 
+		</div>
         </div>
       </div>
     </div>
@@ -31,7 +34,7 @@
       	<div class="col-lg-12">
         	<div class="card-style mb-30">
 				<div class="table-wrapper table-responsive">
-		            <table class="table hover" id="myTable">
+		            <table class="table table-striped" id="myTable">
 		              <thead>
 		                <tr>		                  
 		                  <th><h6>CI</h6></th>						  

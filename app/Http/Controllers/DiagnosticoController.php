@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Diagnostico;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class DiagnosticoController extends Controller
 {
@@ -18,6 +19,14 @@ class DiagnosticoController extends Controller
         return view("patologia.diagnosticos.index", [
             'diagnosticos'   =>  $diagnosticos
         ]);
+    }
+    
+    public function pdf()
+    {
+        $diagnosticos = Diagnostico::all();
+        $pdf = Pdf::loadView('patologia.diagnosticos.pdf', compact('diagnosticos'));
+        return $pdf->stream();
+        //return $pdf->download('invoice.pdf');  --> para descargar pdf
     }
 
     public function create()
