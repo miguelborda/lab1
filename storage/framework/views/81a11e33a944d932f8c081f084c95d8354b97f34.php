@@ -14,12 +14,20 @@
       </div>
       <div class="col-md-6" style="text-align: right;">
         <div class="titlemb-30">
-          <button type="button" class="btn btn-primary btn-lg">Nuevo</button>
+		
+          <a href="<?php echo e(route('patologia.formulario1.create')); ?>" class="btn btn-primary btn-lg">Nuevo</a>
+		
+		<a href="<?php echo e(route('patologia.formulario1.pdf')); ?>" class="btn btn-success btn-lg" target="_blank">Imprimir Lista</a> 
         </div>
       </div>
     </div>
     <!-- end row -->
   </div>
+<?php if(session('mensaje')): ?>
+	<div class="alert alert-success">
+		<strong><?php echo e(session('mensaje')); ?></strong>
+	</div>
+<?php endif; ?>  
 <div class="tables-wrapper">
     <div class="row">
       	<div class="col-lg-12">
@@ -29,12 +37,13 @@
 		              <thead>
 		                <tr>
 		                  <th><h6>ID</h6></th>
-		                  <th><h6>Nº INFORME</h6></th>
-						  <th><h6>SECRETARIA</h6></th>
-		                  <th><h6>MUNICIPIO</h6></th>
-						  <th><h6>DISTRITO</h6></th>
-						  <th><h6>DIAGNOSTICO</h6></th>
-		                  <th><h6>Accion</h6></th>
+		                  <th><h6>Nº SOL.</h6></th>
+						  <th><h6>FECHA DE SOL.</h6></th>
+		                  <th><h6>NOMBRE PACIENTE</h6></th>
+						  <th><h6>EDAD</h6></th>
+						  <th><h6>MUNICIPIO</h6></th>
+		                  <th><h6>EDITAR</h6></th>
+						  <th><h6>ELIMINAR</h6></th>
 		                </tr>
 		                <!-- end table row-->
 		              </thead>
@@ -42,27 +51,32 @@
 		              	<?php $__currentLoopData = $formulario1s; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $formulario1): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 		                <tr>
 		                  <td class="min-width">
-		                    <p><?php echo e($formulario1->id_formulario1); ?></p>
+		                    <p><?php echo e($formulario1->id); ?></p>
 		                  </td>
 		                  <td class="min-width">
-		                    <p><?php echo e($formulario1->num_informe1); ?></p>
+		                    <p><?php echo e($formulario1->num_solicitud); ?></p>
 		                  </td>		            
 						  <td class="min-width">
-		                    <p><?php echo e($formulario1->secretaria_regional); ?></p>
+		                    <p><?php echo e($formulario1->fecha_solicitud); ?></p>
+		                  </td>		            
+						  <td class="min-width">
+		                    <p><?php echo e($formulario1->paciente); ?></p>
 		                  </td>
 		                  <td class="min-width">
+		                    <p><?php echo e($formulario1->edad_paciente); ?></p>
+		                  </td>		            
+						  <td class="min-width">
 		                    <p><?php echo e($formulario1->municipio); ?></p>
-		                  </td>		            
-						  <td class="min-width">
-		                    <p><?php echo e($formulario1->distrito); ?></p>
 		                  </td>		                  
-						  <td>
-		                  	<?php if($formulario1->trial === 'F'): ?>
-		                        <a href="" class="text-danger"><i class="lni lni-thumbs-down"></i></a>
-                            <?php else: ?>
-		                        <a href="" class="text-blue"><i class="lni lni-thumbs-up"></i></a>
-                            <?php endif; ?>
-                            <button type="button" class="btn btn-primary btn-sm">Editar</button>
+						  <td width="15px">
+                            <a href="<?php echo e(route('patologia.formulario1.edit', $formulario1->id)); ?>" class="btn btn-warning btn-sm">Editar</a>
+                          </td>
+						  <td width="15px">
+						  	<form action="<?php echo e(route('patologia.formulario1.destroy', $formulario1->id)); ?>" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este registro?');">
+								<?php echo method_field('delete'); ?>
+								<?php echo csrf_field(); ?>
+								<input type="submit" value="Eliminar" class="btn btn-danger btn-sm">
+							</form>
 		                  </td>
 		                </tr>
 		                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

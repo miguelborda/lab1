@@ -108,8 +108,8 @@ Route::middleware($middlewares)->group(function()
 
 Route::middleware($middlewares)->group(function()
 {
-    Route::get('/Formulario1s', [Formulario1Controller::class, 'index'])
-    ->name('patologia.formulario1.index');
+    Route::get('Formulario1s/pdf', [Formulario1Controller::class, 'pdf'])->name('patologia.formulario1.pdf');      
+    Route::resource('/Formulario1s', Formulario1Controller::class)->names('patologia.formulario1');    
 });
 
 
