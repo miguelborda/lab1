@@ -6,7 +6,12 @@ use App\Models\Formulario1;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
-use App\Models\Municipio; // Asegúrate de importar el modelo
+use App\Models\Municipio; 
+use App\Models\Secretariaregional;
+use App\Models\Distrito;
+use App\Models\Area;
+use App\Models\Establecimiento;
+use App\Models\Sector;
 
 
 class Formulario1Controller extends Controller
@@ -33,8 +38,13 @@ class Formulario1Controller extends Controller
     
     public function create()
     {
-        $municipios = Municipio::orderBy('nombre_municipio', 'asc')->pluck('nombre_municipio', 'nombre_municipio');
-        return view('patologia.formulario1.create', compact('municipios'));
+        $municipios = Municipio::where('estado', true)->orderBy('nombre_municipio', 'asc')->pluck('nombre_municipio', 'nombre_municipio');
+        $secretariaregionals = Secretariaregional::where('estado', true)->orderBy('nom_secretaria_regional', 'asc')->pluck('nom_secretaria_regional', 'nom_secretaria_regional');
+        $distritos = Distrito::where('estado', true)->orderBy('nombre_distrito', 'asc')->pluck('nombre_distrito', 'nombre_distrito');
+        $areas = Area::where('estado', true)->orderBy('nombre_area', 'asc')->pluck('nombre_area', 'nombre_area');
+        $establecimientos = Establecimiento::where('estado', true)->orderBy('nombre_establecimiento', 'asc')->pluck('nombre_establecimiento', 'nombre_establecimiento');
+        $sectors = Sector::where('estado', true)->orderBy('nombre_sector', 'asc')->pluck('nombre_sector', 'nombre_sector');
+        return view('patologia.formulario1.create', compact('municipios','secretariaregionals','distritos','areas','establecimientos','sectors'));
     }
     
     public function store(Request $request)
@@ -42,15 +52,15 @@ class Formulario1Controller extends Controller
         $request->validate(
             ['num_solicitud'=>'required',
              'fecha_solicitud'=>'required',
-             /*'secretaria_regional'=>'required',             
+             'secretaria_regional'=>'required',             
              'distrito'=>'required',
-             'area'=>'required',
-             'fecha_solicitud'=>'required',
+             'area'=>'required',             
              'establecimiento'=>'required',
-             'sector'=>'required',*/
+             'sector'=>'required',
              'municipio'=>'required',
              'paciente'=>'required',
              'edad_paciente'=>'required',
+             'num_examen'=>'required',
             ]
         ); 
         $user = auth()->user();       

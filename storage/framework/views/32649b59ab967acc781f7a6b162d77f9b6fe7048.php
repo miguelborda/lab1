@@ -1,4 +1,4 @@
-<li class="nav-item nav-item-has-children">
+<!--<li class="nav-item nav-item-has-children">
   <a
     href="#0"
     class="collapsed"
@@ -32,7 +32,7 @@
       <a href="<?php echo e(route('sistemas.roles.index')); ?>"> Roles </a>
     </li>
   </ul>
-</li>
+</li>-->
 
 <li class="nav-item nav-item-has-children">
   <a

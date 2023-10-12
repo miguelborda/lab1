@@ -35,13 +35,15 @@
 				<div class="table-wrapper table-responsive">
 		            <table class="table table-striped" id="myTable">
 		              <thead>
-		                <tr>
-		                  <th><h6>ID</h6></th>
+		                <tr>		                  
 		                  <th><h6>Nº SOL.</h6></th>
 						  <th><h6>FECHA DE SOL.</h6></th>
 		                  <th><h6>NOMBRE PACIENTE</h6></th>
 						  <th><h6>EDAD</h6></th>
+						  <th><h6>SECR. REG.</h6></th> 
 						  <th><h6>MUNICIPIO</h6></th>
+						  <th><h6>DISTRITO</h6></th>
+						  <th><h6>AREA</h6></th>
 		                  <th><h6>EDITAR</h6></th>
 						  <th><h6>ELIMINAR</h6></th>
 		                </tr>
@@ -49,10 +51,7 @@
 		              </thead>
 		              <tbody>
 		              	<?php $__currentLoopData = $formulario1s; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $formulario1): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-		                <tr>
-		                  <td class="min-width">
-		                    <p><?php echo e($formulario1->id); ?></p>
-		                  </td>
+		                <tr>		                  
 		                  <td class="min-width">
 		                    <p><?php echo e($formulario1->num_solicitud); ?></p>
 		                  </td>		            
@@ -66,7 +65,16 @@
 		                    <p><?php echo e($formulario1->edad_paciente); ?></p>
 		                  </td>		            
 						  <td class="min-width">
+		                    <p><?php echo e($formulario1->secretaria_regional); ?></p>
+		                  </td>		            
+						  <td class="min-width">
 		                    <p><?php echo e($formulario1->municipio); ?></p>
+		                  </td>		            
+						  <td class="min-width">
+		                    <p><?php echo e($formulario1->distrito); ?></p>
+		                  </td>		            
+						  <td class="min-width">
+		                    <p><?php echo e($formulario1->area); ?></p>
 		                  </td>		                  
 						  <td width="15px">
                             <a href="<?php echo e(route('patologia.formulario1.edit', $formulario1->id)); ?>" class="btn btn-warning btn-sm">Editar</a>
