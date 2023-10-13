@@ -98,4 +98,9 @@
       <a href="{{ route('patologia.formulario1.index') }}"> Formulario1s </a>
     </li>
   </ul>
+  <ul id="ddmenu_1" class="collapse dropdown-nav">
+    <li>
+      <a href="{{ route('patologia.detallef1s.index') }}"> Detallef1s </a>
+    </li>
+  </ul>
 </li>

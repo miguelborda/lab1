@@ -6,4 +6,4 @@ composer global require laravel/installer   --> instalacion de componentes
 
 composer require laravelcollective/html  --> paquete para crear formularios _recom spatie/laravel-html
 
-
+php artisan make:model Producto --controller  -->  comando artisan para crear modelo mas controlador

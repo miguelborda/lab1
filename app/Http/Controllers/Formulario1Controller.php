@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Formulario1;
+use App\Models\Detallef1s;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -12,6 +13,7 @@ use App\Models\Distrito;
 use App\Models\Area;
 use App\Models\Establecimiento;
 use App\Models\Sector;
+
 
 
 class Formulario1Controller extends Controller
@@ -43,7 +45,7 @@ class Formulario1Controller extends Controller
         $distritos = Distrito::where('estado', true)->orderBy('nombre_distrito', 'asc')->pluck('nombre_distrito', 'nombre_distrito');
         $areas = Area::where('estado', true)->orderBy('nombre_area', 'asc')->pluck('nombre_area', 'nombre_area');
         $establecimientos = Establecimiento::where('estado', true)->orderBy('nombre_establecimiento', 'asc')->pluck('nombre_establecimiento', 'nombre_establecimiento');
-        $sectors = Sector::where('estado', true)->orderBy('nombre_sector', 'asc')->pluck('nombre_sector', 'nombre_sector');
+        $sectors = Sector::where('estado', true)->orderBy('nombre_sector', 'asc')->pluck('nombre_sector', 'nombre_sector');       
         return view('patologia.formulario1.create', compact('municipios','secretariaregionals','distritos','areas','establecimientos','sectors'));
     }
     
@@ -58,13 +60,18 @@ class Formulario1Controller extends Controller
              'establecimiento'=>'required',
              'sector'=>'required',
              'municipio'=>'required',
-             'paciente'=>'required',
-             'edad_paciente'=>'required',
+             'nombre'=>'required',
+             'edad'=>'required',
              'num_examen'=>'required',
             ]
         ); 
+        
         $user = auth()->user();       
-        $formulario1s=Formulario1::create(array_merge($request->all(), ['userid_creator' => $user->id],['username_creator' => $user->email]));                
+        $formulario1s = Formulario1::create(array_merge($request->all(), ['userid_creator' => $user->id], ['username_creator' => $user->email])); 
+        // Obtiene la ID del modelo Formulario1 recién creado
+        $num_informef1 = $formulario1s->num_solicitud;
+        $detallef1s = Detallef1s::create(array_merge($request->all(), ['num_informef1' => $num_informef1, 'userid_creator' => $user->id], ['username_creator' => $user->email]));
+
         return redirect()->route('patologia.formulario1.index')->with('mensaje','Se creó exitosamente');
     }
     

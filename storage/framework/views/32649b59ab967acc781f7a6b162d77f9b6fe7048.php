@@ -98,5 +98,10 @@
       <a href="<?php echo e(route('patologia.formulario1.index')); ?>"> Formulario1s </a>
     </li>
   </ul>
+  <ul id="ddmenu_1" class="collapse dropdown-nav">
+    <li>
+      <a href="<?php echo e(route('patologia.detallef1s.index')); ?>"> Detallef1s </a>
+    </li>
+  </ul>
 </li>
 <?php /**PATH C:\xampp\htdocs\usuariosHB\resources\views/layouts/menu.blade.php ENDPATH**/ ?>

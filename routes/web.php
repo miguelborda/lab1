@@ -16,6 +16,7 @@ use App\Http\Controllers\SecretariaregionalController;
 use App\Http\Controllers\SectorController;
 use App\Http\Controllers\PacienteController;
 use App\Http\Controllers\Formulario1Controller;
+use App\Http\Controllers\Detallef1sController;
 
 $middlewares[] = 'auth';
 
@@ -110,6 +111,11 @@ Route::middleware($middlewares)->group(function()
 {
     Route::get('Formulario1s/pdf', [Formulario1Controller::class, 'pdf'])->name('patologia.formulario1.pdf');      
     Route::resource('/Formulario1s', Formulario1Controller::class)->names('patologia.formulario1');    
+});
+Route::middleware($middlewares)->group(function()
+{
+    Route::get('Detallef1s/pdf', [Detallef1sController::class, 'pdf'])->name('patologia.detallef1s.pdf');      
+    Route::resource('/Detallef1s', Detallef1sController::class)->names('patologia.detallef1s');    
 });
 
 
