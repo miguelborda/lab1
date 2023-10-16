@@ -67,10 +67,45 @@ class Formulario1Controller extends Controller
         ); 
         
         $user = auth()->user();       
-        $formulario1s = Formulario1::create(array_merge($request->all(), ['userid_creator' => $user->id], ['username_creator' => $user->email])); 
+        // dd(array_merge($request->all()));
+        
+
+        //$formulario1s = Formulario1::create(array_merge($request->all(), ['userid_creator' => $user->id], ['username_creator' => $user->email])); 
         // Obtiene la ID del modelo Formulario1 recién creado
-        $num_informef1 = $formulario1s->num_solicitud;
-        $detallef1s = Detallef1s::create(array_merge($request->all(), ['num_informef1' => $num_informef1, 'userid_creator' => $user->id], ['username_creator' => $user->email]));
+        $formulario1s = Formulario1::create([
+            'num_solicitud' => $request->input('num_solicitud'),
+            'fecha_solicitud' => $request->input('fecha_solicitud'),
+            'secretaria_regional' => $request->input('secretaria_regional'),
+            'distrito' => $request->input('distrito'),
+            'area' => $request->input('area'),
+            'establecimiento' => $request->input('establecimiento'),
+            'sector' => $request->input('sector'),
+            'municipio' => $request->input('municipio'),
+            'userid_creator' => $user->id,
+            'username_creator' => $user->email
+        ]);
+
+
+        
+        $num_informef1 = $formulario1s->id;
+        
+        for ($i=0;$i<count($request->num_examen);$i++){
+            
+             $detallef1s = Detallef1s::create ([
+             //'num_solicitud' => $request->input('num_solicitud'),
+             'nombre' => $request->nombre[$i],
+             'edad' => $request->edad[$i],
+             'num_examen' => $request->num_examen[$i],
+             'num_informef1' => $num_informef1,
+             'userid_creator' => $user->id,             
+         ]);
+         //dd($detallef1s);        
+        
+            //$detallef1s = Detallef1s::create(array_merge($request->num_examen[$i], $request->nombre[$i], $request->edad[$i], $request->direccion[$i],$request->$num_informef1[$i],['num_informef1' => $num_informef1, 'userid_creator' => $user->id], ['username_creator' => $user->email]));
+        }
+        
+
+
 
         return redirect()->route('patologia.formulario1.index')->with('mensaje','Se creó exitosamente');
     }

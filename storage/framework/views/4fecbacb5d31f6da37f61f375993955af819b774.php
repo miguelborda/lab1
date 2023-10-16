@@ -1,3 +1,5 @@
+
+
 <?php $__env->startSection('title', 'Crear Formulario1'); ?>
 <?php $__env->startPush('style'); ?>
     <link rel="stylesheet" href="css/datatable.css" />
@@ -14,6 +16,18 @@
     </div>
     <!-- end row -->
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    $("#agregarLinea").click(function() {
+        var lineaClonada = $(".custom-bg2").last().clone();
+        lineaClonada.find('input').val('');
+        $(".custom-bg2").last().after(lineaClonada);
+    });
+});
+</script>
+
+
 <style>
 .custom-bg {
 background-color: #DCEEEE; /* Cambia #ff0000 al color que desees */
@@ -107,40 +121,41 @@ unset($__errorArgs, $__bag); ?>
             </div>
         </div><div><br></div>         
     </div><div><br><strong>DETALLE PACIENTES:</strong><br></div>        
-    <div class="row custom-bg2">                
+    <div class="row custom-bg2" id="dynamicFields">
         <div class="col-md-2"> 
             <div class="form-group">
-                <strong><?php echo Form::label('num_examen', 'Nº de Examen'); ?></strong>
-                <?php echo Form::text('num_examen', isset($detallef1s) ? $detallef1s->num_examen : '', ['class' => 'form-control', 'placeholder' => 'Ingrese Nº de Examen']); ?>
+                <strong><?php echo Form::label('num_examen[]', 'Nº de Examen'); ?></strong>
+                <?php echo Form::text('num_examen[]', null, ['class' => 'form-control', 'placeholder' => 'Ingrese Nº de Examen']); ?>
 
                 <small class="text-danger"><?php echo e($errors->first('num_examen')); ?></small>
             </div>
         </div>
         <div class="col-md-4"> 
             <div class="form-group">
-                <strong><?php echo Form::label('nombre', 'Nombre del Paciente'); ?></strong>
-                <?php echo Form::text('nombre', isset($detallef1s) ? $detallef1s->nombre : '', ['class' => 'form-control', 'placeholder' => 'Ingrese Nombre del Paciente']); ?>
+                <strong><?php echo Form::label('nombre[]', 'Nombre del Paciente'); ?></strong>
+                <?php echo Form::text('nombre[]', null, ['class' => 'form-control', 'placeholder' => 'Ingrese Nombre del Paciente']); ?>
 
                 <small class="text-danger"><?php echo e($errors->first('nombre')); ?></small>
             </div>
         </div>        
         <div class="col-md-2"> 
             <div class="form-group">
-                <strong><?php echo Form::label('edad', 'Edad de Paciente'); ?></strong>
-                <?php echo Form::text('edad', isset($detallef1s) ? $detallef1s->edad : '', ['class' => 'form-control', 'placeholder' => 'Ingrese Edad']); ?>
+                <strong><?php echo Form::label('edad[]', 'Edad de Paciente'); ?></strong>
+                <?php echo Form::text('edad[]', null, ['class' => 'form-control', 'placeholder' => 'Ingrese Edad']); ?>
 
                 <small class="text-danger"><?php echo e($errors->first('edad')); ?></small>
             </div>
         </div>
         <div class="col-md-4"> 
             <div class="form-group">
-                <strong><?php echo Form::label('direccion', 'Dirección de Paciente'); ?></strong>
-                <?php echo Form::text('direccion', isset($detallef1s) ? $detallef1s->direccion : '', ['class' => 'form-control', 'placeholder' => 'Ingrese Dirección del Paciente']); ?>
+                <strong><?php echo Form::label('direccion[]', 'Dirección de Paciente'); ?></strong>
+                <?php echo Form::text('direccion[]', null, ['class' => 'form-control', 'placeholder' => 'Ingrese Dirección del Paciente']); ?>
 
                 <small class="text-danger"><?php echo e($errors->first('direccion')); ?></small>
             </div>
-        </div><div><br></div>        
-    </div>
+        </div><div><br></div>
+        
+    </div><button id="agregarLinea" type="button" class="btn btn-primary">Agregar Línea</button><br>        
             <br>
             <?php echo Form::submit('Guardar',['class'=>'btn btn-primary']); ?>
 
