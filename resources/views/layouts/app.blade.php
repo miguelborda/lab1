@@ -24,7 +24,7 @@
     <aside class="sidebar-nav-wrapper">
       <div class="navbar-logo">
         <a href="index.html">
-          <img style="width: 200px" src="{{asset('assets/images/logo/logo.png')}}" alt="logo" />
+          <img style="width: 200px" src="{{asset('assets/images/logo/HBlabpat2.jpg')}}" alt="logo" />
         </a>
       </div>
       <nav class="sidebar-nav">

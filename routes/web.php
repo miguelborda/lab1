@@ -17,6 +17,7 @@ use App\Http\Controllers\SectorController;
 use App\Http\Controllers\PacienteController;
 use App\Http\Controllers\Formulario1Controller;
 use App\Http\Controllers\Detallef1sController;
+use App\Http\Controllers\Resultadof1sController;
 
 $middlewares[] = 'auth';
 
@@ -45,7 +46,6 @@ Route::get('/logout', [SessionsController::class, 'destroy'])
 Route::get('/admin', [AdminController::class, 'index'])
     ->middleware('auth.admin')
     ->name('admin.index');
-
 
 Route::middleware($middlewares)->group(function()
 {
@@ -117,5 +117,9 @@ Route::middleware($middlewares)->group(function()
     Route::get('Detallef1s/pdf', [Detallef1sController::class, 'pdf'])->name('patologia.detallef1s.pdf');      
     Route::resource('/Detallef1s', Detallef1sController::class)->names('patologia.detallef1s');    
 });
-
+Route::middleware($middlewares)->group(function()
+{
+    Route::get('Resultadof1s/pdf', [Resultadof1sController::class, 'pdf'])->name('patologia.resultadof1s.pdf');      
+    Route::resource('/Resultadof1s', Resultadof1sController::class)->names('patologia.resultadof1s');    
+});
 

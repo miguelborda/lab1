@@ -10,7 +10,7 @@
     <div class="row align-items-center" style="height: 60px">
         <div class="col-md-6">
             <div class="titlemb-30">
-                <h2>Actualizar Area {{$area->id}}</h2>
+                <h2>Actualizar Formulario1 de Solicitudes:  {{$formulario1s->num_solicitud}}</h2>
             </div>
         </div>
     </div>
@@ -19,22 +19,44 @@
 
 <div class="card">
     <div class="card-body">
-        <form method="POST" action="{{ route('patologia.areas.update', $area->id) }}" onsubmit="return confirm('¿Estás seguro de que deseas modificar este registro?');">
+        <form method="POST" action="{{ route('patologia.formulario1.update', $formulario1s->id) }}" onsubmit="return confirm('¿Estás seguro de que deseas modificar este registro?');">
             @csrf
             @method('PUT')
 
             <div class="form-group">
-                <strong>{!! Form::label('codigo_area', 'codigo de area') !!}</strong>
-                {!! Form::text('codigo_area', $area->codigo_area, ['class' => 'form-control', 'placeholder' => 'Ingrese el código de Area']) !!}
-                <small class="text-danger">{{ $errors->first('codigo_area') }}</small>
+                <strong>{!! Form::label('secretaria_regional', 'Secretaria Regional') !!}</strong>
+                {!! Form::text('secretaria_regional', $formulario1s->secretaria_regional, ['class' => 'form-control', 'placeholder' => 'Ingrese la Secretaria Regional']) !!}
+                <small class="text-danger">{{ $errors->first('secretaria_regional') }}</small>
             </div>
             <br>
             <div class="form-group">
-                <strong>{!! Form::label('nombre_area', 'nombre de area') !!}</strong>
-                {!! Form::text('nombre_area', $area->nombre_area, ['class' => 'form-control', 'placeholder' => 'Ingrese nombre de Area']) !!}
-                @error('nombre_area')
-                    <span class="text-danger">{{$message}}</span>
-                @enderror
+                <strong>{!! Form::label('municipio', 'Municipio') !!}</strong>
+                {!! Form::text('municipio', $formulario1s->municipio, ['class' => 'form-control', 'placeholder' => 'Ingrese el Municipio']) !!}
+                <small class="text-danger">{{ $errors->first('municipio') }}</small>
+            </div>
+            <br>
+            <div class="form-group">
+                <strong>{!! Form::label('distrito', 'Distrito') !!}</strong>
+                {!! Form::text('distrito', $formulario1s->distrito, ['class' => 'form-control', 'placeholder' => 'Ingrese el Distrito']) !!}
+                <small class="text-danger">{{ $errors->first('distrito') }}</small>
+            </div>
+            <br>
+            <div class="form-group">
+                <strong>{!! Form::label('area', 'Area') !!}</strong>
+                {!! Form::text('area', $formulario1s->area, ['class' => 'form-control', 'placeholder' => 'Ingrese Nombre de Area']) !!}
+                <small class="text-danger">{{ $errors->first('area') }}</small>
+            </div>
+            <br>
+            <div class="form-group">
+                <strong>{!! Form::label('establecimiento', 'Establecimiento') !!}</strong>
+                {!! Form::text('establecimiento', $formulario1s->establecimiento, ['class' => 'form-control', 'placeholder' => 'Ingrese el Establecimiento']) !!}
+                <small class="text-danger">{{ $errors->first('establecimiento') }}</small>
+            </div>
+            <br>
+            <div class="form-group">
+                <strong>{!! Form::label('sector', 'Sector') !!}</strong>
+                {!! Form::text('sector', $formulario1s->sector, ['class' => 'form-control', 'placeholder' => 'Ingrese el Sector']) !!}
+                <small class="text-danger">{{ $errors->first('sector') }}</small>
             </div>
             <br>
             <button type="submit" id="confirm-button" class="btn btn-primary">Guardar Cambios</button>                      

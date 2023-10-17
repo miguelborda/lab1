@@ -38,8 +38,8 @@
 		                <tr>		                  
 		                  <th><h6>Nº SOL.</h6></th>
 						  <th><h6>FECHA DE SOL.</h6></th>
-		                  <th><h6>NOMBRE PACIENTE</h6></th>
-						  <th><h6>EDAD</h6></th>
+		                  <!--<th><h6>NOMBRE PACIENTE</h6></th>
+						  <th><h6>EDAD</h6></th> -->
 						  <th><h6>SECR. REG.</h6></th> 
 						  <th><h6>MUNICIPIO</h6></th>
 						  <th><h6>DISTRITO</h6></th>
@@ -58,12 +58,12 @@
 						  <td class="min-width">
 		                    <p><?php echo e($formulario1->fecha_solicitud); ?></p>
 		                  </td>		            
-						  <td class="min-width">
+						  <!--<td class="min-width">
 		                    <p><?php echo e($formulario1->paciente); ?></p>
 		                  </td>
 		                  <td class="min-width">
 		                    <p><?php echo e($formulario1->edad_paciente); ?></p>
-		                  </td>		            
+		                  </td>		             -->
 						  <td class="min-width">
 		                    <p><?php echo e($formulario1->secretaria_regional); ?></p>
 		                  </td>		            

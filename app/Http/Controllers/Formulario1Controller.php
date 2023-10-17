@@ -87,7 +87,8 @@ class Formulario1Controller extends Controller
 
 
         
-        $num_informef1 = $formulario1s->id;
+        //$num_informef1 = $formulario1s->id;
+        $num_informef1 = $formulario1s->num_solicitud;
         
         for ($i=0;$i<count($request->num_examen);$i++){
             
@@ -96,6 +97,7 @@ class Formulario1Controller extends Controller
              'nombre' => $request->nombre[$i],
              'edad' => $request->edad[$i],
              'num_examen' => $request->num_examen[$i],
+             'direccion' => $request->direccion[$i],
              'num_informef1' => $num_informef1,
              'userid_creator' => $user->id,             
          ]);
@@ -115,7 +117,7 @@ class Formulario1Controller extends Controller
         //
     }
     
-    public function edit(Formulario1 $formulario1)
+    public function edit(Formulario1 $formulario1, $id)
     {
         $formulario1s=Formulario1::find($id);
         return view('patologia.formulario1.edit',compact('formulario1s'));
@@ -130,11 +132,11 @@ class Formulario1Controller extends Controller
         return redirect()->route('patologia.formulario1.index')->with('mensaje', 'Se actualizó exitosamente');
     }
     
-    public function destroy(Formulario1 $formulario1)
+    public function destroy(Formulario1 $formulario1, $id)
     {
         $formulario1s=Formulario1::find($id);
         if (!$formulario1s) {
-            return redirect()->route('patologia.formulario1s.index')->with('mensaje', 'No se encontró el area');
+            return redirect()->route('patologia.formulario1.index')->with('mensaje', 'No se encontró el area');
         }
         $formulario1s->estado = FALSE; // Cambia el estado a inactivo
         $formulario1s->save();
