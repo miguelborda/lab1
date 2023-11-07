@@ -1,3 +1,5 @@
+
+
 <?php $__env->startSection('title', 'Crear Municipio'); ?>
 <?php $__env->startPush('style'); ?>
     <link rel="stylesheet" href="css/datatable.css" />
@@ -8,7 +10,7 @@
     <div class="row align-items-center" style="height: 60px">
         <div class="col-md-6">
             <div class="titlemb-30">
-                <h2>Crear Municipio</h2>
+                <h2>Crear Nuevo Municipio</h2>
             </div>
         </div>
     </div>
@@ -19,13 +21,13 @@
     <div class="card-body">
         <?php echo Form::open(['route'=>'patologia.municipios.store']); ?>
 
-            <div class="form-group">
+            <!--<div class="form-group">
                 <strong><?php echo Form::label('codigo_municipio', 'Código de Municipio'); ?></strong>
                 <?php echo Form::text('codigo_municipio', isset($municipio) ? $municipio->codigo_municipio : '', ['class' => 'form-control', 'placeholder' => 'Ingrese Código de Municipio']); ?>
 
                 <small class="text-danger"><?php echo e($errors->first('codigo_municipio')); ?></small>
             </div>
-            <br>
+            <br>-->
             <div class="form-group">
                 <strong><?php echo Form::label('nombre_municipio', 'Nombre de Municipio'); ?></strong>
                 <?php echo Form::text('nombre_municipio', isset($municipio) ? $municipio->nombre_municipio : '', ['class' => 'form-control', 'placeholder' => 'Ingrese Nombre de Municipio']); ?>
@@ -43,6 +45,9 @@ unset($__errorArgs, $__bag); ?>
             </div>
             <br>
             <?php echo Form::submit('Guardar',['class'=>'btn btn-primary']); ?>
+
+            <?php echo Form::button('Volver', ['class' => 'btn btn-secondary', 'onclick' => 'window.history.go(-1);']); ?>
+
 
         <?php echo Form::close(); ?>
 

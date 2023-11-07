@@ -6,6 +6,8 @@ use App\Models\Diagnostico;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Validation\Rule;
+
 
 class DiagnosticoController extends Controller
 {
@@ -36,14 +38,15 @@ class DiagnosticoController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(Request $request, Diagnostico $diagnostico)
     {
         $request->validate(
-            ['codigo_diagnostico'=>'required',
-             'descripcion_diagnostico'=>'required']
+            ['codigo_diagnostico' => ['required', 'string', 'max:255', Rule::unique('diagnosticos')->ignore($diagnostico->id)],
+            //'codigo_diagnostico' => 'required', 
+            'descripcion_diagnostico'=>'required']
         ); 
         $user = auth()->user();       
-        $diagnostico = Diagnostico::create(array_merge($request->all(), ['userid_creator' => $user->id],['username_creator' => $user->email]));
+        $diagnostico = Diagnostico::create(array_merge($request->all(), ['creatoruser_id' => $user->id],['updateduser_id' => $user->id]));
         return redirect()->route('patologia.diagnosticos.index')->with('mensaje','Se creó exitosamente');
     }    
 
@@ -65,11 +68,11 @@ class DiagnosticoController extends Controller
     }    
 
     public function update(Request $request, $id)
-    {
+    {        
         $hoy = date('Y-m-d H:i:s');
         $diagnostico = request()->except(['_token','_method']);
         $user = auth()->user();        
-        Diagnostico::where('id', $id)->update(array_merge($diagnostico, ['userid_lastupdated' => $user->id],['username_lastupdated' => $user->email],['updated_at' => $hoy]));   
+        Diagnostico::where('id', $id)->update(array_merge($diagnostico, ['updateduser_id' => $user->id],['updated_at' => $hoy]));   
         return redirect()->route('patologia.diagnosticos.index')->with('mensaje', 'Se actualizó exitosamente');
     }   
     

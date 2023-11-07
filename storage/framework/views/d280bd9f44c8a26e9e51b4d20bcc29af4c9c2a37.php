@@ -1,3 +1,5 @@
+
+
 <?php $__env->startSection('title', 'Crear Diagnóstico'); ?>
 <?php $__env->startPush('style'); ?>
     <link rel="stylesheet" href="css/datatable.css" />
@@ -8,7 +10,7 @@
     <div class="row align-items-center" style="height: 60px">
         <div class="col-md-6">
             <div class="titlemb-30">
-                <h2>Actualizar Diagnóstico <?php echo e($diagnostico->id); ?></h2>
+                <h2>Editar Diagnóstico con Código: "<?php echo e($diagnostico->codigo_diagnostico); ?>"</h2>
             </div>
         </div>
     </div>
@@ -21,13 +23,19 @@
             <?php echo csrf_field(); ?>
             <?php echo method_field('PUT'); ?>
 
-            <div class="form-group">
+            <!--<div class="form-group">
                 <strong><?php echo Form::label('codigo_diagnostico', 'codigo de diagnostico'); ?></strong>
                 <?php echo Form::text('codigo_diagnostico', $diagnostico->codigo_diagnostico, ['class' => 'form-control', 'placeholder' => 'Ingrese el código de diagnostico']); ?>
 
                 <small class="text-danger"><?php echo e($errors->first('codigo_diagnostico')); ?></small>
             </div>
-            <br>
+            <?php if($errors->has('codigo_diagnostico_exists')): ?>
+                <div class="alert alert-danger">
+                    <?php echo e($errors->first('codigo_diagnostico_exists')); ?>
+
+                </div>
+            <?php endif; ?>
+            <br>-->
             <div class="form-group">
                 <strong><?php echo Form::label('descripcion_diagnostico', 'descripcion de diagnostico'); ?></strong>
                 <?php echo Form::text('descripcion_diagnostico', $diagnostico->descripcion_diagnostico, ['class' => 'form-control', 'placeholder' => 'Ingrese descripcion']); ?>
@@ -45,6 +53,8 @@ unset($__errorArgs, $__bag); ?>
             </div>
             <br>
             <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+            <?php echo Form::button('Volver', ['class' => 'btn btn-secondary', 'onclick' => 'window.history.go(-1);']); ?>
+
         </form>
     </div>
 </div>

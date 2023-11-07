@@ -1,3 +1,5 @@
+
+
 <?php $__env->startSection('title', 'Diagnosticos'); ?>
 <?php $__env->startPush('style'); ?>
     <link rel="stylesheet" href="css/datatable.css" />

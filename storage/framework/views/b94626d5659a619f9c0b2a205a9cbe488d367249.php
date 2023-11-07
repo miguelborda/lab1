@@ -1,3 +1,5 @@
+
+
 <?php $__env->startSection('title', 'Editar Detalle Paciente F1s'); ?>
 <?php $__env->startPush('style'); ?>
     <link rel="stylesheet" href="css/datatable.css" />

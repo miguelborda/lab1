@@ -1,3 +1,5 @@
+
+
 <?php $__env->startSection('title', 'Editar Area'); ?>
 <?php $__env->startPush('style'); ?>
     <link rel="stylesheet" href="css/datatable.css" />
@@ -8,7 +10,7 @@
     <div class="row align-items-center" style="height: 60px">
         <div class="col-md-6">
             <div class="titlemb-30">
-                <h2>Actualizar Area <?php echo e($area->id); ?></h2>
+                <h2>Editar Area con ID: <?php echo e($area->id); ?></h2>
             </div>
         </div>
     </div>
@@ -21,15 +23,15 @@
             <?php echo csrf_field(); ?>
             <?php echo method_field('PUT'); ?>
 
-            <div class="form-group">
+            <!--<div class="form-group">
                 <strong><?php echo Form::label('codigo_area', 'codigo de area'); ?></strong>
                 <?php echo Form::text('codigo_area', $area->codigo_area, ['class' => 'form-control', 'placeholder' => 'Ingrese el código de Area']); ?>
 
                 <small class="text-danger"><?php echo e($errors->first('codigo_area')); ?></small>
             </div>
-            <br>
+            <br>-->
             <div class="form-group">
-                <strong><?php echo Form::label('nombre_area', 'nombre de area'); ?></strong>
+                <strong><?php echo Form::label('nombre_area', 'Nombre de Area'); ?></strong>
                 <?php echo Form::text('nombre_area', $area->nombre_area, ['class' => 'form-control', 'placeholder' => 'Ingrese nombre de Area']); ?>
 
                 <?php $__errorArgs = ['nombre_area'];
@@ -45,7 +47,9 @@ unset($__errorArgs, $__bag); ?>
             </div>
             <br>
             <button type="submit" id="confirm-button" class="btn btn-primary">Guardar Cambios</button>                      
-            
+            <?php echo Form::button('Volver', ['class' => 'btn btn-secondary', 'onclick' => 'window.history.go(-1);']); ?>
+
+
         </form>
     </div>
 </div>

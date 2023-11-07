@@ -9,7 +9,6 @@ class Formulario1 extends Model
 {
     use HasFactory;
     protected $fillable=['num_solicitud','fecha_solicitud','secretaria_regional','municipio',
-    'distrito','area','fecha_solicitud','establecimiento','sector','paciente','edad_paciente',
-    'userid_creator','username_creator','userid_lastupdated','username_lastupdated','updated_at',
-    'created_at','num_examen','direccion'];
+    'distrito','area','fecha_solicitud','establecimiento','sector',
+    'creatoruser_id','updateduser_id','created_at','updated_at','estado','descripcion'];
 }

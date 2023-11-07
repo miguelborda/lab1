@@ -36,11 +36,11 @@ class EstablecimientoController extends Controller
     public function store(Request $request)
     {
         $request->validate(
-            ['codigo_establecimiento'=>'required',
+            [//'codigo_establecimiento'=>'required',
              'nombre_establecimiento'=>'required']
         ); 
         $user = auth()->user();       
-        $establecimiento = Establecimiento::create(array_merge($request->all(), ['userid_creator' => $user->id],['username_creator' => $user->email]));
+        $establecimiento = Establecimiento::create(array_merge($request->all(), ['creatoruser_id' => $user->id]));
         return redirect()->route('patologia.establecimientos.index')->with('mensaje','Se creó exitosamente');
     }       
     
@@ -60,7 +60,7 @@ class EstablecimientoController extends Controller
         $hoy = date('Y-m-d H:i:s');
         $establecimiento = request()->except(['_token','_method']);
         $user = auth()->user();        
-        Establecimiento::where('id', $id)->update(array_merge($establecimiento, ['userid_lastupdated' => $user->id],['username_lastupdated' => $user->email],['updated_at' => $hoy]));           
+        Establecimiento::where('id', $id)->update(array_merge($establecimiento, ['updateduser_id' => $user->id],['updated_at' => $hoy]));           
         return redirect()->route('patologia.establecimientos.index')->with('mensaje', 'Se actualizó exitosamente');
     }      
     

@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Secretariaregional extends Model
 {
     use HasFactory;
-    protected $fillable=['codigo_regional','nom_secretaria_regional','userid_creator',
-    'username_creator','updated_at'];
+    protected $fillable=['codigo_regional','nom_secretaria_regional','creatoruser_id',
+    'updateduser_id','created_at','updated_at'];
 }

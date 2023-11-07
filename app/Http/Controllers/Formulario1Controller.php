@@ -40,12 +40,18 @@ class Formulario1Controller extends Controller
     
     public function create()
     {
-        $municipios = Municipio::where('estado', true)->orderBy('nombre_municipio', 'asc')->pluck('nombre_municipio', 'nombre_municipio');
+        /*$municipios = Municipio::where('estado', true)->orderBy('nombre_municipio', 'asc')->pluck('nombre_municipio', 'nombre_municipio');
         $secretariaregionals = Secretariaregional::where('estado', true)->orderBy('nom_secretaria_regional', 'asc')->pluck('nom_secretaria_regional', 'nom_secretaria_regional');
         $distritos = Distrito::where('estado', true)->orderBy('nombre_distrito', 'asc')->pluck('nombre_distrito', 'nombre_distrito');
         $areas = Area::where('estado', true)->orderBy('nombre_area', 'asc')->pluck('nombre_area', 'nombre_area');
         $establecimientos = Establecimiento::where('estado', true)->orderBy('nombre_establecimiento', 'asc')->pluck('nombre_establecimiento', 'nombre_establecimiento');
-        $sectors = Sector::where('estado', true)->orderBy('nombre_sector', 'asc')->pluck('nombre_sector', 'nombre_sector');       
+        $sectors = Sector::where('estado', true)->orderBy('nombre_sector', 'asc')->pluck('nombre_sector', 'nombre_sector');       */
+        $municipios = Municipio::where('estado', true)->orderBy('nombre_municipio', 'asc')->pluck('nombre_municipio','id');
+        $secretariaregionals = Secretariaregional::where('estado', true)->orderBy('nom_secretaria_regional', 'asc')->pluck('nom_secretaria_regional','id');
+        $distritos = Distrito::where('estado', true)->orderBy('nombre_distrito', 'asc')->pluck('nombre_distrito','id');
+        $areas = Area::where('estado', true)->orderBy('nombre_area', 'asc')->pluck('nombre_area','id');
+        $establecimientos = Establecimiento::where('estado', true)->orderBy('nombre_establecimiento', 'asc')->pluck('nombre_establecimiento','id');
+        $sectors = Sector::where('estado', true)->orderBy('nombre_sector', 'asc')->pluck('nombre_sector','id');       
         return view('patologia.formulario1.create', compact('municipios','secretariaregionals','distritos','areas','establecimientos','sectors'));
     }
     
@@ -60,9 +66,9 @@ class Formulario1Controller extends Controller
              'establecimiento'=>'required',
              'sector'=>'required',
              'municipio'=>'required',
-             'nombre'=>'required',
-             'edad'=>'required',
-             'num_examen'=>'required',
+             //'nombre'=>'required',
+             //'edad'=>'required',
+             //'num_examen'=>'required',
             ]
         ); 
         
@@ -81,14 +87,13 @@ class Formulario1Controller extends Controller
             'establecimiento' => $request->input('establecimiento'),
             'sector' => $request->input('sector'),
             'municipio' => $request->input('municipio'),
-            'userid_creator' => $user->id,
-            'username_creator' => $user->email
+            'creatoruser_id' => $user->id,            
         ]);
 
 
         
         //$num_informef1 = $formulario1s->id;
-        $num_informef1 = $formulario1s->num_solicitud;
+        /*$num_informef1 = $formulario1s->num_solicitud;
         
         for ($i=0;$i<count($request->num_examen);$i++){
             
@@ -104,7 +109,7 @@ class Formulario1Controller extends Controller
          //dd($detallef1s);        
         
             //$detallef1s = Detallef1s::create(array_merge($request->num_examen[$i], $request->nombre[$i], $request->edad[$i], $request->direccion[$i],$request->$num_informef1[$i],['num_informef1' => $num_informef1, 'userid_creator' => $user->id], ['username_creator' => $user->email]));
-        }
+        }*/
         
 
 

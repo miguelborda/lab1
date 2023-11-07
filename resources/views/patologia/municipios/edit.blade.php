@@ -10,7 +10,7 @@
     <div class="row align-items-center" style="height: 60px">
         <div class="col-md-6">
             <div class="titlemb-30">
-                <h2>Actualizar Municipio {{$municipio->id}}</h2>
+                <h2>Editar Municipio con ID: {{$municipio->id}}</h2>
             </div>
         </div>
     </div>
@@ -23,12 +23,12 @@
             @csrf
             @method('PUT')
 
-            <div class="form-group">
+            <!--<div class="form-group">
                 <strong>{!! Form::label('codigo_municipio', 'codigo de municipio') !!}</strong>
                 {!! Form::text('codigo_municipio', $municipio->codigo_municipio, ['class' => 'form-control', 'placeholder' => 'Ingrese el código Municipio']) !!}
                 <small class="text-danger">{{ $errors->first('codigo_municipio') }}</small>
             </div>
-            <br>
+            <br>-->
             <div class="form-group">
                 <strong>{!! Form::label('nombre_municipio', 'nombre de municipio') !!}</strong>
                 {!! Form::text('nombre_municipio', $municipio->nombre_municipio, ['class' => 'form-control', 'placeholder' => 'Ingrese nombre de Municipio']) !!}
@@ -38,6 +38,8 @@
             </div>
             <br>
             <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+            {!! Form::button('Volver', ['class' => 'btn btn-secondary', 'onclick' => 'window.history.go(-1);']) !!}
+
         </form>
     </div>
 </div>

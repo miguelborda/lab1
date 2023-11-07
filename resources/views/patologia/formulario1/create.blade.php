@@ -20,12 +20,30 @@
 <script>
 $(document).ready(function() {
     $("#agregarLinea").click(function() {
-        var lineaClonada = $(".custom-bg2").last().clone();
-        lineaClonada.find('input').val('');
-        $(".custom-bg2").last().after(lineaClonada);
+        // Clonar la primera línea
+        var primeraLinea = $(".custom-bg2:first").clone();
+        primeraLinea.find('input').val('');
+        
+        // Agregar el botón "Eliminar" a la línea clonada
+        var botonEliminar = $('<button class="eliminarLinea">Quitar Linea de Registro</button>');
+        botonEliminar.click(function() {
+            primeraLinea.remove();
+        });
+        primeraLinea.append(botonEliminar);
+        
+        // Insertar la línea clonada después de la primera línea
+        $(".custom-bg2:first").after(primeraLinea);
+    });
+
+    // Controlador para eliminar la primera línea clonada
+    $(document).on("click", ".eliminarLinea", function() {
+        $(this).parent().remove();
     });
 });
 </script>
+
+
+
 
 
 <style>
@@ -136,7 +154,8 @@ border-radius: 10px; /* Cambia el valor para ajustar el radio del borde */
             </div>
         </div><div><br></div>
         
-    </div><button id="agregarLinea" type="button" class="btn btn-primary">Agregar Línea</button><br>        
+    </div><button id="agregarLinea" type="button" class="btn btn-primary">Agregar Línea</button><br>       
+                
             <br>
             {!! Form::submit('Guardar',['class'=>'btn btn-primary']) !!}
         {!! Form::close() !!}

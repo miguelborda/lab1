@@ -1,3 +1,5 @@
+
+
 <?php $__env->startSection('title', 'Crear Diagnóstico'); ?>
 <?php $__env->startPush('style'); ?>
     <link rel="stylesheet" href="css/datatable.css" />
@@ -43,6 +45,9 @@ unset($__errorArgs, $__bag); ?>
             </div>
             <br>
             <?php echo Form::submit('Guardar',['class'=>'btn btn-primary']); ?>
+
+            <?php echo Form::button('Volver', ['class' => 'btn btn-secondary', 'onclick' => 'window.history.go(-1);']); ?>
+
 
         <?php echo Form::close(); ?>
 

@@ -38,11 +38,11 @@ class DistritoController extends Controller
     public function store(Request $request)
     {
         $request->validate(
-            ['codigo_distrito'=>'required',
+            [//'codigo_distrito'=>'required',
              'nombre_distrito'=>'required']
         ); 
         $user = auth()->user();       
-        $distrito = Distrito::create(array_merge($request->all(), ['userid_creator' => $user->id],['username_creator' => $user->email]));
+        $distrito = Distrito::create(array_merge($request->all(), ['creatoruser_id' => $user->id]));
         return redirect()->route('patologia.distritos.index')->with('mensaje','Se creó exitosamente');
     }
     
@@ -62,7 +62,7 @@ class DistritoController extends Controller
         $hoy = date('Y-m-d H:i:s');
         $distrito = request()->except(['_token','_method']);
         $user = auth()->user();        
-        Distrito::where('id', $id)->update(array_merge($distrito, ['userid_lastupdated' => $user->id],['username_lastupdated' => $user->email],['updated_at' => $hoy]));           
+        Distrito::where('id', $id)->update(array_merge($distrito, ['updateduser_id' => $user->id],['updated_at' => $hoy]));           
         return redirect()->route('patologia.distritos.index')->with('mensaje', 'Se actualizó exitosamente');
     }       
     

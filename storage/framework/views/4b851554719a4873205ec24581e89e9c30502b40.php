@@ -1,3 +1,5 @@
+
+
 <?php $__env->startSection('title', 'Editar Secretaria '); ?>
 
 <?php $__env->startPush('style'); ?>
@@ -9,7 +11,7 @@
     <div class="row align-items-center" style="height: 60px">
         <div class="col-md-6">
             <div class="titlemb-30">
-                <h2>Editar Secretaría <?php echo e($secretariaregional->id); ?></h2>
+                <h2>Editar Secretaría con ID: <?php echo e($secretariaregional->id); ?></h2>
             </div>
         </div>
     </div>
@@ -27,13 +29,13 @@
             <?php echo csrf_field(); ?>
             <?php echo method_field('PUT'); ?>
 
-            <div class="form-group">
+            <!--<div class="form-group">
                 <strong><?php echo Form::label('codigo_regional', 'Codigo'); ?></strong>
                 <?php echo Form::text('codigo_regional', $secretariaregional->codigo_regional, ['class' => 'form-control', 'placeholder' => 'Ingrese el código']); ?>
 
                 <small class="text-danger"><?php echo e($errors->first('codigo_regional')); ?></small>
             </div>
-            <br>
+            <br>-->
             <div class="form-group">
                 <strong><?php echo Form::label('nom_secretaria_regional', 'Nombre Secretaria Regional'); ?></strong>
                 <?php echo Form::text('nom_secretaria_regional', $secretariaregional->nom_secretaria_regional, ['class' => 'form-control', 'placeholder' => 'Ingrese el nombre']); ?>
@@ -51,6 +53,9 @@ unset($__errorArgs, $__bag); ?>
             </div>
             <br>
             <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+            <?php echo Form::button('Volver', ['class' => 'btn btn-secondary', 'onclick' => 'window.history.go(-1);']); ?>
+
+
         </form>
     </div>
 </div>

@@ -37,11 +37,11 @@ class SectorController extends Controller
     public function store(Request $request)
     {
         $request->validate(
-            ['codigo_sector'=>'required',
+            [//'codigo_sector'=>'required',
              'nombre_sector'=>'required']
         ); 
         $user = auth()->user();       
-        $sector = Sector::create(array_merge($request->all(), ['userid_creator' => $user->id],['username_creator' => $user->email]));                
+        $sector = Sector::create(array_merge($request->all(), ['creatoruser_id' => $user->id]));                
         return redirect()->route('patologia.sector.index')->with('mensaje','Se creó exitosamente');
     }       
     
@@ -61,7 +61,7 @@ class SectorController extends Controller
         $hoy = date('Y-m-d H:i:s');
         $sector = request()->except(['_token','_method']);
         $user = auth()->user();        
-        Sector::where('id', $id)->update(array_merge($sector, ['userid_lastupdated' => $user->id],['username_lastupdated' => $user->email],['updated_at' => $hoy]));           
+        Sector::where('id', $id)->update(array_merge($sector, ['updateduser_id' => $user->id],['updated_at' => $hoy]));           
         return redirect()->route('patologia.sector.index')->with('mensaje', 'Se actualizó exitosamente');
     }   
         

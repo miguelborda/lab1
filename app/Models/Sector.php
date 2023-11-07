@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Sector extends Model
 {
     use HasFactory;
-    protected $fillable=['codigo_sector','nombre_sector','userid_creator',
-    'username_creator','updated_at'];
+    protected $fillable=['codigo_sector','nombre_sector','creatoruser_id',
+    'updateduser_id','created_at','updated_at'];
 }

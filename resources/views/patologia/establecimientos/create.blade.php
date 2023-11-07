@@ -10,7 +10,7 @@
     <div class="row align-items-center" style="height: 60px">
         <div class="col-md-6">
             <div class="titlemb-30">
-                <h2>Crear Establecimiento</h2>
+                <h2>Crear Nuevo Establecimiento</h2>
             </div>
         </div>
     </div>
@@ -20,12 +20,12 @@
 <div class="card">
     <div class="card-body">
         {!! Form::open(['route'=>'patologia.establecimientos.store']) !!}
-            <div class="form-group">
+            <!--<div class="form-group">
                 <strong>{!! Form::label('codigo_establecimiento', 'Código de Establecimiento') !!}</strong>
                 {!! Form::text('codigo_establecimiento', isset($establecimiento) ? $establecimiento->codigo_establecimiento : '', ['class' => 'form-control', 'placeholder' => 'Ingrese Código de Establecimiento']) !!}
                 <small class="text-danger">{{ $errors->first('codigo_establecimiento') }}</small>
             </div>
-            <br>
+            <br>-->
             <div class="form-group">
                 <strong>{!! Form::label('nombre_establecimiento', 'Nombre de Establecimiento') !!}</strong>
                 {!! Form::text('nombre_establecimiento', isset($establecimiento) ? $establecimiento->nombre_establecimiento : '', ['class' => 'form-control', 'placeholder' => 'Ingrese Nombre de Establecimiento']) !!}
@@ -35,6 +35,8 @@
             </div>
             <br>
             {!! Form::submit('Guardar',['class'=>'btn btn-primary']) !!}
+            {!! Form::button('Volver', ['class' => 'btn btn-secondary', 'onclick' => 'window.history.go(-1);']) !!}
+
         {!! Form::close() !!}
     </div>
 </div>

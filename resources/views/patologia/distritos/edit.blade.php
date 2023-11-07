@@ -10,7 +10,7 @@
     <div class="row align-items-center" style="height: 60px">
         <div class="col-md-6">
             <div class="titlemb-30">
-                <h2>Actualizar Distrito {{$distrito->id}}</h2>
+                <h2>Editar Distrito con ID: {{$distrito->id}}</h2>
             </div>
         </div>
     </div>
@@ -23,12 +23,12 @@
             @csrf
             @method('PUT')
 
-            <div class="form-group">
+            <!--<div class="form-group">
                 <strong>{!! Form::label('codigo_distrito', 'codigo de distrito') !!}</strong>
                 {!! Form::text('codigo_distrito', $distrito->codigo_distrito, ['class' => 'form-control', 'placeholder' => 'Ingrese el código de Distrito']) !!}
                 <small class="text-danger">{{ $errors->first('codigo_distrito') }}</small>
             </div>
-            <br>
+            <br>-->
             <div class="form-group">
                 <strong>{!! Form::label('nombre_distrito', 'nombre de distrito') !!}</strong>
                 {!! Form::text('nombre_distrito', $distrito->nombre_distrito, ['class' => 'form-control', 'placeholder' => 'Ingrese nombre de Distrito']) !!}
@@ -38,6 +38,8 @@
             </div>
             <br>
             <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+            {!! Form::button('Volver', ['class' => 'btn btn-secondary', 'onclick' => 'window.history.go(-1);']) !!}
+
         </form>
     </div>
 </div>

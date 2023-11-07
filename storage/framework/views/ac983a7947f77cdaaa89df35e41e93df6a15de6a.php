@@ -19,14 +19,14 @@
     <div class="card-body">
         <?php echo Form::open(['route'=>'patologia.secretariaregional.store']); ?>
 
-            <div class="form-group">
+            <!--<div class="form-group">
                 <strong><?php echo Form::label('codigo_regional', 'Codigo'); ?></strong>                
                 <?php echo Form::text('codigo_regional', null, ['class' => 'form-control', 'placeholder' => 'Ingrese Codigo de Secretaria Regional']); ?>
 
                 <small class="text-danger"><?php echo e($errors->first('codigo_regional')); ?></small>                
                 
             </div>
-            <br>
+            <br>-->
             <div class="form-group">
                 <strong><?php echo Form::label('nom_secretaria_regional', 'Nombre Secretaria Regional'); ?></strong>                
                 <?php echo Form::text('nom_secretaria_regional', null, ['class' => 'form-control', 'placeholder' => 'Ingrese Nombre de Secretaria Regional']); ?>
@@ -44,6 +44,8 @@ unset($__errorArgs, $__bag); ?>
             </div>            
             <br>
             <?php echo Form::submit('Guardar',['class'=>'btn btn-primary']); ?>
+
+            <?php echo Form::button('Volver', ['class' => 'btn btn-secondary', 'onclick' => 'window.history.go(-1);']); ?>
 
 
         <?php echo Form::close(); ?> 

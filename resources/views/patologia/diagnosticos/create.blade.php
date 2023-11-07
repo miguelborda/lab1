@@ -35,6 +35,8 @@
             </div>
             <br>
             {!! Form::submit('Guardar',['class'=>'btn btn-primary']) !!}
+            {!! Form::button('Volver', ['class' => 'btn btn-secondary', 'onclick' => 'window.history.go(-1);']) !!}
+
         {!! Form::close() !!}
     </div>
 </div>

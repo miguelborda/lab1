@@ -9,5 +9,5 @@ class Establecimiento extends Model
 {
     use HasFactory;
     protected $fillable=['codigo_establecimiento','nombre_establecimiento',
-    'userid_creator','username_creator','updated_at'];
+    'creatoruser_id','updateduser_id','created_at','updated_at'];
 }

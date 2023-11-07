@@ -39,11 +39,11 @@ class SecretariaregionalController extends Controller
     public function store(Request $request)
     {
         $request->validate(
-            ['codigo_regional'=>'required',
+            [//'codigo_regional'=>'required',
              'nom_secretaria_regional'=>'required']
         );
         $user = auth()->user();       
-        $secretariaregional = Secretariaregional::create(array_merge($request->all(), ['userid_creator' => $user->id],['username_creator' => $user->email]));        
+        $secretariaregional = Secretariaregional::create(array_merge($request->all(), ['creatoruser_id' => $user->id]));        
         return redirect()->route('patologia.secretariaregional.index')->with('mensaje','Se creó exitosamente');
     }
 
@@ -67,7 +67,7 @@ class SecretariaregionalController extends Controller
         $hoy = date('Y-m-d H:i:s');
         $secretariaregional = request()->except(['_token','_method']);
         $user = auth()->user();        
-        Secretariaregional::where('id', $id)->update(array_merge($secretariaregional, ['userid_lastupdated' => $user->id],['username_lastupdated' => $user->email],['updated_at' => $hoy]));        
+        Secretariaregional::where('id', $id)->update(array_merge($secretariaregional, ['updateduser_id' => $user->id],['updated_at' => $hoy]));        
         return redirect()->route('patologia.secretariaregional.index')->with('mensaje', 'Se actualizó exitosamente');
     }
     

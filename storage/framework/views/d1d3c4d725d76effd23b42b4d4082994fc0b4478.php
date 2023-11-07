@@ -1,3 +1,5 @@
+
+
 <?php $__env->startSection('title', 'Editar Distrito'); ?>
 <?php $__env->startPush('style'); ?>
     <link rel="stylesheet" href="css/datatable.css" />
@@ -8,7 +10,7 @@
     <div class="row align-items-center" style="height: 60px">
         <div class="col-md-6">
             <div class="titlemb-30">
-                <h2>Actualizar Distrito <?php echo e($distrito->id); ?></h2>
+                <h2>Editar Distrito con ID: <?php echo e($distrito->id); ?></h2>
             </div>
         </div>
     </div>
@@ -21,13 +23,13 @@
             <?php echo csrf_field(); ?>
             <?php echo method_field('PUT'); ?>
 
-            <div class="form-group">
+            <!--<div class="form-group">
                 <strong><?php echo Form::label('codigo_distrito', 'codigo de distrito'); ?></strong>
                 <?php echo Form::text('codigo_distrito', $distrito->codigo_distrito, ['class' => 'form-control', 'placeholder' => 'Ingrese el código de Distrito']); ?>
 
                 <small class="text-danger"><?php echo e($errors->first('codigo_distrito')); ?></small>
             </div>
-            <br>
+            <br>-->
             <div class="form-group">
                 <strong><?php echo Form::label('nombre_distrito', 'nombre de distrito'); ?></strong>
                 <?php echo Form::text('nombre_distrito', $distrito->nombre_distrito, ['class' => 'form-control', 'placeholder' => 'Ingrese nombre de Distrito']); ?>
@@ -45,6 +47,9 @@ unset($__errorArgs, $__bag); ?>
             </div>
             <br>
             <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+            <?php echo Form::button('Volver', ['class' => 'btn btn-secondary', 'onclick' => 'window.history.go(-1);']); ?>
+
+
         </form>
     </div>
 </div>

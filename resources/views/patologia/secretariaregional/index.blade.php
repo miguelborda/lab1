@@ -37,7 +37,7 @@
 		            <table class="table table-striped" id="myTable">
 		              <thead>
 		                <tr>
-		                  <th><h6>CODIGO</h6></th>
+		                  <th><h6>ID</h6></th>
 		                  <th><h6>NOMBRE SECRETARIA REGIONAL</h6></th>
 		                  <th><h6>EDITAR</h6></th>
 						  <th><h6>ELIMINAR</h6></th>
@@ -48,7 +48,7 @@
 		              	@foreach($secretariaregionals as $secretariaregional)
 		                <tr>
 		                  <td class="min-width">
-		                    <p>{{$secretariaregional->codigo_regional}}</p>
+		                    <p>{{$secretariaregional->id}}</p>
 		                  </td>
 		                  <td class="min-width">
 		                    <p>{{$secretariaregional->nom_secretaria_regional}}</p>

@@ -37,7 +37,7 @@
 		            <table class="table table-striped" id="myTable">
 		              <thead>
 		                <tr>
-		                  <th><h6>CODIGO DISTRITO</h6></th>
+		                  <th><h6>ID</h6></th>
 		                  <th><h6>NOMBRE DISTRITO</h6></th>
 		                  <th><h6>EDITAR</h6></th>
 						  <th><h6>ELIMINAR</h6></th>
@@ -48,7 +48,7 @@
 		              	<?php $__currentLoopData = $distritos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $distrito): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 		                <tr>
 		                  <td class="min-width">
-		                    <p><?php echo e($distrito->codigo_distrito); ?></p>
+		                    <p><?php echo e($distrito->id); ?></p>
 		                  </td>
 		                  <td class="min-width">
 		                    <p><?php echo e($distrito->nombre_distrito); ?></p>

@@ -1,3 +1,5 @@
+
+
 <?php $__env->startSection('title', 'Crear Sector'); ?>
 <?php $__env->startPush('style'); ?>
     <link rel="stylesheet" href="css/datatable.css" />
@@ -8,7 +10,7 @@
     <div class="row align-items-center" style="height: 60px">
         <div class="col-md-6">
             <div class="titlemb-30">
-                <h2>Crear Sector</h2>
+                <h2>Crear Nuevo Sector</h2>
             </div>
         </div>
     </div>
@@ -19,13 +21,13 @@
     <div class="card-body">
         <?php echo Form::open(['route'=>'patologia.sector.store']); ?>
 
-            <div class="form-group">
+            <!--<div class="form-group">
                 <strong><?php echo Form::label('codigo_sector', 'Código de Sector'); ?></strong>
                 <?php echo Form::text('codigo_sector', isset($sector) ? $sector->codigo_sector : '', ['class' => 'form-control', 'placeholder' => 'Ingrese Código de Sector']); ?>
 
                 <small class="text-danger"><?php echo e($errors->first('codigo_sector')); ?></small>
             </div>
-            <br>
+            <br>-->
             <div class="form-group">
                 <strong><?php echo Form::label('nombre_sector', 'Nombre de Sector'); ?></strong>
                 <?php echo Form::text('nombre_sector', isset($sector) ? $sector->nombre_sector : '', ['class' => 'form-control', 'placeholder' => 'Ingrese Nombre de Sector']); ?>
@@ -43,6 +45,9 @@ unset($__errorArgs, $__bag); ?>
             </div>
             <br>
             <?php echo Form::submit('Guardar',['class'=>'btn btn-primary']); ?>
+
+            <?php echo Form::button('Volver', ['class' => 'btn btn-secondary', 'onclick' => 'window.history.go(-1);']); ?>
+
 
         <?php echo Form::close(); ?>
 

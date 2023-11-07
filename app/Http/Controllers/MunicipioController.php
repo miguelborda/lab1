@@ -37,11 +37,11 @@ class MunicipioController extends Controller
     public function store(Request $request)
     {
         $request->validate(
-            ['codigo_municipio'=>'required',
+            [//'codigo_municipio'=>'required',
              'nombre_municipio'=>'required']
         ); 
         $user = auth()->user();        
-        $municipio = Municipio::create(array_merge($request->all(), ['userid_creator' => $user->id],['username_creator' => $user->email]));        
+        $municipio = Municipio::create(array_merge($request->all(), ['creatoruser_id' => $user->id]));        
         return redirect()->route('patologia.municipios.index')->with('mensaje','Se creó exitosamente');
     }       
     
@@ -61,7 +61,7 @@ class MunicipioController extends Controller
         $hoy = date('Y-m-d H:i:s');
         $municipio = request()->except(['_token','_method']);
         $user = auth()->user();        
-        Municipio::where('id', $id)->update(array_merge($municipio, ['userid_lastupdated' => $user->id],['username_lastupdated' => $user->email],['updated_at' => $hoy]));           
+        Municipio::where('id', $id)->update(array_merge($municipio, ['updateduser_id' => $user->id],['updated_at' => $hoy]));           
         return redirect()->route('patologia.municipios.index')->with('mensaje', 'Se actualizó exitosamente');
     }   
         

@@ -38,8 +38,8 @@ tr.odd {
     <table class="table table-striped">
         <thead class="cabecera">
           <tr>
-              <th style="text-align: center"><h6>CODIGO</h6></th>
-              <th><h6>NOMBRE DE AREA</h6></th>              
+              <th style="text-align: center"><h6>ID</h6></th>
+              <th><h6>NOMBRE DE MUNICIPIO</h6></th>              
           </tr><br>
           <!-- end table row-->
         </thead>
@@ -47,7 +47,7 @@ tr.odd {
         <?php $__currentLoopData = $municipios; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $municipio): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
           <tr class="<?php echo e($key % 2 == 0 ? 'even' : 'odd'); ?>">
               <td class="min-width" style="text-align: center; ">
-              <p><?php echo e($municipio->codigo_municipio); ?></p>
+              <p><?php echo e($municipio->id); ?></p>
               </td>
               <td class="min-width">
                 <p><?php echo e($municipio->nombre_municipio); ?></p>

@@ -38,7 +38,7 @@ tr.odd {
     <table class="table table-striped">
         <thead class="cabecera">
           <tr>
-              <th style="text-align: center"><h6>CODIGO</h6></th>
+              <th style="text-align: center"><h6> ID </h6></th>
               <th><h6>NOMBRE DE ESTABLECIMIENTO</h6></th>              
           </tr><br>
           <!-- end table row-->
@@ -47,7 +47,7 @@ tr.odd {
         @foreach($establecimientos as $key => $establecimiento)
           <tr class="{{ $key % 2 == 0 ? 'even' : 'odd' }}">
               <td class="min-width" style="text-align: center; ">
-                <p>{{$establecimiento->codigo_establecimiento}}</p>
+                <p>{{$establecimiento->id}}</p>
 		          </td>
 		          <td class="min-width">
 		            <p>{{$establecimiento->nombre_establecimiento}}</p>

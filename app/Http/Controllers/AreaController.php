@@ -39,11 +39,11 @@ class AreaController extends Controller
     public function store(Request $request)
     {
         $request->validate(
-            ['codigo_area'=>'required',
+            [//'codigo_area'=>'required',
              'nombre_area'=>'required']
         ); 
         $user = auth()->user();       
-        $area = Area::create(array_merge($request->all(), ['userid_creator' => $user->id],['username_creator' => $user->email]));                
+        $area = Area::create(array_merge($request->all(), ['creatoruser_id' => $user->id]));                
         return redirect()->route('patologia.areas.index')->with('mensaje','Se creó exitosamente');
     }       
     
@@ -63,7 +63,7 @@ class AreaController extends Controller
         $hoy = date('Y-m-d H:i:s');
         $area = request()->except(['_token', '_method']);          
         $user = auth()->user();        
-        Area::where('id', $id)->update(array_merge($area, ['userid_lastupdated' => $user->id],['username_lastupdated' => $user->email],['updated_at' => $hoy]));   
+        Area::where('id', $id)->update(array_merge($area, ['updateduser_id' => $user->id],['updated_at' => $hoy]));   
         return redirect()->route('patologia.areas.index')->with('mensaje', 'Se actualizó exitosamente');
     }   
     

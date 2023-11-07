@@ -1,3 +1,5 @@
+
+
 <?php $__env->startSection('title', 'Crear Establecimiento'); ?>
 <?php $__env->startPush('style'); ?>
     <link rel="stylesheet" href="css/datatable.css" />
@@ -8,7 +10,7 @@
     <div class="row align-items-center" style="height: 60px">
         <div class="col-md-6">
             <div class="titlemb-30">
-                <h2>Crear Establecimiento</h2>
+                <h2>Crear Nuevo Establecimiento</h2>
             </div>
         </div>
     </div>
@@ -19,13 +21,13 @@
     <div class="card-body">
         <?php echo Form::open(['route'=>'patologia.establecimientos.store']); ?>
 
-            <div class="form-group">
+            <!--<div class="form-group">
                 <strong><?php echo Form::label('codigo_establecimiento', 'Código de Establecimiento'); ?></strong>
                 <?php echo Form::text('codigo_establecimiento', isset($establecimiento) ? $establecimiento->codigo_establecimiento : '', ['class' => 'form-control', 'placeholder' => 'Ingrese Código de Establecimiento']); ?>
 
                 <small class="text-danger"><?php echo e($errors->first('codigo_establecimiento')); ?></small>
             </div>
-            <br>
+            <br>-->
             <div class="form-group">
                 <strong><?php echo Form::label('nombre_establecimiento', 'Nombre de Establecimiento'); ?></strong>
                 <?php echo Form::text('nombre_establecimiento', isset($establecimiento) ? $establecimiento->nombre_establecimiento : '', ['class' => 'form-control', 'placeholder' => 'Ingrese Nombre de Establecimiento']); ?>
@@ -43,6 +45,9 @@ unset($__errorArgs, $__bag); ?>
             </div>
             <br>
             <?php echo Form::submit('Guardar',['class'=>'btn btn-primary']); ?>
+
+            <?php echo Form::button('Volver', ['class' => 'btn btn-secondary', 'onclick' => 'window.history.go(-1);']); ?>
+
 
         <?php echo Form::close(); ?>
 

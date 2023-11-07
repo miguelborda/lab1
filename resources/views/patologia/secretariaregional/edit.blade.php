@@ -11,7 +11,7 @@
     <div class="row align-items-center" style="height: 60px">
         <div class="col-md-6">
             <div class="titlemb-30">
-                <h2>Editar Secretaría {{$secretariaregional->id}}</h2>
+                <h2>Editar Secretaría con ID: {{$secretariaregional->id}}</h2>
             </div>
         </div>
     </div>
@@ -29,12 +29,12 @@
             @csrf
             @method('PUT')
 
-            <div class="form-group">
+            <!--<div class="form-group">
                 <strong>{!! Form::label('codigo_regional', 'Codigo') !!}</strong>
                 {!! Form::text('codigo_regional', $secretariaregional->codigo_regional, ['class' => 'form-control', 'placeholder' => 'Ingrese el código']) !!}
                 <small class="text-danger">{{ $errors->first('codigo_regional') }}</small>
             </div>
-            <br>
+            <br>-->
             <div class="form-group">
                 <strong>{!! Form::label('nom_secretaria_regional', 'Nombre Secretaria Regional') !!}</strong>
                 {!! Form::text('nom_secretaria_regional', $secretariaregional->nom_secretaria_regional, ['class' => 'form-control', 'placeholder' => 'Ingrese el nombre']) !!}
@@ -44,6 +44,8 @@
             </div>
             <br>
             <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+            {!! Form::button('Volver', ['class' => 'btn btn-secondary', 'onclick' => 'window.history.go(-1);']) !!}
+
         </form>
     </div>
 </div>

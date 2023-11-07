@@ -36,7 +36,7 @@
 		            <table class="table table-striped" id="myTable" >
 		              <thead>
 		                <tr>
-		                  <th><h6>CODIGO</h6></th>
+		                  <th><h6>ID</h6></th>
 		                  <th><h6>NOMBRE DE AREA</h6></th>
 		                  <th><h6>EDITAR</h6></th>
 						  <th><h6>ELIMINAR</h6></th>
@@ -47,7 +47,7 @@
 		              	@foreach($areas as $area)
 		                <tr>
 		                  <td class="min-width">
-		                    <p>{{$area->codigo_area}}</p>
+		                    <p>{{$area->id}}</p>
 		                  </td>
 		                  <td class="min-width">
 		                    <p>{{$area->nombre_area}}</p>

@@ -10,7 +10,7 @@
     <div class="row align-items-center" style="height: 60px">
         <div class="col-md-6">
             <div class="titlemb-30">
-                <h2>Crear Sector</h2>
+                <h2>Crear Nuevo Sector</h2>
             </div>
         </div>
     </div>
@@ -20,12 +20,12 @@
 <div class="card">
     <div class="card-body">
         {!! Form::open(['route'=>'patologia.sector.store']) !!}
-            <div class="form-group">
+            <!--<div class="form-group">
                 <strong>{!! Form::label('codigo_sector', 'Código de Sector') !!}</strong>
                 {!! Form::text('codigo_sector', isset($sector) ? $sector->codigo_sector : '', ['class' => 'form-control', 'placeholder' => 'Ingrese Código de Sector']) !!}
                 <small class="text-danger">{{ $errors->first('codigo_sector') }}</small>
             </div>
-            <br>
+            <br>-->
             <div class="form-group">
                 <strong>{!! Form::label('nombre_sector', 'Nombre de Sector') !!}</strong>
                 {!! Form::text('nombre_sector', isset($sector) ? $sector->nombre_sector : '', ['class' => 'form-control', 'placeholder' => 'Ingrese Nombre de Sector']) !!}
@@ -35,6 +35,8 @@
             </div>
             <br>
             {!! Form::submit('Guardar',['class'=>'btn btn-primary']) !!}
+            {!! Form::button('Volver', ['class' => 'btn btn-secondary', 'onclick' => 'window.history.go(-1);']) !!}
+
         {!! Form::close() !!}
     </div>
 </div>

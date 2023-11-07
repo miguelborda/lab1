@@ -10,7 +10,7 @@
     <div class="row align-items-center" style="height: 60px">
         <div class="col-md-6">
             <div class="titlemb-30">
-                <h2>Actualizar Diagnóstico {{$diagnostico->id}}</h2>
+                <h2>Editar Diagnóstico con Código: "{{$diagnostico->codigo_diagnostico}}"</h2>
             </div>
         </div>
     </div>
@@ -23,12 +23,17 @@
             @csrf
             @method('PUT')
 
-            <div class="form-group">
+            <!--<div class="form-group">
                 <strong>{!! Form::label('codigo_diagnostico', 'codigo de diagnostico') !!}</strong>
                 {!! Form::text('codigo_diagnostico', $diagnostico->codigo_diagnostico, ['class' => 'form-control', 'placeholder' => 'Ingrese el código de diagnostico']) !!}
                 <small class="text-danger">{{ $errors->first('codigo_diagnostico') }}</small>
             </div>
-            <br>
+            @if($errors->has('codigo_diagnostico_exists'))
+                <div class="alert alert-danger">
+                    {{ $errors->first('codigo_diagnostico_exists') }}
+                </div>
+            @endif
+            <br>-->
             <div class="form-group">
                 <strong>{!! Form::label('descripcion_diagnostico', 'descripcion de diagnostico') !!}</strong>
                 {!! Form::text('descripcion_diagnostico', $diagnostico->descripcion_diagnostico, ['class' => 'form-control', 'placeholder' => 'Ingrese descripcion']) !!}
@@ -38,6 +43,7 @@
             </div>
             <br>
             <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+            {!! Form::button('Volver', ['class' => 'btn btn-secondary', 'onclick' => 'window.history.go(-1);']) !!}
         </form>
     </div>
 </div>

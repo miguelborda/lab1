@@ -9,5 +9,5 @@ class Diagnostico extends Model
 {    
     use HasFactory;
     protected $fillable=['codigo_diagnostico','descripcion_diagnostico',
-    'userid_creator','username_creator','updated_at'];
+    'creatoruser_id','updateduser_id','created_at','updated_at'];
 }

@@ -10,7 +10,7 @@
     <div class="row align-items-center" style="height: 60px">
         <div class="col-md-6">
             <div class="titlemb-30">
-                <h2>Actualizar Municipio <?php echo e($municipio->id); ?></h2>
+                <h2>Editar Municipio con ID: <?php echo e($municipio->id); ?></h2>
             </div>
         </div>
     </div>
@@ -23,13 +23,13 @@
             <?php echo csrf_field(); ?>
             <?php echo method_field('PUT'); ?>
 
-            <div class="form-group">
+            <!--<div class="form-group">
                 <strong><?php echo Form::label('codigo_municipio', 'codigo de municipio'); ?></strong>
                 <?php echo Form::text('codigo_municipio', $municipio->codigo_municipio, ['class' => 'form-control', 'placeholder' => 'Ingrese el código Municipio']); ?>
 
                 <small class="text-danger"><?php echo e($errors->first('codigo_municipio')); ?></small>
             </div>
-            <br>
+            <br>-->
             <div class="form-group">
                 <strong><?php echo Form::label('nombre_municipio', 'nombre de municipio'); ?></strong>
                 <?php echo Form::text('nombre_municipio', $municipio->nombre_municipio, ['class' => 'form-control', 'placeholder' => 'Ingrese nombre de Municipio']); ?>
@@ -47,6 +47,9 @@ unset($__errorArgs, $__bag); ?>
             </div>
             <br>
             <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+            <?php echo Form::button('Volver', ['class' => 'btn btn-secondary', 'onclick' => 'window.history.go(-1);']); ?>
+
+
         </form>
     </div>
 </div>
