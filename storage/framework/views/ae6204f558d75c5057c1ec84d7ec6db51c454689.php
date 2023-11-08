@@ -41,6 +41,8 @@
 		                  <th><h6>NOMBRES</h6></th>
 						  <th><h6>APELLIDOS</h6></th>
 						  <th><h6>EDAD</h6></th>
+						  <th><h6>SEXO</h6></th>
+						  <th><h6>DIRECCION</h6></th>
 		                  <th><h6>EDITAR</h6></th>
 						  <th><h6>ELIMINAR</h6></th>
 		                </tr>
@@ -50,16 +52,22 @@
 		              	<?php $__currentLoopData = $pacientes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $paciente): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 		                <tr>		                  
 		                  <td class="min-width">
-		                    <p><?php echo e($paciente->ci_paciente); ?></p>
+		                    <p><?php echo e($paciente->ci); ?></p>
 		                  </td>		            						  
 		                  <td class="min-width">
-		                    <p><?php echo e($paciente->nombre_paciente); ?></p>
+		                    <p><?php echo e($paciente->nombre); ?></p>
 		                  </td>		            
 						  <td class="min-width">
-		                    <p><?php echo e($paciente->apellido_paciente); ?></p>
+		                    <p><?php echo e($paciente->apellido); ?></p>
 		                  </td>		                  
 						  <td><p><?php echo e(floor(abs(strtotime($hoy)-strtotime($paciente->fecha_nacimiento))/(365*60*60*24))); ?></p></td> 
-						  <td width="15px">
+						  <td class="min-width">
+		                    <p><?php echo e($paciente->sexo); ?></p>
+		                  </td>
+						  <td class="min-width">
+		                    <p><?php echo e($paciente->direccion); ?></p>
+		                  </td>		            		            
+						  <td width="15px">							
                             <a href="<?php echo e(route('patologia.paciente.edit', $paciente->id)); ?>" class="btn btn-warning btn-sm">Editar</a>
                           </td>
 						  <td width="15px">

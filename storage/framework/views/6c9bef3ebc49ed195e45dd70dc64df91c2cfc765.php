@@ -1,3 +1,5 @@
+
+
 <?php $__env->startSection('title', 'Editar Paciente'); ?>
 <?php $__env->startPush('style'); ?>
     <link rel="stylesheet" href="css/datatable.css" />
@@ -22,17 +24,17 @@
             <?php echo method_field('PUT'); ?>
 
             <div class="form-group">
-                <strong><?php echo Form::label('ci_paciente', 'ci de paciente'); ?></strong>
-                <?php echo Form::text('ci_paciente', $paciente->ci_paciente, ['class' => 'form-control', 'placeholder' => 'Ingrese CI de Paciente']); ?>
+                <strong><?php echo Form::label('ci', 'ci de paciente'); ?></strong>
+                <?php echo Form::text('ci', $paciente->ci, ['class' => 'form-control', 'placeholder' => 'Ingrese CI de Paciente']); ?>
 
-                <small class="text-danger"><?php echo e($errors->first('ci_paciente')); ?></small>
+                <small class="text-danger"><?php echo e($errors->first('ci')); ?></small>
             </div>
             <br>
             <div class="form-group">
-                <strong><?php echo Form::label('nombre_paciente', 'nombre de paciente'); ?></strong>
-                <?php echo Form::text('nombre_paciente', $paciente->nombre_paciente, ['class' => 'form-control', 'placeholder' => 'Ingrese nombre de Paciente']); ?>
+                <strong><?php echo Form::label('nombre', 'nombre de paciente'); ?></strong>
+                <?php echo Form::text('nombre', $paciente->nombre, ['class' => 'form-control', 'placeholder' => 'Ingrese nombre de Paciente']); ?>
 
-                <?php $__errorArgs = ['nombre_paciente'];
+                <?php $__errorArgs = ['nombre'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -45,10 +47,10 @@ unset($__errorArgs, $__bag); ?>
             </div>
             <br>
             <div class="form-group">
-                <strong><?php echo Form::label('apellido_paciente', 'apellido de paciente'); ?></strong>
-                <?php echo Form::text('apellido_paciente', $paciente->apellido_paciente, ['class' => 'form-control', 'placeholder' => 'Ingrese apellido de Paciente']); ?>
+                <strong><?php echo Form::label('apellido', 'apellido de paciente'); ?></strong>
+                <?php echo Form::text('apellido', $paciente->apellido, ['class' => 'form-control', 'placeholder' => 'Ingrese apellido de Paciente']); ?>
 
-                <?php $__errorArgs = ['apellido_paciente'];
+                <?php $__errorArgs = ['apellido'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -61,6 +63,9 @@ unset($__errorArgs, $__bag); ?>
             </div>
             <br>
             <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+            <?php echo Form::button('Volver', ['class' => 'btn btn-secondary', 'onclick' => 'window.history.go(-1);']); ?>
+
+
         </form>
     </div>
 </div>

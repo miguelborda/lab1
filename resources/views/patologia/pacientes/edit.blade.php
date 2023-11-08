@@ -24,28 +24,30 @@
             @method('PUT')
 
             <div class="form-group">
-                <strong>{!! Form::label('ci_paciente', 'ci de paciente') !!}</strong>
-                {!! Form::text('ci_paciente', $paciente->ci_paciente, ['class' => 'form-control', 'placeholder' => 'Ingrese CI de Paciente']) !!}
-                <small class="text-danger">{{ $errors->first('ci_paciente') }}</small>
+                <strong>{!! Form::label('ci', 'ci de paciente') !!}</strong>
+                {!! Form::text('ci', $paciente->ci, ['class' => 'form-control', 'placeholder' => 'Ingrese CI de Paciente']) !!}
+                <small class="text-danger">{{ $errors->first('ci') }}</small>
             </div>
             <br>
             <div class="form-group">
-                <strong>{!! Form::label('nombre_paciente', 'nombre de paciente') !!}</strong>
-                {!! Form::text('nombre_paciente', $paciente->nombre_paciente, ['class' => 'form-control', 'placeholder' => 'Ingrese nombre de Paciente']) !!}
-                @error('nombre_paciente')
+                <strong>{!! Form::label('nombre', 'nombre de paciente') !!}</strong>
+                {!! Form::text('nombre', $paciente->nombre, ['class' => 'form-control', 'placeholder' => 'Ingrese nombre de Paciente']) !!}
+                @error('nombre')
                     <span class="text-danger">{{$message}}</span>
                 @enderror
             </div>
             <br>
             <div class="form-group">
-                <strong>{!! Form::label('apellido_paciente', 'apellido de paciente') !!}</strong>
-                {!! Form::text('apellido_paciente', $paciente->apellido_paciente, ['class' => 'form-control', 'placeholder' => 'Ingrese apellido de Paciente']) !!}
-                @error('apellido_paciente')
+                <strong>{!! Form::label('apellido', 'apellido de paciente') !!}</strong>
+                {!! Form::text('apellido', $paciente->apellido, ['class' => 'form-control', 'placeholder' => 'Ingrese apellido de Paciente']) !!}
+                @error('apellido')
                     <span class="text-danger">{{$message}}</span>
                 @enderror
             </div>
             <br>
             <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+            {!! Form::button('Volver', ['class' => 'btn btn-secondary', 'onclick' => 'window.history.go(-1);']) !!}
+
         </form>
     </div>
 </div>

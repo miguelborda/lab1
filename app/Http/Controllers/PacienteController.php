@@ -6,6 +6,8 @@ use App\Models\Paciente;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Carbon\Carbon; // Asegúrate de importar Carbon
+
 
 
 class PacienteController extends Controller
@@ -14,6 +16,19 @@ class PacienteController extends Controller
     {
         $this->middleware('auth');
     }
+    /*public function calcularEdad(Request $request)
+    {
+        $fechaNacimiento = $request->input('fecha_nacimiento');
+        
+        if ($fechaNacimiento) {
+            $fechaNacimiento = Carbon::parse($fechaNacimiento);
+            $edad = $fechaNacimiento->age;
+        } else {
+            $edad = null;
+        }
+
+        return response()->json(['edad' => $edad]);
+    }*/
 
     public function index()
     {
@@ -45,18 +60,27 @@ class PacienteController extends Controller
     public function store(Request $request)
     {
         $request->validate(
-            ['ci_paciente'=>'required',
-             'nombre_paciente'=>'required',
-             'apellido_paciente'=>'required']
+            ['ci'=>'required',
+             'nombre'=>'required',
+             'apellido'=>'required']
         ); 
-
         $user = auth()->user();
+        $hoy=date('Y-m-d');      
+        
+        $datosPaciente = $request->all();
 
+        if (!empty($datosPaciente['fecha_nacimiento'])) {
+            $fechaNacimiento = $datosPaciente['fecha_nacimiento'];
+            $edad = date_diff(date_create($fechaNacimiento), date_create($hoy))->y;
+    
+            // Agrega la edad al array de datos del paciente
+            $datosPaciente['edad'] = $edad;
+        }
+    
         // Crea el registro del paciente y asocia la ID del usuario
-        $paciente = Paciente::create(array_merge($request->all(), ['userid_creator' => $user->id],['username_creator' => $user->email]));
+        $paciente = Paciente::create(array_merge($datosPaciente, ['creatoruser_id' => $user->id]));
         //$paciente = Paciente::create($request->all());
         return redirect()->route('patologia.paciente.index')->with('mensaje','Se creó exitosamente');    
-
     }       
     
     public function show(Paciente $paciente)

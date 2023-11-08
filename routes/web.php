@@ -53,7 +53,7 @@ Route::middleware($middlewares)->group(function()
     ->name('sistemas.usuarios.index');
 
     Route::get('/Personas', [PersonaController::class, 'index'])
-    ->name('sistemas.personas.index');
+    ->name('sistemas.personas.index');    
 
     Route::get('/Roles', [RoleController::class, 'index'])
     ->name('sistemas.roles.index');
@@ -105,6 +105,8 @@ Route::middleware($middlewares)->group(function()
 {   
     Route::get('Pacientes/pdf', [PacienteController::class, 'pdf'])->name('patologia.paciente.pdf');      
     Route::resource('/Pacientes', PacienteController::class)->names('patologia.paciente');
+    //Route::post('/calcular-edad', 'PacienteController@calcularEdad');
+
 });
 
 Route::middleware($middlewares)->group(function()

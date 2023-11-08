@@ -41,6 +41,8 @@
 		                  <th><h6>NOMBRES</h6></th>
 						  <th><h6>APELLIDOS</h6></th>
 						  <th><h6>EDAD</h6></th>
+						  <th><h6>SEXO</h6></th>
+						  <th><h6>DIRECCION</h6></th>
 		                  <th><h6>EDITAR</h6></th>
 						  <th><h6>ELIMINAR</h6></th>
 		                </tr>
@@ -50,16 +52,22 @@
 		              	@foreach($pacientes as $paciente)
 		                <tr>		                  
 		                  <td class="min-width">
-		                    <p>{{$paciente->ci_paciente}}</p>
+		                    <p>{{$paciente->ci}}</p>
 		                  </td>		            						  
 		                  <td class="min-width">
-		                    <p>{{$paciente->nombre_paciente}}</p>
+		                    <p>{{$paciente->nombre}}</p>
 		                  </td>		            
 						  <td class="min-width">
-		                    <p>{{$paciente->apellido_paciente}}</p>
+		                    <p>{{$paciente->apellido}}</p>
 		                  </td>		                  
 						  <td><p>{{ floor(abs(strtotime($hoy)-strtotime($paciente->fecha_nacimiento))/(365*60*60*24)) }}</p></td> 
-						  <td width="15px">
+						  <td class="min-width">
+		                    <p>{{$paciente->sexo}}</p>
+		                  </td>
+						  <td class="min-width">
+		                    <p>{{$paciente->direccion}}</p>
+		                  </td>		            		            
+						  <td width="15px">							
                             <a href="{{ route('patologia.paciente.edit', $paciente->id) }}" class="btn btn-warning btn-sm">Editar</a>
                           </td>
 						  <td width="15px">
