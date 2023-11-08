@@ -63,18 +63,18 @@
 		                  </td>
 		                  <td class="min-width">
 		                    <p><?php echo e($formulario1->edad_paciente); ?></p>
-		                  </td>		             -->
+		                  </td>		            --> 
 						  <td class="min-width">
-		                    <p><?php echo e($formulario1->secretaria_regional); ?></p>
+		                    <p><?php echo e($formulario1->secretariaregional->nom_secretaria_regional); ?></p>
 		                  </td>		            
 						  <td class="min-width">
-		                    <p><?php echo e($formulario1->municipio); ?></p>
+		                    <p> <?php echo e($formulario1->municipio->nombre_municipio); ?></p>
 		                  </td>		            
 						  <td class="min-width">
-		                    <p><?php echo e($formulario1->distrito); ?></p>
+		                    <p><?php echo e($formulario1->distrito->nombre_distrito); ?></p>
 		                  </td>		            
 						  <td class="min-width">
-		                    <p><?php echo e($formulario1->area); ?></p>
+		                    <p><?php echo e($formulario1->area->nombre_area); ?></p>
 		                  </td>		                  
 						  <td width="15px">
                             <a href="<?php echo e(route('patologia.formulario1.edit', $formulario1->id)); ?>" class="btn btn-warning btn-sm">Editar</a>

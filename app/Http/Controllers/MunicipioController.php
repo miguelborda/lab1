@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Formulario1;
 use App\Models\Municipio;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;

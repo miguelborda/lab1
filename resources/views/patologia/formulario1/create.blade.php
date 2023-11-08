@@ -81,46 +81,46 @@ border-radius: 10px; /* Cambia el valor para ajustar el radio del borde */
     <div class="row custom-bg">
         <div class="col-md-4">            
             <div class="form-group">
-                <strong>{!! Form::label('secretaria_regional', 'Secretaria Regional') !!}</strong>
-                {!! Form::select('secretaria_regional', $secretariaregionals, isset($formulario1) ? $formulario1->secretaria_regional : null, ['class' => 'form-control', 'placeholder' => 'Selecciona una Secretaria Regional']) !!}
-                <small class="text-danger">{{ $errors->first('secretaria_regional') }}</small>
+                <strong>{!! Form::label('secretaria_regional_id', 'Secretaria Regional') !!}</strong>
+                {!! Form::select('secretaria_regional_id', $secretariaregionals, isset($formulario1) ? $formulario1->secretaria_regional : null, ['class' => 'form-control', 'placeholder' => 'Selecciona una Secretaria Regional']) !!}
+                <small class="text-danger">{{ $errors->first('secretaria_regional_id') }}</small>
             </div>
         </div>
         <div class="col-md-4">            
             <div class="form-group">
-                <strong>{!! Form::label('municipio', 'Municipio') !!}</strong>
-                {!! Form::select('municipio', $municipios, isset($formulario1) ? $formulario1->municipio : null, ['class' => 'form-control', 'placeholder' => 'Selecciona un Municipio']) !!}
-                <small class="text-danger">{{ $errors->first('municipio') }}</small>
+                <strong>{!! Form::label('municipio_id', 'Municipio') !!}</strong>
+                {!! Form::select('municipio_id', $municipios, isset($formulario1) ? $formulario1->municipio_id : null, ['class' => 'form-control', 'placeholder' => 'Selecciona un Municipio']) !!}
+                <small class="text-danger">{{ $errors->first('municipio_id') }}</small>
             </div>
         </div>
         <div class="col-md-4">            
             <div class="form-group">
-                <strong>{!! Form::label('distrito', 'Distrito') !!}</strong>
-                {!! Form::select('distrito', $distritos, isset($formulario1) ? $formulario1->distrito : null, ['class' => 'form-control', 'placeholder' => 'Selecciona un Distrito']) !!}
-                <small class="text-danger">{{ $errors->first('distrito') }}</small>
+                <strong>{!! Form::label('distrito_id', 'Distrito') !!}</strong>
+                {!! Form::select('distrito_id', $distritos, isset($formulario1) ? $formulario1->distrito_id : null, ['class' => 'form-control', 'placeholder' => 'Selecciona un Distrito']) !!}
+                <small class="text-danger">{{ $errors->first('distrito_id') }}</small>
             </div>
         </div>
     </div>
     <div class="row custom-bg">
         <div class="col-md-4">            
             <div class="form-group">
-                <strong>{!! Form::label('area', 'Area') !!}</strong>
-                {!! Form::select('area', $areas, isset($formulario1) ? $formulario1->area : null, ['class' => 'form-control', 'placeholder' => 'Selecciona una Area']) !!}
-                <small class="text-danger">{{ $errors->first('area') }}</small>
+                <strong>{!! Form::label('area_id', 'Area') !!}</strong>
+                {!! Form::select('area_id', $areas, isset($formulario1) ? $formulario1->area_id : null, ['class' => 'form-control', 'placeholder' => 'Selecciona una Area']) !!}
+                <small class="text-danger">{{ $errors->first('area_id') }}</small>
             </div>
         </div>
         <div class="col-md-4">            
             <div class="form-group">
-                <strong>{!! Form::label('establecimiento', 'Establecimiento') !!}</strong>
-                {!! Form::select('establecimiento', $establecimientos, isset($formulario1) ? $formulario1->establecimiento : null, ['class' => 'form-control', 'placeholder' => 'Selecciona un Establecimiento']) !!}
-                <small class="text-danger">{{ $errors->first('establecimiento') }}</small>
+                <strong>{!! Form::label('establecimiento_id', 'Establecimiento') !!}</strong>
+                {!! Form::select('establecimiento_id', $establecimientos, isset($formulario1) ? $formulario1->establecimiento_id : null, ['class' => 'form-control', 'placeholder' => 'Selecciona un Establecimiento']) !!}
+                <small class="text-danger">{{ $errors->first('establecimiento_id') }}</small>
             </div>
         </div>
         <div class="col-md-4">            
             <div class="form-group">
-                <strong>{!! Form::label('sector', 'Sector') !!}</strong>
-                {!! Form::select('sector', $sectors, isset($formulario1) ? $formulario1->sector : null, ['class' => 'form-control', 'placeholder' => 'Selecciona un Sector']) !!}
-                <small class="text-danger">{{ $errors->first('sector') }}</small>
+                <strong>{!! Form::label('sector_id', 'Sector') !!}</strong>
+                {!! Form::select('sector_id', $sectors, isset($formulario1) ? $formulario1->sector_id : null, ['class' => 'form-control', 'placeholder' => 'Selecciona un Sector']) !!}
+                <small class="text-danger">{{ $errors->first('sector_id') }}</small>
             </div>
         </div><div><br></div>         
     </div><div><br><strong>DETALLE PACIENTES:</strong><br></div>        

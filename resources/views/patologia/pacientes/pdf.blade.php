@@ -42,6 +42,8 @@ tr.odd {
 		          <th><h6>NOMBRES</h6></th>
 						  <th><h6>APELLIDOS</h6></th>
 						  <th><h6>EDAD</h6></th>		          
+              <!--<th><h6>DIRECCION</h6></th>		          
+              <th><h6>CELULAR</h6></th>		          -->
           </tr><br>
           <!-- end table row-->
         </thead>
@@ -49,15 +51,24 @@ tr.odd {
         @foreach($pacientes as $key => $paciente)
           <tr class="{{ $key % 2 == 0 ? 'even' : 'odd' }}">
               <td class="min-width" style="text-align: center; ">
-              <p>{{$paciente->ci_paciente}}</p>
-		                  </td>		            						  
-		                  <td class="min-width">
-		                    <p>{{$paciente->nombre_paciente}}</p>
-		                  </td>		            
+                <p>{{$paciente->ci}}</p>
+              </td>		            						  
+              <td class="min-width">
+                <p>{{$paciente->nombre}}</p>
+              </td>		            
 						  <td class="min-width">
-		                    <p>{{$paciente->apellido_paciente}}</p>
-		                  </td>		                  
-						  <td><p>{{ floor(abs(strtotime($hoy)-strtotime($paciente->fecha_nacimiento))/(365*60*60*24)) }}</p></td> 						  
+                <p>{{$paciente->apellido}}</p>
+              </td>		                  
+						  <!--<td><p>{{ floor(abs(strtotime($hoy)-strtotime($paciente->fecha_nacimiento))/(365*60*60*24)) }}</p></td> -->
+              <td class="min-width">
+                <p>{{$paciente->edad}}</p>
+              </td>		                  
+              <!--<td class="min-width">
+                <p>{{$paciente->direccion}}</p>
+              </td>		              
+              <td class="min-width">
+                <p>{{$paciente->num_celular}}</p>
+              </td>		              -->
           </tr>
           @endforeach
           <!-- end table row -->

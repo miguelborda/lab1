@@ -90,52 +90,52 @@ unset($__errorArgs, $__bag); ?>
     <div class="row custom-bg">
         <div class="col-md-4">            
             <div class="form-group">
-                <strong><?php echo Form::label('secretaria_regional', 'Secretaria Regional'); ?></strong>
-                <?php echo Form::select('secretaria_regional', $secretariaregionals, isset($formulario1) ? $formulario1->secretaria_regional : null, ['class' => 'form-control', 'placeholder' => 'Selecciona una Secretaria Regional']); ?>
+                <strong><?php echo Form::label('secretaria_regional_id', 'Secretaria Regional'); ?></strong>
+                <?php echo Form::select('secretaria_regional_id', $secretariaregionals, isset($formulario1) ? $formulario1->secretaria_regional : null, ['class' => 'form-control', 'placeholder' => 'Selecciona una Secretaria Regional']); ?>
 
-                <small class="text-danger"><?php echo e($errors->first('secretaria_regional')); ?></small>
+                <small class="text-danger"><?php echo e($errors->first('secretaria_regional_id')); ?></small>
             </div>
         </div>
         <div class="col-md-4">            
             <div class="form-group">
-                <strong><?php echo Form::label('municipio', 'Municipio'); ?></strong>
-                <?php echo Form::select('municipio', $municipios, isset($formulario1) ? $formulario1->municipio : null, ['class' => 'form-control', 'placeholder' => 'Selecciona un Municipio']); ?>
+                <strong><?php echo Form::label('municipio_id', 'Municipio'); ?></strong>
+                <?php echo Form::select('municipio_id', $municipios, isset($formulario1) ? $formulario1->municipio_id : null, ['class' => 'form-control', 'placeholder' => 'Selecciona un Municipio']); ?>
 
-                <small class="text-danger"><?php echo e($errors->first('municipio')); ?></small>
+                <small class="text-danger"><?php echo e($errors->first('municipio_id')); ?></small>
             </div>
         </div>
         <div class="col-md-4">            
             <div class="form-group">
-                <strong><?php echo Form::label('distrito', 'Distrito'); ?></strong>
-                <?php echo Form::select('distrito', $distritos, isset($formulario1) ? $formulario1->distrito : null, ['class' => 'form-control', 'placeholder' => 'Selecciona un Distrito']); ?>
+                <strong><?php echo Form::label('distrito_id', 'Distrito'); ?></strong>
+                <?php echo Form::select('distrito_id', $distritos, isset($formulario1) ? $formulario1->distrito_id : null, ['class' => 'form-control', 'placeholder' => 'Selecciona un Distrito']); ?>
 
-                <small class="text-danger"><?php echo e($errors->first('distrito')); ?></small>
+                <small class="text-danger"><?php echo e($errors->first('distrito_id')); ?></small>
             </div>
         </div>
     </div>
     <div class="row custom-bg">
         <div class="col-md-4">            
             <div class="form-group">
-                <strong><?php echo Form::label('area', 'Area'); ?></strong>
-                <?php echo Form::select('area', $areas, isset($formulario1) ? $formulario1->area : null, ['class' => 'form-control', 'placeholder' => 'Selecciona una Area']); ?>
+                <strong><?php echo Form::label('area_id', 'Area'); ?></strong>
+                <?php echo Form::select('area_id', $areas, isset($formulario1) ? $formulario1->area_id : null, ['class' => 'form-control', 'placeholder' => 'Selecciona una Area']); ?>
 
-                <small class="text-danger"><?php echo e($errors->first('area')); ?></small>
+                <small class="text-danger"><?php echo e($errors->first('area_id')); ?></small>
             </div>
         </div>
         <div class="col-md-4">            
             <div class="form-group">
-                <strong><?php echo Form::label('establecimiento', 'Establecimiento'); ?></strong>
-                <?php echo Form::select('establecimiento', $establecimientos, isset($formulario1) ? $formulario1->establecimiento : null, ['class' => 'form-control', 'placeholder' => 'Selecciona un Establecimiento']); ?>
+                <strong><?php echo Form::label('establecimiento_id', 'Establecimiento'); ?></strong>
+                <?php echo Form::select('establecimiento_id', $establecimientos, isset($formulario1) ? $formulario1->establecimiento_id : null, ['class' => 'form-control', 'placeholder' => 'Selecciona un Establecimiento']); ?>
 
-                <small class="text-danger"><?php echo e($errors->first('establecimiento')); ?></small>
+                <small class="text-danger"><?php echo e($errors->first('establecimiento_id')); ?></small>
             </div>
         </div>
         <div class="col-md-4">            
             <div class="form-group">
-                <strong><?php echo Form::label('sector', 'Sector'); ?></strong>
-                <?php echo Form::select('sector', $sectors, isset($formulario1) ? $formulario1->sector : null, ['class' => 'form-control', 'placeholder' => 'Selecciona un Sector']); ?>
+                <strong><?php echo Form::label('sector_id', 'Sector'); ?></strong>
+                <?php echo Form::select('sector_id', $sectors, isset($formulario1) ? $formulario1->sector_id : null, ['class' => 'form-control', 'placeholder' => 'Selecciona un Sector']); ?>
 
-                <small class="text-danger"><?php echo e($errors->first('sector')); ?></small>
+                <small class="text-danger"><?php echo e($errors->first('sector_id')); ?></small>
             </div>
         </div><div><br></div>         
     </div><div><br><strong>DETALLE PACIENTES:</strong><br></div>        

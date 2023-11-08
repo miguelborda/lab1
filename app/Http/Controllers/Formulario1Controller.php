@@ -22,13 +22,27 @@ class Formulario1Controller extends Controller
     {
         $this->middleware('auth');
     }
+
     public function index()
+    {
+        $formulario1s = Formulario1::with('municipio','distrito','area','secretariaregional')->where('estado', true)->get();     
+
+        //$municipios=Municipio::where('estado', true)->get();
+
+        return view("patologia.formulario1.index", [
+            'formulario1s' => $formulario1s,
+          //  'municipios' => $municipios
+
+        ]);
+    }
+
+    /*public function index()
     {
         $formulario1s=Formulario1::where('estado', true)->get();
         return view("patologia.formulario1.index", [
             'formulario1s'   =>  $formulario1s
         ]);
-    }
+    }*/
     
     public function pdf()
     {
@@ -60,12 +74,12 @@ class Formulario1Controller extends Controller
         $request->validate(
             ['num_solicitud'=>'required',
              'fecha_solicitud'=>'required',
-             'secretaria_regional'=>'required',             
-             'distrito'=>'required',
-             'area'=>'required',             
-             'establecimiento'=>'required',
-             'sector'=>'required',
-             'municipio'=>'required',
+             'secretaria_regional_id'=>'required',             
+             'distrito_id'=>'required',
+             'area_id'=>'required',             
+             'establecimiento_id'=>'required',
+             'sector_id'=>'required',
+             'municipio_id'=>'required',
              //'nombre'=>'required',
              //'edad'=>'required',
              //'num_examen'=>'required',
@@ -81,12 +95,12 @@ class Formulario1Controller extends Controller
         $formulario1s = Formulario1::create([
             'num_solicitud' => $request->input('num_solicitud'),
             'fecha_solicitud' => $request->input('fecha_solicitud'),
-            'secretaria_regional' => $request->input('secretaria_regional'),
-            'distrito' => $request->input('distrito'),
-            'area' => $request->input('area'),
-            'establecimiento' => $request->input('establecimiento'),
-            'sector' => $request->input('sector'),
-            'municipio' => $request->input('municipio'),
+            'secretaria_regional_id' => $request->input('secretaria_regional_id'),
+            'distrito_id' => $request->input('distrito_id'),
+            'area_id' => $request->input('area_id'),
+            'establecimiento_id' => $request->input('establecimiento_id'),
+            'sector_id' => $request->input('sector_id'),
+            'municipio_id' => $request->input('municipio_id'),
             'creatoruser_id' => $user->id,            
         ]);
 

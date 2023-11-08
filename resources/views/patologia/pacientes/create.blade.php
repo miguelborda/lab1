@@ -19,10 +19,11 @@
 <div class="card">
     <div class="card-body">
         {!! Form::open(['route'=>'patologia.paciente.store']) !!}
+        <!--<span class="text-danger">Los campos con * son de llenado obligatorio</span>-->
         <div class="row">
             <div class="col-md-2">
                 <div class="form-group">
-                    <strong>{!! Form::label('ci', 'CI') !!}</strong>
+                    <strong>{!! Form::label('ci', 'CI') !!}<span class="text-danger">*</span></strong>
                     {!! Form::text('ci', isset($paciente) ? $paciente->ci : '', ['class' => 'form-control', 'placeholder' => 'Ingrese CI de Paciente']) !!}
                     <small class="text-danger">{{ $errors->first('ci') }}</small>
                 </div>
@@ -30,7 +31,7 @@
             </div>
             <div class="col-md-3">
                 <div class="form-group">
-                    <strong>{!! Form::label('nombre', 'Nombres') !!}</strong>
+                    <strong>{!! Form::label('nombre', 'Nombres') !!}<span class="text-danger">*</span></strong>
                     {!! Form::text('nombre', isset($paciente) ? $paciente->nombre : '', ['class' => 'form-control', 'placeholder' => 'Ingrese Nombre de Paciente']) !!}
                     @error('nombre')
                         <span class="text-danger">{{$message}}</span>
@@ -40,7 +41,7 @@
             </div>
             <div class="col-md-3">
                 <div class="form-group">
-                    <strong>{!! Form::label('apellido', 'Apellidos') !!}</strong>
+                    <strong>{!! Form::label('apellido', 'Apellidos') !!}<span class="text-danger">*</span></strong>
                     {!! Form::text('apellido', isset($paciente) ? $paciente->apellido : '', ['class' => 'form-control', 'placeholder' => 'Ingrese Apellido de Paciente']) !!}
                     @error('apellido')
                         <span class="text-danger">{{$message}}</span>
@@ -62,17 +63,66 @@
                     <strong>{!! Form::label('edad', 'Edad') !!}</strong>
                     {!! Form::text('edad', isset($paciente) ? $paciente->edad : '', ['class' => 'form-control', 'id' => 'edad', 'enabled' => 'disabled']) !!}
                 </div>
+            </div>            
             </div>
-
-            
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <strong>{!! Form::label('direccion', 'Dirección') !!}</strong>
+                    {!! Form::text('direccion', isset($paciente) ? $paciente->direccion : '', ['class' => 'form-control', 'placeholder' => 'Ingrese Direccion de Paciente']) !!}
+                    @error('direccion')
+                        <span class="text-danger">{{$message}}</span>
+                    @enderror
+                </div>
             </div>
-            <div class="form-group">                
-                <strong>{!! Form::label('sexo', 'Sexo') !!}</strong>
-                {!! Form::select('sexo', ['Hombre' => 'Hombre', 'Mujer' => 'Mujer'], isset($paciente->sexo) ? $paciente->sexo : null, ['class' => 'form-control']) !!}
-                @error('sexo')
-                    <span class="text-danger">{{$message}}</span>
-                @enderror
+            <div class="col-md-2">
+                <div class="form-group">                
+                    <strong>{!! Form::label('sexo', 'Sexo') !!}</strong>
+                    {!! Form::select('sexo', ['Hombre' => 'Hombre', 'Mujer' => 'Mujer'], isset($paciente->sexo) ? $paciente->sexo : null, ['class' => 'form-control']) !!}
+                    @error('sexo')
+                        <span class="text-danger">{{$message}}</span>
+                    @enderror
+                </div>
             </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <strong>{!! Form::label('hc', 'HC') !!}</strong>
+                    {!! Form::text('hc', isset($paciente) ? $paciente->hc : '', ['class' => 'form-control', 'placeholder' => 'Ingrese HC']) !!}
+                    @error('hc')
+                        <span class="text-danger">{{$message}}</span>
+                    @enderror
+                </div>
+            </div>
+        </div><br>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <strong>{!! Form::label('email', 'Correo Electrónico') !!}</strong>
+                    {!! Form::text('email', isset($paciente) ? $paciente->email : '', ['class' => 'form-control', 'placeholder' => 'Ingrese direccion de Correo Electrónico']) !!}
+                    @error('email')
+                        <span class="text-danger">{{$message}}</span>
+                    @enderror
+                </div>
+            </div>        
+            <div class="col-md-2">
+                <div class="form-group">
+                    <strong>{!! Form::label('num_asegurado', 'Nº Asegurado') !!}</strong>
+                    {!! Form::text('num_asegurado', isset($paciente) ? $paciente->num_asegurado : '', ['class' => 'form-control', 'placeholder' => 'Ingrese Nº de Asegurado']) !!}
+                    @error('num_asegurado')
+                        <span class="text-danger">{{$message}}</span>
+                    @enderror
+                </div>
+            </div>        
+            <div class="col-md-2">
+                <div class="form-group">
+                    <strong>{!! Form::label('num_celular', 'Nº de Celular') !!}</strong>
+                    {!! Form::text('num_celular', isset($paciente) ? $paciente->num_celular : '', ['class' => 'form-control', 'placeholder' => 'Ingrese Nº de Celular']) !!}
+                    @error('num_celular')
+                        <span class="text-danger">{{$message}}</span>
+                    @enderror
+                </div>
+            </div>
+        </div>
             <br>
             {!! Form::submit('Guardar',['class'=>'btn btn-primary']) !!}
             {!! Form::button('Volver', ['class' => 'btn btn-secondary', 'onclick' => 'window.history.go(-1);']) !!}

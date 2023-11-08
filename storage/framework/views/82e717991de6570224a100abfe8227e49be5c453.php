@@ -42,6 +42,8 @@ tr.odd {
 		          <th><h6>NOMBRES</h6></th>
 						  <th><h6>APELLIDOS</h6></th>
 						  <th><h6>EDAD</h6></th>		          
+              <!--<th><h6>DIRECCION</h6></th>		          
+              <th><h6>CELULAR</h6></th>		          -->
           </tr><br>
           <!-- end table row-->
         </thead>
@@ -49,15 +51,24 @@ tr.odd {
         <?php $__currentLoopData = $pacientes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $paciente): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
           <tr class="<?php echo e($key % 2 == 0 ? 'even' : 'odd'); ?>">
               <td class="min-width" style="text-align: center; ">
-              <p><?php echo e($paciente->ci_paciente); ?></p>
-		                  </td>		            						  
-		                  <td class="min-width">
-		                    <p><?php echo e($paciente->nombre_paciente); ?></p>
-		                  </td>		            
+                <p><?php echo e($paciente->ci); ?></p>
+              </td>		            						  
+              <td class="min-width">
+                <p><?php echo e($paciente->nombre); ?></p>
+              </td>		            
 						  <td class="min-width">
-		                    <p><?php echo e($paciente->apellido_paciente); ?></p>
-		                  </td>		                  
-						  <td><p><?php echo e(floor(abs(strtotime($hoy)-strtotime($paciente->fecha_nacimiento))/(365*60*60*24))); ?></p></td> 						  
+                <p><?php echo e($paciente->apellido); ?></p>
+              </td>		                  
+						  <!--<td><p><?php echo e(floor(abs(strtotime($hoy)-strtotime($paciente->fecha_nacimiento))/(365*60*60*24))); ?></p></td> -->
+              <td class="min-width">
+                <p><?php echo e($paciente->edad); ?></p>
+              </td>		                  
+              <!--<td class="min-width">
+                <p><?php echo e($paciente->direccion); ?></p>
+              </td>		              
+              <td class="min-width">
+                <p><?php echo e($paciente->num_celular); ?></p>
+              </td>		              -->
           </tr>
           <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
           <!-- end table row -->

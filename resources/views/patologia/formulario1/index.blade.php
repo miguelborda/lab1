@@ -63,18 +63,18 @@
 		                  </td>
 		                  <td class="min-width">
 		                    <p>{{$formulario1->edad_paciente}}</p>
-		                  </td>		             -->
+		                  </td>		            --> 
 						  <td class="min-width">
-		                    <p>{{$formulario1->secretaria_regional}}</p>
+		                    <p>{{$formulario1->secretariaregional->nom_secretaria_regional}}</p>
 		                  </td>		            
 						  <td class="min-width">
-		                    <p>{{$formulario1->municipio}}</p>
+		                    <p> {{ $formulario1->municipio->nombre_municipio }}</p>
 		                  </td>		            
 						  <td class="min-width">
-		                    <p>{{$formulario1->distrito}}</p>
+		                    <p>{{$formulario1->distrito->nombre_distrito}}</p>
 		                  </td>		            
 						  <td class="min-width">
-		                    <p>{{$formulario1->area}}</p>
+		                    <p>{{$formulario1->area->nombre_area}}</p>
 		                  </td>		                  
 						  <td width="15px">
                             <a href="{{ route('patologia.formulario1.edit', $formulario1->id) }}" class="btn btn-warning btn-sm">Editar</a>
