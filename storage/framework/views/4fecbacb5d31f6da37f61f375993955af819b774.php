@@ -41,11 +41,6 @@ $(document).ready(function() {
     });
 });
 </script>
-
-
-
-
-
 <style>
 .custom-bg {
 background-color: #DCEEEE; /* Cambia #ff0000 al color que desees */
@@ -54,6 +49,14 @@ border-radius: 10px; /* Cambia el valor para ajustar el radio del borde */
 .custom-bg2 {
 background-color: #DEE0E0; /* Cambia #ff0000 al color que desees */
 border-radius: 10px; /* Cambia el valor para ajustar el radio del borde */
+}
+.col-md-1-5 {
+    flex: 0 0 10%;
+    max-width: 10%;
+}
+.col-md-2-5 {
+    flex: 0 0 15%;
+    max-width: 15%;
 }
 </style>
 <div class="card">
@@ -140,22 +143,63 @@ unset($__errorArgs, $__bag); ?>
         </div><div><br></div>         
     </div><div><br><strong>DETALLE PACIENTES:</strong><br></div>        
     <div class="row custom-bg2" id="dynamicFields">
-        <div class="col-md-2"> 
+        <div class="col-md-1-5"> 
             <div class="form-group">
-                <strong><?php echo Form::label('num_examen[]', 'Nº de Examen'); ?></strong>
+                <strong><?php echo Form::label('num_examen[]', 'Nº Examen'); ?></strong>
                 <?php echo Form::text('num_examen[]', null, ['class' => 'form-control', 'placeholder' => 'Ingrese Nº de Examen']); ?>
 
                 <small class="text-danger"><?php echo e($errors->first('num_examen')); ?></small>
             </div>
         </div>
-        <div class="col-md-4"> 
+        <div class="col-md-2-5"> 
             <div class="form-group">
-                <strong><?php echo Form::label('nombre[]', 'Nombre del Paciente'); ?></strong>
+                <strong><?php echo Form::label('ci[]', 'CI'); ?></strong>
+                <?php echo Form::text('ci[]', null, ['class' => 'form-control', 'placeholder' => 'Ingrese CI']); ?>
+
+                <small class="text-danger"><?php echo e($errors->first('ci')); ?></small>
+            </div>
+        </div>        
+        <div class="col-md-3"> 
+            <div class="form-group">
+                <strong><?php echo Form::label('nombre[]', 'Nombres del Paciente'); ?></strong>
                 <?php echo Form::text('nombre[]', null, ['class' => 'form-control', 'placeholder' => 'Ingrese Nombre del Paciente']); ?>
 
                 <small class="text-danger"><?php echo e($errors->first('nombre')); ?></small>
             </div>
-        </div>        
+        </div>
+        <div class="col-md-3"> 
+            <div class="form-group">
+                <strong><?php echo Form::label('apellido[]', 'Apellidos del Paciente'); ?></strong>
+                <?php echo Form::text('apellido[]', null, ['class' => 'form-control', 'placeholder' => 'Ingrese Apellido del Paciente']); ?>
+
+                <small class="text-danger"><?php echo e($errors->first('apellido')); ?></small>
+            </div>
+        </div>
+        <div class="col-md-2">
+                <div class="form-group">
+                    <strong><?php echo Form::label('fecha_nacimiento[]', 'Fecha de Nacimiento'); ?></strong>
+                    <?php echo Form::date('fecha_nacimiento[]', isset($paciente) ? $paciente->fecha_nacimiento : '', ['max' => now()->toDateString(), 'min' => '1900-01-01', 'id' => 'fecha_nacimiento']); ?>
+
+                    <?php $__errorArgs = ['fecha_nacimiento'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                        <span class="text-danger"><?php echo e($message); ?></span>
+                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                </div>            
+            </div>
+            <div class="col-md-1">
+                <div class="form-group">
+                    <strong><?php echo Form::label('edad[]', 'Edad'); ?></strong>
+                    <?php echo Form::text('edad[]', isset($paciente) ? $paciente->edad : '', ['class' => 'form-control', 'id' => 'edad', 'enabled' => 'disabled']); ?>
+
+                </div>
+            </div>        
+        <!--        
         <div class="col-md-2"> 
             <div class="form-group">
                 <strong><?php echo Form::label('edad[]', 'Edad de Paciente'); ?></strong>
@@ -163,15 +207,8 @@ unset($__errorArgs, $__bag); ?>
 
                 <small class="text-danger"><?php echo e($errors->first('edad')); ?></small>
             </div>
-        </div>
-        <div class="col-md-4"> 
-            <div class="form-group">
-                <strong><?php echo Form::label('direccion[]', 'Dirección de Paciente'); ?></strong>
-                <?php echo Form::text('direccion[]', null, ['class' => 'form-control', 'placeholder' => 'Ingrese Dirección del Paciente']); ?>
-
-                <small class="text-danger"><?php echo e($errors->first('direccion')); ?></small>
-            </div>
-        </div><div><br></div>
+        </div>-->
+        <div><br></div>
         
     </div><button id="agregarLinea" type="button" class="btn btn-primary">Agregar Línea</button><br>       
                 
@@ -189,6 +226,42 @@ unset($__errorArgs, $__bag); ?>
     <script>
         $('#myTable').DataTable();
     </script>
+    <script>
+        var fechaNacimiento = document.getElementById('fecha_nacimiento');
+        var edadCampo = document.getElementById('edad');
+
+        fechaNacimiento.addEventListener('input', function() {
+            if (fechaNacimiento.value) {
+                // Calcula la edad a partir de la fecha de nacimiento y la fecha actual
+                var fechaNacimientoValue = new Date(fechaNacimiento.value);
+                var hoy = new Date();
+                var edad = hoy.getFullYear() - fechaNacimientoValue.getFullYear();
+
+                if (hoy < new Date(hoy.getFullYear(), fechaNacimientoValue.getMonth(), fechaNacimientoValue.getDate())) {
+                    edad--;
+                }
+
+                // Llena el campo "edad" y desactívalo
+                edadCampo.value = edad;
+                edadCampo.setAttribute('disabled', 'disabled');
+            } else {
+                // Si no se selecciona una fecha de nacimiento, borra el valor y habilita el campo "edad"
+                edadCampo.value = '';
+                edadCampo.removeAttribute('disabled');
+            }
+        });
+
+        edadCampo.addEventListener('input', function() {
+            if (edadCampo.value) {
+                // Desactiva el campo "fecha_nacimiento"
+                fechaNacimiento.setAttribute('disabled', 'disabled');
+            } else {
+                // Habilita el campo "fecha_nacimiento"
+                fechaNacimiento.removeAttribute('disabled');
+            }
+        });
+    </script>
+
 <?php $__env->stopPush(); ?>
 
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\usuariosHB\resources\views/patologia/formulario1/create.blade.php ENDPATH**/ ?>

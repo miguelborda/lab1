@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Detallef1s extends Model
 {
     use HasFactory;
-    protected $fillable=['num_examen','vez','nombre','direccion','edad','fecha_nacimiento','hc',
-    'num_asegurado','num_informef1','descripcion','userid_creator','username_creator',
-    'userid_lastupdated','username_lastupdated','updated_at'];
+    protected $fillable=['num_solicitud_id','num_examen','paciente_id','ci','descripcion',
+    'creatoruser_id','updateduser_id','created_at','updated_at'];
 }

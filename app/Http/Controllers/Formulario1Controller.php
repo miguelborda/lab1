@@ -13,6 +13,7 @@ use App\Models\Distrito;
 use App\Models\Area;
 use App\Models\Establecimiento;
 use App\Models\Sector;
+use App\Models\Paciente;
 
 
 
@@ -79,19 +80,13 @@ class Formulario1Controller extends Controller
              'area_id'=>'required',             
              'establecimiento_id'=>'required',
              'sector_id'=>'required',
-             'municipio_id'=>'required',
-             //'nombre'=>'required',
-             //'edad'=>'required',
-             //'num_examen'=>'required',
+             'municipio_id'=>'required',             
             ]
         ); 
         
         $user = auth()->user();       
-        // dd(array_merge($request->all()));
-        
+        // dd(array_merge($request->all()));        
 
-        //$formulario1s = Formulario1::create(array_merge($request->all(), ['userid_creator' => $user->id], ['username_creator' => $user->email])); 
-        // Obtiene la ID del modelo Formulario1 recién creado
         $formulario1s = Formulario1::create([
             'num_solicitud' => $request->input('num_solicitud'),
             'fecha_solicitud' => $request->input('fecha_solicitud'),
@@ -103,30 +98,44 @@ class Formulario1Controller extends Controller
             'municipio_id' => $request->input('municipio_id'),
             'creatoruser_id' => $user->id,            
         ]);
-
-
         
-        //$num_informef1 = $formulario1s->id;
-        /*$num_informef1 = $formulario1s->num_solicitud;
+        $num_informef1 = $formulario1s->id;
+        $num_informef1 = $formulario1s->num_solicitud;
         
-        for ($i=0;$i<count($request->num_examen);$i++){
-            
-             $detallef1s = Detallef1s::create ([
-             //'num_solicitud' => $request->input('num_solicitud'),
-             'nombre' => $request->nombre[$i],
-             'edad' => $request->edad[$i],
-             'num_examen' => $request->num_examen[$i],
-             'direccion' => $request->direccion[$i],
-             'num_informef1' => $num_informef1,
-             'userid_creator' => $user->id,             
-         ]);
+        for ($i = 0; $i < count($request->num_examen); $i++) {
+            $detallef1s = Detallef1s::create([
+                'num_solicitud_id' => $request->input('num_solicitud'),
+                'num_examen' => $request->num_examen[$i],
+                'ci' => $request->ci[$i],
+                'creatoruser_id' => $user->id,
+            ]);
+            $hoy=date('Y-m-d');     
+            $fechaNacimiento=$hoy;            
+                        
+            // Verificar si se proporcionó la fecha de nacimiento
+            if (!empty($request->fecha_nacimiento[$i])) {
+                $fechaNacimiento = $request->fecha_nacimiento[$i];
+                //$hoy = strtotime('today');
+                $edad = date_diff(date_create($fechaNacimiento), date_create($hoy))->y;
+
+                //$edad = floor(($hoy - $fechaNacimiento) / 31556926); // 31556926 segundos en un año
+            } else {
+                $edad = $request->edad[$i-1];
+            }
+        
+            $pacientes = Paciente::create([
+                'ci' => $request->ci[$i],
+                'nombre' => $request->nombre[$i],
+                'apellido' => $request->apellido[$i],
+                'creatoruser_id' => $user->id,                
+                'fecha_nacimiento' => $fechaNacimiento,                
+                'edad' => $edad, // Usamos la edad calculada o la proporcionada
+            ]);
+        }        
+   
          //dd($detallef1s);        
         
-            //$detallef1s = Detallef1s::create(array_merge($request->num_examen[$i], $request->nombre[$i], $request->edad[$i], $request->direccion[$i],$request->$num_informef1[$i],['num_informef1' => $num_informef1, 'userid_creator' => $user->id], ['username_creator' => $user->email]));
-        }*/
-        
-
-
+            //$detallef1s = Detallef1s::create(array_merge($request->num_examen[$i], $request->$num_informef1[$i],['num_informef1' => $num_informef1, 'creatoruser_id' => $user->id]));        
 
         return redirect()->route('patologia.formulario1.index')->with('mensaje','Se creó exitosamente');
     }
