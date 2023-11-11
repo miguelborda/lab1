@@ -51,16 +51,16 @@
 		                    <p><?php echo e($resultadof1->num_examen); ?></p>
 		                  </td>		            
 						  <td class="min-width">
-		                    <p><?php echo e($resultadof1s->fecha_resultado); ?></p>
+		                    <p><?php echo e($resultadof1->fecha_resultado); ?></p>
 		                  </td>		            						  
 						  <td class="min-width">
-		                    <p><?php echo e($resultadof1s->codigo_diagnostico); ?></p>
+		                    <p><?php echo e($resultadof1->codigo_diagnostico); ?></p>
 		                  </td>		            						  
 						  <td width="15px">
-                            <a href="<?php echo e(route('patologia.resultadof1s.edit', $resultadof1s->id)); ?>" class="btn btn-warning btn-sm">Editar</a>
+                            <a href="<?php echo e(route('patologia.resultadof1s.edit', $resultadof1->id)); ?>" class="btn btn-warning btn-sm">Editar</a>
                           </td>
 						  <td width="15px">
-						  	<form action="<?php echo e(route('patologia.resultadof1s.destroy', $resultadof1s->id)); ?>" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este registro?');">
+						  	<form action="<?php echo e(route('patologia.resultadof1s.destroy', $resultadof1->id)); ?>" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este registro?');">
 								<?php echo method_field('delete'); ?>
 								<?php echo csrf_field(); ?>
 								<input type="submit" value="Eliminar" class="btn btn-danger btn-sm">

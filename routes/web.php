@@ -123,5 +123,7 @@ Route::middleware($middlewares)->group(function()
 {
     Route::get('Resultadof1s/pdf', [Resultadof1sController::class, 'pdf'])->name('patologia.resultadof1s.pdf');      
     Route::resource('/Resultadof1s', Resultadof1sController::class)->names('patologia.resultadof1s');    
+    
+    //Route::post('/obtener-datos', [Resultadof1sController::class, 'obtenerDatos']);
 });
 

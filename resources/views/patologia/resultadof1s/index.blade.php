@@ -51,16 +51,16 @@
 		                    <p>{{$resultadof1->num_examen}}</p>
 		                  </td>		            
 						  <td class="min-width">
-		                    <p>{{$resultadof1s->fecha_resultado}}</p>
+		                    <p>{{$resultadof1->fecha_resultado}}</p>
 		                  </td>		            						  
 						  <td class="min-width">
-		                    <p>{{$resultadof1s->codigo_diagnostico}}</p>
+		                    <p>{{$resultadof1->codigo_diagnostico}}</p>
 		                  </td>		            						  
 						  <td width="15px">
-                            <a href="{{ route('patologia.resultadof1s.edit', $resultadof1s->id) }}" class="btn btn-warning btn-sm">Editar</a>
+                            <a href="{{ route('patologia.resultadof1s.edit', $resultadof1->id) }}" class="btn btn-warning btn-sm">Editar</a>
                           </td>
 						  <td width="15px">
-						  	<form action="{{ route('patologia.resultadof1s.destroy', $resultadof1s->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este registro?');">
+						  	<form action="{{ route('patologia.resultadof1s.destroy', $resultadof1->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este registro?');">
 								@method('delete')
 								@csrf
 								<input type="submit" value="Eliminar" class="btn btn-danger btn-sm">

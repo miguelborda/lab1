@@ -14,8 +14,7 @@ use App\Models\Area;
 use App\Models\Establecimiento;
 use App\Models\Sector;
 use App\Models\Paciente;
-
-
+use Illuminate\Validation\Rule;
 
 class Formulario1Controller extends Controller
 {
@@ -54,13 +53,7 @@ class Formulario1Controller extends Controller
     }
     
     public function create()
-    {
-        /*$municipios = Municipio::where('estado', true)->orderBy('nombre_municipio', 'asc')->pluck('nombre_municipio', 'nombre_municipio');
-        $secretariaregionals = Secretariaregional::where('estado', true)->orderBy('nom_secretaria_regional', 'asc')->pluck('nom_secretaria_regional', 'nom_secretaria_regional');
-        $distritos = Distrito::where('estado', true)->orderBy('nombre_distrito', 'asc')->pluck('nombre_distrito', 'nombre_distrito');
-        $areas = Area::where('estado', true)->orderBy('nombre_area', 'asc')->pluck('nombre_area', 'nombre_area');
-        $establecimientos = Establecimiento::where('estado', true)->orderBy('nombre_establecimiento', 'asc')->pluck('nombre_establecimiento', 'nombre_establecimiento');
-        $sectors = Sector::where('estado', true)->orderBy('nombre_sector', 'asc')->pluck('nombre_sector', 'nombre_sector');       */
+    {        
         $municipios = Municipio::where('estado', true)->orderBy('nombre_municipio', 'asc')->pluck('nombre_municipio','id');
         $secretariaregionals = Secretariaregional::where('estado', true)->orderBy('nom_secretaria_regional', 'asc')->pluck('nom_secretaria_regional','id');
         $distritos = Distrito::where('estado', true)->orderBy('nombre_distrito', 'asc')->pluck('nombre_distrito','id');
@@ -70,17 +63,19 @@ class Formulario1Controller extends Controller
         return view('patologia.formulario1.create', compact('municipios','secretariaregionals','distritos','areas','establecimientos','sectors'));
     }
     
-    public function store(Request $request)
+    public function store(Request $request, Formulario1 $formularios, Detallef1s $detalle)
     {
         $request->validate(
-            ['num_solicitud'=>'required',
+            [
+             'num_solicitud' => ['required', 'string', 'max:255', Rule::unique('formulario1s')->ignore($formularios->id)],
              'fecha_solicitud'=>'required',
              'secretaria_regional_id'=>'required',             
              'distrito_id'=>'required',
              'area_id'=>'required',             
              'establecimiento_id'=>'required',
              'sector_id'=>'required',
-             'municipio_id'=>'required',             
+             'municipio_id'=>'required',       
+             //'num_examen' => ['required', 'string', 'max:255', Rule::unique('detallef1s')->ignore($detalle->id)],                   
             ]
         ); 
         
@@ -105,15 +100,21 @@ class Formulario1Controller extends Controller
         for ($i = 0; $i < count($request->num_examen); $i++) {
             $detallef1s = Detallef1s::create([
                 'num_solicitud_id' => $request->input('num_solicitud'),
-                'num_examen' => $request->num_examen[$i],
+                'num_examen' => $request->num_examen[$i],                
                 'ci' => $request->ci[$i],
                 'creatoruser_id' => $user->id,
             ]);
             $hoy=date('Y-m-d');     
-            $fechaNacimiento=$hoy;            
-                        
+            //$fechaNacimiento=$hoy;            
+            
             // Verificar si se proporcionó la fecha de nacimiento
-            if (!empty($request->fecha_nacimiento[$i])) {
+            
+            $fechaNacimiento = $request->fecha_nacimiento[$i];
+            
+            $edad = date_diff(date_create($fechaNacimiento), date_create($hoy))->y;          
+            
+            // Verificar si se proporcionó la fecha de nacimiento
+            /*if (!empty($request->fecha_nacimiento[$i])) {
                 $fechaNacimiento = $request->fecha_nacimiento[$i];
                 //$hoy = strtotime('today');
                 $edad = date_diff(date_create($fechaNacimiento), date_create($hoy))->y;
@@ -121,7 +122,7 @@ class Formulario1Controller extends Controller
                 //$edad = floor(($hoy - $fechaNacimiento) / 31556926); // 31556926 segundos en un año
             } else {
                 $edad = $request->edad[$i-1];
-            }
+            }*/
         
             $pacientes = Paciente::create([
                 'ci' => $request->ci[$i],
@@ -131,11 +132,9 @@ class Formulario1Controller extends Controller
                 'fecha_nacimiento' => $fechaNacimiento,                
                 'edad' => $edad, // Usamos la edad calculada o la proporcionada
             ]);
-        }        
-   
-         //dd($detallef1s);        
-        
-            //$detallef1s = Detallef1s::create(array_merge($request->num_examen[$i], $request->$num_informef1[$i],['num_informef1' => $num_informef1, 'creatoruser_id' => $user->id]));        
+            $edad = '';          
+
+        }           
 
         return redirect()->route('patologia.formulario1.index')->with('mensaje','Se creó exitosamente');
     }

@@ -165,13 +165,13 @@ border-radius: 10px; /* Cambia el valor para ajustar el radio del borde */
                     @enderror
                 </div>            
             </div>
-            <div class="col-md-1">
+        <!--    <div class="col-md-1">
                 <div class="form-group">
                     <strong>{!! Form::label('edad[]', 'Edad') !!}</strong>
                     {!! Form::text('edad[]', isset($paciente) ? $paciente->edad : '', ['class' => 'form-control', 'id' => 'edad', 'enabled' => 'disabled']) !!}
                 </div>
             </div>        
-        <!--        
+                
         <div class="col-md-2"> 
             <div class="form-group">
                 <strong>{!! Form::label('edad[]', 'Edad de Paciente') !!}</strong>
@@ -185,6 +185,8 @@ border-radius: 10px; /* Cambia el valor para ajustar el radio del borde */
                 
             <br>
             {!! Form::submit('Guardar',['class'=>'btn btn-primary']) !!}
+            {!! Form::button('Cancelar', ['class' => 'btn btn-secondary', 'onclick' => 'window.history.go(-1);']) !!}
+
         {!! Form::close() !!}
     </div>
 </div>

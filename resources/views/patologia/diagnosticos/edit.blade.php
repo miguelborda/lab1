@@ -21,19 +21,7 @@
     <div class="card-body">
         <form method="POST" action="{{ route('patologia.diagnosticos.update', $diagnostico->id) }}" onsubmit="return confirm('¿Estás seguro de que deseas modificar este registro?');">
             @csrf
-            @method('PUT')
-
-            <!--<div class="form-group">
-                <strong>{!! Form::label('codigo_diagnostico', 'codigo de diagnostico') !!}</strong>
-                {!! Form::text('codigo_diagnostico', $diagnostico->codigo_diagnostico, ['class' => 'form-control', 'placeholder' => 'Ingrese el código de diagnostico']) !!}
-                <small class="text-danger">{{ $errors->first('codigo_diagnostico') }}</small>
-            </div>
-            @if($errors->has('codigo_diagnostico_exists'))
-                <div class="alert alert-danger">
-                    {{ $errors->first('codigo_diagnostico_exists') }}
-                </div>
-            @endif
-            <br>-->
+            @method('PUT')            
             <div class="form-group">
                 <strong>{!! Form::label('descripcion_diagnostico', 'descripcion de diagnostico') !!}</strong>
                 {!! Form::text('descripcion_diagnostico', $diagnostico->descripcion_diagnostico, ['class' => 'form-control', 'placeholder' => 'Ingrese descripcion']) !!}

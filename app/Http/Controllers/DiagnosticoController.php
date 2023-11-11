@@ -36,8 +36,6 @@ class DiagnosticoController extends Controller
         //
         return view('patologia.diagnosticos.create');
     }
-
-
     public function store(Request $request, Diagnostico $diagnostico)
     {
         $request->validate(
@@ -48,21 +46,15 @@ class DiagnosticoController extends Controller
         $user = auth()->user();       
         $diagnostico = Diagnostico::create(array_merge($request->all(), ['creatoruser_id' => $user->id],['updateduser_id' => $user->id]));
         return redirect()->route('patologia.diagnosticos.index')->with('mensaje','Se creó exitosamente');
-    }    
+    }  
 
-    
     public function show(Diagnostico $diagnosticos)
     {
         //
     }
 
-
     public function edit($id)
-    {
-        //
-        /*$diagnostico = Diagnostico::where('codigo_diagnostico', $codigo_diagnostico)->first();
-        return view('patologia.diagnosticos.edit', compact('diagnostico'));*/
-        
+    {        
         $diagnostico=Diagnostico::find($id);
         return view('patologia.diagnosticos.edit',compact('diagnostico'));
     }    

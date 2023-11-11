@@ -192,14 +192,14 @@ endif;
 unset($__errorArgs, $__bag); ?>
                 </div>            
             </div>
-            <div class="col-md-1">
+        <!--    <div class="col-md-1">
                 <div class="form-group">
                     <strong><?php echo Form::label('edad[]', 'Edad'); ?></strong>
                     <?php echo Form::text('edad[]', isset($paciente) ? $paciente->edad : '', ['class' => 'form-control', 'id' => 'edad', 'enabled' => 'disabled']); ?>
 
                 </div>
             </div>        
-        <!--        
+                
         <div class="col-md-2"> 
             <div class="form-group">
                 <strong><?php echo Form::label('edad[]', 'Edad de Paciente'); ?></strong>
@@ -214,6 +214,9 @@ unset($__errorArgs, $__bag); ?>
                 
             <br>
             <?php echo Form::submit('Guardar',['class'=>'btn btn-primary']); ?>
+
+            <?php echo Form::button('Cancelar', ['class' => 'btn btn-secondary', 'onclick' => 'window.history.go(-1);']); ?>
+
 
         <?php echo Form::close(); ?>
 

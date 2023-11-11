@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon; // Asegúrate de importar Carbon
+use Illuminate\Validation\Rule;
 
 
 
@@ -57,15 +58,15 @@ class PacienteController extends Controller
         return view('patologia.pacientes.create');
     }        
     
-    public function store(Request $request)
+    public function store(Request $request, Paciente $paciente)
     {
         $request->validate(
-            ['ci'=>'required',
+            ['ci' => ['required', 'string', 'max:255', Rule::unique('pacientes')->ignore($paciente->id)],
              'nombre'=>'required',
              'apellido'=>'required']
         ); 
         $user = auth()->user();
-        $hoy=date('Y-m-d');      
+        $hoy=date('Y-m-d'); 
         
         $datosPaciente = $request->all();
 
@@ -81,7 +82,9 @@ class PacienteController extends Controller
         $paciente = Paciente::create(array_merge($datosPaciente, ['creatoruser_id' => $user->id]));
         //$paciente = Paciente::create($request->all());
         return redirect()->route('patologia.paciente.index')->with('mensaje','Se creó exitosamente');    
-    }       
+    }  
+    
+    
     
     public function show(Paciente $paciente)
     {

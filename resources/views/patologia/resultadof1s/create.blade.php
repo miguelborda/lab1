@@ -10,19 +10,43 @@
     <div class="row align-items-center" style="height: 60px">
         <div class="col-md-6">
             <div class="titlemb-30">
-                <h2>Crear Formulario1</h2>
+                <h2>Crear Resultado de Formulario1s</h2>
             </div>
         </div>
     </div>
     <!-- end row -->
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
+<!--<script>
 $(document).ready(function() {
     $("#agregarLinea").click(function() {
         var lineaClonada = $(".custom-bg2").last().clone();
         lineaClonada.find('input').val('');
         $(".custom-bg2").last().after(lineaClonada);
+    });
+});
+</script>-->
+<script>
+$(document).ready(function() {
+    $("#agregarLinea").click(function() {
+        // Clonar la primera línea
+        var primeraLinea = $(".custom-bg2:first").clone();
+        primeraLinea.find('input').val('');
+        
+        // Agregar el botón "Eliminar" a la línea clonada
+        var botonEliminar = $('<button class="eliminarLinea">Quitar Linea de Registro</button>');
+        botonEliminar.click(function() {
+            primeraLinea.remove();
+        });
+        primeraLinea.append(botonEliminar);
+        
+        // Insertar la línea clonada después de la primera línea
+        $(".custom-bg2:first").after(primeraLinea);
+    });
+
+    // Controlador para eliminar la primera línea clonada
+    $(document).on("click", ".eliminarLinea", function() {
+        $(this).parent().remove();
     });
 });
 </script>
@@ -37,108 +61,86 @@ border-radius: 10px; /* Cambia el valor para ajustar el radio del borde */
 background-color: #DEE0E0; /* Cambia #ff0000 al color que desees */
 border-radius: 10px; /* Cambia el valor para ajustar el radio del borde */
 }
+/* Estilo para campos deshabilitados con una clase personalizada */
+input.custom-disabled:disabled {
+    background-color: #e0f2f1; /* Cambia este valor al color deseado */
+    /* Otros estilos adicionales según tus necesidades */
+}
+.col-md-1-5 {
+    flex: 0 0 10%;
+    max-width: 10%;
+}
+.col-md-2-5 {
+    flex: 0 0 15%;
+    max-width: 15%;
+}
 </style>
 <div class="card">
     <div class="card-body">
-        {!! Form::open(['route'=>'patologia.formulario1.store']) !!}
-        
-        <div class="row">
-            <div class="col-md-3">
+        {!! Form::open(['route'=>'patologia.resultadof1s.store']) !!}        
+        <div class="row custom-bg">
+            <div class="col-md-1-5">
                 <div class="form-group">
-                    <strong>{!! Form::label('num_solicitud', 'Numero de Solicitud') !!}</strong>
-                    {!! Form::text('num_solicitud', isset($formulario1) ? $formulario1->num_solicitud : '', ['class' => 'form-control', 'placeholder' => 'Ingrese Numero de Formulario']) !!}
+                    <strong>{!! Form::label('num_examen', 'Nº Examen') !!}</strong>
+                    {!! Form::text('num_examen', isset($formulario1) ? $resultadof1s->num_examen : '', ['class' => 'form-control', 'placeholder' => '']) !!}
                     <small class="text-danger">{{ $errors->first('num_solicitud') }}</small>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-2-5">
                 <div class="form-group">
-                    <strong>{!! Form::label('fecha_solicitud', 'Fecha de Solicitud') !!}</strong>
-                    {!! Form::date('fecha_solicitud', isset($formulario1) ? $formulario1->fecha_solicitud : '', ['max' => now()->toDateString(), 'min' => '1900-01-01']) !!}               
-                    @error('fecha_solicitud')
+                    <strong>{!! Form::label('fecha_resultado', 'Fecha Resultado') !!}</strong>
+                    {!! Form::date('fecha_resultado', isset($formulario1) ? $resultadof1s->fecha_resultado : '', ['max' => now()->toDateString(), 'min' => '1900-01-01']) !!}               
+                    @error('fecha_resultado')
                         <span class="text-danger">{{$message}}</span>
                     @enderror
                 </div>
             </div>
-        </div><br>        
-    <div class="row custom-bg">
-        <div class="col-md-4">            
-            <div class="form-group">
-                <strong>{!! Form::label('secretaria_regional', 'Secretaria Regional') !!}</strong>
-                {!! Form::select('secretaria_regional', $secretariaregionals, isset($formulario1) ? $formulario1->secretaria_regional : null, ['class' => 'form-control', 'placeholder' => 'Selecciona una Secretaria Regional']) !!}
-                <small class="text-danger">{{ $errors->first('secretaria_regional') }}</small>
+            <div class="col-md-2-5"> 
+                <div class="form-group">
+                    <strong>{!! Form::label('ci', 'CI') !!}</strong>
+                    {!! Form::text('ci', null, ['class' => 'form-control','disabled' => 'disabled']) !!}                
+                </div>
             </div>
+            <div class="col-md-3"> 
+                <div class="form-group">
+                    <strong>{!! Form::label('nombre', 'Nombre(s) Paciente') !!}</strong>
+                    {!! Form::text('nombre', null, ['class' => 'form-control','disabled' => 'disabled']) !!}                
+                </div>
+            </div>
+            <div class="col-md-3"> 
+                <div class="form-group">
+                    <strong>{!! Form::label('apellido', 'Apellidos Paciente') !!}</strong>
+                    {!! Form::text('apellido', null, ['class' => 'form-control','disabled' => 'disabled']) !!}                
+                </div>
+            </div>
+            <div class="col-md-1"> 
+                <div class="form-group">
+                    <strong>{!! Form::label('edad', 'Edad') !!}</strong>
+                    {!! Form::text('edad', null, ['class' => 'form-control','disabled' => 'disabled']) !!}                
+                </div>
+            </div>            
+            <div><br></div>
         </div>
-        <div class="col-md-4">            
-            <div class="form-group">
-                <strong>{!! Form::label('municipio', 'Municipio') !!}</strong>
-                {!! Form::select('municipio', $municipios, isset($formulario1) ? $formulario1->municipio : null, ['class' => 'form-control', 'placeholder' => 'Selecciona un Municipio']) !!}
-                <small class="text-danger">{{ $errors->first('municipio') }}</small>
-            </div>
-        </div>
-        <div class="col-md-4">            
-            <div class="form-group">
-                <strong>{!! Form::label('distrito', 'Distrito') !!}</strong>
-                {!! Form::select('distrito', $distritos, isset($formulario1) ? $formulario1->distrito : null, ['class' => 'form-control', 'placeholder' => 'Selecciona un Distrito']) !!}
-                <small class="text-danger">{{ $errors->first('distrito') }}</small>
-            </div>
-        </div>
-    </div>
-    <div class="row custom-bg">
-        <div class="col-md-4">            
-            <div class="form-group">
-                <strong>{!! Form::label('area', 'Area') !!}</strong>
-                {!! Form::select('area', $areas, isset($formulario1) ? $formulario1->area : null, ['class' => 'form-control', 'placeholder' => 'Selecciona una Area']) !!}
-                <small class="text-danger">{{ $errors->first('area') }}</small>
-            </div>
-        </div>
-        <div class="col-md-4">            
-            <div class="form-group">
-                <strong>{!! Form::label('establecimiento', 'Establecimiento') !!}</strong>
-                {!! Form::select('establecimiento', $establecimientos, isset($formulario1) ? $formulario1->establecimiento : null, ['class' => 'form-control', 'placeholder' => 'Selecciona un Establecimiento']) !!}
-                <small class="text-danger">{{ $errors->first('establecimiento') }}</small>
-            </div>
-        </div>
-        <div class="col-md-4">            
-            <div class="form-group">
-                <strong>{!! Form::label('sector', 'Sector') !!}</strong>
-                {!! Form::select('sector', $sectors, isset($formulario1) ? $formulario1->sector : null, ['class' => 'form-control', 'placeholder' => 'Selecciona un Sector']) !!}
-                <small class="text-danger">{{ $errors->first('sector') }}</small>
-            </div>
-        </div><div><br></div>         
-    </div><div><br><strong>DETALLE PACIENTES:</strong><br></div>        
+    <div><br><strong>DIAGNOSTICOS:</strong><br></div>        
     <div class="row custom-bg2" id="dynamicFields">
-        <div class="col-md-2"> 
+        <div class="col-md-1-5"> 
             <div class="form-group">
-                <strong>{!! Form::label('num_examen[]', 'Nº de Examen') !!}</strong>
-                {!! Form::text('num_examen[]', null, ['class' => 'form-control', 'placeholder' => 'Ingrese Nº de Examen']) !!}
-                <small class="text-danger">{{ $errors->first('num_examen') }}</small>
+                <strong>{!! Form::label('codigo_diagnostico[]', 'Código') !!}</strong>
+                {!! Form::text('codigo_diagnostico[]', null, ['class' => 'form-control', 'placeholder' => '']) !!}
+                <small class="text-danger">{{ $errors->first('codigo_diagnostico') }}</small>
             </div>
         </div>
-        <div class="col-md-4"> 
+        <div class="col-md-10"> 
             <div class="form-group">
-                <strong>{!! Form::label('nombre[]', 'Nombre del Paciente') !!}</strong>
-                {!! Form::text('nombre[]', null, ['class' => 'form-control', 'placeholder' => 'Ingrese Nombre del Paciente']) !!}
-                <small class="text-danger">{{ $errors->first('nombre') }}</small>
-            </div>
-        </div>        
-        <div class="col-md-2"> 
-            <div class="form-group">
-                <strong>{!! Form::label('edad[]', 'Edad de Paciente') !!}</strong>
-                {!! Form::text('edad[]', null, ['class' => 'form-control', 'placeholder' => 'Ingrese Edad']) !!}
-                <small class="text-danger">{{ $errors->first('edad') }}</small>
+                <strong>{!! Form::label('descripcion_diagnostico[]', 'Descripción de Diagnostico') !!}</strong>
+                {!! Form::text('descripcion_diagnostico[]', null, ['class' => 'form-control','disabled' => 'disabled']) !!}                
             </div>
         </div>
-        <div class="col-md-4"> 
-            <div class="form-group">
-                <strong>{!! Form::label('direccion[]', 'Dirección de Paciente') !!}</strong>
-                {!! Form::text('direccion[]', null, ['class' => 'form-control', 'placeholder' => 'Ingrese Dirección del Paciente']) !!}
-                <small class="text-danger">{{ $errors->first('direccion') }}</small>
-            </div>
-        </div><div><br></div>
-        
+        <div><br></div>        
     </div><button id="agregarLinea" type="button" class="btn btn-primary">Agregar Línea</button><br>        
             <br>
             {!! Form::submit('Guardar',['class'=>'btn btn-primary']) !!}
+            {!! Form::button('Cancelar', ['class' => 'btn btn-secondary', 'onclick' => 'window.history.go(-1);']) !!}
         {!! Form::close() !!}
     </div>
 </div>
@@ -148,5 +150,5 @@ border-radius: 10px; /* Cambia el valor para ajustar el radio del borde */
     <script src="js/datatable.js"></script>
     <script>
         $('#myTable').DataTable();
-    </script>
+    </script>    
 @endpush

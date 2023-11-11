@@ -21,21 +21,7 @@
     <div class="card-body">
         <form method="POST" action="<?php echo e(route('patologia.diagnosticos.update', $diagnostico->id)); ?>" onsubmit="return confirm('¿Estás seguro de que deseas modificar este registro?');">
             <?php echo csrf_field(); ?>
-            <?php echo method_field('PUT'); ?>
-
-            <!--<div class="form-group">
-                <strong><?php echo Form::label('codigo_diagnostico', 'codigo de diagnostico'); ?></strong>
-                <?php echo Form::text('codigo_diagnostico', $diagnostico->codigo_diagnostico, ['class' => 'form-control', 'placeholder' => 'Ingrese el código de diagnostico']); ?>
-
-                <small class="text-danger"><?php echo e($errors->first('codigo_diagnostico')); ?></small>
-            </div>
-            <?php if($errors->has('codigo_diagnostico_exists')): ?>
-                <div class="alert alert-danger">
-                    <?php echo e($errors->first('codigo_diagnostico_exists')); ?>
-
-                </div>
-            <?php endif; ?>
-            <br>-->
+            <?php echo method_field('PUT'); ?>            
             <div class="form-group">
                 <strong><?php echo Form::label('descripcion_diagnostico', 'descripcion de diagnostico'); ?></strong>
                 <?php echo Form::text('descripcion_diagnostico', $diagnostico->descripcion_diagnostico, ['class' => 'form-control', 'placeholder' => 'Ingrese descripcion']); ?>
