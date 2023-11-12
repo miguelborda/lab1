@@ -8,6 +8,9 @@ use App\Models\Resultadof1s;
 use App\Models\Diagnostico;
 use App\Models\Detallef1s;
 use App\Models\Paciente;
+use Illuminate\Validation\Rule;
+//use Illuminate\Validation\Rules\Exists;
+
 
 class Resultadof1sController extends Controller
 {
@@ -54,51 +57,35 @@ class Resultadof1sController extends Controller
     }
     public function store(Request $request)
     {
-        $request->validate(
-            ['num_examen'=>'required',             
-             'fecha_resultado'=>'required',             
-             //   'num_solicitud'=>'required',
-             //'ci'=>'required',             
-            ]
-        ); 
-        
+        $messages = [
+            'num_examen.exists' => 'El número de examen no está registrado.',
+            'num_examen.required' => 'El número de examen es obligatorio.',
+            'fecha_resultado.required' => 'La fecha de resultado es obligatoria.',          
+        ];    
+        $request->validate([
+            'num_examen' => [
+                'required',
+                Rule::exists('detallef1s', 'num_examen'),
+            ],
+            //dd('Validación ejecutada'),
+            'fecha_resultado' => 'required',            
+        ], $messages); 
+             
+        //dd('Validación ejecutada');
         $user = auth()->user();       
-        // dd(array_merge($request->all()));
-        
-
-        //$formulario1s = Formulario1::create(array_merge($request->all(), ['userid_creator' => $user->id], ['username_creator' => $user->email])); 
-        // Obtiene la ID del modelo Formulario1 recién creado
-        $resultadof1s = Resultadof1s::create([
+        // dd(array_merge($request->all()));        
+        for ($i=0;$i<count($request->codigo_diagnostico);$i++){
+            $resultadof1s = Resultadof1s::create([
             'num_examen' => $request->input('num_examen'),
             'fecha_resultado' => $request->input('fecha_resultado'),            
-            'creatoruser_id' => $user->id,            
-        ]);        
-        //$num_informef1 = $formulario1s->id;
-       /* $num_informef1 = $formulario1s->num_solicitud;
-        
-        for ($i=0;$i<count($request->num_examen);$i++){
-            
-             $detallef1s = Detallef1s::create ([
-             //'num_solicitud' => $request->input('num_solicitud'),
-             'nombre' => $request->nombre[$i],
-             'edad' => $request->edad[$i],
-             'num_examen' => $request->num_examen[$i],
-             'direccion' => $request->direccion[$i],
-             'num_informef1' => $num_informef1,
-             'userid_creator' => $user->id,             
-         ]);*/
-         //dd($detallef1s);        
-        
-            //$detallef1s = Detallef1s::create(array_merge($request->num_examen[$i], $request->nombre[$i], $request->edad[$i], $request->direccion[$i],$request->$num_informef1[$i],['num_informef1' => $num_informef1, 'userid_creator' => $user->id], ['username_creator' => $user->email]));
-            return redirect()->route('patologia.resultadof1s.index')->with('mensaje','Se creó exitosamente');
-
-        }
-        
-
-
-
-    
-      /* 
+            'ci_id' => Detallef1s::where('num_examen', $request->input('num_examen'))->value('ci'), // Obtener el 'ci' de 'detallef1s'
+            'creatoruser_id' => $user->id,   
+            'codigo_diagnostico' => $request->codigo_diagnostico[$i],         
+            ]);  
+        }                 
+         //dd($detallef1s);                          
+            return redirect()->route('patologia.resultadof1s.create')->with('mensaje', 'Se creó exitosamente');
+        }          
 
     public function show(Formulario1 $formulario1)
     {
@@ -118,8 +105,8 @@ class Resultadof1sController extends Controller
         $user = auth()->user();        
         Formulario1::where('id', $id)->update(array_merge($formulario1s, ['userid_lastupdated' => $user->id],['username_lastupdated' => $user->email],['updated_at' => $hoy]));   
         return redirect()->route('patologia.formulario1.index')->with('mensaje', 'Se actualizó exitosamente');
-    }
-    
+    }*/
+    /*
     public function destroy(Formulario1 $formulario1, $id)
     {
         $formulario1s=Formulario1::find($id);

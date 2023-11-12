@@ -9,5 +9,13 @@ class Resultadof1s extends Model
 {
     use HasFactory;
     protected $fillable=['num_examen','fecha_resultado','descripcion','codigo_diagnostico',    
-    'userid_creator','userid_lastupdated','created_at','updated_at'];
+    'creatoruser_id','updateduser_id','ci_id','detallef1s_id','created_at','updated_at'];
+
+    protected $table = 'resultadof1s'; // Nombre real de tu tabla
+    //protected $primaryKey = 'id'; // Clave primaria de tu tabla
+
+    /*public function detallef1s()
+    {
+       return $this->belongsTo(Detallef1s::class, 'num_examen', 'id');
+    }*/
 }

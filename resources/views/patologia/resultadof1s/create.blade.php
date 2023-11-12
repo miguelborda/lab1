@@ -84,8 +84,13 @@ input.custom-disabled:disabled {
                     <strong>{!! Form::label('num_examen', 'Nº Examen') !!}</strong>
                     {!! Form::text('num_examen', isset($formulario1) ? $resultadof1s->num_examen : '', ['class' => 'form-control', 'placeholder' => '']) !!}
                     <small class="text-danger">{{ $errors->first('num_solicitud') }}</small>
+                    @if($errors->any())
+                        <script>
+                            alert("{{ implode('\n', $errors->all()) }}");
+                        </script>
+                    @endif
                 </div>
-            </div>
+            </div>            
             <div class="col-md-2-5">
                 <div class="form-group">
                     <strong>{!! Form::label('fecha_resultado', 'Fecha Resultado') !!}</strong>
@@ -141,6 +146,14 @@ input.custom-disabled:disabled {
             <br>
             {!! Form::submit('Guardar',['class'=>'btn btn-primary']) !!}
             {!! Form::button('Cancelar', ['class' => 'btn btn-secondary', 'onclick' => 'window.history.go(-1);']) !!}
+            @if(session('mensaje'))
+            <div class="alert alert-success">
+                {{ session('mensaje') }}
+            </div>
+            {{-- <button type="button" class="btn btn-success btn-lg" target="_blank">Imprimir Lista</button> --}}
+		        <a href="{{ route('patologia.resultadof1s.pdf') }}" class="btn btn-success btn-lg" target="_blank">Imprimir Informe</a> 
+            @endif
+
         {!! Form::close() !!}
     </div>
 </div>

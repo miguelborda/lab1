@@ -82,11 +82,16 @@ input.custom-disabled:disabled {
             <div class="col-md-1-5">
                 <div class="form-group">
                     <strong><?php echo Form::label('num_examen', 'Nº Examen'); ?></strong>
-                    <?php echo Form::text('num_examen', isset($formulario1) ? $detalle->num_examen : '', ['class' => 'form-control', 'placeholder' => '']); ?>
+                    <?php echo Form::text('num_examen', isset($formulario1) ? $resultadof1s->num_examen : '', ['class' => 'form-control', 'placeholder' => '']); ?>
 
                     <small class="text-danger"><?php echo e($errors->first('num_solicitud')); ?></small>
+                    <?php if($errors->any()): ?>
+                        <script>
+                            alert("<?php echo e(implode('\n', $errors->all())); ?>");
+                        </script>
+                    <?php endif; ?>
                 </div>
-            </div>
+            </div>            
             <div class="col-md-2-5">
                 <div class="form-group">
                     <strong><?php echo Form::label('fecha_resultado', 'Fecha Resultado'); ?></strong>
@@ -151,6 +156,15 @@ unset($__errorArgs, $__bag); ?>
             <?php echo Form::submit('Guardar',['class'=>'btn btn-primary']); ?>
 
             <?php echo Form::button('Cancelar', ['class' => 'btn btn-secondary', 'onclick' => 'window.history.go(-1);']); ?>
+
+            <?php if(session('mensaje')): ?>
+            <div class="alert alert-success">
+                <?php echo e(session('mensaje')); ?>
+
+            </div>
+            
+		        <a href="<?php echo e(route('patologia.resultadof1s.pdf')); ?>" class="btn btn-success btn-lg" target="_blank">Imprimir Informe</a> 
+            <?php endif; ?>
 
         <?php echo Form::close(); ?>
 
