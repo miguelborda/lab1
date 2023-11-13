@@ -25,9 +25,8 @@ tr.odd {
 }
 
 </style>
-
-
 </head>
+
 
 <body>
   <div style="text-align: center;">
@@ -55,6 +54,7 @@ tr.odd {
           </tr>
           <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
           <!-- end table row -->
+          
         </tbody>
     </table>
   <!-- Bootstrap JavaScript Libraries -->
@@ -65,6 +65,14 @@ tr.odd {
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
     integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
   </script>
+  <script type="text/php">
+  if (isset($pdf))
+    {
+      $font = Font_Metrics::get_font("Arial", "bold");
+      $pdf->page_text(765, 550, "Pagina {PAGE_NUM} de {PAGE_COUNT}", $font, 9, array(0, 0, 0));
+    }
+</script>
+  
 </body>
 
 </html>

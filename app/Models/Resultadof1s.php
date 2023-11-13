@@ -14,8 +14,8 @@ class Resultadof1s extends Model
     protected $table = 'resultadof1s'; // Nombre real de tu tabla
     //protected $primaryKey = 'id'; // Clave primaria de tu tabla
 
-    /*public function detallef1s()
+    public function detallef1s()
     {
        return $this->belongsTo(Detallef1s::class, 'num_examen', 'id');
-    }*/
+    }
 }

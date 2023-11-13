@@ -116,14 +116,20 @@ Route::middleware($middlewares)->group(function()
 });
 Route::middleware($middlewares)->group(function()
 {
+    Route::get('Resultadof1s/pdf', [Resultadof1sController::class, 'pdf'])->name('patologia.resultadof1s.pdf');      
+
     Route::get('Detallef1s/pdf', [Detallef1sController::class, 'pdf'])->name('patologia.detallef1s.pdf');      
     Route::resource('/Detallef1s', Detallef1sController::class)->names('patologia.detallef1s');    
 });
 Route::middleware($middlewares)->group(function()
 {
+    //Route::get('/Resultadosf1s/pdf{id}', 'Resultadof1sController@pdf');
+
     Route::get('Resultadof1s/pdf', [Resultadof1sController::class, 'pdf'])->name('patologia.resultadof1s.pdf');      
     Route::resource('/Resultadof1s', Resultadof1sController::class)->names('patologia.resultadof1s');    
-    
+    Route::get('/Informesf1s', [Resultadof1sController::class, 'index2'])->name('patologia.resultadof1s.index2');   
+    //Route::get('Resultadof1s/index2', 'Resultadof1sController@index2')->name('patologia.resultadof1s.index2');   
+
     //Route::post('/obtener-datos', [Resultadof1sController::class, 'obtenerDatos']);
 });
 

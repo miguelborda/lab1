@@ -9,6 +9,12 @@ use App\Models\Diagnostico;
 use App\Models\Detallef1s;
 use App\Models\Paciente;
 use Illuminate\Validation\Rule;
+use App\Models\Formulario1;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Dompdf\Dompdf;
+use Dompdf\Options;
+
+
 //use Illuminate\Validation\Rules\Exists;
 
 
@@ -37,6 +43,14 @@ class Resultadof1sController extends Controller
             'resultadof1s'   =>  $resultadof1s
         ]);
     }
+    public function index2()
+    {
+        $detallef1s = Detallef1s::with('paciente','resultadof1')->where('estado', true)->get();
+
+        return view("patologia.resultadof1s.index2", [
+            'detallef1s' => $detallef1s
+        ]);
+    }
     
     /*public function pdf()
     {
@@ -44,12 +58,20 @@ class Resultadof1sController extends Controller
         $pdf = Pdf::loadView('patologia.formulario1.pdf', compact('formulario1s'));
         return $pdf->stream();
         //return $pdf->download('invoice.pdf');  --> para descargar pdf
-    }*/
+    }*/   
+
+    public function pdf()
+    {        
+        //$detallef1s= Detallef1s::find($id);
+        $detallef1s = Detallef1s::where('estado', true)->get();
+        $pdf = Pdf::loadView('patologia.resultadof1s.pdf', compact('detallef1s'));
+        return $pdf->stream();
+        //return $pdf->download('invoice.pdf');  --> para descargar pdf
+    }
     
     public function create()
     {   
         /*$detalles = Detallef1s::where('estado',true);
-
         $sectors = Sector::where('estado', true)->orderBy('nombre_sector', 'asc')->pluck('nombre_sector', 'nombre_sector');       */
         return view('patologia.resultadof1s.create');
 
@@ -80,16 +102,32 @@ class Resultadof1sController extends Controller
             'fecha_resultado' => $request->input('fecha_resultado'),            
             'ci_id' => Detallef1s::where('num_examen', $request->input('num_examen'))->value('ci'), // Obtener el 'ci' de 'detallef1s'
             'creatoruser_id' => $user->id,   
-            'codigo_diagnostico' => $request->codigo_diagnostico[$i],         
+            'codigo_diagnostico' => $request->codigo_diagnostico[$i],                     
             ]);  
-        }                 
+        }
+       // $fresultado = $request->input('fecha_resultado');
+       $detallef1s = Detallef1s::where('num_examen', $request->input('num_examen'))->first();
+
+        if ($detallef1s) {
+            // Actualizar 'fecha_resultado' si existe el registro
+            $detallef1s->update([
+                'fecha_resultado' => $request->input('fecha_resultado'),                
+            ]);
+        } else {
+            $detallef1s->update([
+                'fecha_resultado' => $request->input('fecha_resultado'),                
+            ]);
+        }        
          //dd($detallef1s);                          
             return redirect()->route('patologia.resultadof1s.create')->with('mensaje', 'Se creó exitosamente');
-        }          
+    }          
 
-    public function show(Formulario1 $formulario1)
+    public function show(Resultadof1s $resultadof1s)
     {
-        //
+        //$resultadof1s = Resultadof1s::where('estado', true)->get();
+        //return view("patologia.resultadof1s.show", [
+        //    'resultadof1s'   =>  $resultadof1s
+        //]);
     }
     
     public function edit(Resultadof1s $resultadof1, $id)

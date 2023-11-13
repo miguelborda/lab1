@@ -24,6 +24,15 @@ tr.odd {
     background-color: #ffffff; /* Color de fondo para filas impares (puedes ajustar el color) */
 }
 
+h3.text-center:first-child {
+    margin-bottom: 0;
+}
+
+h3.text-center:last-child {
+    margin-top: 0;
+}
+
+
 </style>
 
 
@@ -34,28 +43,31 @@ tr.odd {
       <img src="images/HBhospitalamigo.jpg" alt="" width="100px" height="100px" style="float: left;">      
       <br><br>
   </div>
-    <h1 class="text-center">LISTADO DE AREAS</h1><br>
+    <h3 class="text-center" style="margin-bottom: 0;">SERVICIO DE DIAGNOSTICO MEDICO DE</h3>
+    <h3 class="text-center" style="margin-top: 0;">ANATOMIA PATOLOGICA - CITOLOGIA</h3>
+    <br>
     <table class="table table-striped">
+        <thead class="cabecera"><th style="text-align: center"><h6>hola</h6></th></thead><br>
+    
+        <!--
         <thead class="cabecera">
           <tr>
               <th style="text-align: center"><h6>CODIGO</h6></th>
               <th><h6>NOMBRE DE AREA</h6></th>              
           </tr><br>
-          <!-- end table row-->
-        </thead>
+       
         <tbody>
-        @foreach($areas as $key => $area)
-          <tr class="{{ $key % 2 == 0 ? 'even' : 'odd' }}">
+        @foreach($detallef1s as $detallef1)
+          
               <td class="min-width" style="text-align: center; ">
-                  <p>{{$area->codigo_area}}</p>
+                  <p>{{$detallef1->id}}</p>
               </td>
               <td class="min-width">
-                  <p>{{$area->nombre_area}}</p>
+                  <p>{{$detallef1->num_examen}}</p>
               </td>
-          </tr>
+          
           @endforeach
-          <!-- end table row -->
-        </tbody>
+        </tbody>-->
     </table>
   <!-- Bootstrap JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"

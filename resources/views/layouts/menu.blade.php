@@ -108,4 +108,9 @@
       <a href="{{ route('patologia.resultadof1s.index') }}"> Resultadof1s </a>
     </li>
   </ul>
+  <ul id="ddmenu_1" class="collapse dropdown-nav">
+    <li>
+      <a href="{{ route('patologia.resultadof1s.index2') }}"> InformesF1s </a>
+    </li>
+  </ul>
 </li>
