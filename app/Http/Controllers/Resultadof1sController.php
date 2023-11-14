@@ -10,6 +10,8 @@ use App\Models\Detallef1s;
 use App\Models\Paciente;
 use Illuminate\Validation\Rule;
 use App\Models\Formulario1;
+use App\Models\Area;
+
 use Barryvdh\DomPDF\Facade\Pdf;
 use Dompdf\Dompdf;
 use Dompdf\Options;
@@ -45,28 +47,41 @@ class Resultadof1sController extends Controller
     }
     public function index2()
     {
-        $detallef1s = Detallef1s::with('paciente','resultadof1')->where('estado', true)->get();
+        $infors = Detallef1s::where('estado', true)->get();
 
         return view("patologia.resultadof1s.index2", [
-            'detallef1s' => $detallef1s
+            'infors' => $infors
         ]);
     }
     
-    /*public function pdf()
+    /*public function pdfresultados()
     {
         $formulario1s=Formulario1::all();
         $pdf = Pdf::loadView('patologia.formulario1.pdf', compact('formulario1s'));
         return $pdf->stream();
         //return $pdf->download('invoice.pdf');  --> para descargar pdf
-    }*/   
+    }*/
 
-    public function pdf()
+    public function pdf($id)
     {        
-        //$detallef1s= Detallef1s::find($id);
-        $detallef1s = Detallef1s::where('estado', true)->get();
-        $pdf = Pdf::loadView('patologia.resultadof1s.pdf', compact('detallef1s'));
+        $infor= Detallef1s::find($id);
+        
+        $ci = $infor->ci;
+        $numexam = $infor->num_examen;
+
+        // Obtén los datos de la tabla "pacientes" donde ci sea igual al ci del detallef1s
+        $paciente = Paciente::where('ci', $ci)->first();
+        $areas = Area::all();
+
+        //$resultadof1s = Resultadof1s::where('estado', true)->get();
+
+        //$resultados = Resultadof1s::where('num_examen', $numexam)->first();        
+        //$detallef1s = Detallef1s::where('estado', true)->get();
+        $pdf = Pdf::loadView('patologia.resultadof1s.pdf', compact('infor','paciente','areas'));
         return $pdf->stream();
         //return $pdf->download('invoice.pdf');  --> para descargar pdf
+        //return view('patologia.resultadof1s.pdf',compact('infor'));
+
     }
     
     public function create()

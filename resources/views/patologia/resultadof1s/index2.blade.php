@@ -11,17 +11,8 @@
         <div class="titlemb-30">
           <h2>Informesf1s</h2>
         </div>
-      </div>
-      <!--<div class="col-md-6" style="text-align: right;">
-        <div class="titlemb-30">
-		{{-- <button type="button" class="btn btn-primary btn-lg">Nuevo</button> --}}
-          <a href="{{ route('patologia.resultadof1s.create') }}" class="btn btn-primary btn-lg">Nuevo</a>
-		{{-- <button type="button" class="btn btn-success btn-lg" target="_blank">Imprimir Lista</button> --}}
-		<a href="{{ route('patologia.resultadof1s.pdf') }}" class="btn btn-success btn-lg" target="_blank">Imprimir Lista</a> 
-        </div>
-      </div>-->
-    </div>
-    <!-- end row -->
+      </div>      
+    </div>    
   </div>
 @if (session('mensaje'))
 	<div class="alert alert-success">
@@ -38,39 +29,36 @@
 		                <tr>		                  
 		                  <th><h6>ID</h6></th>
 						  <th><h6>Nº EXAMEN</h6></th>
-						  <th><h6>CI</h6></th> 
-						  <th><h6>NOMBRE PACIENTE</h6></th>
-						  <th><h6>APELLIDO PACIENTE</h6></th>
-						  <th><h6>FECHA RESULTADO</h6></th> 						  
-		                  <th><h6>IMPRIMIR</h6></th>						  
+						  <th><h6>CI</h6></th>
+						  <th><h6>NOMBRE</h6></th>
+						  <th><h6>APELLIDO</h6></th>
+						  <th><h6>Reportes</h6></th>
+						  				  
 		                </tr>
 		                <!-- end table row-->
 		              </thead>
 		              <tbody>				  	
 
-		              	@foreach($detallef1s as $detallef1)
+		              	@foreach($infors as $infor)
 		                <tr>		                  
 		                  <td class="min-width">
-		                    <p>{{$detallef1->id}}</p>
+		                    <p>{{$infor->id}}</p>
 		                  </td>		            
 						  <td class="min-width">
-		                    <p>{{$detallef1->num_examen}}</p>
+		                    <p>{{$infor->num_examen}}</p>
 		                  </td>		            
 						  <td class="min-width">
-		                    <p>{{$detallef1->paciente->ci}}</p>
-		                  </td>
-		                  <td class="min-width">
-		                    <p>{{$detallef1->paciente->nombre}}</p>
+		                    <p>{{$infor->ci}}</p>
 		                  </td>		            
 						  <td class="min-width">
-		                    <p>{{$detallef1->paciente->apellido}}</p>
-		                  </td>		            						  
-						  	            
+		                    <p>{{$infor->paciente->nombre}}</p>
+		                  </td>		            
 						  <td class="min-width">
-		                    <p>{{$detallef1->fecha_resultado}}</p>
-		                  </td>
+		                    <p>{{$infor->paciente->apellido}}</p>
+		                  </td>		            
+						  
 						  <td width="15px">				  
-						  <a href="{{ route('patologia.resultadof1s.pdf', $detallef1->id) }}" class="btn btn-success btn-lg" target="_blank">Imprimir</a> 
+						  <a href="{{ route('patologia.resultadof1s.pdf', ['id' => $infor->id]) }}" class="btn btn-success btn-lg" target="_blank">Imprimir</a> 
                           </td>							
 		                </tr>
 		                @endforeach

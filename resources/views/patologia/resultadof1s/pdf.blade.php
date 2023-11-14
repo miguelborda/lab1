@@ -32,12 +32,9 @@ h3.text-center:last-child {
     margin-top: 0;
 }
 
-
 </style>
 
-
 </head>
-
 <body>
   <div style="text-align: center;">
       <img src="images/HBhospitalamigo.jpg" alt="" width="100px" height="100px" style="float: left;">      
@@ -47,27 +44,35 @@ h3.text-center:last-child {
     <h3 class="text-center" style="margin-top: 0;">ANATOMIA PATOLOGICA - CITOLOGIA</h3>
     <br>
     <table class="table table-striped">
-        <thead class="cabecera"><th style="text-align: center"><h6>hola</h6></th></thead><br>
+        <thead class="cabecera"><th style="text-align: left"><h6>Nº Examen: {{$infor->num_examen}}</h6></th></thead><br>
+        <thead class="cabecera"><th style="text-align: left"><h6>CI: {{$infor->ci}}</h6></th></thead><br>
+        <thead class="cabecera"><th style="text-align: left"><h6>Nombre: {{$paciente->nombre}}</h6></th></thead><br>
+        <thead class="cabecera"><th style="text-align: left"><h6>Apellido: {{$paciente->apellido}}</h6></th></thead><br>
+        <h1 class="text-center">LISTADO DE AREAS</h1><br>
+        <table class="table table-striped">
+            <thead class="cabecera">
+              <tr>
+                  <th style="text-align: center"><h6>ID AREA</h6></th>
+                  <th><h6>NOMBRE DE AREA</h6></th>              
+              </tr><br>
+              <!-- end table row-->
+            </thead>
+            <tbody>
+            @foreach($areas as $key => $area)
+              <tr class="{{ $key % 2 == 0 ? 'even' : 'odd' }}">
+                  <td class="min-width" style="text-align: center; ">
+                      <p>{{$area->id}}</p>
+                  </td>
+                  <td class="min-width">
+                      <p>{{$area->nombre_area}}</p>
+                  </td>
+              </tr>
+              @endforeach
+              <!-- end table row -->
+            </tbody>
+        </table>
     
-        <!--
-        <thead class="cabecera">
-          <tr>
-              <th style="text-align: center"><h6>CODIGO</h6></th>
-              <th><h6>NOMBRE DE AREA</h6></th>              
-          </tr><br>
-       
-        <tbody>
-        @foreach($detallef1s as $detallef1)
-          
-              <td class="min-width" style="text-align: center; ">
-                  <p>{{$detallef1->id}}</p>
-              </td>
-              <td class="min-width">
-                  <p>{{$detallef1->num_examen}}</p>
-              </td>
-          
-          @endforeach
-        </tbody>-->
+        
     </table>
   <!-- Bootstrap JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"

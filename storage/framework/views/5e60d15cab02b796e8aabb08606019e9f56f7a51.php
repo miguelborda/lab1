@@ -17,7 +17,6 @@
 		
           <a href="<?php echo e(route('patologia.resultadof1s.create')); ?>" class="btn btn-primary btn-lg">Nuevo</a>
 		
-		<a href="<?php echo e(route('patologia.resultadof1s.pdf')); ?>" class="btn btn-success btn-lg" target="_blank">Imprimir Lista</a> 
         </div>
       </div>
     </div>

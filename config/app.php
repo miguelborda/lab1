@@ -196,6 +196,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Illuminate\Auth\AuthServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
       //##modules
       //App\Modules\Siat\SiatProvider::class,
       Milon\Barcode\BarcodeServiceProvider::class,

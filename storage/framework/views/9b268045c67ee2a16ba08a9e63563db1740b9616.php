@@ -11,17 +11,8 @@
         <div class="titlemb-30">
           <h2>Informesf1s</h2>
         </div>
-      </div>
-      <!--<div class="col-md-6" style="text-align: right;">
-        <div class="titlemb-30">
-		
-          <a href="<?php echo e(route('patologia.resultadof1s.create')); ?>" class="btn btn-primary btn-lg">Nuevo</a>
-		
-		<a href="<?php echo e(route('patologia.resultadof1s.pdf')); ?>" class="btn btn-success btn-lg" target="_blank">Imprimir Lista</a> 
-        </div>
-      </div>-->
-    </div>
-    <!-- end row -->
+      </div>      
+    </div>    
   </div>
 <?php if(session('mensaje')): ?>
 	<div class="alert alert-success">
@@ -38,39 +29,36 @@
 		                <tr>		                  
 		                  <th><h6>ID</h6></th>
 						  <th><h6>Nº EXAMEN</h6></th>
-						  <th><h6>CI</h6></th> 
-						  <th><h6>NOMBRE PACIENTE</h6></th>
-						  <th><h6>APELLIDO PACIENTE</h6></th>
-						  <th><h6>FECHA RESULTADO</h6></th> 						  
-		                  <th><h6>IMPRIMIR</h6></th>						  
+						  <th><h6>CI</h6></th>
+						  <th><h6>NOMBRE</h6></th>
+						  <th><h6>APELLIDO</h6></th>
+						  <th><h6>Reportes</h6></th>
+						  				  
 		                </tr>
 		                <!-- end table row-->
 		              </thead>
 		              <tbody>				  	
 
-		              	<?php $__currentLoopData = $detallef1s; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $detallef1): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+		              	<?php $__currentLoopData = $infors; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $infor): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 		                <tr>		                  
 		                  <td class="min-width">
-		                    <p><?php echo e($detallef1->id); ?></p>
+		                    <p><?php echo e($infor->id); ?></p>
 		                  </td>		            
 						  <td class="min-width">
-		                    <p><?php echo e($detallef1->num_examen); ?></p>
+		                    <p><?php echo e($infor->num_examen); ?></p>
 		                  </td>		            
 						  <td class="min-width">
-		                    <p><?php echo e($detallef1->paciente->ci); ?></p>
-		                  </td>
-		                  <td class="min-width">
-		                    <p><?php echo e($detallef1->paciente->nombre); ?></p>
+		                    <p><?php echo e($infor->ci); ?></p>
 		                  </td>		            
 						  <td class="min-width">
-		                    <p><?php echo e($detallef1->paciente->apellido); ?></p>
-		                  </td>		            						  
-						  	            
+		                    <p><?php echo e($infor->paciente->nombre); ?></p>
+		                  </td>		            
 						  <td class="min-width">
-		                    <p><?php echo e($detallef1->fecha_resultado); ?></p>
-		                  </td>
+		                    <p><?php echo e($infor->paciente->apellido); ?></p>
+		                  </td>		            
+						  
 						  <td width="15px">				  
-						  <a href="<?php echo e(route('patologia.resultadof1s.pdf', $detallef1->id)); ?>" class="btn btn-success btn-lg" target="_blank">Imprimir</a> 
+						  <a href="<?php echo e(route('patologia.resultadof1s.pdf', ['id' => $infor->id])); ?>" class="btn btn-success btn-lg" target="_blank">Imprimir</a> 
                           </td>							
 		                </tr>
 		                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Detallef1s extends Model
 {
     use HasFactory;
-    protected $fillable=['num_solicitud_id','num_examen','paciente_id','ci','descripcion',
+    protected $fillable=['id','num_solicitud_id','num_examen','paciente_id','ci','descripcion',
     'creatoruser_id','updateduser_id','created_at','updated_at','fecha_resultado'];
 
     protected $table = 'detallef1s'; // Nombre real de tu tabla

@@ -32,12 +32,9 @@ h3.text-center:last-child {
     margin-top: 0;
 }
 
-
 </style>
 
-
 </head>
-
 <body>
   <div style="text-align: center;">
       <img src="images/HBhospitalamigo.jpg" alt="" width="100px" height="100px" style="float: left;">      
@@ -47,27 +44,35 @@ h3.text-center:last-child {
     <h3 class="text-center" style="margin-top: 0;">ANATOMIA PATOLOGICA - CITOLOGIA</h3>
     <br>
     <table class="table table-striped">
-        <thead class="cabecera"><th style="text-align: center"><h6>hola</h6></th></thead><br>
+        <thead class="cabecera"><th style="text-align: left"><h6>Nº Examen: <?php echo e($infor->num_examen); ?></h6></th></thead><br>
+        <thead class="cabecera"><th style="text-align: left"><h6>CI: <?php echo e($infor->ci); ?></h6></th></thead><br>
+        <thead class="cabecera"><th style="text-align: left"><h6>Nombre: <?php echo e($paciente->nombre); ?></h6></th></thead><br>
+        <thead class="cabecera"><th style="text-align: left"><h6>Apellido: <?php echo e($paciente->apellido); ?></h6></th></thead><br>
+        <h1 class="text-center">LISTADO DE AREAS</h1><br>
+        <table class="table table-striped">
+            <thead class="cabecera">
+              <tr>
+                  <th style="text-align: center"><h6>ID AREA</h6></th>
+                  <th><h6>NOMBRE DE AREA</h6></th>              
+              </tr><br>
+              <!-- end table row-->
+            </thead>
+            <tbody>
+            <?php $__currentLoopData = $areas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $area): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+              <tr class="<?php echo e($key % 2 == 0 ? 'even' : 'odd'); ?>">
+                  <td class="min-width" style="text-align: center; ">
+                      <p><?php echo e($area->id); ?></p>
+                  </td>
+                  <td class="min-width">
+                      <p><?php echo e($area->nombre_area); ?></p>
+                  </td>
+              </tr>
+              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+              <!-- end table row -->
+            </tbody>
+        </table>
     
-        <!--
-        <thead class="cabecera">
-          <tr>
-              <th style="text-align: center"><h6>CODIGO</h6></th>
-              <th><h6>NOMBRE DE AREA</h6></th>              
-          </tr><br>
-       
-        <tbody>
-        <?php $__currentLoopData = $detallef1s; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $detallef1): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-          
-              <td class="min-width" style="text-align: center; ">
-                  <p><?php echo e($detallef1->id); ?></p>
-              </td>
-              <td class="min-width">
-                  <p><?php echo e($detallef1->num_examen); ?></p>
-              </td>
-          
-          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-        </tbody>-->
+        
     </table>
   <!-- Bootstrap JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
