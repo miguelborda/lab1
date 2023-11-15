@@ -17,39 +17,7 @@
     <!-- end row -->
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<!--<script>
-$(document).ready(function() {
-    $("#agregarLinea").click(function() {
-        var lineaClonada = $(".custom-bg2").last().clone();
-        lineaClonada.find('input').val('');
-        $(".custom-bg2").last().after(lineaClonada);
-    });
-});
-</script>-->
-<script>
-$(document).ready(function() {
-    $("#agregarLinea").click(function() {
-        // Clonar la primera línea
-        var primeraLinea = $(".custom-bg2:first").clone();
-        primeraLinea.find('input').val('');
-        
-        // Agregar el botón "Eliminar" a la línea clonada
-        var botonEliminar = $('<button class="eliminarLinea">Quitar Linea de Registro</button>');
-        botonEliminar.click(function() {
-            primeraLinea.remove();
-        });
-        primeraLinea.append(botonEliminar);
-        
-        // Insertar la línea clonada después de la primera línea
-        $(".custom-bg2:first").after(primeraLinea);
-    });
 
-    // Controlador para eliminar la primera línea clonada
-    $(document).on("click", ".eliminarLinea", function() {
-        $(this).parent().remove();
-    });
-});
-</script>
 
 
 <style>
@@ -81,15 +49,12 @@ input.custom-disabled:disabled {
         <div class="row custom-bg">
             <div class="col-md-1-5">
                 <div class="form-group">
-                    <strong><?php echo Form::label('num_examen', 'Nº Examen'); ?></strong>
-                    <?php echo Form::text('num_examen', isset($formulario1) ? $resultadof1s->num_examen : '', ['class' => 'form-control', 'placeholder' => '']); ?>
+                    <strong><?php echo Form::label('num_examen', 'Nº Exam'); ?></strong>
+                
+                <?php echo Form::text('num_examen', '', ['class' => 'form-control examen']); ?>
 
                     <small class="text-danger"><?php echo e($errors->first('num_solicitud')); ?></small>
-                    <?php if($errors->any()): ?>
-                        <script>
-                            alert("<?php echo e(implode('\n', $errors->all())); ?>");
-                        </script>
-                    <?php endif; ?>
+                    
                 </div>
             </div>            
             <div class="col-md-2-5">
@@ -111,25 +76,25 @@ unset($__errorArgs, $__bag); ?>
             <div class="col-md-2-5"> 
                 <div class="form-group">
                     <strong><?php echo Form::label('ci', 'CI'); ?></strong>
-                    <?php echo Form::text('ci', null, ['class' => 'form-control','disabled' => 'disabled']); ?>                
+                    <?php echo Form::text('ci', null, ['class' => 'form-control cedula','disabled' => 'disabled']); ?>                
                 </div>
             </div>
             <div class="col-md-3"> 
                 <div class="form-group">
                     <strong><?php echo Form::label('nombre', 'Nombre(s) Paciente'); ?></strong>
-                    <?php echo Form::text('nombre', null, ['class' => 'form-control','disabled' => 'disabled']); ?>                
+                    <?php echo Form::text('nombre', null, ['class' => 'form-control nombrepaciente','disabled' => 'disabled']); ?>                
                 </div>
             </div>
             <div class="col-md-3"> 
                 <div class="form-group">
                     <strong><?php echo Form::label('apellido', 'Apellidos Paciente'); ?></strong>
-                    <?php echo Form::text('apellido', null, ['class' => 'form-control','disabled' => 'disabled']); ?>                
+                    <?php echo Form::text('apellido', null, ['class' => 'form-control apellidopaciente','disabled' => 'disabled']); ?>                
                 </div>
             </div>
             <div class="col-md-1"> 
                 <div class="form-group">
                     <strong><?php echo Form::label('edad', 'Edad'); ?></strong>
-                    <?php echo Form::text('edad', null, ['class' => 'form-control','disabled' => 'disabled']); ?>                
+                    <?php echo Form::text('edad', null, ['class' => 'form-control edadpaciente','disabled' => 'disabled']); ?>                
                 </div>
             </div>            
             <div><br></div>
@@ -177,6 +142,79 @@ unset($__errorArgs, $__bag); ?>
     <script>
         $('#myTable').DataTable();
     </script>    
+    <!--<script>
+$(document).ready(function() {
+    $("#agregarLinea").click(function() {
+        var lineaClonada = $(".custom-bg2").last().clone();
+        lineaClonada.find('input').val('');
+        $(".custom-bg2").last().after(lineaClonada);
+    });
+});
+</script>-->
+<script>
+$(document).ready(function() {
+    
+    //* PROCESO PARA SABER SI YA ESTA REGISTRADO EL SERVICIO Y LA GESTION DE ROL TURNO
+    $('.examen').change(function() {
+        var valorinput = $('.examen').val();
+        console.log(valorinput);
+            $.ajax({
+                url: '<?php echo e(route('buscardatos.examen')); ?>',
+                type:'GET',
+                data: { dato: valorinput }, //document.getElementById("servicio").value
+                success: function(data){
+                   // alert(data['ci'])
+                   if(data!='no_existe'){
+                    $(".cedula").val(data['ci']);
+                    $(".nombrepaciente").val(data['nombre']);
+                    $(".apellidopaciente").val(data['apellido']);
+                    $(".edadpaciente").val(data['edad']);
+                   }else{
+                    alert('no encontrado')
+                   }
+                    
+                   /* if(data == 'existe'){ //resp=='error'
+                        $(".controlServicio").addClass('is-invalid');//no funciona
+                        $('#validacionServicio').text('Error ya se tiene registrado el rol turno para ese Mes !!!').addClass('text-danger').show();
+                        $(".controlMes").addClass('is-invalid');
+                        $('#validacionMes').text('Error ya se tiene registrado el rol turno para ese Mes !!!').addClass('text-danger').show();
+                        exiteGestion=1;
+                    }else {
+                        limpiarServicioGestion();
+                        exiteGestion=0;
+                    }  
+                    return false;*/
+                }
+             });
+        });
+    
+    //nueva funcion para mostrar datos pacientes mediante numero de examen
+
+
+    
+    //funcion para agregar filas de seccion diagnostico
+    $("#agregarLinea").click(function() {
+        // Clonar la primera línea
+        var primeraLinea = $(".custom-bg2:first").clone();
+        primeraLinea.find('input').val('');
+        
+        // Agregar el botón "Eliminar" a la línea clonada
+        var botonEliminar = $('<button class="eliminarLinea">Quitar Linea de Registro</button>');
+        botonEliminar.click(function() {
+            primeraLinea.remove();
+        });
+        primeraLinea.append(botonEliminar);
+        
+        // Insertar la línea clonada después de la primera línea
+        $(".custom-bg2:first").after(primeraLinea);
+    });
+
+    // Controlador para eliminar la primera línea clonada
+    $(document).on("click", ".eliminarLinea", function() {
+        $(this).parent().remove();
+    });
+});
+</script>
 <?php $__env->stopPush(); ?>
 
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\usuariosHB\resources\views/patologia/resultadof1s/create.blade.php ENDPATH**/ ?>

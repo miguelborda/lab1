@@ -130,6 +130,7 @@ Route::middleware($middlewares)->group(function()
     Route::get('/Resultadof1s/pdf/{id}', [Resultadof1sController::class, 'pdf'])->name('patologia.resultadof1s.pdf');      
     Route::resource('/Resultadof1s', Resultadof1sController::class)->names('patologia.resultadof1s');    
     Route::get('/Informesf1s', [Resultadof1sController::class, 'index2'])->name('patologia.resultadof1s.index2');   
+    Route::get('/obtener/datos', [Resultadof1sController::class, 'buscardatos'])->name('buscardatos.examen');   
     //Route::get('Resultadof1s/index2', 'Resultadof1sController@index2')->name('patologia.resultadof1s.index2');   
 
     //Route::post('/obtener-datos', [Resultadof1sController::class, 'obtenerDatos']);

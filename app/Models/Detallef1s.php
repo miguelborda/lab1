@@ -25,3 +25,4 @@ class Detallef1s extends Model
         return $this->belongsTo(Resultadof1s::class, 'num_examen', 'num_examen');
     }
 }
+ 

@@ -170,5 +170,18 @@ class Resultadof1sController extends Controller
         $formulario1s->save();
         return redirect()->route('patologia.formulario1s.index')->with('mensaje', 'El area se marcó como inactivo');
     }*/
+    public function buscardatos(Request $request)
+    {
+        $resultado= Detallef1s::where('num_examen', $request->dato)->first();
+        if(isset($resultado) ){
+            $paciente= Paciente::where('ci', $resultado->ci)->first();
+            return response()->json($paciente);
+        }else{
+            return response()->json('no_existe');
+        }
+       // $resultadof1s=Formulario1::find($id);
+      //  return view('patologia.formulario1.edit',compact('formulario1s'));
+    }
+
 
 }

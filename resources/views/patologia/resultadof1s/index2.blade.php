@@ -33,6 +33,7 @@
 						  <th><h6>NOMBRE</h6></th>
 						  <th><h6>APELLIDO</h6></th>
 						  <th><h6>Reportes</h6></th>
+						  <th><h6>Fecha Resultado</h6></th>
 						  				  
 		                </tr>
 		                <!-- end table row-->
@@ -56,7 +57,9 @@
 						  <td class="min-width">
 		                    <p>{{$infor->paciente->apellido}}</p>
 		                  </td>		            
-						  
+						  <td class="min-width">
+		                    <p>{{$infor->apellido}}</p>
+		                  </td>
 						  <td width="15px">				  
 						  <a href="{{ route('patologia.resultadof1s.pdf', ['id' => $infor->id]) }}" class="btn btn-success btn-lg" target="_blank">Imprimir</a> 
                           </td>							
