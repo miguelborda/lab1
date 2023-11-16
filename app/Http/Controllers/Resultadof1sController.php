@@ -32,9 +32,10 @@ class Resultadof1sController extends Controller
     {
         // Obtener datos del modelo según la CI
         $datos = Paciente::where('ci', $request->ci)->get();
+        $datos2 = Diagnostico::where('codigo_diagnostico', $request->dato)->get();
 
         // Devolver los datos como respuesta JSON
-        return response()->json($datos);
+        return response()->json($datos,$datos2);
     }
 
     public function index()
@@ -179,6 +180,14 @@ class Resultadof1sController extends Controller
         }else{
             return response()->json('no_existe');
         }
+       // $resultadof1s=Formulario1::find($id);
+      //  return view('patologia.formulario1.edit',compact('formulario1s'));
+    }
+    public function buscardiagnostico(Request $request)
+    {
+        $resultado= Diagnostico::where('codigo_diagnostico', $request->dato)->first();
+        return response()->json($resultado);
+        
        // $resultadof1s=Formulario1::find($id);
       //  return view('patologia.formulario1.edit',compact('formulario1s'));
     }
