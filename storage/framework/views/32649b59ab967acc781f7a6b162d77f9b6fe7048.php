@@ -55,12 +55,37 @@
   </a>
   <ul id="ddmenu_1" class="collapse dropdown-nav">
     <li>
+      <a href="<?php echo e(route('patologia.formulario1.index')); ?>"> Formulario1s </a>
+    </li>
+  </ul>
+  <ul id="ddmenu_1" class="collapse dropdown-nav">
+    <li>
+      <a href="<?php echo e(route('patologia.detallef1s.index')); ?>"> Detallef1s </a>
+    </li>
+  </ul>
+  <ul id="ddmenu_1" class="collapse dropdown-nav">
+    <li>
+      <a href="<?php echo e(route('patologia.resultadof1s.index')); ?>"> Resultadof1s </a>
+    </li>
+  </ul>
+  <ul id="ddmenu_1" class="collapse dropdown-nav">
+    <li>
+      <a href="<?php echo e(route('patologia.resultadof1s.index2')); ?>"> InformesF1s </a>
+    </li>
+  </ul>
+  <ul id="ddmenu_1" class="collapse dropdown-nav">
+    <li>
       <a href="<?php echo e(route('patologia.diagnosticos.index')); ?>"> Diagnosticos </a>
     </li>
   </ul>
   <ul id="ddmenu_1" class="collapse dropdown-nav">
     <li>
       <a href="<?php echo e(route('patologia.areas.index')); ?>"> Areas </a>
+    </li>
+  </ul>
+  <ul id="ddmenu_1" class="collapse dropdown-nav">
+    <li>
+      <a href="<?php echo e(route('patologia.servicios.index')); ?>"> Servicios </a>
     </li>
   </ul>
   <ul id="ddmenu_1" class="collapse dropdown-nav">
@@ -93,25 +118,6 @@
       <a href="<?php echo e(route('patologia.paciente.index')); ?>"> Pacientes </a>
     </li>
   </ul>
-  <ul id="ddmenu_1" class="collapse dropdown-nav">
-    <li>
-      <a href="<?php echo e(route('patologia.formulario1.index')); ?>"> Formulario1s </a>
-    </li>
-  </ul>
-  <ul id="ddmenu_1" class="collapse dropdown-nav">
-    <li>
-      <a href="<?php echo e(route('patologia.detallef1s.index')); ?>"> Detallef1s </a>
-    </li>
-  </ul>
-  <ul id="ddmenu_1" class="collapse dropdown-nav">
-    <li>
-      <a href="<?php echo e(route('patologia.resultadof1s.index')); ?>"> Resultadof1s </a>
-    </li>
-  </ul>
-  <ul id="ddmenu_1" class="collapse dropdown-nav">
-    <li>
-      <a href="<?php echo e(route('patologia.resultadof1s.index2')); ?>"> InformesF1s </a>
-    </li>
-  </ul>
+  
 </li>
 <?php /**PATH C:\xampp\htdocs\usuariosHB\resources\views/layouts/menu.blade.php ENDPATH**/ ?>

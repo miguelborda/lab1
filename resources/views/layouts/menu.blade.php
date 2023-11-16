@@ -55,12 +55,37 @@
   </a>
   <ul id="ddmenu_1" class="collapse dropdown-nav">
     <li>
+      <a href="{{ route('patologia.formulario1.index') }}"> Formulario1s </a>
+    </li>
+  </ul>
+  <ul id="ddmenu_1" class="collapse dropdown-nav">
+    <li>
+      <a href="{{ route('patologia.detallef1s.index') }}"> Detallef1s </a>
+    </li>
+  </ul>
+  <ul id="ddmenu_1" class="collapse dropdown-nav">
+    <li>
+      <a href="{{ route('patologia.resultadof1s.index') }}"> Resultadof1s </a>
+    </li>
+  </ul>
+  <ul id="ddmenu_1" class="collapse dropdown-nav">
+    <li>
+      <a href="{{ route('patologia.resultadof1s.index2') }}"> InformesF1s </a>
+    </li>
+  </ul>
+  <ul id="ddmenu_1" class="collapse dropdown-nav">
+    <li>
       <a href="{{ route('patologia.diagnosticos.index') }}"> Diagnosticos </a>
     </li>
   </ul>
   <ul id="ddmenu_1" class="collapse dropdown-nav">
     <li>
       <a href="{{ route('patologia.areas.index') }}"> Areas </a>
+    </li>
+  </ul>
+  <ul id="ddmenu_1" class="collapse dropdown-nav">
+    <li>
+      <a href="{{ route('patologia.servicios.index') }}"> Servicios </a>
     </li>
   </ul>
   <ul id="ddmenu_1" class="collapse dropdown-nav">
@@ -93,24 +118,5 @@
       <a href="{{ route('patologia.paciente.index') }}"> Pacientes </a>
     </li>
   </ul>
-  <ul id="ddmenu_1" class="collapse dropdown-nav">
-    <li>
-      <a href="{{ route('patologia.formulario1.index') }}"> Formulario1s </a>
-    </li>
-  </ul>
-  <ul id="ddmenu_1" class="collapse dropdown-nav">
-    <li>
-      <a href="{{ route('patologia.detallef1s.index') }}"> Detallef1s </a>
-    </li>
-  </ul>
-  <ul id="ddmenu_1" class="collapse dropdown-nav">
-    <li>
-      <a href="{{ route('patologia.resultadof1s.index') }}"> Resultadof1s </a>
-    </li>
-  </ul>
-  <ul id="ddmenu_1" class="collapse dropdown-nav">
-    <li>
-      <a href="{{ route('patologia.resultadof1s.index2') }}"> InformesF1s </a>
-    </li>
-  </ul>
+  
 </li>

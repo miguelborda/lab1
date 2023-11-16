@@ -14,12 +14,8 @@
             </div>
         </div>
     </div>
-    <!-- end row -->
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-
-
 <style>
 .custom-bg {
 background-color: #DCEEEE; /* Cambia #ff0000 al color que desees */
@@ -53,8 +49,7 @@ input.custom-disabled:disabled {
                     
                     <?php echo Form::text('num_examen', '', ['class' => 'form-control examen', 'id' => 'nro_examen']); ?>
 
-                        <small class="text-danger"><?php echo e($errors->first('num_solicitud')); ?></small>
-                        
+                        <small class="text-danger"><?php echo e($errors->first('num_solicitud')); ?></small>                        
                     </div>
                 </div>            
                 <div class="col-md-2-5">
@@ -99,8 +94,7 @@ unset($__errorArgs, $__bag); ?>
                 </div>            
                 <div><br></div>
             </div>
-            <div><strong class="">DIAGNOSTICOS:</strong></div>
-    
+            <div><strong class="">DIAGNOSTICOS:</strong></div>    
             <div class="row custom-bg2" id="dynamicFields">
                 <div class="col-md-1-5"> 
                     <div class="form-group">
@@ -121,8 +115,7 @@ unset($__errorArgs, $__bag); ?>
             <div class="m-3">
                 <button id="agregarDato" type="button" class="btn btn-primary">Agregar</button>
                 <button id="C" type="button" class="btn btn-secondary ">Cancelar</button><br>
-            </div>
-   
+            </div>   
             <h4>Registros temporales</h4>
             <table class="table table-sm table-striped border" id="mytable" >
                 <thead>
@@ -135,9 +128,7 @@ unset($__errorArgs, $__bag); ?>
                <tr class="vacio">
                     <td colspan="4"> No hay datos registrados</td>
                 </tr>
-            </table>
-
-            
+            </table>            
             <br>
             <?php echo Form::submit('Guardar',['class'=>'btn btn-success']); ?>
 
@@ -192,8 +183,8 @@ $(document).ready(function() {
         var fecha_resultado = $('#fecha').val();
         var ci = $('#ci_paciente').val();
         var codigo = $('#codigo_diag').val();
-        var descripcion = $('#comentario').val('d');
-        console.log(num_examen + " "+ fecha_resultado+ " "+ ci+ " "+codigo);
+        var descripcion = $('#comentario').val('');
+        console.log(num_examen + " "+ fecha_resultado+ " "+ci+ " "+codigo);
         var cant=0;
 	  	$("input[name^='codigo']").each(function(){
 	      	cant++;
@@ -208,7 +199,21 @@ $(document).ready(function() {
         i++;
         $('#mytable .titulo').after(fila);
         document.getElementById("codigo_diag").value = "";
-        document.getElementById("comentario").value = "";       
+        document.getElementById("comentario").value = "";   
+        $.ajax({
+                url: '<?php echo e(route('buscardatos.diagnostico')); ?>',
+                type:'GET',
+                data: { dato: valorinput }, //document.getElementById("servicio").value
+                success: function(data){
+                   // alert(data['ci'])
+                   if(data!='no_existe'){                    
+                    $("#comentario").val(data['descripcion_diagnostico']);
+                   }else{
+                    alert('no encontrado')
+                   }                   
+                }
+             }); 
+           
     });
     $(document).on('click', '.btn_remove', function() {
         var button_id = $(this).attr("id");
