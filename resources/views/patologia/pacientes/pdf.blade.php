@@ -23,6 +23,12 @@ tr.even {
 tr.odd {
     background-color: #ffffff; /* Color de fondo para filas impares (puedes ajustar el color) */
 }
+.cabecera h6 {
+    font-size: 12px; /* Puedes ajustar el valor según tus necesidades */
+}
+.contenido td {
+    font-size: 12px; /* Puedes ajustar el valor según tus necesidades */
+}
 
 </style>
 
@@ -34,20 +40,17 @@ tr.odd {
       <img src="images/HBhospitalamigo.jpg" alt="" width="100px" height="100px" style="float: left;">      
       <br><br>
   </div>
-    <h1 class="text-center">LISTADO DE PACIENTES</h1><br>
+  <h2 class="text-center">LISTADO DE PACIENTES</h2><br>
     <table class="table table-striped">
         <thead class="cabecera">
-          <tr>              
-              <th style="text-align: center"><h6>CI</h6></th>						  
+          <tr>                
+              <th><h6>CI</h6></th>						  
 		          <th><h6>NOMBRES</h6></th>
 						  <th><h6>APELLIDOS</h6></th>
-						  <th><h6>EDAD</h6></th>		          
-              <!--<th><h6>DIRECCION</h6></th>		          
-              <th><h6>CELULAR</h6></th>		          -->
-          </tr><br>
-          <!-- end table row-->
+						  <th><h6>EDAD</h6></th>		                       
+          </tr><br>          
         </thead>
-        <tbody>
+        <tbody class="contenido">
         @foreach($pacientes as $key => $paciente)
           <tr class="{{ $key % 2 == 0 ? 'even' : 'odd' }}">
               <td class="min-width" style="text-align: center; ">

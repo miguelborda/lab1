@@ -19,6 +19,7 @@ use App\Http\Controllers\Formulario1Controller;
 use App\Http\Controllers\Detallef1sController;
 use App\Http\Controllers\Resultadof1sController;
 use App\Http\Controllers\ServicioController;
+use App\Http\Controllers\MedicoController;
 
 $middlewares[] = 'auth';
 
@@ -115,6 +116,13 @@ Route::middleware($middlewares)->group(function()
     Route::get('Pacientes/pdf', [PacienteController::class, 'pdf'])->name('patologia.paciente.pdf');      
     Route::resource('/Pacientes', PacienteController::class)->names('patologia.paciente');
     //Route::post('/calcular-edad', 'PacienteController@calcularEdad');
+
+});
+Route::middleware($middlewares)->group(function()
+{   
+    Route::get('Medicos/pdf', [MedicoController::class, 'pdf'])->name('patologia.medico.pdf');      
+    Route::resource('/Medicos', MedicoController::class)->names('patologia.medico');
+    //Route::post('/calcular-edad', 'MedicoController@calcularEdad');
 
 });
 
