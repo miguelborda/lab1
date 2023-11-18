@@ -175,16 +175,39 @@ $(document).ready(function() {
                 }
              });
         });
+
+    // PROCESO  PARA ENCONTRAR LA DESCRIPCION SEGUN EL CODIGO DIAGNOSTICO
+    $('.codigo').change(function() {
+        var valorinput = $('.codigo').val();
+        console.log(valorinput);
+        $.ajax({
+            url: '<?php echo e(route('buscardatos.diagnostico')); ?>',
+            type:'GET',
+            data: { dato: valorinput }, //document.getElementById("servicio").value
+            success: function(data){
+                //alert(data['descripcion_diagnostico'])
+                if(data!='no_existe'){
+                $("#comentario").val(data['descripcion_diagnostico']);               
+                }else{
+                //alert('no encontrado');
+                
+                    $("#comentario").val('');
+                // document.getElementById("comentario").value = "";              
+                }                  
+            }
+        });
+    });
     //PROCESO PARA AGREGAR DATOS A LA LISTA TEMPORAL
+    var i = 1; 
     $('#agregarDato').click(function(e) {
         e.preventDefault();
-        var i = 1; 
+        
         var num_examen = $('#nro_examen').val();
         var fecha_resultado = $('#fecha').val();
         var ci = $('#ci_paciente').val();
         var codigo = $('#codigo_diag').val();
-        var descripcion = $('#comentario').val('');
-        console.log(num_examen + " "+ fecha_resultado+ " "+ci+ " "+codigo);
+        var descripcion = $('#comentario').val();
+        console.log(num_examen + " "+ fecha_resultado+ " "+ci+ " "+codigo+" "+descripcion);
         var cant=0;
 	  	$("input[name^='codigo']").each(function(){
 	      	cant++;
@@ -195,8 +218,9 @@ $(document).ready(function() {
 	    	$('#adicionar').focus();
 	    	return false;
 	  	}
-        var fila = '<tr  id="row' + i + '"><td>' + i + '</td><td>'+codigo+'<input type="hidden"  name="codigo[]" class="form-control" value="'+codigo+'"></td><td>'+descripcion+'<input type="hidden" name="des[]" class="form-control" value="'+descripcion+'"></td><td><button type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove">Quitar</button></td></tr>';
+        var fila = '<tr  id="row' + i + '"><td>' + i + '</td><td>'+codigo+'<input type="hidden"  name="codigo_d[]" class="form-control" value="'+codigo+'"></td><td>'+descripcion+'<input type="hidden" name="des[]" class="form-control" value="'+descripcion+'"></td><td><button type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove">Quitar</button></td></tr>';
         i++;
+        $('.vacio').hide();
         $('#mytable .titulo').after(fila);
         document.getElementById("codigo_diag").value = "";
         document.getElementById("comentario").value = "";   
@@ -220,6 +244,51 @@ $(document).ready(function() {
         //cuando da click obtenemos el id del boton
         $('#row' + button_id + '').remove(); //borra la fila
         //limpia el para que vuelva a contar las filas de la tabla
+    });
+
+    //PROCESO PARA REGISTRAR MULTIPLES DATOS MEDIANTE AJAX
+    $("#botonregistrar").click(function(e){
+       // e.preventDefault();
+		//para controlar si se agrego medicamentos
+	  	var cant=0;
+	  	$("input[name^='codigo']").each(function(){
+	      	cant++;
+	  	});
+	  	if (cant == 0) {
+	    	//toastr.error("Agregue algun medicamento", "NO EXISTE DATOS!!!");
+            alert('NO EXISTE DATOS!!')
+	    	return false;
+	  	}
+
+	    //$('#boton1').attr('disabled', true).text('Registrando...');
+	    var f= $(this);
+	    var formData = new FormData(document.getElementById("formulario_resultados"));
+	    $.ajax({
+	        url:"<?php echo e(route('patologia.resultadof1s.store')); ?>",
+	        type:'POST',
+	        dataType: "html",
+	        cache: false,
+	        contentType: false,
+	        processData: false,
+	        data:formData
+
+	    }).done(function(resp){
+            if(resp=='ok'){  ///poner aqui el toarts
+                alert('registrado correctamente');
+                setTimeout(function(){	
+			    	window.location="<?php echo e(route('patologia.resultadof1s.create')); ?>";
+			    },300000);
+            }else{
+                alert('hubo un error de registro');
+            }
+		
+	    });       
+        document.getElementById("nro_examen").value = "";
+        document.getElementById("fecha").value = "";
+        document.getElementById("ci_paciente").value = "";
+        document.getElementById("nombre_paciente").value = "";
+        document.getElementById("apellido_paciente").value = "";
+        document.getElementById("edad_paciente").value = "";
     });
 });
 </script>

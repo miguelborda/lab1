@@ -18,4 +18,8 @@ class Resultadof1s extends Model
     {
        return $this->belongsTo(Detallef1s::class, 'num_examen', 'id');
     }
+    public function diagnosticos()
+    {
+       return $this->belongsTo(Diagnostico::class, 'codigo_diagnostico', 'codigo_diagnostico');
+    }
 }

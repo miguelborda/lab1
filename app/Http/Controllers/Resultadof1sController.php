@@ -63,28 +63,30 @@ class Resultadof1sController extends Controller
         //return $pdf->download('invoice.pdf');  --> para descargar pdf
     }*/
 
+    /*public function pdf($id)
+    {        
+        $infor= Detallef1s::find($id);        
+        $ci = $infor->ci;
+        $numexam = $infor->num_examen;                
+        $paciente = Paciente::where('ci', $ci)->first();
+        $diagnosticos = Diagnostico::all();
+        
+        $pdf = Pdf::loadView('patologia.resultadof1s.pdf', compact('infor','paciente','diagnosticos'));
+        return $pdf->stream();
+    }*/
     public function pdf($id)
     {        
-        $infor= Detallef1s::find($id);
-        
+        $infor = Detallef1s::find($id);        
         $ci = $infor->ci;
-        $numexam = $infor->num_examen;
-
-        // Obtén los datos de la tabla "pacientes" donde ci sea igual al ci del detallef1s
-        $paciente = Paciente::where('ci', $ci)->first();
-        $areas = Area::all();
-
-        //$resultadof1s = Resultadof1s::where('estado', true)->get();
-
-        //$resultados = Resultadof1s::where('num_examen', $numexam)->first();        
-        //$detallef1s = Detallef1s::where('estado', true)->get();
-        $pdf = Pdf::loadView('patologia.resultadof1s.pdf', compact('infor','paciente','areas'));
+        $numexam = $infor->num_examen;                
+        $paciente = Paciente::where('ci', $ci)->first();                
+        $diagnosticos = Resultadof1s::where('num_examen', $numexam)      // Obtener los diagnósticos relacionados
+            ->pluck('codigo_diagnostico');                               // Obtener una colección de códigos de diagnóstico               
+        $diagnosticosInfo = Diagnostico::whereIn('codigo_diagnostico', $diagnosticos)->get();   // Consultar los diagnósticos basados en los códigos obtenidos        
+        $pdf = Pdf::loadView('patologia.resultadof1s.pdf', compact('infor', 'paciente', 'diagnosticosInfo'));
         return $pdf->stream();
-        //return $pdf->download('invoice.pdf');  --> para descargar pdf
-        //return view('patologia.resultadof1s.pdf',compact('infor'));
-
     }
-    
+
     public function create()
     {   
         /*$detalles = Detallef1s::where('estado',true);
@@ -95,6 +97,28 @@ class Resultadof1sController extends Controller
     }
     public function store(Request $request)
     {
+        $user = auth()->user(); 
+        if($request->codigo_d){
+            $pos=0;
+            foreach ($request->codigo_d as $medicamento) {
+                $entrada=new Resultadof1s();
+                $entrada->num_examen =$request->num_examen;
+                $entrada->fecha_resultado =$request->fecha_resultado;//cantidad
+                $entrada->codigo_diagnostico =$request->codigo_d[$pos];//cantidad
+                $entrada->ci_id =$request->ci;//fecha vencimiento
+                $entrada->creatoruser_id = $user->id;
+                $entrada->save();
+                $pos++;
+            }
+            //return route('patologia.resultadof1s.create');
+
+            return 'Se Registró exitosamente';
+        }
+        else {
+            return 'error';
+        }
+
+        /*
         $messages = [
             'num_examen.exists' => 'El número de examen no está registrado.',
             'num_examen.required' => 'El número de examen es obligatorio.',
@@ -135,7 +159,7 @@ class Resultadof1sController extends Controller
             ]);
         }        
          //dd($detallef1s);                          
-            return redirect()->route('patologia.resultadof1s.create')->with('mensaje', 'Se creó exitosamente');
+            return redirect()->route('patologia.resultadof1s.create')->with('mensaje', 'Se creó exitosamente');*/
     }          
 
     public function show(Resultadof1s $resultadof1s)

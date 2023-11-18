@@ -54,12 +54,12 @@
                     <i class="lni lni-menu"></i>
                   </button>
                 </div>
-                <div class="header-search d-none d-md-flex">
+                <!--<div class="header-search d-none d-md-flex">
                   <form action="#">
                     <input type="text" placeholder="Search..." />
                     <button><i class="lni lni-search-alt"></i></button>
                   </form>
-                </div>
+                </div>-->
               </div>
             </div>
             <div class="col-lg-7 col-md-7 col-6">

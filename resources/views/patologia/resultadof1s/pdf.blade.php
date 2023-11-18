@@ -48,32 +48,29 @@ h3.text-center:last-child {
         <thead class="cabecera"><th style="text-align: left"><h6>CI: {{$infor->ci}}</h6></th></thead><br>
         <thead class="cabecera"><th style="text-align: left"><h6>Nombre: {{$paciente->nombre}}</h6></th></thead><br>
         <thead class="cabecera"><th style="text-align: left"><h6>Apellido: {{$paciente->apellido}}</h6></th></thead><br>
-        <h1 class="text-center">LISTADO DE AREAS</h1><br>
+    </table>
+        <h3 class="text-center">DIAGNOSTICOS</h3><br>
         <table class="table table-striped">
             <thead class="cabecera">
               <tr>
-                  <th style="text-align: center"><h6>ID AREA</h6></th>
-                  <th><h6>NOMBRE DE AREA</h6></th>              
-              </tr><br>
-              <!-- end table row-->
+                  <th style="text-align: center"><h6>CODIGO</h6></th>
+                  <th><h6>DESCRIPCION</h6></th>              
+              </tr>            
             </thead>
             <tbody>
-            @foreach($areas as $key => $area)
+            @foreach($diagnosticosInfo as $key => $diagnostico)
               <tr class="{{ $key % 2 == 0 ? 'even' : 'odd' }}">
                   <td class="min-width" style="text-align: center; ">
-                      <p>{{$area->id}}</p>
+                      <p>{{$diagnostico->codigo_diagnostico}}</p>
                   </td>
                   <td class="min-width">
-                      <p>{{$area->nombre_area}}</p>
+                      <p>{{$diagnostico->descripcion_diagnostico}}</p>
                   </td>
               </tr>
-              @endforeach
-              <!-- end table row -->
+              @endforeach              
             </tbody>
-        </table>
+        </table>           
     
-        
-    </table>
   <!-- Bootstrap JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
     integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
