@@ -73,6 +73,26 @@
       <a href="{{ route('patologia.resultadof1s.index2') }}"> InformesF1s </a>
     </li>
   </ul>  
+  <ul id="ddmenu_2" class="collapse dropdown-nav">
+    <li>
+      <a href="{{ route('patologia.formulario2.index') }}"> Formulario2s </a>
+    </li>
+  </ul>
+  <ul id="ddmenu_2" class="collapse dropdown-nav">
+    <li>
+      <a href="{{ route('patologia.detallef2s.index') }}"> Detallef2s </a>
+    </li>
+  </ul>
+  <ul id="ddmenu_2" class="collapse dropdown-nav">
+    <li>
+      <a href="{{ route('patologia.resultadof2s.index') }}"> Resultadof2s </a>
+    </li>
+  </ul>
+  <ul id="ddmenu_2" class="collapse dropdown-nav">
+    <li>
+      <a href="{{ route('patologia.resultadof2s.index2') }}"> InformesF2s </a>
+    </li>
+  </ul>  
 </li>
 
 <li class="nav-item nav-item-has-children">

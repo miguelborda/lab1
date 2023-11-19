@@ -20,6 +20,9 @@ use App\Http\Controllers\Detallef1sController;
 use App\Http\Controllers\Resultadof1sController;
 use App\Http\Controllers\ServicioController;
 use App\Http\Controllers\MedicoController;
+use App\Http\Controllers\Formulario2Controller;
+use App\Http\Controllers\Detallef2sController;
+use App\Http\Controllers\Resultadof2sController;
 
 $middlewares[] = 'auth';
 
@@ -146,4 +149,22 @@ Route::middleware($middlewares)->group(function()
     Route::get('/obtener/datos', [Resultadof1sController::class, 'buscardatos'])->name('buscardatos.examen');    
     Route::get('/obtener/datosdiagnostico', [Resultadof1sController::class, 'buscardiagnostico'])->name('buscardatos.diagnostico');    
 });
-
+//RUTAS FORMULARIO 2 PATOLOGIA
+Route::middleware($middlewares)->group(function()
+{
+    Route::get('Formulario2s/pdf', [Formulario2Controller::class, 'pdf'])->name('patologia.formulario2.pdf');      
+    Route::resource('/Formulario2s', Formulario2Controller::class)->names('patologia.formulario2');    
+});
+Route::middleware($middlewares)->group(function()
+{
+    Route::get('Detallef2s/pdf', [Detallef2sController::class, 'pdf'])->name('patologia.detallef2s.pdf');      
+    Route::resource('/Detallef2s', Detallef2sController::class)->names('patologia.detallef2s');    
+});
+Route::middleware($middlewares)->group(function()
+{
+    Route::get('/Resultadof2s/pdf/{id}', [Resultadof2sController::class, 'pdf'])->name('patologia.resultadof2s.pdf');      
+    Route::resource('/Resultadof2s', Resultadof2sController::class)->names('patologia.resultadof2s');    
+    Route::get('/Informesf2s', [Resultadof2sController::class, 'index2'])->name('patologia.resultadof2s.index2');   
+    Route::get('/obtener/datos', [Resultadof2sController::class, 'buscardatos'])->name('buscardatos.examen');    
+    Route::get('/obtener/datosdiagnostico', [Resultadof2sController::class, 'buscardiagnostico'])->name('buscardatos.diagnostico');    
+});

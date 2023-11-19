@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Title</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS v5.2.1 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+<style>
+
+.cabecera{
+    background-color: #E0E0E0;
+    color: black;
+}
+.numsolicitud {
+    border-top: 6px double black; /* Borde superior doble */
+    border-bottom: 2px solid black; /* Borde inferior simple */
+    text-align: left;
+}
+.establecim{
+    border-top: 2px solid black; /* Borde superior doble */
+}
+.cabnsol{
+    text-align: left;
+    /*font-size: 16px; /* Ajusta el tamaño de texto según tus preferencias */
+    width: 90px; /* Ajusta el tamaño de la caja según tus preferencias */
+    background-color: #ECECEC;
+    color: black;
+}
+.cabnsol2{    
+    width: 45px; /* Ajusta el tamaño de la caja según tus preferencias */
+    background-color: #FFFFFF;
+    color: black;
+}
+.cabfsol{    
+    width: 115px; /* Ajusta el tamaño de la caja según tus preferencias */
+    background-color: #ECECEC;
+    color: black;
+}
+.cabfsol2{    
+    width: 95px; /* Ajusta el tamaño de la caja según tus preferencias */
+    background-color: #FFFFFF;
+    color: black;
+}
+.cabnex{    
+    width: 86px; /* Ajusta el tamaño de la caja según tus preferencias */
+    background-color: #ECECEC;
+    color: black;
+}
+.cabnex2{    
+    width: 60px; /* Ajusta el tamaño de la caja según tus preferencias */
+    background-color: #FFFFFF;
+    color: black;
+}
+.cabfres{    
+    width: 120px; /* Ajusta el tamaño de la caja según tus preferencias */
+    background-color: #ECECEC;
+    color: black;
+}
+.cab2{
+    background-color: #FFFFFF;
+    color: black;
+}
+.cabregional{    
+    width: 70px; /* Ajusta el tamaño de la caja según tus preferencias */
+    background-color: #ECECEC;
+    color: black;
+}
+.cabregional2{    
+    width: 120px; /* Ajusta el tamaño de la caja según tus preferencias */
+    background-color: #FFFFFF;
+    color: black;
+}
+.cabdistrito{    
+    width: 70px; /* Ajusta el tamaño de la caja según tus preferencias */
+    background-color: #ECECEC;
+    color: black;
+}
+.cabdistrito2{    
+    width: 90px; /* Ajusta el tamaño de la caja según tus preferencias */
+    background-color: #FFFFFF;
+    color: black;
+}
+.cabestablecimiento{    
+    width: 70px; /* Ajusta el tamaño de la caja según tus preferencias */
+    background-color: #ECECEC;
+    color: black;
+}
+.cabestablecimiento2{    
+    width: 900px; /* Ajusta el tamaño de la caja según tus preferencias */
+    background-color: #FFFFFF;
+    color: black;
+}
+.hola {
+    border: 1px solid black; /* Línea cuadriculada */
+    padding: 8px; /* Añade espacio interno para mejorar la apariencia */
+    text-align: left;
+}
+
+.logo-cell {
+    width: 20%;
+}
+
+.text-cell {
+    width: 80%;
+}
+
+tr.even {
+    background-color: #f2f2f2; /* Color de fondo para filas pares */
+}
+tr.odd {
+    background-color: #ffffff; /* Color de fondo para filas impares (puedes ajustar el color) */
+}
+
+
+
+h3.text-center:first-child {
+    margin-bottom: 0;
+}
+
+h3.text-center:last-child {
+    margin-top: 0;
+}
+@page{
+  margin: 0.5cm 1cm;  
+}
+
+</style>
+
+</head>
+<body>
+  <table style="width: 100%; border-top: 2px solid black;">
+    <tr >
+      <th rowspan="3"  style="float: center"><img src="images/HBhospitalamigo.jpg" width="80px" height="80px"></th>      
+      <th class="text-center" style="margin-bottom: 0; vertical-align: middle;">SERVICIO DE DIAGNOSTICO MEDICO DE</th>            
+    </tr>
+    <tr>      
+      <th class="text-center" style="margin-top: 0; vertical-align: down;">ANATOMIA PATOLOGICA - CITOLOGIA</th>      
+    </tr>
+    <tr>      
+      <th class="text-center" style="margin-top: 0;">Resultado Informe Patológico</th>     
+    </tr>
+  </table>
+  <!--<div style="text-align: center;">
+      <img src="images/HBhospitalamigo.jpg" alt="" width="100px" height="100px" style="float: left;">      
+      <br><br>
+  </div>
+    <h3 class="text-center" style="margin-bottom: 0;">SERVICIO DE DIAGNOSTICO MEDICO DE</h3>
+    <h3 class="text-center" style="margin-top: 0;">ANATOMIA PATOLOGICA - CITOLOGIA</h3>
+    <h3 class="text-center" style="margin-top: 0;">Resultado Informe Patológico</h3>
+    <br>-->
+    <table class="table table-striped numsolicitud">
+        <thead class="cabecera">          
+          <th class=cabnsol style="text-align:left">Nº Solicitud:</th>
+          <th class=cabnsol2 style="text-align:center">{{$formulario2s->num_solicitud}}</th>
+          <th class=cabfsol style="text-align:left">Fecha Solicitud:</th>
+          <th class=cabfsol2 style="text-align:center">{{$formulario2s->fecha_solicitud}}</th>
+          <th class=cabnex style="text-align:left">Nº Examen:</th>
+          <th class=cabnex2 style="text-align:center">{{$infor->num_examen}}</th>
+          <th class=cabfres style="text-align:left">Fecha Resultado:</th>
+          <th class=cab2 style="text-align:center">{{$infor->fecha_resultado}}</th>
+        </thead>        
+    </table>
+    <table class="table table-striped">
+        <thead class="cabecera">                    
+            
+            <th class=cabdistrito style="text-align:left">Distrito</th>
+            <th class=cabdistrito2 style="text-align:center">{{$distrito->nombre_distrito}}</th>                    
+            <th class=cabregional style="text-align:left">Sector:</th>
+            <th class=cabregional2 style="text-align:center">{{$sector->nombre_sector}}</th>          
+        </thead>  
+        <thead class="cabecera establecim">                    
+            <th class=cabestablecimiento style="text-align:left">Area:</th>
+            <th class=cabestablecimiento2 style="text-align:left" colspan="3">{{$area->nombre_area}}</th>          
+        </thead>  
+    </table>
+
+    <table class="table table-striped numsolicitud">      
+      <tr>
+        <th style="text-align: left">CI:</th>
+        <th style="text-align: left">Nombre(s):</th>
+        <th style="text-align: left">Apellidos:</th>
+        <th style="text-align: left">Edad:</th>
+      </tr>  
+      <tr>
+        <td style="text-align: left">{{$infor->ci}}</td>
+        <td style="text-align: left">{{$paciente->nombre}}</td>
+        <td style="text-align: left">{{$paciente->apellido}}</td>
+        <td style="text-align: left">{{$paciente->edad}}</td>
+      </tr>  
+    </table>
+        <h4 class="text-left">RESULTADOS:</h4>
+        <table class="table table-striped">
+            <thead class="cabecera numsolicitud">
+              <tr>
+                  <th style="text-align: center">Código</th>
+                  <th style="text-align: center">Descripcion del Diagnóstico</th>              
+              </tr>            
+            </thead>
+            <tbody>
+            @foreach($diagnosticosInfo as $key => $diagnostico)
+              <tr class="{{ $key % 2 == 0 ? 'odd' : 'even' }}">
+                  <td class="min-width" style="text-align: center; font-size: 12px; vertical-align: middle; height: 10px;">
+                      <p>{{$diagnostico->codigo_diagnostico}}</p>
+                  </td>
+                  <td class="min-width" style="font-size: 12px; vertical-align: middle; height: 10px;">
+                      <p>{{$diagnostico->descripcion_diagnostico}}</p>
+                  </td>
+              </tr>
+              @endforeach              
+            </tbody>
+        </table><br><br><br><br>
+      </table>
+        <h4 class="text-center" style="font-size: 12px;">Nombre y Firma del Responsable</h4>        
+      </table>  
+    
+  <!-- Bootstrap JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+  </script>
+</body>
+
+</html>
