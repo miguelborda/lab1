@@ -11,6 +11,9 @@ use App\Models\Paciente;
 use Illuminate\Validation\Rule;
 use App\Models\Formulario1;
 use App\Models\Area;
+use App\Models\Secretariaregional;
+use App\Models\Distrito;
+use App\Models\Establecimiento;
 
 use Barryvdh\DomPDF\Facade\Pdf;
 use Dompdf\Dompdf;
@@ -73,7 +76,7 @@ class Resultadof1sController extends Controller
         
         $pdf = Pdf::loadView('patologia.resultadof1s.pdf', compact('infor','paciente','diagnosticos'));
         return $pdf->stream();
-    }*/
+    }
     public function pdf($id)
     {        
         $infor = Detallef1s::find($id);        
@@ -85,7 +88,27 @@ class Resultadof1sController extends Controller
         $diagnosticosInfo = Diagnostico::whereIn('codigo_diagnostico', $diagnosticos)->get();   // Consultar los diagnósticos basados en los códigos obtenidos        
         $pdf = Pdf::loadView('patologia.resultadof1s.pdf', compact('infor', 'paciente', 'diagnosticosInfo'));
         return $pdf->stream();
+    }*/
+
+    public function pdf($id)
+    {        
+        $infor = Detallef1s::find($id);        
+        $ci = $infor->ci;
+        $numexam = $infor->num_examen;                
+        $paciente = Paciente::where('ci', $ci)->first();        
+        $diagnosticos = Resultadof1s::where('num_examen', $numexam)     // Obtener los diagnósticos relacionados
+            ->pluck('codigo_diagnostico');        
+        $diagnosticosInfo = Diagnostico::whereIn('codigo_diagnostico', $diagnosticos)->get();   // Obtener la información detallada de los diagnósticos        
+        $formulario1s = Formulario1::where('num_solicitud', $infor->num_solicitud_id)->first();     // Obtener la información del formulario1s relacionada        
+        
+        $secretaria = Secretariaregional::where('id', $formulario1s->secretaria_regional_id)->first();     // Obtener la información del formulario1s relacionada        
+        $distrito = Distrito::where('id', $formulario1s->distrito_id)->first();     // Obtener la información del formulario1s relacionada        
+        $establecimiento = Establecimiento::where('id', $formulario1s->establecimiento_id)->first();     // Obtener la información del formulario1s relacionada        
+        
+        $pdf = Pdf::loadView('patologia.resultadof1s.pdf', compact('infor','paciente','diagnosticosInfo','formulario1s','secretaria','distrito','establecimiento'));
+        return $pdf->stream();
     }
+
 
     public function create()
     {   
@@ -111,12 +134,26 @@ class Resultadof1sController extends Controller
                 $pos++;
             }
             //return route('patologia.resultadof1s.create');
+            $detallef1s = Detallef1s::where('num_examen', $request->input('num_examen'))->first();
+            if ($detallef1s) {
+                // Actualizar 'fecha_resultado' si existe el registro
+                $detallef1s->update([
+                    'fecha_resultado' => $request->input('fecha_resultado'),                
+                ]);
+            } else {
+                $detallef1s->update([
+                    'fecha_resultado' => $request->input('fecha_resultado'),                
+                ]);
+            }        
 
             return 'Se Registró exitosamente';
         }
         else {
             return 'error';
         }
+        
+         //dd($detallef1s);                          
+            
 
         /*
         $messages = [
