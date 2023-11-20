@@ -23,6 +23,9 @@ use App\Http\Controllers\MedicoController;
 use App\Http\Controllers\Formulario2Controller;
 use App\Http\Controllers\Detallef2sController;
 use App\Http\Controllers\Resultadof2sController;
+use App\Http\Controllers\Formulario3citoController;
+use App\Http\Controllers\Detallef3citoController;
+use App\Http\Controllers\Resultadof3citoController;
 
 $middlewares[] = 'auth';
 
@@ -167,4 +170,23 @@ Route::middleware($middlewares)->group(function()
     Route::get('/Informesf2s', [Resultadof2sController::class, 'index2'])->name('patologia.resultadof2s.index2');   
     Route::get('/obtener/datos', [Resultadof2sController::class, 'buscardatos'])->name('buscardatos.examen');    
     Route::get('/obtener/datosdiagnostico', [Resultadof2sController::class, 'buscardiagnostico'])->name('buscardatos.diagnostico');    
+});
+//RUTAS FORMULARIO 3 CITOLOGIA
+Route::middleware($middlewares)->group(function()
+{
+    Route::get('Formulario3citos/pdf', [Formulario3citoController::class, 'pdf'])->name('patologia.formulario3cito.pdf');      
+    Route::resource('/Formulario3citos', Formulario3citoController::class)->names('patologia.formulario3cito');    
+});
+Route::middleware($middlewares)->group(function()
+{
+    Route::get('Detallef3citos/pdf', [Detallef3citoController::class, 'pdf'])->name('patologia.detallef3citos.pdf');      
+    Route::resource('/Detallef3citos', Detallef3citoController::class)->names('patologia.detallef3citos');    
+});
+Route::middleware($middlewares)->group(function()
+{
+    Route::get('/Resultadof3citos/pdf/{id}', [Resultadof3citoController::class, 'pdf'])->name('patologia.resultadof3citos.pdf');      
+    Route::resource('/Resultadof3citos', Resultadof3citoController::class)->names('patologia.resultadof3citos');    
+    Route::get('/Informesf3citos', [Resultadof3citoController::class, 'index2'])->name('patologia.resultadof3citos.index2');   
+    Route::get('/obtener/datos', [Resultadof3citoController::class, 'buscardatos'])->name('buscardatos.examen');    
+    Route::get('/obtener/datosdiagnostico', [Resultadof3citoController::class, 'buscardiagnostico'])->name('buscardatos.diagnostico');    
 });
