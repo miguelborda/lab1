@@ -183,7 +183,7 @@ $(document).ready(function() {
         var valorinput = $('.examen').val();
         console.log(valorinput);
             $.ajax({
-                url: '{{ route('buscardatos.examen') }}',
+                url: '{{ route('buscardatosf3.examen') }}',
                 type:'GET',
                 data: { dato: valorinput }, //document.getElementById("servicio").value
                 success: function(data){

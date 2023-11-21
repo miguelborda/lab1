@@ -149,7 +149,7 @@ Route::middleware($middlewares)->group(function()
     Route::get('/Resultadof1s/pdf/{id}', [Resultadof1sController::class, 'pdf'])->name('patologia.resultadof1s.pdf');      
     Route::resource('/Resultadof1s', Resultadof1sController::class)->names('patologia.resultadof1s');    
     Route::get('/Informesf1s', [Resultadof1sController::class, 'index2'])->name('patologia.resultadof1s.index2');   
-    Route::get('/obtener/datos', [Resultadof1sController::class, 'buscardatos'])->name('buscardatos.examen');    
+    Route::get('/obtener/datosf1', [Resultadof1sController::class, 'buscardatosf1'])->name('buscardatosf1.examen');    
     Route::get('/obtener/datosdiagnostico', [Resultadof1sController::class, 'buscardiagnostico'])->name('buscardatos.diagnostico');    
 });
 //RUTAS FORMULARIO 2 PATOLOGIA
@@ -168,7 +168,7 @@ Route::middleware($middlewares)->group(function()
     Route::get('/Resultadof2s/pdf/{id}', [Resultadof2sController::class, 'pdf'])->name('patologia.resultadof2s.pdf');      
     Route::resource('/Resultadof2s', Resultadof2sController::class)->names('patologia.resultadof2s');    
     Route::get('/Informesf2s', [Resultadof2sController::class, 'index2'])->name('patologia.resultadof2s.index2');   
-    Route::get('/obtener/datos', [Resultadof2sController::class, 'buscardatos'])->name('buscardatos.examen');    
+    Route::get('/obtener/datosf2', [Resultadof2sController::class, 'buscardatosf2'])->name('buscardatosf2.examen');    
     Route::get('/obtener/datosdiagnostico', [Resultadof2sController::class, 'buscardiagnostico'])->name('buscardatos.diagnostico');    
 });
 //RUTAS FORMULARIO 3 CITOLOGIA
@@ -187,6 +187,6 @@ Route::middleware($middlewares)->group(function()
     Route::get('/Resultadof3citos/pdf/{id}', [Resultadof3citoController::class, 'pdf'])->name('patologia.resultadof3citos.pdf');      
     Route::resource('/Resultadof3citos', Resultadof3citoController::class)->names('patologia.resultadof3citos');    
     Route::get('/Informesf3citos', [Resultadof3citoController::class, 'index2'])->name('patologia.resultadof3citos.index2');   
-    Route::get('/obtener/datos', [Resultadof3citoController::class, 'buscardatos'])->name('buscardatos.examen');    
+    Route::get('/obtener/datosf3', [Resultadof3citoController::class, 'buscardatosf3'])->name('buscardatosf3.examen');    
     Route::get('/obtener/datosdiagnostico', [Resultadof3citoController::class, 'buscardiagnostico'])->name('buscardatos.diagnostico');    
 });

@@ -10,7 +10,7 @@
     <div class="row align-items-center" style="height: 60px">
         <div class="col-md-6">
             <div class="titlemb-30">
-                <h2>Crear Resultado de Formulario2s</h2>
+                <h2>Crear Resultado de Formulario URBANO</h2>
             </div>
         </div>
     </div>
@@ -146,7 +146,7 @@ $(document).ready(function() {
         var valorinput = $('.examen').val();
         console.log(valorinput);
             $.ajax({
-                url: '{{ route('buscardatos.examen') }}',
+                url: '{{ route('buscardatosf2.examen') }}',
                 type:'GET',
                 data: { dato: valorinput }, //document.getElementById("servicio").value
                 success: function(data){

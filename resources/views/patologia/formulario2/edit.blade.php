@@ -10,7 +10,7 @@
     <div class="row align-items-center" style="height: 60px">
         <div class="col-md-6">
             <div class="titlemb-30">
-                <h2>Actualizar Formulario1 de Solicitudes:  {{$formulario2s->num_solicitud}}</h2>
+                <h2>Actualizar Formulario URBANO Solicitudes:  {{$formulario2s->num_solicitud}}</h2>
             </div>
         </div>
     </div>

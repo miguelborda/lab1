@@ -118,7 +118,7 @@ class Resultadof3citoController extends Controller
         return view('patologia.formulario3cito.edit',compact('formulario3citos'));
     }
      
-    public function buscardatos(Request $request)
+    public function buscardatosf3(Request $request)
     {
         $resultado= Detallef3cito::where('num_examen', $request->dato)->first();
         if(isset($resultado) ){

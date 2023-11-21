@@ -9,7 +9,7 @@
     <div class="row align-items-center" style="height: 60px">
       <div class="col-md-6">
         <div class="titlemb-30">
-          <h2>Informesf1s</h2>
+          <h2>Informes Resultados RURAL</h2>
         </div>
       </div>      
     </div>    
@@ -31,9 +31,8 @@
 						  <th><h6>Nº EXAMEN</h6></th>
 						  <th><h6>CI</h6></th>
 						  <th><h6>NOMBRE</h6></th>
-						  <th><h6>APELLIDO</h6></th>
-						  <th><h6>Reportes</h6></th>
-						  <th><h6>Fecha Resultado</h6></th>
+						  <th><h6>APELLIDO</h6></th>						  
+						  <th><h6>Informes</h6></th>
 						  				  
 		                </tr>
 		                <!-- end table row-->
@@ -57,9 +56,7 @@
 						  <td class="min-width">
 		                    <p><?php echo e($infor->paciente->apellido); ?></p>
 		                  </td>		            
-						  <td class="min-width">
-		                    <p><?php echo e($infor->apellido); ?></p>
-		                  </td>
+						  
 						  <td width="15px">				  
 						  <a href="<?php echo e(route('patologia.resultadof1s.pdf', ['id' => $infor->id])); ?>" class="btn btn-success btn-lg" target="_blank">Imprimir</a> 
                           </td>							

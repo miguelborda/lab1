@@ -125,7 +125,7 @@ class Resultadof2sController extends Controller
         return view('patologia.formulario2.edit',compact('formulario2s'));
     }
      
-    public function buscardatos(Request $request)
+    public function buscardatosf2(Request $request)
     {
         $resultado= Detallef2s::where('num_examen', $request->dato)->first();
         if(isset($resultado) ){

@@ -232,7 +232,7 @@ class Resultadof1sController extends Controller
         $formulario1s->save();
         return redirect()->route('patologia.formulario1s.index')->with('mensaje', 'El area se marcó como inactivo');
     }*/
-    public function buscardatos(Request $request)
+    public function buscardatosf1(Request $request)
     {
         $resultado= Detallef1s::where('num_examen', $request->dato)->first();
         if(isset($resultado) ){

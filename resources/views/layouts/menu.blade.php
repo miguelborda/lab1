@@ -55,42 +55,62 @@
   </a>
   <ul id="ddmenu_2" class="collapse dropdown-nav">
     <li>
-      <a href="{{ route('patologia.formulario1.index') }}"> Formulario1s </a>
+      <a href="{{ route('patologia.formulario1.create') }}"> Formulario1 RURAL</a>
+    </li>
+  </ul>
+  <!--<ul id="ddmenu_2" class="collapse dropdown-nav">
+    <li>
+      <a href="{{ route('patologia.formulario1.index') }}"> Formulario1 RURAL</a>
     </li>
   </ul>
   <ul id="ddmenu_2" class="collapse dropdown-nav">
     <li>
-      <a href="{{ route('patologia.detallef1s.index') }}"> Detallef1s </a>
+      <a href="{{ route('patologia.detallef1s.index') }}"> Detalle1 RURAL</a>
     </li>
   </ul>
   <ul id="ddmenu_2" class="collapse dropdown-nav">
     <li>
-      <a href="{{ route('patologia.resultadof1s.index') }}"> Resultadof1s </a>
+      <a href="{{ route('patologia.resultadof1s.index') }}"> Resultado1 RURAL</a>
+    </li>
+  </ul>-->
+  <ul id="ddmenu_2" class="collapse dropdown-nav">
+    <li>
+      <a href="{{ route('patologia.resultadof1s.create') }}"> Resultado1 RURAL</a>
     </li>
   </ul>
   <ul id="ddmenu_2" class="collapse dropdown-nav">
     <li>
-      <a href="{{ route('patologia.resultadof1s.index2') }}"> InformesF1s </a>
+      <a href="{{ route('patologia.resultadof1s.index2') }}"> Informes1 RURAL</a>
     </li>
   </ul>  
   <ul id="ddmenu_2" class="collapse dropdown-nav">
     <li>
-      <a href="{{ route('patologia.formulario2.index') }}"> Formulario2s </a>
+      <a href="{{ route('patologia.formulario2.create') }}"> Formulario2 URBANO</a>
+    </li>
+  </ul>
+  <!--<ul id="ddmenu_2" class="collapse dropdown-nav">
+    <li>
+      <a href="{{ route('patologia.formulario2.index') }}"> Formulario2 URBANO</a>
     </li>
   </ul>
   <ul id="ddmenu_2" class="collapse dropdown-nav">
     <li>
-      <a href="{{ route('patologia.detallef2s.index') }}"> Detallef2s </a>
+      <a href="{{ route('patologia.detallef2s.index') }}"> Detalle2 URBANO</a>
     </li>
   </ul>
   <ul id="ddmenu_2" class="collapse dropdown-nav">
     <li>
-      <a href="{{ route('patologia.resultadof2s.index') }}"> Resultadof2s </a>
+      <a href="{{ route('patologia.resultadof2s.index') }}"> Resultado2 URBANO</a>
+    </li>
+  </ul>-->
+  <ul id="ddmenu_2" class="collapse dropdown-nav">
+    <li>
+      <a href="{{ route('patologia.resultadof2s.create') }}"> Resultado2 URBANO</a>
     </li>
   </ul>
   <ul id="ddmenu_2" class="collapse dropdown-nav">
     <li>
-      <a href="{{ route('patologia.resultadof2s.index2') }}"> InformesF2s </a>
+      <a href="{{ route('patologia.resultadof2s.index2') }}"> Informes2 URBANO</a>
     </li>
   </ul>  
 </li>
@@ -116,22 +136,32 @@
   </a>
   <ul id="ddmenu_3" class="collapse dropdown-nav">
     <li>
-      <a href="{{ route('patologia.formulario3cito.index') }}"> Formulario3citos </a>
+      <a href="{{ route('patologia.formulario3cito.create') }}"> Formulario3 CITOLOGIA</a>
+    </li>
+  </ul>
+  <!--<ul id="ddmenu_3" class="collapse dropdown-nav">
+    <li>
+      <a href="{{ route('patologia.formulario3cito.index') }}"> Formulario3 CITOLOGIA</a>
     </li>
   </ul>
   <ul id="ddmenu_3" class="collapse dropdown-nav">
     <li>
-      <a href="{{ route('patologia.detallef3citos.index') }}"> Detallef3citos </a>
+      <a href="{{ route('patologia.detallef3citos.index') }}"> Detalle3 CITOLOGIA</a>
     </li>
   </ul>
   <ul id="ddmenu_3" class="collapse dropdown-nav">
     <li>
-      <a href="{{ route('patologia.resultadof3citos.index') }}"> Resultadof3citos </a>
+      <a href="{{ route('patologia.resultadof3citos.index') }}"> Resultado3 CITOLOGIA</a>
+    </li>
+  </ul>-->
+  <ul id="ddmenu_3" class="collapse dropdown-nav">
+    <li>
+      <a href="{{ route('patologia.resultadof3citos.create') }}"> Resultado3 CITOLOGIA</a>
     </li>
   </ul>
   <ul id="ddmenu_3" class="collapse dropdown-nav">
     <li>
-      <a href="{{ route('patologia.resultadof3citos.index2') }}"> InformesF3citos </a>
+      <a href="{{ route('patologia.resultadof3citos.index2') }}"> Informes3 CITOLOGIA</a>
     </li>
   </ul>    
 </li>

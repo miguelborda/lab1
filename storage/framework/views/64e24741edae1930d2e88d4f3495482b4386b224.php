@@ -9,7 +9,7 @@
     <div class="row align-items-center" style="height: 60px">
       <div class="col-md-6">
         <div class="titlemb-30">
-          <h2>Resultadof1s</h2>
+          <h2>Resultados URBANO</h2>
         </div>
       </div>
       <div class="col-md-6" style="text-align: right;">
