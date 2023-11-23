@@ -29,7 +29,9 @@ tr.odd {
 .contenido td {
     font-size: 12px; /* Puedes ajustar el valor según tus necesidades */
 }
-
+@page{
+  margin: 0.5cm 1cm;  
+}
 </style>
 
 
@@ -44,24 +46,24 @@ tr.odd {
     <table class="table table-striped">
         <thead class="cabecera">
           <tr>                
-              <th><h6>CI</h6></th>						  
-		          <th><h6>NOMBRES</h6></th>
+              <th><h6>CI</h6></th>						  		          
 						  <th><h6>APELLIDOS</h6></th>
+              <th><h6>NOMBRES</h6></th>
 						  <th><h6>EDAD</h6></th>		                       
           </tr><br>          
         </thead>
         <tbody class="contenido">
         @foreach($pacientes as $key => $paciente)
           <tr class="{{ $key % 2 == 0 ? 'even' : 'odd' }}">
-              <td class="min-width" style="text-align: center; ">
+              <td class="min-width">
                 <p>{{$paciente->ci}}</p>
               </td>		            						  
               <td class="min-width">
-                <p>{{$paciente->nombre}}</p>
-              </td>		            
-						  <td class="min-width">
                 <p>{{$paciente->apellido}}</p>
-              </td>		                  
+              </td>		              
+              <td class="min-width">
+                <p>{{$paciente->nombre}}</p>
+              </td>		            						      
 						  <!--<td><p>{{ floor(abs(strtotime($hoy)-strtotime($paciente->fecha_nacimiento))/(365*60*60*24)) }}</p></td> -->
               <td class="min-width">
                 <p>{{$paciente->edad}}</p>

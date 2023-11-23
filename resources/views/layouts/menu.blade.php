@@ -187,17 +187,12 @@
   </a>  
   <ul id="ddmenu_4" class="collapse dropdown-nav">
     <li>
-      <a href="{{ route('patologia.diagnosticos.index') }}"> Diagnosticos </a>
-    </li>
-  </ul>
-  <ul id="ddmenu_4" class="collapse dropdown-nav">
-    <li>
       <a href="{{ route('patologia.areas.index') }}"> Areas </a>
     </li>
   </ul>
   <ul id="ddmenu_4" class="collapse dropdown-nav">
     <li>
-      <a href="{{ route('patologia.servicios.index') }}"> Servicios </a>
+      <a href="{{ route('patologia.diagnosticos.index') }}"> Diagnósticos </a>
     </li>
   </ul>
   <ul id="ddmenu_4" class="collapse dropdown-nav">
@@ -208,6 +203,11 @@
   <ul id="ddmenu_4" class="collapse dropdown-nav">
     <li>
       <a href="{{ route('patologia.establecimientos.index') }}"> Establecimientos </a>
+    </li>
+  </ul>
+  <ul id="ddmenu_4" class="collapse dropdown-nav">
+    <li>
+      <a href="{{ route('patologia.medicos.index') }}"> Medicos </a>
     </li>
   </ul>
   <ul id="ddmenu_4" class="collapse dropdown-nav">
@@ -227,13 +227,14 @@
   </ul>
   <ul id="ddmenu_4" class="collapse dropdown-nav">
     <li>
-      <a href="{{ route('patologia.paciente.index') }}"> Pacientes </a>
+      <a href="{{ route('patologia.servicios.index') }}"> Servicios </a>
     </li>
-  </ul>
+  </ul>  
   <ul id="ddmenu_4" class="collapse dropdown-nav">
     <li>
-      <a href="{{ route('patologia.medico.index') }}"> Medicos </a>
+      <a href="{{ route('patologia.pacientes.index') }}"> Pacientes </a>
     </li>
   </ul>
+  
   
 </li>

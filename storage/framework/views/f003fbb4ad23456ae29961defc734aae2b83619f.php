@@ -29,6 +29,9 @@ tr.odd {
 .contenido td {
     font-size: 12px; /* Puedes ajustar el valor según tus necesidades */
 }
+@page{
+  margin: 0.5cm 1cm;  
+}
 </style>
 
 </head>
@@ -43,8 +46,8 @@ tr.odd {
         <thead class="cabecera">
           <tr>              
               <th style="text-align: center"><h6>CI</h6></th>						  
-		          <th><h6>NOMBRES</h6></th>
-						  <th><h6>APELLIDOS</h6></th>
+		          <th><h6>APELLIDOS</h6></th>
+              <th><h6>NOMBRES</h6></th>						  
 						  <th><h6>ESPECIALIDAD</h6></th>		          
               <!--<th><h6>DIRECCION</h6></th>		          
               <th><h6>CELULAR</h6></th>		          -->
@@ -59,11 +62,11 @@ tr.odd {
                 <p><?php echo e($medico->ci); ?></p>
               </td>		            						  
               <td class="min-width">
-                <p><?php echo e($medico->nombre); ?></p>
-              </td>		            
-						  <td class="min-width">
                 <p><?php echo e($medico->apellido); ?></p>
-              </td>		                  
+              </td>		              
+              <td class="min-width">
+                <p><?php echo e($medico->nombre); ?></p>
+              </td>		            						      
 						  <!--<td><p><?php echo e(floor(abs(strtotime($hoy)-strtotime($medico->fecha_nacimiento))/(365*60*60*24))); ?></p></td> -->
               <td class="min-width">
                 <p><?php echo e($medico->especialidad); ?></p>

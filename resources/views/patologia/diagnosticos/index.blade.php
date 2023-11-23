@@ -9,7 +9,7 @@
     <div class="row align-items-center" style="height: 60px">
       <div class="col-md-6">
         <div class="titlemb-30">
-          <h2>Diagnosticos</h2>
+          <h2>Diagnósticos</h2>
         </div>
       </div>
       <div class="col-md-6" style="text-align: right;">
@@ -20,8 +20,7 @@
 		  <a href="{{ route('patologia.diagnosticos.pdf') }}" class="btn btn-success btn-lg" target="_blank">Imprimir Lista</a>
         </div>
       </div>
-    </div>
-    <!-- end row -->
+    </div>    
   </div>
 @if (session('mensaje'))
 	<div class="alert alert-success">
@@ -39,9 +38,8 @@
 		                  <th><h6>CODIGO</h6></th>
 		                  <th><h6>DESCRIPCION</h6></th>
 		                  <th><h6>EDITAR</h6></th>
-						  <th><h6>ELIMINAR</h6></th>
-		                </tr>
-		                <!-- end table row-->
+						  <th><h6>ESTADO</h6></th>
+		                </tr>		                
 		              </thead>
 		              <tbody>
 		              	@foreach($diagnosticos as $diagnostico)
@@ -54,26 +52,30 @@
 		                  </td>
 						  <td width="15px">
                             <a href="{{ route('patologia.diagnosticos.edit', $diagnostico->id) }}" class="btn btn-warning btn-sm">Editar</a>
-                        </td>
-						  <td width="15px">
-						  	<form action="{{ route('patologia.diagnosticos.destroy', $diagnostico->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este registro?');">
-								@method('delete')
-								@csrf
-								<input type="submit" value="Eliminar" class="btn btn-danger btn-sm">
-							</form>
-		                  </td>
+                          </td>
+							<td width="15px">
+								@if($diagnostico->estado)
+									<form action="{{ route('patologia.diagnosticos.destroy', $diagnostico->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas DESACTIVAR este registro?');">
+										@method('delete')
+										@csrf
+										<input type="submit" value="Desactivar" class="btn btn-danger btn-sm">
+									</form>
+								@else
+									<form action="{{ route('patologia.diagnosticos.habilitar', $diagnostico->id) }}" method="GET" onsubmit="return confirm('¿Estás seguro de que deseas ACTIVAR este registro?');">
+										@method('GET')
+										@csrf
+										<input type="submit" value="Activar" class="btn btn-success btn-sm">
+									</form>
+								@endif
+							</td>
 		                </tr>
-		                @endforeach
-		                <!-- end table row -->
+		                @endforeach		                
 		              </tbody>
 		            </table>
-		        </div>
-            <!-- end table -->
+		        </div>            
           	</div>
-        </div>
-        <!-- end card -->
-    </div>
-      <!-- end col -->
+        </div>        
+    </div>      
 </div>
 @endsection
 @push('script')

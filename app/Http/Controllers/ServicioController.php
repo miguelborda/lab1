@@ -16,15 +16,15 @@ class ServicioController extends Controller
 
     public function index()
     {
-        $servicios = Servicio::where('estado', true)->get();
+        $servicios = Servicio::all();   
         return view("patologia.servicios.index", [
             'servicios' => $servicios
         ]);
     }
     
     public function pdf()
-    {
-        $servicios = Servicio::all();
+    {        
+        $servicios = Servicio::where('estado', true)->orderby('nombre_servicio','asc')->get();
         $pdf = Pdf::loadView('patologia.servicios.pdf', compact('servicios'));
         return $pdf->stream();
         //return $pdf->download('invoice.pdf');  --> para descargar pdf
@@ -69,12 +69,34 @@ class ServicioController extends Controller
     
     public function destroy($id)
     {
+        $hoy = date('Y-m-d H:i:s');
+        $user = auth()->user();    
         $servicio = Servicio::find($id);
         if (!$servicio) {
             return redirect()->route('patologia.servicios.index')->with('mensaje', 'No se encontró el area');
         }
         $servicio->estado = FALSE; // Cambia el estado a inactivo
+        $servicio->updateduser_id = $user->id;
+        $servicio->updated_at = $hoy;
+        $servicio->descripcion = 'Desactivó_el_Estado';
         $servicio->save();
         return redirect()->route('patologia.servicios.index')->with('mensaje', 'El area se marcó como inactivo');
     }
+
+    public function habilitar($id)
+    {
+        $hoy = date('Y-m-d H:i:s');
+        $user = auth()->user();                
+        $servicio = Servicio::find($id);
+        if (!$servicio) {
+            return redirect()->route('patologia.servicios.index')->with('mensaje', 'No se encontró el servicio');
+        }
+        $servicio->estado = TRUE; // Cambia el estado a ACTIVO
+        $servicio->updateduser_id = $user->id;
+        $servicio->updated_at = $hoy;
+        $servicio->descripcion = 'Activó_el_Estado';
+        $servicio->save();
+        return redirect()->route('patologia.servicios.index')->with('mensaje', 'El servicio se marcó como inactivo');
+    }
+
 }

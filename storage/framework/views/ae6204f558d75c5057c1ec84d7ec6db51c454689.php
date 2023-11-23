@@ -15,9 +15,9 @@
       <div class="col-md-6" style="text-align: right;">
         <div class="titlemb-30">
 			
-          	<a href="<?php echo e(route('patologia.paciente.create')); ?>" class="btn btn-primary btn-lg">Nuevo</a>        
+          	<a href="<?php echo e(route('patologia.pacientes.create')); ?>" class="btn btn-primary btn-lg">Nuevo</a>        
 		  	
-			<a href="<?php echo e(route('patologia.paciente.pdf')); ?>" class="btn btn-success btn-lg" target="_blank">Imprimir Lista</a> 
+			<a href="<?php echo e(route('patologia.pacientes.pdf')); ?>" class="btn btn-success btn-lg" target="_blank">Imprimir Lista</a> 
 		</div>
         </div>
       </div>
@@ -44,7 +44,7 @@
 						  <th><h6>SEXO</h6></th>
 						  <th><h6>DIRECCION</h6></th>
 		                  <th><h6>EDITAR</h6></th>
-						  <th><h6>ELIMINAR</h6></th>
+						  <th><h6>ESTADO</h6></th>
 		                </tr>
 		                <!-- end table row-->
 		              </thead>
@@ -64,19 +64,28 @@
 						  <td class="min-width">
 		                    <p><?php echo e($paciente->sexo); ?></p>
 		                  </td>
-						  <td class="min-width">
-		                    <p><?php echo e($paciente->direccion); ?></p>
-		                  </td>		            		            
+						  <td class="min-width" style="max-width: 200px;">
+							<p><?php echo e($paciente->direccion); ?></p>
+						  </td>
+	            		            
 						  <td width="15px">							
-                            <a href="<?php echo e(route('patologia.paciente.edit', $paciente->id)); ?>" class="btn btn-warning btn-sm">Editar</a>
+                            <a href="<?php echo e(route('patologia.pacientes.edit', $paciente->id)); ?>" class="btn btn-warning btn-sm">Editar</a>
                           </td>
-						  <td width="15px">
-						  	<form action="<?php echo e(route('patologia.paciente.destroy', $paciente->id)); ?>" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este registro?');">
-								<?php echo method_field('delete'); ?>
-								<?php echo csrf_field(); ?>
-								<input type="submit" value="Eliminar" class="btn btn-danger btn-sm">
-							</form>
-		                  </td>
+						  	<td width="15px">
+								<?php if($paciente->estado): ?>
+									<form action="<?php echo e(route('patologia.pacientes.destroy', $paciente->id)); ?>" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas DESACTIVAR este registro?');">
+										<?php echo method_field('delete'); ?>
+										<?php echo csrf_field(); ?>
+										<input type="submit" value="Desactivar" class="btn btn-danger btn-sm">
+									</form>
+								<?php else: ?>
+									<form action="<?php echo e(route('patologia.pacientes.habilitar', $paciente->id)); ?>" method="GET" onsubmit="return confirm('¿Estás seguro de que deseas ACTIVAR este registro?');">
+										<?php echo method_field('GET'); ?>
+										<?php echo csrf_field(); ?>
+										<input type="submit" value="Activar" class="btn btn-success btn-sm">
+									</form>
+								<?php endif; ?>
+							</td>
 						  
 		                </tr>
 		                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

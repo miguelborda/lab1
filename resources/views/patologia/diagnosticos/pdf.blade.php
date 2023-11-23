@@ -45,7 +45,7 @@ tr.odd {
         <thead class="cabecera">
           <tr>
               <th style="text-align: center"><h6>CODIGO</h6></th>
-              <th><h6>DESCRIPCION</h6></th>
+              <th style="text-align: center"><h6>DESCRIPCION</h6></th>
           </tr><br>
           <!-- end table row-->
         </thead>

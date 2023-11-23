@@ -40,9 +40,8 @@
 		                  <th><h6>ID</h6></th>
 		                  <th><h6>NOMBRE ESTABLECIMIENTO</h6></th>
 		                  <th><h6>EDITAR</h6></th>
-						  <th><h6>ELIMINAR</h6></th>
-		                </tr>
-		                <!-- end table row-->
+						  <th><h6>ESTADO</h6></th>
+		                </tr>		                
 		              </thead>
 		              <tbody>
 		              	@foreach($establecimientos as $establecimiento)
@@ -56,25 +55,29 @@
 						  <td width="15px">
                             <a href="{{ route('patologia.establecimientos.edit', $establecimiento->id) }}" class="btn btn-warning btn-sm">Editar</a>
                           </td>
-						  <td width="15px">
-							<form action="{{ route('patologia.establecimientos.destroy', $establecimiento->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este registro?');">
-								@method('delete')
-								@csrf
-								<input type="submit" value="Eliminar" class="btn btn-danger btn-sm">
-							</form>
-		                  </td>
+						  	<td width="15px">
+								@if($establecimiento->estado)
+									<form action="{{ route('patologia.establecimientos.destroy', $establecimiento->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas DESACTIVAR este registro?');">
+										@method('delete')
+										@csrf
+										<input type="submit" value="Desactivar" class="btn btn-danger btn-sm">
+									</form>
+								@else
+									<form action="{{ route('patologia.establecimientos.habilitar', $establecimiento->id) }}" method="GET" onsubmit="return confirm('¿Estás seguro de que deseas ACTIVAR este registro?');">
+										@method('GET')
+										@csrf
+										<input type="submit" value="Activar" class="btn btn-success btn-sm">
+									</form>
+								@endif
+							</td>
 		                </tr>
-		                @endforeach
-		                <!-- end table row -->
+		                @endforeach		                
 		              </tbody>
 		            </table>
-		        </div>
-            <!-- end table -->
+		        </div>            
           	</div>
-        </div>
-        <!-- end card -->
-    </div>
-      <!-- end col -->
+        </div>        
+    </div>      
 </div>
 @endsection
 @push('script')

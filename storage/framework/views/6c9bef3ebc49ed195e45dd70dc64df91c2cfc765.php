@@ -19,7 +19,7 @@
 
 <div class="card">
     <div class="card-body">
-        <form method="POST" action="<?php echo e(route('patologia.paciente.update', $paciente->id)); ?>" onsubmit="return confirm('¿Estás seguro de que deseas modificar este registro?');">
+        <form method="POST" action="<?php echo e(route('patologia.pacientes.update', $paciente->id)); ?>" onsubmit="return confirm('¿Estás seguro de que deseas modificar este registro?');">
             <?php echo csrf_field(); ?>
             <?php echo method_field('PUT'); ?>
 

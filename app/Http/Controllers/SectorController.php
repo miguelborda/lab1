@@ -16,14 +16,14 @@ class SectorController extends Controller
     }
     public function index()
     {
-        $sectors=Sector::where('estado', true)->get();
+        $sectors = Sector::all();
         return view("patologia.sector.index", [
             'sectors'   =>  $sectors
         ]);
     }   
     public function pdf()
-    {
-        $sectors = Sector::all();
+    {        
+        $sectors = Sector::where('estado', true)->orderby('nombre_sector','asc')->get();
         $pdf = Pdf::loadView('patologia.sector.pdf', compact('sectors'));
         return $pdf->stream();
         //return $pdf->download('invoice.pdf');  --> para descargar pdf
@@ -67,11 +67,32 @@ class SectorController extends Controller
         
     public function destroy($id)
     {
+        $hoy = date('Y-m-d H:i:s');
+        $user = auth()->user();    
         $sector = Sector::find($id);
         if (!$sector) {
             return redirect()->route('patologia.sector.index')->with('mensaje', 'No se encontró el sector');
         }
         $sector->estado = FALSE; // Cambia el estado a inactivo
+        $sector->updateduser_id = $user->id;
+        $sector->updated_at = $hoy;
+        $sector->descripcion = 'Desactivó_el_Estado';
+        $sector->save();
+        return redirect()->route('patologia.sector.index')->with('mensaje', 'El sector se marcó como inactivo');
+    }
+
+    public function habilitar($id)
+    {
+        $hoy = date('Y-m-d H:i:s');
+        $user = auth()->user();                
+        $sector = Sector::find($id);
+        if (!$sector) {
+            return redirect()->route('patologia.sector.index')->with('mensaje', 'No se encontró el sector');
+        }
+        $sector->estado = TRUE; // Cambia el estado a ACTIVO
+        $sector->updateduser_id = $user->id;
+        $sector->updated_at = $hoy;
+        $sector->descripcion = 'Activó_el_Estado';
         $sector->save();
         return redirect()->route('patologia.sector.index')->with('mensaje', 'El sector se marcó como inactivo');
     }

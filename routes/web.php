@@ -68,66 +68,74 @@ Route::middleware($middlewares)->group(function()
 });
 
 Route::middleware($middlewares)->group(function()
+{   
+    Route::get('Areas/pdf', [AreaController::class, 'pdf'])->name('patologia.areas.pdf');         
+    Route::resource('/Areas', AreaController::class)->names('patologia.areas'); 
+    Route::get('Areas/habilitar/{id}', [AreaController::class, 'habilitar'])->name('patologia.areas.habilitar');    
+});
+
+Route::middleware($middlewares)->group(function()
 {
     Route::get('Diagnosticos/pdf', [DiagnosticoController::class, 'pdf'])->name('patologia.diagnosticos.pdf');     
     Route::resource('/Diagnosticos', DiagnosticoController::class)->names('patologia.diagnosticos');
-});
-
-Route::middleware($middlewares)->group(function()
-{   
-    Route::get('Areas/pdf', [AreaController::class, 'pdf'])->name('patologia.areas.pdf');         
-    Route::resource('/Areas', AreaController::class)->names('patologia.areas');    
-    
-});
-
-Route::middleware($middlewares)->group(function()
-{   
-    Route::get('Servicios/pdf', [ServicioController::class, 'pdf'])->name('patologia.servicios.pdf');         
-    Route::resource('/Servicios', ServicioController::class)->names('patologia.servicios');    
-    
+    Route::get('Diagnosticos/habilitar/{id}', [DiagnosticoController::class, 'habilitar'])->name('patologia.diagnosticos.habilitar');    
 });
 
 Route::middleware($middlewares)->group(function()
 {
     Route::get('Distritos/pdf', [DistritoController::class, 'pdf'])->name('patologia.distritos.pdf');     
     Route::resource('/Distritos', DistritoController::class)->names('patologia.distritos');
+    Route::get('Distritos/habilitar/{id}', [DistritoController::class, 'habilitar'])->name('patologia.distritos.habilitar');     
 });
 
 Route::middleware($middlewares)->group(function()
 {
     Route::get('Establecimientos/pdf', [EstablecimientoController::class, 'pdf'])->name('patologia.establecimientos.pdf');     
     Route::resource('/Establecimientos', EstablecimientoController::class)->names('patologia.establecimientos');
+    Route::get('Establecimientos/habilitar/{id}', [EstablecimientoController::class, 'habilitar'])->name('patologia.establecimientos.habilitar');     
+});
+
+Route::middleware($middlewares)->group(function()
+{   
+    Route::get('Servicios/pdf', [ServicioController::class, 'pdf'])->name('patologia.servicios.pdf');         
+    Route::resource('/Servicios', ServicioController::class)->names('patologia.servicios');    
+    Route::get('Servicios/habilitar/{id}', [ServicioController::class, 'habilitar'])->name('patologia.servicios.habilitar');         
 });
 
 Route::middleware($middlewares)->group(function()
 {
     Route::get('Municipios/pdf', [MunicipioController::class, 'pdf'])->name('patologia.municipios.pdf');     
     Route::resource('/Municipios', MunicipioController::class)->names('patologia.municipios');
+    Route::get('Municipios/habilitar/{id}', [MunicipioController::class, 'habilitar'])->name('patologia.municipios.habilitar');     
 });
 
 Route::middleware($middlewares)->group(function()
 {
     Route::get('Secretariaregional/pdf', [SecretariaregionalController::class, 'pdf'])->name('patologia.secretariaregional.pdf');     
     Route::resource('/Secretariaregional', SecretariaregionalController::class)->names('patologia.secretariaregional');
+    Route::get('Secretariaregional/habilitar/{id}', [SecretariaregionalController::class, 'habilitar'])->name('patologia.secretariaregional.habilitar');     
 });
 
 Route::middleware($middlewares)->group(function()
 {
     Route::get('Sector/pdf', [SectorController::class, 'pdf'])->name('patologia.sector.pdf');     
     Route::resource('/Sector', SectorController::class)->names('patologia.sector');
+    Route::get('Sector/habilitar/{id}', [SectorController::class, 'habilitar'])->name('patologia.sector.habilitar');     
 });
 
 Route::middleware($middlewares)->group(function()
 {   
-    Route::get('Pacientes/pdf', [PacienteController::class, 'pdf'])->name('patologia.paciente.pdf');      
-    Route::resource('/Pacientes', PacienteController::class)->names('patologia.paciente');
+    Route::get('Pacientes/pdf', [PacienteController::class, 'pdf'])->name('patologia.pacientes.pdf');      
+    Route::resource('/Pacientes', PacienteController::class)->names('patologia.pacientes');
+    Route::get('Pacientes/habilitar/{id}', [PacienteController::class, 'habilitar'])->name('patologia.pacientes.habilitar');      
     //Route::post('/calcular-edad', 'PacienteController@calcularEdad');
 
 });
 Route::middleware($middlewares)->group(function()
 {   
-    Route::get('Medicos/pdf', [MedicoController::class, 'pdf'])->name('patologia.medico.pdf');      
-    Route::resource('/Medicos', MedicoController::class)->names('patologia.medico');
+    Route::get('Medicos/pdf', [MedicoController::class, 'pdf'])->name('patologia.medicos.pdf');      
+    Route::resource('/Medicos', MedicoController::class)->names('patologia.medicos');
+    Route::get('Medicos/habilitar/{id}', [MedicoController::class, 'habilitar'])->name('patologia.medicos.habilitar');      
     //Route::post('/calcular-edad', 'MedicoController@calcularEdad');
 
 });

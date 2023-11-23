@@ -17,7 +17,7 @@ class DiagnosticoController extends Controller
     }
     public function index()
     {
-        $diagnosticos=Diagnostico::where('estado', true)->get();
+        $diagnosticos = Diagnostico::all();
         return view("patologia.diagnosticos.index", [
             'diagnosticos'   =>  $diagnosticos
         ]);
@@ -25,7 +25,7 @@ class DiagnosticoController extends Controller
     
     public function pdf()
     {
-        $diagnosticos = Diagnostico::all();
+        $diagnosticos = Diagnostico::where('estado', true)->get();        
         $pdf = Pdf::loadView('patologia.diagnosticos.pdf', compact('diagnosticos'));
         return $pdf->stream();
         //return $pdf->download('invoice.pdf');  --> para descargar pdf
@@ -70,12 +70,31 @@ class DiagnosticoController extends Controller
     
     public function destroy($id)
     {
+        $hoy = date('Y-m-d H:i:s');
+        $user = auth()->user();    
         $diagnostico = Diagnostico::find($id);
         if (!$diagnostico) {
             return redirect()->route('patologia.diagnosticos.index')->with('mensaje', 'No se encontró el diagnostico');
         }
-        $diagnostico->estado = FALSE; // Cambia el estado a inactivo
+        $diagnostico->estado = FALSE; // Cambia el estado a DESACTIVAR
+        $diagnostico->updateduser_id = $user->id;
+        $diagnostico->updated_at = $hoy;
         $diagnostico->save();
         return redirect()->route('patologia.diagnosticos.index')->with('mensaje', 'El diagnostico se marcó como inactivo');
+    }
+    
+    public function habilitar($id)
+    {
+        $hoy = date('Y-m-d H:i:s');
+        $user = auth()->user();                
+        $diagnostico = Diagnostico::find($id);
+        if (!$diagnostico) {
+            return redirect()->route('patologia.diagnosticos.index')->with('mensaje', 'No se encontró el area');
+        }
+        $diagnostico->estado = TRUE; // Cambia el estado a ACTIVAR
+        $diagnostico->updateduser_id = $user->id;
+        $diagnostico->updated_at = $hoy;
+        $diagnostico->save();
+        return redirect()->route('patologia.diagnosticos.index')->with('mensaje', 'El area se marcó como inactivo');
     }
 }

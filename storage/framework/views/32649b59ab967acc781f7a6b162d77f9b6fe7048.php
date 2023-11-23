@@ -187,17 +187,12 @@
   </a>  
   <ul id="ddmenu_4" class="collapse dropdown-nav">
     <li>
-      <a href="<?php echo e(route('patologia.diagnosticos.index')); ?>"> Diagnosticos </a>
-    </li>
-  </ul>
-  <ul id="ddmenu_4" class="collapse dropdown-nav">
-    <li>
       <a href="<?php echo e(route('patologia.areas.index')); ?>"> Areas </a>
     </li>
   </ul>
   <ul id="ddmenu_4" class="collapse dropdown-nav">
     <li>
-      <a href="<?php echo e(route('patologia.servicios.index')); ?>"> Servicios </a>
+      <a href="<?php echo e(route('patologia.diagnosticos.index')); ?>"> Diagnósticos </a>
     </li>
   </ul>
   <ul id="ddmenu_4" class="collapse dropdown-nav">
@@ -208,6 +203,11 @@
   <ul id="ddmenu_4" class="collapse dropdown-nav">
     <li>
       <a href="<?php echo e(route('patologia.establecimientos.index')); ?>"> Establecimientos </a>
+    </li>
+  </ul>
+  <ul id="ddmenu_4" class="collapse dropdown-nav">
+    <li>
+      <a href="<?php echo e(route('patologia.medicos.index')); ?>"> Medicos </a>
     </li>
   </ul>
   <ul id="ddmenu_4" class="collapse dropdown-nav">
@@ -227,14 +227,15 @@
   </ul>
   <ul id="ddmenu_4" class="collapse dropdown-nav">
     <li>
-      <a href="<?php echo e(route('patologia.paciente.index')); ?>"> Pacientes </a>
+      <a href="<?php echo e(route('patologia.servicios.index')); ?>"> Servicios </a>
     </li>
-  </ul>
+  </ul>  
   <ul id="ddmenu_4" class="collapse dropdown-nav">
     <li>
-      <a href="<?php echo e(route('patologia.medico.index')); ?>"> Medicos </a>
+      <a href="<?php echo e(route('patologia.pacientes.index')); ?>"> Pacientes </a>
     </li>
   </ul>
+  
   
 </li>
 <?php /**PATH C:\xampp\htdocs\usuariosHB\resources\views/layouts/menu.blade.php ENDPATH**/ ?>

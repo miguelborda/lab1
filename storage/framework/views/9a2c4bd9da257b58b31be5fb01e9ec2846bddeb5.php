@@ -23,7 +23,9 @@ tr.even {
 tr.odd {
     background-color: #ffffff; /* Color de fondo para filas impares (puedes ajustar el color) */
 }
-
+@page{
+  margin: 0.5cm 1cm;  
+}
 </style>
 
 
@@ -47,7 +49,7 @@ tr.odd {
         <?php $__currentLoopData = $distritos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $distrito): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
           <tr class="<?php echo e($key % 2 == 0 ? 'even' : 'odd'); ?>">
               <td class="min-width" style="text-align: center; ">
-                  <p><?php echo e($distrito->id); ?></p>
+                  <p><?php echo e($key+1); ?></p>
               </td>
               <td class="min-width">
                   <p><?php echo e($distrito->nombre_distrito); ?></p>

@@ -18,11 +18,9 @@
           <a href="{{ route('patologia.distritos.create') }}" class="btn btn-primary btn-lg">Nuevo</a>        
 		  {{-- <button type="button" class="btn btn-success btn-lg" target="_blank">Imprimir Lista</button> --}}
 		<a href="{{ route('patologia.distritos.pdf') }}" class="btn btn-success btn-lg" target="_blank">Imprimir Lista</a> 
-		</div>
-		  
+		</div>		  
       </div>
-    </div>
-    <!-- end row -->
+    </div>    
   </div>
 @if (session('mensaje'))
 	<div class="alert alert-success">
@@ -40,9 +38,8 @@
 		                  <th><h6>ID</h6></th>
 		                  <th><h6>NOMBRE DISTRITO</h6></th>
 		                  <th><h6>EDITAR</h6></th>
-						  <th><h6>ELIMINAR</h6></th>
-		                </tr>
-		                <!-- end table row-->
+						  <th><h6>ESTADO</h6></th>
+		                </tr>		                
 		              </thead>
 		              <tbody>
 		              	@foreach($distritos as $distrito)
@@ -56,26 +53,30 @@
 						  <td width="15px">
                             <a href="{{ route('patologia.distritos.edit', $distrito->id) }}" class="btn btn-warning btn-sm">Editar</a>
                           </td>
-						  <td width="15px">						  
-						  	<form action="{{ route('patologia.distritos.destroy', $distrito->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este registro?');">
-								@method('delete')
-								@csrf
-								<input type="submit" value="Eliminar" class="btn btn-danger btn-sm">
-							</form>
-		                  </td>
+						  <td width="15px">
+								@if($distrito->estado)
+									<form action="{{ route('patologia.distritos.destroy', $distrito->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas DESACTIVAR este registro?');">
+										@method('delete')
+										@csrf
+										<input type="submit" value="Desactivar" class="btn btn-danger btn-sm">
+									</form>
+								@else
+									<form action="{{ route('patologia.distritos.habilitar', $distrito->id) }}" method="GET" onsubmit="return confirm('¿Estás seguro de que deseas ACTIVAR este registro?');">
+										@method('GET')
+										@csrf
+										<input type="submit" value="Activar" class="btn btn-success btn-sm">
+									</form>
+								@endif
+							</td>
 		                  </td>
 		                </tr>
-		                @endforeach
-		                <!-- end table row -->
+		                @endforeach		                
 		              </tbody>
 		            </table>
-		        </div>
-            <!-- end table -->
+		        </div>            
           	</div>
-        </div>
-        <!-- end card -->
-    </div>
-      <!-- end col -->
+        </div>        
+    </div>      
 </div>
 @endsection
 @push('script')

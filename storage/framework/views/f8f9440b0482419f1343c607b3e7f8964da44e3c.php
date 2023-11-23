@@ -17,7 +17,7 @@
 </div>
 <div class="card">
     <div class="card-body">
-        <?php echo Form::open(['route'=>'patologia.medico.store']); ?>
+        <?php echo Form::open(['route'=>'patologia.medicos.store']); ?>
 
         <!--<span class="text-danger">Los campos con * son de llenado obligatorio</span>-->
         <div class="row">

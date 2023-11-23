@@ -17,7 +17,7 @@ class AreaController extends Controller
 
     public function index()
     {
-        $areas = Area::where('estado', true)->get();
+        $areas = Area::all();
         return view("patologia.areas.index", [
             'areas' => $areas
         ]);
@@ -25,8 +25,8 @@ class AreaController extends Controller
     
     public function pdf()
     {
-        $areas = Area::all();
-        $pdf = Pdf::loadView('patologia.areas.pdf', compact('areas'));
+        $areas = Area::where('estado', true)->orderBy('id', 'asc')->get();
+            $pdf = Pdf::loadView('patologia.areas.pdf', compact('areas'));
         return $pdf->stream();
         //return $pdf->download('invoice.pdf');  --> para descargar pdf
     }
@@ -70,12 +70,31 @@ class AreaController extends Controller
     
     public function destroy($id)
     {
+        $hoy = date('Y-m-d H:i:s');
+        $user = auth()->user();        
         $area = Area::find($id);
         if (!$area) {
             return redirect()->route('patologia.areas.index')->with('mensaje', 'No se encontró el area');
         }
-        $area->estado = FALSE; // Cambia el estado a inactivo
+        $area->estado = FALSE; // Cambia el estado a INACTIVO
+        $area->updateduser_id = $user->id;
+        $area->updated_at = $hoy;
         $area->save();
         return redirect()->route('patologia.areas.index')->with('mensaje', 'El area se marcó como inactivo');
     }
-}
+   
+    public function habilitar($id)
+    {
+        $hoy = date('Y-m-d H:i:s');
+        $user = auth()->user();                
+        $area = Area::find($id);
+        if (!$area) {
+            return redirect()->route('patologia.areas.index')->with('mensaje', 'No se encontró el area');
+        }
+        $area->estado = TRUE; // Cambia el estado a ACTIVO
+        $area->updateduser_id = $user->id;
+        $area->updated_at = $hoy;
+        $area->save();
+        return redirect()->route('patologia.areas.index')->with('mensaje', 'El area se marcó como inactivo');
+    }
+} 

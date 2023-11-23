@@ -16,7 +16,8 @@ class DistritoController extends Controller
     }
     public function index()
     {
-        $distritos=Distrito::where('estado', true)->get();
+        $distritos = Distrito::all();
+        //$distritos=Distrito::where('estado', true)->get();
         return view("patologia.distritos.index", [
             'distritos'   =>  $distritos
         ]);
@@ -24,7 +25,7 @@ class DistritoController extends Controller
     
     public function pdf()
     {
-        $distritos = Distrito::all();
+        $distritos = Distrito::where('estado', true)->orderby('nombre_distrito','asc')->get();
         $pdf = Pdf::loadView('patologia.distritos.pdf', compact('distritos'));
         return $pdf->stream();
         //return $pdf->download('invoice.pdf');  --> para descargar pdf
@@ -68,11 +69,28 @@ class DistritoController extends Controller
     
     public function destroy($id)
     {
+        $hoy = date('Y-m-d H:i:s');
+        $user = auth()->user();    
         $distrito = Distrito::find($id);
         if (!$distrito) {
             return redirect()->route('patologia.distritos.index')->with('mensaje', 'No se encontró el distrito');
         }
         $distrito->estado = FALSE; // Cambia el estado a inactivo
+        $distrito->save();
+        return redirect()->route('patologia.distritos.index')->with('mensaje', 'El distrito se marcó como inactivo');
+    }
+
+    public function habilitar($id)
+    {
+        $hoy = date('Y-m-d H:i:s');
+        $user = auth()->user();                
+        $distrito = Distrito::find($id);
+        if (!$distrito) {
+            return redirect()->route('patologia.distritos.index')->with('mensaje', 'No se encontró el distrito');
+        }
+        $distrito->estado = TRUE; // Cambia el estado a ACTIVO
+        $distrito->updateduser_id = $user->id;
+        $distrito->updated_at = $hoy;
         $distrito->save();
         return redirect()->route('patologia.distritos.index')->with('mensaje', 'El distrito se marcó como inactivo');
     }

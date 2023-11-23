@@ -37,7 +37,8 @@ class PacienteController extends Controller
         $hoy=date('Y-m-d');        
         $actuals=abs(strtotime($ayer)-strtotime($hoy));  
         
-        $pacientes=Paciente::where('estado', true)->get();
+        $pacientes = Paciente::all();
+        //$pacientes=Paciente::where('estado', true)->get();
         return view("patologia.pacientes.index", [
             'pacientes'   =>  $pacientes,            
             'hoy' => $hoy
@@ -47,7 +48,7 @@ class PacienteController extends Controller
     public function pdf()
     {
         $hoy=date('Y-m-d');        
-        $pacientes = Paciente::all();
+        $pacientes = Paciente::where('estado', true)->orderBy('apellido', 'asc')->get();
         $pdf = Pdf::loadView('patologia.pacientes.pdf', compact('pacientes','hoy'));
         return $pdf->stream();
         //return $pdf->download('invoice.pdf');  --> para descargar pdf
@@ -81,7 +82,7 @@ class PacienteController extends Controller
         // Crea el registro del paciente y asocia la ID del usuario
         $paciente = Paciente::create(array_merge($datosPaciente, ['creatoruser_id' => $user->id]));
         //$paciente = Paciente::create($request->all());
-        return redirect()->route('patologia.paciente.index')->with('mensaje','Se creó exitosamente');    
+        return redirect()->route('patologia.pacientes.index')->with('mensaje','Se creó exitosamente');    
     }  
     
     
@@ -103,17 +104,38 @@ class PacienteController extends Controller
         $paciente = request()->except(['_token','_method']);
         $user = auth()->user();        
         Paciente::where('id', $id)->update(array_merge($paciente, ['userid_lastupdated' => $user->id],['username_lastupdated' => $user->email],['updated_at' => $hoy]));           
-        return redirect()->route('patologia.paciente.index')->with('mensaje', 'Se actualizó exitosamente');
+        return redirect()->route('patologia.pacientes.index')->with('mensaje', 'Se actualizó exitosamente');
     }       
         
     public function destroy($id)
     {
+        $hoy = date('Y-m-d H:i:s');
+        $user = auth()->user();    
         $paciente = Paciente::find($id);
         if (!$paciente) {
-            return redirect()->route('patologia.paciente.index')->with('mensaje', 'No se encontró el paciente');
+            return redirect()->route('patologia.pacientes.index')->with('mensaje', 'No se encontró el paciente');
         }
         $paciente->estado = FALSE; // Cambia el estado a inactivo
+        $paciente->updateduser_id = $user->id;
+        $paciente->updated_at = $hoy;
+        $paciente->descripcion = 'Desactivó_el_Estado';
         $paciente->save();
-        return redirect()->route('patologia.paciente.index')->with('mensaje', 'El paciente se marcó como inactivo');
+        return redirect()->route('patologia.pacientes.index')->with('mensaje', 'El paciente se marcó como inactivo');
+    }
+
+    public function habilitar($id)
+    {
+        $hoy = date('Y-m-d H:i:s');
+        $user = auth()->user();                
+        $paciente = Paciente::find($id);
+        if (!$paciente) {
+            return redirect()->route('patologia.pacientes.index')->with('mensaje', 'No se encontró el paciente');
+        }
+        $paciente->estado = TRUE; // Cambia el estado a ACTIVO
+        $paciente->updateduser_id = $user->id;
+        $paciente->updated_at = $hoy;
+        $paciente->descripcion = 'Activó_el_Estado';
+        $paciente->save();
+        return redirect()->route('patologia.pacientes.index')->with('mensaje', 'El paciente se marcó como inactivo');
     }
 }

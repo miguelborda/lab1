@@ -16,7 +16,8 @@ class SecretariaregionalController extends Controller
     }
     public function index()
     {
-        $secretariaregionals=Secretariaregional::where('estado', true)->get();
+        $secretariaregionals = Secretariaregional::all();
+        //$secretariaregionals = Secretariaregional::where('estado', true)->get();
 
         return view("patologia.secretariaregional.index", [
             'secretariaregionals'   =>  $secretariaregionals
@@ -24,7 +25,8 @@ class SecretariaregionalController extends Controller
     }
     public function pdf()
     {
-        $secretariaregionals = Secretariaregional::all();
+        $secretariaregionals = Secretariaregional::where('estado', true)->get();
+        //$secretariaregionals = Secretariaregional::all();
         $pdf = Pdf::loadView('patologia.secretariaregional.pdf', compact('secretariaregionals'));
         return $pdf->stream();
         //return $pdf->download('invoice.pdf');  --> para descargar pdf
@@ -73,13 +75,34 @@ class SecretariaregionalController extends Controller
     
     public function destroy($id)
     {
+        $hoy = date('Y-m-d H:i:s');
+        $user = auth()->user();    
         $secretariaregional = Secretariaregional::find($id);
         if (!$secretariaregional) {
             return redirect()->route('patologia.secretariaregional.index')->with('mensaje', 'No se encontró el secretariaregional');
         }
         $secretariaregional->estado = FALSE; // Cambia el estado a inactivo
+        $secretariaregional->updateduser_id = $user->id;
+        $secretariaregional->updated_at = $hoy;
+        $secretariaregional->descripcion = 'Desactivó_el_Estado';
         $secretariaregional->save();
         return redirect()->route('patologia.secretariaregional.index')->with('mensaje', 'El secretariaregional se marcó como inactivo');
+    }
+
+    public function habilitar($id)
+    {
+        $hoy = date('Y-m-d H:i:s');
+        $user = auth()->user();                
+        $secretariaregional = Secretariaregional::find($id);
+        if (!$secretariaregional) {
+            return redirect()->route('patologia.secretariaregional.index')->with('mensaje', 'No se encontró el secretariaregional');
+        }
+        $secretariaregional->estado = TRUE; // Cambia el estado a ACTIVO
+        $secretariaregional->updateduser_id = $user->id;
+        $secretariaregional->updated_at = $hoy;
+        $secretariaregional->descripcion = 'Activó_el_Estado';
+        $secretariaregional->save();
+        return redirect()->route('patologia.secretariaregional.index')->with('mensaje', 'La Secretaria Regional se marcó como inactivo');
     }
 
 }

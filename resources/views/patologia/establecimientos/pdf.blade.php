@@ -23,7 +23,9 @@ tr.even {
 tr.odd {
     background-color: #ffffff; /* Color de fondo para filas impares (puedes ajustar el color) */
 }
-
+@page{
+  margin: 0.5cm 1cm;  
+}
 </style>
 
 
@@ -38,7 +40,7 @@ tr.odd {
     <table class="table table-striped">
         <thead class="cabecera">
           <tr>
-              <th style="text-align: center"><h6> ID </h6></th>
+              <th style="text-align: center"><h6>Nº</h6></th>
               <th><h6>NOMBRE DE ESTABLECIMIENTO</h6></th>              
           </tr><br>
           <!-- end table row-->
@@ -47,7 +49,7 @@ tr.odd {
         @foreach($establecimientos as $key => $establecimiento)
           <tr class="{{ $key % 2 == 0 ? 'even' : 'odd' }}">
               <td class="min-width" style="text-align: center; ">
-                <p>{{$establecimiento->id}}</p>
+                <p>{{$key+1}}</p>
 		          </td>
 		          <td class="min-width">
 		            <p>{{$establecimiento->nombre_establecimiento}}</p>

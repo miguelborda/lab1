@@ -23,7 +23,9 @@ tr.even {
 tr.odd {
     background-color: #ffffff; /* Color de fondo para filas impares (puedes ajustar el color) */
 }
-
+@page{
+  margin: 0.5cm 1cm;  
+}
 </style>
 
 

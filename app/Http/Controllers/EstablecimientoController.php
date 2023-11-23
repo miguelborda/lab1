@@ -15,14 +15,15 @@ class EstablecimientoController extends Controller
     }
     public function index()
     {
-        $establecimientos=Establecimiento::where('estado', true)->get();
+        $establecimientos = Establecimiento::all();
+        //$establecimientos=Establecimiento::where('estado', true)->get();
         return view("patologia.establecimientos.index", [
             'establecimientos'   =>  $establecimientos
         ]);
     }    
     public function pdf()
     {
-        $establecimientos = Establecimiento::all();
+        $establecimientos = Establecimiento::where('estado', true)->orderby('nombre_establecimiento','asc')->get();
         $pdf = Pdf::loadView('patologia.establecimientos.pdf', compact('establecimientos'));
         return $pdf->stream();
         //return $pdf->download('invoice.pdf');  --> para descargar pdf
@@ -66,11 +67,32 @@ class EstablecimientoController extends Controller
     
     public function destroy($id)
     {
+        $hoy = date('Y-m-d H:i:s');
+        $user = auth()->user();    
         $establecimiento = Establecimiento::find($id);
         if (!$establecimiento) {
             return redirect()->route('patologia.establecimientos.index')->with('mensaje', 'No se encontró el establecimiento');
         }
         $establecimiento->estado = FALSE; // Cambia el estado a inactivo
+        $establecimiento->updateduser_id = $user->id;
+        $establecimiento->updated_at = $hoy;
+        $establecimiento->descripcion = 'Desactivó_el_Estado';
+        $establecimiento->save();
+        return redirect()->route('patologia.establecimientos.index')->with('mensaje', 'El establecimiento se marcó como inactivo');
+    }
+    
+    public function habilitar($id)
+    {
+        $hoy = date('Y-m-d H:i:s');
+        $user = auth()->user();                
+        $establecimiento = Establecimiento::find($id);
+        if (!$establecimiento) {
+            return redirect()->route('patologia.establecimientos.index')->with('mensaje', 'No se encontró el establecimiento');
+        }
+        $establecimiento->estado = TRUE; // Cambia el estado a ACTIVO
+        $establecimiento->updateduser_id = $user->id;
+        $establecimiento->updated_at = $hoy;
+        $establecimiento->descripcion = 'Activó_el_Estado';
         $establecimiento->save();
         return redirect()->route('patologia.establecimientos.index')->with('mensaje', 'El establecimiento se marcó como inactivo');
     }

@@ -17,14 +17,15 @@ class MunicipioController extends Controller
     }
     public function index()
     {
-        $municipios=Municipio::where('estado', true)->get();
+        $municipios = Municipio::all();
+        //$municipios=Municipio::where('estado', true)->get();
         return view("patologia.municipios.index", [
             'municipios'   =>  $municipios
         ]);
     }   
     public function pdf()
     {
-        $municipios = Municipio::all();
+        $municipios = Municipio::where('estado', true)->orderby('nombre_municipio','asc')->get();
         $pdf = Pdf::loadView('patologia.municipios.pdf', compact('municipios'));
         return $pdf->stream();
         //return $pdf->download('invoice.pdf');  --> para descargar pdf
@@ -68,11 +69,32 @@ class MunicipioController extends Controller
         
     public function destroy($id)
     {
+        $hoy = date('Y-m-d H:i:s');
+        $user = auth()->user();    
         $municipio = Municipio::find($id);
         if (!$municipio) {
             return redirect()->route('patologia.municipios.index')->with('mensaje', 'No se encontró el municipio');
         }
         $municipio->estado = FALSE; // Cambia el estado a inactivo
+        $municipio->updateduser_id = $user->id;
+        $municipio->updated_at = $hoy;
+        $municipio->descripcion = 'Deactivó_el_Estado';
+        $municipio->save();
+        return redirect()->route('patologia.municipios.index')->with('mensaje', 'El municipio se marcó como inactivo');
+    }
+
+    public function habilitar($id)
+    {
+        $hoy = date('Y-m-d H:i:s');
+        $user = auth()->user();                
+        $municipio = Municipio::find($id);
+        if (!$municipio) {
+            return redirect()->route('patologia.municipios.index')->with('mensaje', 'No se encontró el municipio');
+        }
+        $municipio->estado = TRUE; // Cambia el estado a ACTIVO
+        $municipio->updateduser_id = $user->id;
+        $municipio->updated_at = $hoy;
+        $municipio->descripcion = 'Activó_el_Estado';
         $municipio->save();
         return redirect()->route('patologia.municipios.index')->with('mensaje', 'El municipio se marcó como inactivo');
     }

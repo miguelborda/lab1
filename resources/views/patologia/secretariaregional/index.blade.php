@@ -40,7 +40,7 @@
 		                  <th><h6>ID</h6></th>
 		                  <th><h6>NOMBRE SECRETARIA REGIONAL</h6></th>
 		                  <th><h6>EDITAR</h6></th>
-						  <th><h6>ELIMINAR</h6></th>
+						  <th><h6>ESTADO</h6></th>
 		                </tr>
 		                <!-- end table row-->
 		              </thead>
@@ -56,13 +56,21 @@
 						  <td width="15px">
                             <a href="{{ route('patologia.secretariaregional.edit', $secretariaregional->id) }}" class="btn btn-warning btn-sm">Editar</a>
                         </td>
-						  <td width="15px">
-						  	<form action="{{ route('patologia.secretariaregional.destroy', $secretariaregional->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este registro?');">
-								@method('delete')
-								@csrf
-								<input type="submit" value="Eliminar" class="btn btn-danger btn-sm">
-							</form>
-		                  </td>
+							<td width="15px">
+								@if($secretariaregional->estado)
+									<form action="{{ route('patologia.secretariaregional.destroy', $secretariaregional->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas DESACTIVAR este registro?');">
+										@method('delete')
+										@csrf
+										<input type="submit" value="Desactivar" class="btn btn-danger btn-sm">
+									</form>
+								@else
+									<form action="{{ route('patologia.secretariaregional.habilitar', $secretariaregional->id) }}" method="GET" onsubmit="return confirm('¿Estás seguro de que deseas ACTIVAR este registro?');">
+										@method('GET')
+										@csrf
+										<input type="submit" value="Activar" class="btn btn-success btn-sm">
+									</form>
+								@endif
+							</td>
 		                </tr>
 		                @endforeach
 		                <!-- end table row -->
