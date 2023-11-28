@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Models;
-
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -14,24 +13,19 @@ class Formulario3cito extends Model
 
     protected $table = 'formulario3citos';
 
-    public function municipio()
-    {
+    public function municipio(){
         return $this->belongsTo(Municipio::class, 'municipio_id', 'id');
     }
-    public function distrito()
-    {
+    public function distrito(){
         return $this->belongsTo(Distrito::class, 'distrito_id', 'id');
     }
-    public function area()
-    {
+    public function area(){
         return $this->belongsTo(Area::class, 'area_id', 'id');
     }    
-    public function secretariaregional()
-    {
+    public function secretariaregional(){
         return $this->belongsTo(Secretariaregional::class, 'secretaria_regional_id', 'id');
     }
-    public function establecimiento()
-    {
+    public function establecimiento(){
         return $this->belongsTo(Establecimiento::class, 'establecimiento_id', 'id');
     }
 }

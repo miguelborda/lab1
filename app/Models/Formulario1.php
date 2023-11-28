@@ -1,15 +1,14 @@
 <?php
 
 namespace App\Models;
-
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Formulario1 extends Model
 {
     use HasFactory;
-    protected $fillable=['num_solicitud','fecha_solicitud','secretaria_regional_id','municipio_id',
-    'distrito_id','area_id','fecha_solicitud','establecimiento_id','sector_id',
+    protected $fillable=['id','num_solicitud','fecha_solicitud','secretaria_regional_id',
+    'municipio_id','distrito_id','area_id','fecha_solicitud','establecimiento_id','sector_id',
     'creatoruser_id','updateduser_id','created_at','updated_at','estado','descripcion'];   
 
     protected $table = 'formulario1s';

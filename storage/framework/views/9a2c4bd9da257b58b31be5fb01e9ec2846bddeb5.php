@@ -40,7 +40,7 @@ tr.odd {
     <table class="table table-striped">
         <thead class="cabecera">
           <tr>
-              <th style="text-align: center"><h6>ID</h6></th>
+              <th style="text-align: center"><h6>Nº</h6></th>
               <th><h6>NOMBRE DE DISTRITO</h6></th>              
           </tr><br>
           <!-- end table row-->

@@ -196,10 +196,10 @@
                   >
                     <div class="profile-info">
                       <div class="info">
-                        <h6>{{ Auth::user()->email }}</h6>
+                        <h6>{{ Auth::user()->persona->nombres }}</h6>
                         <div class="image">
                           <img
-                            src="{{asset('assets/images/profile/profile-image.png')}}"
+                            src="{{asset('assets/images/profile/perfil123.png')}}"
                             alt=""
                           />
                           <span class="status"></span>

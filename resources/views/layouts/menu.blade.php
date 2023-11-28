@@ -1,4 +1,4 @@
-<!--<li class="nav-item nav-item-has-children">
+<li class="nav-item nav-item-has-children">
   <a
     href="#0"
     class="collapsed"
@@ -15,24 +15,48 @@
         />
       </svg>
     </span>
-    <span class="text">SISTEMAS</span>
-  </a>
+    <span class="text">ADMINISTRADOR</span>
+  </a>  
   <ul id="ddmenu_1" class="collapse dropdown-nav">
-    <li>
-      <a href="{{ route('sistemas.usuarios.index') }}"> Usuarios </a>
-    </li>
+    <li><a href="{{ route('sistemas.usuarios.index') }}"> Usuarios </a></li>
   </ul>
   <ul id="ddmenu_1" class="collapse dropdown-nav">
-    <li>
-      <a href="{{ route('sistemas.personas.index') }}"> Personas </a>
-    </li>
+    <li><a href="{{ route('sistemas.personas.index') }}"> Personas </a></li>
   </ul>
   <ul id="ddmenu_1" class="collapse dropdown-nav">
-    <li>
-      <a href="{{ route('sistemas.roles.index') }}"> Roles </a>
-    </li>
+    <li><a href="{{ route('sistemas.roles.index') }}"> Roles </a></li>
+  </ul> 
+  <ul id="ddmenu_1" class="collapse dropdown-nav">
+    <li><a href="{{ route('patologia.areas.index') }}">Areas</a></li>
   </ul>
-</li>-->
+  <ul id="ddmenu_1" class="collapse dropdown-nav">
+    <li><a href="{{ route('patologia.diagnosticos.index') }}">Diagnósticos</a></li>
+  </ul>
+  <ul id="ddmenu_1" class="collapse dropdown-nav">
+    <li><a href="{{ route('patologia.distritos.index') }}">Distritos</a></li>
+  </ul>
+  <ul id="ddmenu_1" class="collapse dropdown-nav">
+    <li><a href="{{ route('patologia.establecimientos.index') }}">Establecimientos</a></li>
+  </ul>
+  <ul id="ddmenu_1" class="collapse dropdown-nav">
+    <li><a href="{{ route('patologia.medicos.index') }}">Medicos</a></li>
+  </ul>
+  <ul id="ddmenu_1" class="collapse dropdown-nav">
+    <li><a href="{{ route('patologia.municipios.index') }}">Municipios</a></li>
+  </ul>
+  <ul id="ddmenu_1" class="collapse dropdown-nav">
+    <li><a href="{{ route('patologia.secretariaregional.index') }}">Secretaria Regional</a></li>
+  </ul>
+  <ul id="ddmenu_1" class="collapse dropdown-nav">
+    <li><a href="{{ route('patologia.sector.index') }}">Sectores</a></li>
+  </ul>
+  <ul id="ddmenu_1" class="collapse dropdown-nav">
+    <li><a href="{{ route('patologia.servicios.index') }}">Servicios</a></li>
+  </ul>  
+  <ul id="ddmenu_1" class="collapse dropdown-nav">
+    <li><a href="{{ route('patologia.pacientes.index') }}">Pacientes</a></li>
+  </ul>  
+</li>
 
 <li class="nav-item nav-item-has-children">
   <a
@@ -54,64 +78,22 @@
     <span class="text">PATOLOGIA</span>
   </a>
   <ul id="ddmenu_2" class="collapse dropdown-nav">
-    <li>
-      <a href="{{ route('patologia.formulario1.create') }}"> Formulario1 RURAL</a>
-    </li>
-  </ul>
-  <!--<ul id="ddmenu_2" class="collapse dropdown-nav">
-    <li>
-      <a href="{{ route('patologia.formulario1.index') }}"> Formulario1 RURAL</a>
-    </li>
-  </ul>
-  <ul id="ddmenu_2" class="collapse dropdown-nav">
-    <li>
-      <a href="{{ route('patologia.detallef1s.index') }}"> Detalle1 RURAL</a>
-    </li>
-  </ul>
-  <ul id="ddmenu_2" class="collapse dropdown-nav">
-    <li>
-      <a href="{{ route('patologia.resultadof1s.index') }}"> Resultado1 RURAL</a>
-    </li>
-  </ul>-->
-  <ul id="ddmenu_2" class="collapse dropdown-nav">
-    <li>
-      <a href="{{ route('patologia.resultadof1s.create') }}"> Resultado1 RURAL</a>
-    </li>
-  </ul>
-  <ul id="ddmenu_2" class="collapse dropdown-nav">
-    <li>
-      <a href="{{ route('patologia.resultadof1s.index2') }}"> Informes1 RURAL</a>
-    </li>
+    <li><a href="{{ route('patologia.formulario1.create') }}">RURAL - Solicitudes </a></li>
   </ul>  
   <ul id="ddmenu_2" class="collapse dropdown-nav">
-    <li>
-      <a href="{{ route('patologia.formulario2.create') }}"> Formulario2 URBANO</a>
-    </li>
-  </ul>
-  <!--<ul id="ddmenu_2" class="collapse dropdown-nav">
-    <li>
-      <a href="{{ route('patologia.formulario2.index') }}"> Formulario2 URBANO</a>
-    </li>
+    <li><a href="{{ route('patologia.resultadof1s.create') }}">RURAL - Resultados</a></li>
   </ul>
   <ul id="ddmenu_2" class="collapse dropdown-nav">
-    <li>
-      <a href="{{ route('patologia.detallef2s.index') }}"> Detalle2 URBANO</a>
-    </li>
+    <li><a href="{{ route('patologia.resultadof1s.index2') }}">RURAL - Informes</a></li>
+  </ul>  
+  <ul id="ddmenu_2" class="collapse dropdown-nav">
+    <li><a href="{{ route('patologia.formulario2.create') }}">URBANO - Solicitudes</a></li>
+  </ul>  
+  <ul id="ddmenu_2" class="collapse dropdown-nav">
+    <li><a href="{{ route('patologia.resultadof2s.create') }}">URBANO - Resultados</a></li>
   </ul>
   <ul id="ddmenu_2" class="collapse dropdown-nav">
-    <li>
-      <a href="{{ route('patologia.resultadof2s.index') }}"> Resultado2 URBANO</a>
-    </li>
-  </ul>-->
-  <ul id="ddmenu_2" class="collapse dropdown-nav">
-    <li>
-      <a href="{{ route('patologia.resultadof2s.create') }}"> Resultado2 URBANO</a>
-    </li>
-  </ul>
-  <ul id="ddmenu_2" class="collapse dropdown-nav">
-    <li>
-      <a href="{{ route('patologia.resultadof2s.index2') }}"> Informes2 URBANO</a>
-    </li>
+    <li><a href="{{ route('patologia.resultadof2s.index2') }}">URBANO - Informes</a></li>
   </ul>  
 </li>
 
@@ -135,37 +117,17 @@
     <span class="text">CITOLOGIA</span>
   </a>
   <ul id="ddmenu_3" class="collapse dropdown-nav">
-    <li>
-      <a href="{{ route('patologia.formulario3cito.create') }}"> Formulario3 CITOLOGIA</a>
-    </li>
-  </ul>
-  <!--<ul id="ddmenu_3" class="collapse dropdown-nav">
-    <li>
-      <a href="{{ route('patologia.formulario3cito.index') }}"> Formulario3 CITOLOGIA</a>
-    </li>
+    <li><a href="{{ route('patologia.formulario3cito.create') }}">Solicitud</a></li>
+  </ul>  
+  <ul id="ddmenu_3" class="collapse dropdown-nav">
+    <li><a href="{{ route('patologia.resultadof3citos.create') }}">Resultado</a></li>
   </ul>
   <ul id="ddmenu_3" class="collapse dropdown-nav">
-    <li>
-      <a href="{{ route('patologia.detallef3citos.index') }}"> Detalle3 CITOLOGIA</a>
-    </li>
-  </ul>
-  <ul id="ddmenu_3" class="collapse dropdown-nav">
-    <li>
-      <a href="{{ route('patologia.resultadof3citos.index') }}"> Resultado3 CITOLOGIA</a>
-    </li>
-  </ul>-->
-  <ul id="ddmenu_3" class="collapse dropdown-nav">
-    <li>
-      <a href="{{ route('patologia.resultadof3citos.create') }}"> Resultado3 CITOLOGIA</a>
-    </li>
-  </ul>
-  <ul id="ddmenu_3" class="collapse dropdown-nav">
-    <li>
-      <a href="{{ route('patologia.resultadof3citos.index2') }}"> Informes3 CITOLOGIA</a>
-    </li>
+    <li><a href="{{ route('patologia.resultadof3citos.index2') }}">Informes</a></li>
   </ul>    
 </li>
 
+<!--
 <li class="nav-item nav-item-has-children">
   <a
     href="#0"
@@ -186,55 +148,34 @@
     <span class="text">OTRAS TABLAS</span>
   </a>  
   <ul id="ddmenu_4" class="collapse dropdown-nav">
-    <li>
-      <a href="{{ route('patologia.areas.index') }}"> Areas </a>
-    </li>
+    <li><a href="{{ route('patologia.areas.index') }}">Areas</a></li>
   </ul>
   <ul id="ddmenu_4" class="collapse dropdown-nav">
-    <li>
-      <a href="{{ route('patologia.diagnosticos.index') }}"> Diagnósticos </a>
-    </li>
+    <li><a href="{{ route('patologia.diagnosticos.index') }}">Diagnósticos</a></li>
   </ul>
   <ul id="ddmenu_4" class="collapse dropdown-nav">
-    <li>
-      <a href="{{ route('patologia.distritos.index') }}"> Distritos </a>
-    </li>
+    <li><a href="{{ route('patologia.distritos.index') }}">Distritos</a></li>
   </ul>
   <ul id="ddmenu_4" class="collapse dropdown-nav">
-    <li>
-      <a href="{{ route('patologia.establecimientos.index') }}"> Establecimientos </a>
-    </li>
+    <li><a href="{{ route('patologia.establecimientos.index') }}">Establecimientos</a></li>
   </ul>
   <ul id="ddmenu_4" class="collapse dropdown-nav">
-    <li>
-      <a href="{{ route('patologia.medicos.index') }}"> Medicos </a>
-    </li>
+    <li><a href="{{ route('patologia.medicos.index') }}">Medicos</a></li>
   </ul>
   <ul id="ddmenu_4" class="collapse dropdown-nav">
-    <li>
-      <a href="{{ route('patologia.municipios.index') }}"> Municipios </a>
-    </li>
+    <li><a href="{{ route('patologia.municipios.index') }}">Municipios</a></li>
   </ul>
   <ul id="ddmenu_4" class="collapse dropdown-nav">
-    <li>
-      <a href="{{ route('patologia.secretariaregional.index') }}"> Secretaria Regional </a>
-    </li>
+    <li><a href="{{ route('patologia.secretariaregional.index') }}">Secretaria Regional</a></li>
   </ul>
   <ul id="ddmenu_4" class="collapse dropdown-nav">
-    <li>
-      <a href="{{ route('patologia.sector.index') }}"> Sectores </a>
-    </li>
+    <li><a href="{{ route('patologia.sector.index') }}">Sectores</a></li>
   </ul>
   <ul id="ddmenu_4" class="collapse dropdown-nav">
-    <li>
-      <a href="{{ route('patologia.servicios.index') }}"> Servicios </a>
-    </li>
+    <li><a href="{{ route('patologia.servicios.index') }}">Servicios</a></li>
   </ul>  
   <ul id="ddmenu_4" class="collapse dropdown-nav">
-    <li>
-      <a href="{{ route('patologia.pacientes.index') }}"> Pacientes </a>
-    </li>
-  </ul>
+    <li><a href="{{ route('patologia.pacientes.index') }}">Pacientes</a></li>
+  </ul> 
   
-  
-</li>
+</li>-->

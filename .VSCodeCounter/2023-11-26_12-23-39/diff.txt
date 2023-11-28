@@ -1,0 +1,165 @@
+Date : 2023-11-26 12:23:39
+Directory : c:\xampp\htdocs\usuariosHB\resources\views
+Total : 110 files,  7949 codes, 216 comments, 580 blanks, all 8745 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| PHP      |        110 |      7,949 |        216 |        580 |      8,745 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++---------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                        | files      | code       | comment    | blank      | total      |
++---------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                           |        110 |      7,949 |        216 |        580 |      8,745 |
+| . (Files)                                                                                   |          2 |        118 |          0 |         24 |        142 |
+| ..                                                                                          |         22 |       -376 |        -26 |       -124 |       -526 |
+| ..\..                                                                                       |         22 |       -376 |        -26 |       -124 |       -526 |
+| ..\..\app                                                                                   |         22 |       -376 |        -26 |       -124 |       -526 |
+| ..\..\app\Models                                                                            |         22 |       -376 |        -26 |       -124 |       -526 |
+| auth                                                                                        |          2 |         92 |          0 |         39 |        131 |
+| layouts                                                                                     |          2 |        535 |          0 |         15 |        550 |
+| patologia                                                                                   |         79 |      7,324 |        242 |        621 |      8,187 |
+| patologia\areas                                                                             |          4 |        246 |          0 |         26 |        272 |
+| patologia\detallef1s                                                                        |          3 |        187 |          0 |         17 |        204 |
+| patologia\detallef2s                                                                        |          3 |        187 |          0 |         17 |        204 |
+| patologia\detallef3citos                                                                    |          3 |        187 |          0 |         17 |        204 |
+| patologia\diagnosticos                                                                      |          4 |        234 |          4 |         23 |        261 |
+| patologia\distritos                                                                         |          4 |        241 |          0 |         24 |        265 |
+| patologia\establecimientos                                                                  |          4 |        241 |          0 |         25 |        266 |
+| patologia\formulario1                                                                       |          4 |        446 |          9 |         38 |        493 |
+| patologia\formulario2                                                                       |          4 |        412 |          9 |         41 |        462 |
+| patologia\formulario3cito                                                                   |          4 |        425 |          9 |         37 |        471 |
+| patologia\medicos                                                                           |          4 |        484 |         10 |         31 |        525 |
+| patologia\municipios                                                                        |          4 |        247 |          0 |         24 |        271 |
+| patologia\pacientes                                                                         |          4 |        488 |          5 |         32 |        525 |
+| patologia\resultadof1s                                                                      |          6 |        875 |         32 |         66 |        973 |
+| patologia\resultadof2s                                                                      |          6 |        879 |         32 |         66 |        977 |
+| patologia\resultadof3citos                                                                  |          6 |        821 |        132 |         65 |      1,018 |
+| patologia\secretariaregional                                                                |          4 |        250 |          0 |         26 |        276 |
+| patologia\sector                                                                            |          4 |        247 |          0 |         24 |        271 |
+| patologia\servicios                                                                         |          4 |        227 |          0 |         22 |        249 |
+| sistemas                                                                                    |          3 |        256 |          0 |          5 |        261 |
+| sistemas\personas                                                                           |          1 |         88 |          0 |          2 |         90 |
+| sistemas\roles                                                                              |          1 |         88 |          0 |          2 |         90 |
+| sistemas\usuarios                                                                           |          1 |         80 |          0 |          1 |         81 |
++---------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++---------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                                                    | language | code       | comment    | blank      | total      |
++---------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| c:\xampp\htdocs\usuariosHB\app\Models\Area.php                                              | PHP      |        -10 |          0 |         -5 |        -15 |
+| c:\xampp\htdocs\usuariosHB\app\Models\Detallef1s.php                                        | PHP      |        -20 |         -1 |         -7 |        -28 |
+| c:\xampp\htdocs\usuariosHB\app\Models\Detallef2s.php                                        | PHP      |        -20 |         -1 |         -7 |        -28 |
+| c:\xampp\htdocs\usuariosHB\app\Models\Detallef3cito.php                                     | PHP      |        -21 |         -1 |         -7 |        -29 |
+| c:\xampp\htdocs\usuariosHB\app\Models\Diagnostico.php                                       | PHP      |        -14 |          0 |         -6 |        -20 |
+| c:\xampp\htdocs\usuariosHB\app\Models\Distrito.php                                          | PHP      |        -10 |          0 |         -4 |        -14 |
+| c:\xampp\htdocs\usuariosHB\app\Models\Establecimiento.php                                   | PHP      |        -10 |          0 |         -4 |        -14 |
+| c:\xampp\htdocs\usuariosHB\app\Models\Formulario1.php                                       | PHP      |        -28 |          0 |         -7 |        -35 |
+| c:\xampp\htdocs\usuariosHB\app\Models\Formulario2.php                                       | PHP      |        -32 |          0 |         -6 |        -38 |
+| c:\xampp\htdocs\usuariosHB\app\Models\Formulario3cito.php                                   | PHP      |        -32 |          0 |         -6 |        -38 |
+| c:\xampp\htdocs\usuariosHB\app\Models\Medico.php                                            | PHP      |        -13 |         -4 |         -6 |        -23 |
+| c:\xampp\htdocs\usuariosHB\app\Models\Municipio.php                                         | PHP      |        -11 |          0 |         -6 |        -17 |
+| c:\xampp\htdocs\usuariosHB\app\Models\Paciente.php                                          | PHP      |        -17 |          0 |         -7 |        -24 |
+| c:\xampp\htdocs\usuariosHB\app\Models\Persona.php                                           | PHP      |         -8 |          0 |         -4 |        -12 |
+| c:\xampp\htdocs\usuariosHB\app\Models\Resultadof1s.php                                      | PHP      |        -19 |         -1 |         -6 |        -26 |
+| c:\xampp\htdocs\usuariosHB\app\Models\Resultadof2s.php                                      | PHP      |        -20 |         -1 |         -6 |        -27 |
+| c:\xampp\htdocs\usuariosHB\app\Models\Resultadof3cito.php                                   | PHP      |        -28 |         -1 |         -6 |        -35 |
+| c:\xampp\htdocs\usuariosHB\app\Models\Role.php                                              | PHP      |         -8 |          0 |         -4 |        -12 |
+| c:\xampp\htdocs\usuariosHB\app\Models\Secretariaregional.php                                | PHP      |        -10 |          0 |         -4 |        -14 |
+| c:\xampp\htdocs\usuariosHB\app\Models\Sector.php                                            | PHP      |        -10 |          0 |         -4 |        -14 |
+| c:\xampp\htdocs\usuariosHB\app\Models\Servicio.php                                          | PHP      |        -10 |          0 |         -4 |        -14 |
+| c:\xampp\htdocs\usuariosHB\app\Models\User.php                                              | PHP      |        -25 |        -16 |         -8 |        -49 |
+| c:\xampp\htdocs\usuariosHB\resources\views\auth\login.blade.php                             | PHP      |         54 |          0 |         20 |         74 |
+| c:\xampp\htdocs\usuariosHB\resources\views\auth\register.blade.php                          | PHP      |         38 |          0 |         19 |         57 |
+| c:\xampp\htdocs\usuariosHB\resources\views\home.blade.php                                   | PHP      |          5 |          0 |          4 |          9 |
+| c:\xampp\htdocs\usuariosHB\resources\views\layouts\app.blade.php                            | PHP      |        300 |          0 |          9 |        309 |
+| c:\xampp\htdocs\usuariosHB\resources\views\layouts\menu.blade.php                           | PHP      |        235 |          0 |          6 |        241 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\areas\create.blade.php                 | PHP      |         45 |          0 |          6 |         51 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\areas\edit.blade.php                   | PHP      |         47 |          0 |          9 |         56 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\areas\index.blade.php                  | PHP      |         91 |          0 |          1 |         92 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\areas\pdf.blade.php                    | PHP      |         63 |          0 |         10 |         73 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\detallef1s\create.blade.php            | PHP      |         46 |          0 |          7 |         53 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\detallef1s\edit.blade.php              | PHP      |         46 |          0 |          9 |         55 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\detallef1s\index.blade.php             | PHP      |         95 |          0 |          1 |         96 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\detallef2s\create.blade.php            | PHP      |         46 |          0 |          7 |         53 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\detallef2s\edit.blade.php              | PHP      |         46 |          0 |          9 |         55 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\detallef2s\index.blade.php             | PHP      |         95 |          0 |          1 |         96 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\detallef3citos\create.blade.php        | PHP      |         46 |          0 |          7 |         53 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\detallef3citos\edit.blade.php          | PHP      |         46 |          0 |          9 |         55 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\detallef3citos\index.blade.php         | PHP      |         95 |          0 |          1 |         96 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\diagnosticos\create.blade.php          | PHP      |         45 |          0 |          6 |         51 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\diagnosticos\edit.blade.php            | PHP      |         41 |          0 |          5 |         46 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\diagnosticos\index.blade.php           | PHP      |         85 |          0 |          2 |         87 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\diagnosticos\pdf.blade.php             | PHP      |         63 |          4 |         10 |         77 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\distritos\create.blade.php             | PHP      |         45 |          0 |          6 |         51 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\distritos\edit.blade.php               | PHP      |         47 |          0 |          7 |         54 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\distritos\index.blade.php              | PHP      |         86 |          0 |          1 |         87 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\distritos\pdf.blade.php                | PHP      |         63 |          0 |         10 |         73 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\establecimientos\create.blade.php      | PHP      |         45 |          0 |          6 |         51 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\establecimientos\edit.blade.php        | PHP      |         47 |          0 |          7 |         54 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\establecimientos\index.blade.php       | PHP      |         87 |          0 |          1 |         88 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\establecimientos\pdf.blade.php         | PHP      |         62 |          0 |         11 |         73 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\formulario1\create.blade.php           | PHP      |        211 |          9 |         17 |        237 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\formulario1\edit.blade.php             | PHP      |         68 |          0 |          9 |         77 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\formulario1\index.blade.php            | PHP      |        107 |          0 |          1 |        108 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\formulario1\pdf.blade.php              | PHP      |         60 |          0 |         11 |         71 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\formulario2\create.blade.php           | PHP      |        189 |          9 |         20 |        218 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\formulario2\edit.blade.php             | PHP      |         68 |          0 |          9 |         77 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\formulario2\index.blade.php            | PHP      |         95 |          0 |          1 |         96 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\formulario2\pdf.blade.php              | PHP      |         60 |          0 |         11 |         71 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\formulario3cito\create.blade.php       | PHP      |        199 |          9 |         16 |        224 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\formulario3cito\edit.blade.php         | PHP      |         68 |          0 |          9 |         77 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\formulario3cito\index.blade.php        | PHP      |         98 |          0 |          1 |         99 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\formulario3cito\pdf.blade.php          | PHP      |         60 |          0 |         11 |         71 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\medicos\create.blade.php               | PHP      |        161 |          5 |         10 |        176 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\medicos\edit.blade.php                 | PHP      |        133 |          5 |         11 |        149 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\medicos\index.blade.php                | PHP      |        103 |          0 |          1 |        104 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\medicos\pdf.blade.php                  | PHP      |         87 |          0 |          9 |         96 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\municipios\create.blade.php            | PHP      |         45 |          0 |          6 |         51 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\municipios\edit.blade.php              | PHP      |         47 |          0 |          7 |         54 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\municipios\index.blade.php             | PHP      |         92 |          0 |          1 |         93 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\municipios\pdf.blade.php               | PHP      |         63 |          0 |         10 |         73 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\pacientes\create.blade.php             | PHP      |        162 |          5 |         12 |        179 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\pacientes\edit.blade.php               | PHP      |        137 |          0 |          7 |        144 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\pacientes\index.blade.php              | PHP      |        106 |          0 |          3 |        109 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\pacientes\pdf.blade.php                | PHP      |         83 |          0 |         10 |         93 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\resultadof1s\create.blade copy.php     | PHP      |        181 |         13 |         18 |        212 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\resultadof1s\create.blade.php          | PHP      |        250 |         18 |         16 |        284 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\resultadof1s\edit.blade.php            | PHP      |         68 |          0 |          9 |         77 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\resultadof1s\index.blade.php           | PHP      |         85 |          0 |          2 |         87 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\resultadof1s\index2.blade.php          | PHP      |         78 |          0 |          4 |         82 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\resultadof1s\pdf.blade.php             | PHP      |        213 |          1 |         17 |        231 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\resultadof2s\create.blade copy.php     | PHP      |        181 |         13 |         18 |        212 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\resultadof2s\create.blade.php          | PHP      |        250 |         18 |         16 |        284 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\resultadof2s\edit.blade.php            | PHP      |         68 |          0 |          9 |         77 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\resultadof2s\index.blade.php           | PHP      |         85 |          0 |          2 |         87 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\resultadof2s\index2.blade.php          | PHP      |         82 |          0 |          3 |         85 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\resultadof2s\pdf.blade.php             | PHP      |        213 |          1 |         18 |        232 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\resultadof3citos\create.blade copy.php | PHP      |        181 |         13 |         18 |        212 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\resultadof3citos\create.blade.php      | PHP      |        188 |        118 |         15 |        321 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\resultadof3citos\edit.blade.php        | PHP      |         68 |          0 |          9 |         77 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\resultadof3citos\index.blade.php       | PHP      |         85 |          0 |          2 |         87 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\resultadof3citos\index2.blade.php      | PHP      |         82 |          0 |          3 |         85 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\resultadof3citos\pdf.blade.php         | PHP      |        217 |          1 |         18 |        236 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\secretariaregional\create.blade.php    | PHP      |         46 |          0 |          4 |         50 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\secretariaregional\edit.blade.php      | PHP      |         51 |          0 |          8 |         59 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\secretariaregional\index.blade.php     | PHP      |         90 |          0 |          4 |         94 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\secretariaregional\pdf.blade.php       | PHP      |         63 |          0 |         10 |         73 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\sector\create.blade.php                | PHP      |         45 |          0 |          6 |         51 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\sector\edit.blade.php                  | PHP      |         47 |          0 |          7 |         54 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\sector\index.blade.php                 | PHP      |         92 |          0 |          1 |         93 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\sector\pdf.blade.php                   | PHP      |         63 |          0 |         10 |         73 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\servicios\create.blade.php             | PHP      |         38 |          0 |          4 |         42 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\servicios\edit.blade.php               | PHP      |         40 |          0 |          7 |         47 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\servicios\index.blade.php              | PHP      |         86 |          0 |          1 |         87 |
+| c:\xampp\htdocs\usuariosHB\resources\views\patologia\servicios\pdf.blade.php                | PHP      |         63 |          0 |         10 |         73 |
+| c:\xampp\htdocs\usuariosHB\resources\views\sistemas\personas\index.blade.php                | PHP      |         88 |          0 |          2 |         90 |
+| c:\xampp\htdocs\usuariosHB\resources\views\sistemas\roles\index.blade.php                   | PHP      |         88 |          0 |          2 |         90 |
+| c:\xampp\htdocs\usuariosHB\resources\views\sistemas\usuarios\index.blade.php                | PHP      |         80 |          0 |          1 |         81 |
+| c:\xampp\htdocs\usuariosHB\resources\views\welcome.blade.php                                | PHP      |        113 |          0 |         20 |        133 |
+| Total                                                                                       |          |      7,949 |        216 |        580 |      8,745 |
++---------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+

@@ -196,10 +196,10 @@
                   >
                     <div class="profile-info">
                       <div class="info">
-                        <h6><?php echo e(Auth::user()->email); ?></h6>
+                        <h6><?php echo e(Auth::user()->persona->nombres); ?></h6>
                         <div class="image">
                           <img
-                            src="<?php echo e(asset('assets/images/profile/profile-image.png')); ?>"
+                            src="<?php echo e(asset('assets/images/profile/perfil123.png')); ?>"
                             alt=""
                           />
                           <span class="status"></span>

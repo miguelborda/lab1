@@ -3,7 +3,7 @@
 <?php $__env->startSection('title', 'Inicio'); ?>
 
 <?php $__env->startSection('content'); ?> 
-  <h1 class="text-5xl text-center pt-24">BIENVENIDO A MI APLICACION <?php echo e(Auth::user()->email); ?></h1>
+  <h1 class="text-5xl text-center pt-24">BIENVENIDO AL SISTEMA <?php echo e(Auth::user()->persona->nombres); ?></h1>
 
 
 <?php $__env->stopSection(); ?>

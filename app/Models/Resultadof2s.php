@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Models;
-
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,8 +11,7 @@ class Resultadof2s extends Model
     'ci_id','fecha_resultado','descripcion','estado','creatoruser_id','updateduser_id',
     'created_at','updated_at'];
 
-    protected $table = 'resultadof2s'; // Nombre real de tu tabla
-    //protected $primaryKey = 'id'; // Clave primaria de tu tabla
+    protected $table = 'resultadof2s';     
 
     public function detallef1s()
     {
