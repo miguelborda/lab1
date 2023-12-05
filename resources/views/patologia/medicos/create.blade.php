@@ -48,9 +48,9 @@
                 </div>
             <br>
             </div>           
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <div class="form-group">
-                    <strong>{!! Form::label('fecha_nacimiento', 'Fecha de Nacimiento') !!}</strong>
+                    <strong>{!! Form::label('fecha_nacimiento', 'Fecha de Nacimiento') !!}<span class="text-danger">*</span></strong>
                     {!! Form::date('fecha_nacimiento', isset($medico) ? $medico->fecha_nacimiento : '', ['max' => now()->toDateString(), 'min' => '1900-01-01', 'id' => 'fecha_nacimiento']) !!}
                     @error('fecha_nacimiento')
                         <span class="text-danger">{{ $message }}</span>
@@ -60,12 +60,12 @@
             <div class="col-md-1">
                 <div class="form-group">
                     <strong>{!! Form::label('edad', 'Edad') !!}</strong>
-                    {!! Form::text('edad', isset($medico) ? $medico->edad : '', ['class' => 'form-control', 'id' => 'edad', 'enabled' => 'disabled']) !!}
+                    {!! Form::text('edad', isset($medico) ? $medico->edad : '', ['class' => 'form-control', 'id' => 'edad', 'readonly' => 'readonly']) !!}
                 </div>
             </div>            
             </div>
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-5">
                 <div class="form-group">
                     <strong>{!! Form::label('direccion', 'Dirección') !!}</strong>
                     {!! Form::text('direccion', isset($medico) ? $medico->direccion : '', ['class' => 'form-control', 'placeholder' => 'Ingrese Direccion de Medico']) !!}
@@ -94,7 +94,7 @@
             </div>
         </div><br>
         <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <div class="form-group">
                     <strong>{!! Form::label('matricula_profesional', 'Nº Matricula Profesional') !!}</strong>
                     {!! Form::text('matricula_profesional', isset($medico) ? $medico->matricula_profesional : '', ['class' => 'form-control', 'placeholder' => 'Ingrese Nº de Matricula Profesional']) !!}

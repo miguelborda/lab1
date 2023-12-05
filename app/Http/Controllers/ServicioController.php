@@ -80,7 +80,7 @@ class ServicioController extends Controller
         $servicio->updated_at = $hoy;
         $servicio->descripcion = 'Desactivó_el_Estado';
         $servicio->save();
-        return redirect()->route('patologia.servicios.index')->with('mensaje', 'El area se marcó como inactivo');
+        return redirect()->route('patologia.servicios.index')->with('mensaje', 'El Servicio se marcó como Inactivo');
     }
 
     public function habilitar($id)
@@ -96,7 +96,7 @@ class ServicioController extends Controller
         $servicio->updated_at = $hoy;
         $servicio->descripcion = 'Activó_el_Estado';
         $servicio->save();
-        return redirect()->route('patologia.servicios.index')->with('mensaje', 'El servicio se marcó como inactivo');
+        return redirect()->route('patologia.servicios.index')->with('mensaje', 'El Servicio se marcó como Activo');
     }
 
 }

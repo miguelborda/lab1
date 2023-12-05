@@ -80,7 +80,7 @@ class DiagnosticoController extends Controller
         $diagnostico->updateduser_id = $user->id;
         $diagnostico->updated_at = $hoy;
         $diagnostico->save();
-        return redirect()->route('patologia.diagnosticos.index')->with('mensaje', 'El diagnostico se marcó como inactivo');
+        return redirect()->route('patologia.diagnosticos.index')->with('mensaje', 'El diagnostico se marcó como Inactivo');
     }
     
     public function habilitar($id)
@@ -89,12 +89,12 @@ class DiagnosticoController extends Controller
         $user = auth()->user();                
         $diagnostico = Diagnostico::find($id);
         if (!$diagnostico) {
-            return redirect()->route('patologia.diagnosticos.index')->with('mensaje', 'No se encontró el area');
+            return redirect()->route('patologia.diagnosticos.index')->with('mensaje', 'No se encontró el diagnóstico');
         }
         $diagnostico->estado = TRUE; // Cambia el estado a ACTIVAR
         $diagnostico->updateduser_id = $user->id;
         $diagnostico->updated_at = $hoy;
         $diagnostico->save();
-        return redirect()->route('patologia.diagnosticos.index')->with('mensaje', 'El area se marcó como inactivo');
+        return redirect()->route('patologia.diagnosticos.index')->with('mensaje', 'El diagnóstico se marcó como Activo');
     }
 }

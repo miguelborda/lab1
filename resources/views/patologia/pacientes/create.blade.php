@@ -30,6 +30,12 @@
             <br>
             </div>
             <div class="col-md-3">
+            <!--    <div class="form-group">
+                    <strong>{!! Form::label('nombre', 'Nombres') !!}<span class="text-danger">*</span></strong>
+                    {!! Form::text('nombre', isset($paciente) ? $paciente->nombre : '', ['class' => 'form-control', 'placeholder' => 'Ingrese Nombre de Paciente', 'oninput' => 'validateLetters(this)']) !!}
+                    <span id="error-message" class="text-danger"></span>
+                </div>
+                -->
                 <div class="form-group">
                     <strong>{!! Form::label('nombre', 'Nombres') !!}<span class="text-danger">*</span></strong>
                     {!! Form::text('nombre', isset($paciente) ? $paciente->nombre : '', ['class' => 'form-control', 'placeholder' => 'Ingrese Nombre de Paciente']) !!}
@@ -37,6 +43,9 @@
                         <span class="text-danger">{{$message}}</span>
                     @enderror
                 </div>
+
+
+
             <br>
             </div>
             <div class="col-md-3">
@@ -51,7 +60,7 @@
             </div>           
             <div class="col-md-2">
                 <div class="form-group">
-                    <strong>{!! Form::label('fecha_nacimiento', 'Fecha de Nacimiento') !!}</strong>
+                    <strong>{!! Form::label('fecha_nacimiento', 'Fecha de Nacimiento') !!}<span class="text-danger">*</span></strong>
                     {!! Form::date('fecha_nacimiento', isset($paciente) ? $paciente->fecha_nacimiento : '', ['max' => now()->toDateString(), 'min' => '1900-01-01', 'id' => 'fecha_nacimiento']) !!}
                     @error('fecha_nacimiento')
                         <span class="text-danger">{{ $message }}</span>
@@ -61,12 +70,12 @@
             <div class="col-md-1">
                 <div class="form-group">
                     <strong>{!! Form::label('edad', 'Edad') !!}</strong>
-                    {!! Form::text('edad', isset($paciente) ? $paciente->edad : '', ['class' => 'form-control', 'id' => 'edad', 'enabled' => 'disabled']) !!}
+                    {!! Form::text('edad', isset($paciente) ? $paciente->edad : '', ['class' => 'form-control', 'id' => 'edad', 'readonly' => 'readonly']) !!}
                 </div>
-            </div>            
+            </div>
             </div>
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-5">
                 <div class="form-group">
                     <strong>{!! Form::label('direccion', 'Dirección') !!}</strong>
                     {!! Form::text('direccion', isset($paciente) ? $paciente->direccion : '', ['class' => 'form-control', 'placeholder' => 'Ingrese Direccion de Paciente']) !!}
@@ -172,7 +181,19 @@
         }
     });
 </script>
+<!--  // validacion de letras en cliente
+<script>
+    function validateLetters(input) {
+        var regex = /^[a-zA-Z\s]*$/;
+        var isValid = regex.test(input.value);
 
-
+        if (!isValid) {
+            document.getElementById('error-message').innerText = 'Ingrese solo letras en este campo.';
+        } else {
+            document.getElementById('error-message').innerText = '';
+        }
+    }
+</script>
+-->
 
 @endpush

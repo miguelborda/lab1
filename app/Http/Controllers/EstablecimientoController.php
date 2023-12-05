@@ -78,7 +78,7 @@ class EstablecimientoController extends Controller
         $establecimiento->updated_at = $hoy;
         $establecimiento->descripcion = 'Desactivó_el_Estado';
         $establecimiento->save();
-        return redirect()->route('patologia.establecimientos.index')->with('mensaje', 'El establecimiento se marcó como inactivo');
+        return redirect()->route('patologia.establecimientos.index')->with('mensaje', 'El establecimiento se marcó como Inactivo');
     }
     
     public function habilitar($id)
@@ -94,6 +94,6 @@ class EstablecimientoController extends Controller
         $establecimiento->updated_at = $hoy;
         $establecimiento->descripcion = 'Activó_el_Estado';
         $establecimiento->save();
-        return redirect()->route('patologia.establecimientos.index')->with('mensaje', 'El establecimiento se marcó como inactivo');
+        return redirect()->route('patologia.establecimientos.index')->with('mensaje', 'El establecimiento se marcó como Activo');
     }
 }

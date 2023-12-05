@@ -80,7 +80,7 @@ class AreaController extends Controller
         $area->updateduser_id = $user->id;
         $area->updated_at = $hoy;
         $area->save();
-        return redirect()->route('patologia.areas.index')->with('mensaje', 'El area se marcó como inactivo');
+        return redirect()->route('patologia.areas.index')->with('mensaje', 'El area se marcó como Inactivo');
     }
    
     public function habilitar($id)
@@ -95,6 +95,6 @@ class AreaController extends Controller
         $area->updateduser_id = $user->id;
         $area->updated_at = $hoy;
         $area->save();
-        return redirect()->route('patologia.areas.index')->with('mensaje', 'El area se marcó como inactivo');
+        return redirect()->route('patologia.areas.index')->with('mensaje', 'El area se marcó como Activo');
     }
 } 

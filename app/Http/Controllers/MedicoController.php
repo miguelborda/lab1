@@ -60,10 +60,21 @@ class MedicoController extends Controller
     public function store(Request $request, Medico $medico)
     {
         $request->validate(
-            ['ci' => ['required', 'string', 'max:255', Rule::unique('medicos')->ignore($medico->id)],
-             'nombre'=>'required',
-             'apellido'=>'required']
+            [//'ci' => ['required', 'string', 'max:255', Rule::unique('medicos')->ignore($medico->id)],
+             'ci' => 'required|regex:/^[0-9]{5,10}[a-zA-Z0-9-]*$/',
+                    Rule::unique('medicos')->ignore($medico->id),
+             'nombre'=>'required|regex:/^[a-zA-Z\s]+$/',
+             'apellido'=>'required|regex:/^[a-zA-Z\s]+$/',
+             'fecha_nacimiento' => 'required|date',
+            ],
+             [
+                'apellido.regex' => 'Solo se permite letras',
+                'nombre.regex' => 'Solo se permite letras',
+                'fecha_nacimiento.date' => 'Fecha de nacimiento debe ser una fecha válida.',
+
+            ]
         ); 
+
         $user = auth()->user();
         $hoy=date('Y-m-d'); 
         
@@ -80,7 +91,9 @@ class MedicoController extends Controller
         // Crea el registro del medico y asocia la ID del usuario
         $medico = Medico::create(array_merge($datosMedico, ['creatoruser_id' => $user->id]));
         //$medico = Medico::create($request->all());
-        return redirect()->route('patologia.medicos.index')->with('mensaje','Se creó exitosamente');    
+        $nombreMedico = $medico->nombre;
+        $apellidoMedico = $medico->apellido;
+        return redirect()->route('patologia.medicos.index')->with('mensaje',"Se creó exitosamente el médico: $nombreMedico, $apellidoMedico");    
     }  
     
     
@@ -118,7 +131,7 @@ class MedicoController extends Controller
         $medico->updated_at = $hoy;
         $medico->descripcion = 'Desactivó_el_Estado';
         $medico->save();
-        return redirect()->route('patologia.medicos.index')->with('mensaje', 'El medico se marcó como inactivo');
+        return redirect()->route('patologia.medicos.index')->with('mensaje', 'El medico se marcó como Inactivo');
     }
 
     public function habilitar($id)
@@ -134,6 +147,6 @@ class MedicoController extends Controller
         $medico->updated_at = $hoy;
         $medico->descripcion = 'Activó_el_Estado';
         $medico->save();
-        return redirect()->route('patologia.medicos.index')->with('mensaje', 'El medico se marcó como inactivo');
+        return redirect()->route('patologia.medicos.index')->with('mensaje', 'El medico se marcó como Activo');
     }
 }

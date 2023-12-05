@@ -8,9 +8,9 @@
 <?php $__env->startSection('content'); ?>
 <div class="title-wrapper pt-30">
     <div class="row align-items-center" style="height: 60px">
-        <div class="col-md-6">
+        <div class="col-md-12">
             <div class="titlemb-30">
-                <h2>Actualizar datos de Medico <?php echo e($medico->id); ?></h2>
+                <h3>Actualizar datos de Medico: <?php echo e($medico->nombre); ?>, <?php echo e($medico->apellido); ?></h3>
             </div>
         </div>
     </div>
@@ -69,7 +69,7 @@ unset($__errorArgs, $__bag); ?>
                 </div>
             <br>
             </div>           
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <div class="form-group">
                     <strong><?php echo Form::label('fecha_nacimiento', 'Fecha de Nacimiento'); ?></strong>
                     <?php echo Form::date('fecha_nacimiento', isset($medico) ? $medico->fecha_nacimiento : '', ['max' => now()->toDateString(), 'min' => '1900-01-01', 'id' => 'fecha_nacimiento']); ?>
@@ -95,7 +95,7 @@ unset($__errorArgs, $__bag); ?>
             </div>            -->
             </div>
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-5">
                 <div class="form-group">
                     <strong><?php echo Form::label('direccion', 'Dirección'); ?></strong>
                     <?php echo Form::text('direccion', isset($medico) ? $medico->direccion : '', ['class' => 'form-control', 'placeholder' => 'Ingrese Direccion de Medico']); ?>
@@ -146,7 +146,61 @@ endif;
 unset($__errorArgs, $__bag); ?>
                 </div>
             </div>
-        </div><br>            <br>
+        </div><br>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <strong><?php echo Form::label('matricula_profesional', 'Nº Matricula Profesional'); ?></strong>
+                    <?php echo Form::text('matricula_profesional', isset($medico) ? $medico->matricula_profesional : '', ['class' => 'form-control', 'placeholder' => 'Ingrese Nº de Matricula Profesional']); ?>
+
+                    <?php $__errorArgs = ['matricula_profesional'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                        <span class="text-danger"><?php echo e($message); ?></span>
+                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                </div>
+            </div>             
+            <div class="col-md-3">
+                <div class="form-group">
+                    <strong><?php echo Form::label('email', 'Correo Electrónico'); ?></strong>
+                    <?php echo Form::text('email', isset($medico) ? $medico->email : '', ['class' => 'form-control', 'placeholder' => 'Ingrese direccion de Correo Electrónico']); ?>
+
+                    <?php $__errorArgs = ['email'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                        <span class="text-danger"><?php echo e($message); ?></span>
+                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                </div>
+            </div>              
+            <div class="col-md-2">
+                <div class="form-group">
+                    <strong><?php echo Form::label('num_celular', 'Nº de Celular'); ?></strong>
+                    <?php echo Form::text('num_celular', isset($medico) ? $medico->num_celular : '', ['class' => 'form-control', 'placeholder' => 'Ingrese Nº de Celular']); ?>
+
+                    <?php $__errorArgs = ['num_celular'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                        <span class="text-danger"><?php echo e($message); ?></span>
+                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                </div>
+            </div>
+        </div>
+        <br>            <br>
             <button type="submit" class="btn btn-primary">Guardar Cambios</button>
             <?php echo Form::button('Volver', ['class' => 'btn btn-secondary', 'onclick' => 'window.history.go(-1);']); ?>
 

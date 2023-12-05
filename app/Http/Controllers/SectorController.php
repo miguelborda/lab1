@@ -78,7 +78,7 @@ class SectorController extends Controller
         $sector->updated_at = $hoy;
         $sector->descripcion = 'Desactivó_el_Estado';
         $sector->save();
-        return redirect()->route('patologia.sector.index')->with('mensaje', 'El sector se marcó como inactivo');
+        return redirect()->route('patologia.sector.index')->with('mensaje', 'El sector se marcó como Inactivo');
     }
 
     public function habilitar($id)
@@ -94,6 +94,6 @@ class SectorController extends Controller
         $sector->updated_at = $hoy;
         $sector->descripcion = 'Activó_el_Estado';
         $sector->save();
-        return redirect()->route('patologia.sector.index')->with('mensaje', 'El sector se marcó como inactivo');
+        return redirect()->route('patologia.sector.index')->with('mensaje', 'El sector se marcó como Activo');
     }
 }

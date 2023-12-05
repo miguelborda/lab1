@@ -80,7 +80,7 @@ class MunicipioController extends Controller
         $municipio->updated_at = $hoy;
         $municipio->descripcion = 'Deactivó_el_Estado';
         $municipio->save();
-        return redirect()->route('patologia.municipios.index')->with('mensaje', 'El municipio se marcó como inactivo');
+        return redirect()->route('patologia.municipios.index')->with('mensaje', 'El municipio se marcó como Inactivo');
     }
 
     public function habilitar($id)
@@ -96,6 +96,6 @@ class MunicipioController extends Controller
         $municipio->updated_at = $hoy;
         $municipio->descripcion = 'Activó_el_Estado';
         $municipio->save();
-        return redirect()->route('patologia.municipios.index')->with('mensaje', 'El municipio se marcó como inactivo');
+        return redirect()->route('patologia.municipios.index')->with('mensaje', 'El municipio se marcó como Activo');
     }
 }

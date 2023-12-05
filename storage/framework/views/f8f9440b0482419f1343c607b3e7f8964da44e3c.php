@@ -66,9 +66,9 @@ unset($__errorArgs, $__bag); ?>
                 </div>
             <br>
             </div>           
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <div class="form-group">
-                    <strong><?php echo Form::label('fecha_nacimiento', 'Fecha de Nacimiento'); ?></strong>
+                    <strong><?php echo Form::label('fecha_nacimiento', 'Fecha de Nacimiento'); ?><span class="text-danger">*</span></strong>
                     <?php echo Form::date('fecha_nacimiento', isset($medico) ? $medico->fecha_nacimiento : '', ['max' => now()->toDateString(), 'min' => '1900-01-01', 'id' => 'fecha_nacimiento']); ?>
 
                     <?php $__errorArgs = ['fecha_nacimiento'];
@@ -86,13 +86,13 @@ unset($__errorArgs, $__bag); ?>
             <div class="col-md-1">
                 <div class="form-group">
                     <strong><?php echo Form::label('edad', 'Edad'); ?></strong>
-                    <?php echo Form::text('edad', isset($medico) ? $medico->edad : '', ['class' => 'form-control', 'id' => 'edad', 'enabled' => 'disabled']); ?>
+                    <?php echo Form::text('edad', isset($medico) ? $medico->edad : '', ['class' => 'form-control', 'id' => 'edad', 'readonly' => 'readonly']); ?>
 
                 </div>
             </div>            
             </div>
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-5">
                 <div class="form-group">
                     <strong><?php echo Form::label('direccion', 'Dirección'); ?></strong>
                     <?php echo Form::text('direccion', isset($medico) ? $medico->direccion : '', ['class' => 'form-control', 'placeholder' => 'Ingrese Direccion de Medico']); ?>
@@ -145,7 +145,7 @@ unset($__errorArgs, $__bag); ?>
             </div>
         </div><br>
         <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <div class="form-group">
                     <strong><?php echo Form::label('matricula_profesional', 'Nº Matricula Profesional'); ?></strong>
                     <?php echo Form::text('matricula_profesional', isset($medico) ? $medico->matricula_profesional : '', ['class' => 'form-control', 'placeholder' => 'Ingrese Nº de Matricula Profesional']); ?>

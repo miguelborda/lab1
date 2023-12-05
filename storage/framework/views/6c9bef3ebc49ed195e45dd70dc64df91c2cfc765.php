@@ -8,9 +8,9 @@
 <?php $__env->startSection('content'); ?>
 <div class="title-wrapper pt-30">
     <div class="row align-items-center" style="height: 60px">
-        <div class="col-md-6">
+        <div class="col-md-12">
             <div class="titlemb-30">
-                <h2>Actualizar datos de Paciente <?php echo e($paciente->id); ?></h2>
+                <h3>Editar datos de Paciente: <?php echo e($paciente->nombre); ?>, <?php echo e($paciente->apellido); ?></h3>
             </div>
         </div>
     </div>
@@ -95,7 +95,7 @@ unset($__errorArgs, $__bag); ?>
             </div>            
             </div>
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-5">
                 <div class="form-group">
                     <strong><?php echo Form::label('direccion', 'Dirección'); ?></strong>
                     <?php echo Form::text('direccion', isset($paciente) ? $paciente->direccion : '', ['class' => 'form-control', 'placeholder' => 'Ingrese Direccion de Paciente']); ?>

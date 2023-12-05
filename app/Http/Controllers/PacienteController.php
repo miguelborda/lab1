@@ -60,11 +60,23 @@ class PacienteController extends Controller
     }        
     
     public function store(Request $request, Paciente $paciente)
-    {
+    { 
         $request->validate(
-            ['ci' => ['required', 'string', 'max:255', Rule::unique('pacientes')->ignore($paciente->id)],
-             'nombre'=>'required',
-             'apellido'=>'required']
+            [
+                'ci' => 'required|regex:/^[0-9]{5,10}[a-zA-Z0-9-]*$/',
+                    Rule::unique('pacientes')->ignore($paciente->id),
+                    'regex:/^[0-9]{5,10}[a-zA-Z0-9-]*$/',                
+                'nombre' => 'required|regex:/^[a-zA-Z\s]+$/',
+                'apellido' => 'required|regex:/^[a-zA-Z\s]+$/',
+                'fecha_nacimiento' => 'required|date',
+            ], 
+            [
+                'apellido.regex' => 'Solo se permite letras',
+                'nombre.regex' => 'Solo se permite letras',
+                'fecha_nacimiento.date' => 'Fecha de nacimiento debe ser una fecha válida.',
+
+            ]
+            
         ); 
         $user = auth()->user();
         $hoy=date('Y-m-d'); 
@@ -82,7 +94,9 @@ class PacienteController extends Controller
         // Crea el registro del paciente y asocia la ID del usuario
         $paciente = Paciente::create(array_merge($datosPaciente, ['creatoruser_id' => $user->id]));
         //$paciente = Paciente::create($request->all());
-        return redirect()->route('patologia.pacientes.index')->with('mensaje','Se creó exitosamente');    
+        $nombrePaciente = $paciente->nombre;
+        $apellidoPaciente = $paciente->apellido;
+        return redirect()->route('patologia.pacientes.index')->with('mensaje',"Se creó exitosamente el paciente: $nombrePaciente, $apellidoPaciente");    
     }  
     
     
@@ -103,7 +117,7 @@ class PacienteController extends Controller
         $hoy = date('Y-m-d H:i:s');
         $paciente = request()->except(['_token','_method']);
         $user = auth()->user();        
-        Paciente::where('id', $id)->update(array_merge($paciente, ['userid_lastupdated' => $user->id],['username_lastupdated' => $user->email],['updated_at' => $hoy]));           
+        Paciente::where('id', $id)->update(array_merge($paciente, ['updateduser_id' => $user->id],['updated_at' => $hoy]));           
         return redirect()->route('patologia.pacientes.index')->with('mensaje', 'Se actualizó exitosamente');
     }       
         
@@ -120,7 +134,7 @@ class PacienteController extends Controller
         $paciente->updated_at = $hoy;
         $paciente->descripcion = 'Desactivó_el_Estado';
         $paciente->save();
-        return redirect()->route('patologia.pacientes.index')->with('mensaje', 'El paciente se marcó como inactivo');
+        return redirect()->route('patologia.pacientes.index')->with('mensaje', 'El paciente se marcó como Inactivo');
     }
 
     public function habilitar($id)
@@ -136,6 +150,6 @@ class PacienteController extends Controller
         $paciente->updated_at = $hoy;
         $paciente->descripcion = 'Activó_el_Estado';
         $paciente->save();
-        return redirect()->route('patologia.pacientes.index')->with('mensaje', 'El paciente se marcó como inactivo');
+        return redirect()->route('patologia.pacientes.index')->with('mensaje', 'El paciente se marcó como Activo');
     }
 }

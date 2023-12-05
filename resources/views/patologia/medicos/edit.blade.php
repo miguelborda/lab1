@@ -8,9 +8,9 @@
 @section('content')
 <div class="title-wrapper pt-30">
     <div class="row align-items-center" style="height: 60px">
-        <div class="col-md-6">
+        <div class="col-md-12">
             <div class="titlemb-30">
-                <h2>Actualizar datos de Medico {{$medico->id}}</h2>
+                <h3>Actualizar datos de Medico: {{$medico->nombre}}, {{$medico->apellido}}</h3>
             </div>
         </div>
     </div>
@@ -52,7 +52,7 @@
                 </div>
             <br>
             </div>           
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <div class="form-group">
                     <strong>{!! Form::label('fecha_nacimiento', 'Fecha de Nacimiento') !!}</strong>
                     {!! Form::date('fecha_nacimiento', isset($medico) ? $medico->fecha_nacimiento : '', ['max' => now()->toDateString(), 'min' => '1900-01-01', 'id' => 'fecha_nacimiento']) !!}
@@ -69,7 +69,7 @@
             </div>            -->
             </div>
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-5">
                 <div class="form-group">
                     <strong>{!! Form::label('direccion', 'Dirección') !!}</strong>
                     {!! Form::text('direccion', isset($medico) ? $medico->direccion : '', ['class' => 'form-control', 'placeholder' => 'Ingrese Direccion de Medico']) !!}
@@ -96,7 +96,37 @@
                     @enderror
                 </div>
             </div>
-        </div><br>            <br>
+        </div><br>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <strong>{!! Form::label('matricula_profesional', 'Nº Matricula Profesional') !!}</strong>
+                    {!! Form::text('matricula_profesional', isset($medico) ? $medico->matricula_profesional : '', ['class' => 'form-control', 'placeholder' => 'Ingrese Nº de Matricula Profesional']) !!}
+                    @error('matricula_profesional')
+                        <span class="text-danger">{{$message}}</span>
+                    @enderror
+                </div>
+            </div>             
+            <div class="col-md-3">
+                <div class="form-group">
+                    <strong>{!! Form::label('email', 'Correo Electrónico') !!}</strong>
+                    {!! Form::text('email', isset($medico) ? $medico->email : '', ['class' => 'form-control', 'placeholder' => 'Ingrese direccion de Correo Electrónico']) !!}
+                    @error('email')
+                        <span class="text-danger">{{$message}}</span>
+                    @enderror
+                </div>
+            </div>              
+            <div class="col-md-2">
+                <div class="form-group">
+                    <strong>{!! Form::label('num_celular', 'Nº de Celular') !!}</strong>
+                    {!! Form::text('num_celular', isset($medico) ? $medico->num_celular : '', ['class' => 'form-control', 'placeholder' => 'Ingrese Nº de Celular']) !!}
+                    @error('num_celular')
+                        <span class="text-danger">{{$message}}</span>
+                    @enderror
+                </div>
+            </div>
+        </div>
+        <br>            <br>
             <button type="submit" class="btn btn-primary">Guardar Cambios</button>
             {!! Form::button('Volver', ['class' => 'btn btn-secondary', 'onclick' => 'window.history.go(-1);']) !!}
         </form>

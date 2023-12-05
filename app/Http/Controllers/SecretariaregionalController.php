@@ -86,7 +86,7 @@ class SecretariaregionalController extends Controller
         $secretariaregional->updated_at = $hoy;
         $secretariaregional->descripcion = 'Desactivó_el_Estado';
         $secretariaregional->save();
-        return redirect()->route('patologia.secretariaregional.index')->with('mensaje', 'El secretariaregional se marcó como inactivo');
+        return redirect()->route('patologia.secretariaregional.index')->with('mensaje', 'El secretariaregional se marcó como Inactivo');
     }
 
     public function habilitar($id)
@@ -102,7 +102,7 @@ class SecretariaregionalController extends Controller
         $secretariaregional->updated_at = $hoy;
         $secretariaregional->descripcion = 'Activó_el_Estado';
         $secretariaregional->save();
-        return redirect()->route('patologia.secretariaregional.index')->with('mensaje', 'La Secretaria Regional se marcó como inactivo');
+        return redirect()->route('patologia.secretariaregional.index')->with('mensaje', 'La Secretaria Regional se marcó como Activo');
     }
 
 }
