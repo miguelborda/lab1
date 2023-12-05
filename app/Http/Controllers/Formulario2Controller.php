@@ -135,8 +135,12 @@ class Formulario2Controller extends Controller
             $edad = '';          
 
         }           
+        $numerosolicitud = $formulario2s->num_solicitud;
 
-        return redirect()->route('patologia.formulario2.index')->with('mensaje','Se creó exitosamente');
+        //return redirect()->route('patologia.formulario2.index')->with('mensaje','Se creó exitosamente');
+
+        return redirect()->route('patologia.formulario2.create')->with('mensaje',"Se creó exitosamente la Solicitud:  $numerosolicitud");
+
     }
     
     public function show(Formulario2 $formulario2)

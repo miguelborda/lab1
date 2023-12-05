@@ -8,9 +8,13 @@
 <?php $__env->startSection('content'); ?>
 <div class="title-wrapper pt-30">
     <div class="row align-items-center" style="height: 60px">
-        <div class="col-md-6">
+        <div class="col-md-8">
             <div class="titlemb-30">
                 <h2>Crear Formulario 3 Citologia</h2>
+                <div style="color: green;">
+                    <?php echo e(session('mensaje')); ?>
+
+                </div>
             </div>
         </div>
     </div>
@@ -127,7 +131,7 @@ unset($__errorArgs, $__bag); ?>
     </div>    
     <div><br><strong>DETALLE PACIENTES:</strong><br></div>        
     <div class="row custom-bg2" id="dynamicFields">
-        <div class="col-md-1-5"> 
+        <div class="col-md-2-5"> 
             <div class="form-group">
                 <strong><?php echo Form::label('num_examen[]', 'Nº Examen'); ?></strong>
                 <?php echo Form::text('num_examen[]', null, ['class' => 'form-control', 'placeholder' => 'Ingrese Nº de Examen']); ?>

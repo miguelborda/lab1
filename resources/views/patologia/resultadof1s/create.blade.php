@@ -8,7 +8,7 @@
 @section('content')
 <div class="title-wrapper pt-30">
     <div class="row align-items-center" style="height: 60px">
-        <div class="col-md-6">
+        <div class="col-md-12">
             <div class="titlemb-30">
                 <h2>Crear Resultado de Formulario RURAL</h2>
             </div>

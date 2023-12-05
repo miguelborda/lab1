@@ -168,14 +168,17 @@ h3.text-center:last-child {
           <th class=cabfres style="text-align:left">Fecha Resultado:</th>
           <th class=cab2 style="text-align:center"><?php echo e($resultado->fecha_resultado); ?></th>
         </thead>        
+    </table>    
+    <table class="table table-striped numsolicitud">      
+        <tr>        
+            <th class=cabdistrito style="text-align:left">Servicio:</th>
+            <td class=cabdistrito2 style="text-align:center"><?php echo e($servicio->nombre_servicio); ?></td> 
+        </tr>        
+        <tr>        
+            <th class=cabdistrito style="text-align:left">Medico Solicitante:</th>
+            <td class=cabdistrito2 style="text-align:center"><?php echo e($medico->nombre); ?>,  <?php echo e($medico->apellido); ?></td>                        
+        </tr>
     </table>
-    <table class="table table-striped">
-        <thead class="cabecera">                                
-            <th class=cabdistrito style="text-align:left">Distrito</th>
-            <th class=cabdistrito2 style="text-align:center"><?php echo e($distrito->nombre_distrito); ?></th>                    
-        </thead>          
-    </table>
-
     <table class="table table-striped numsolicitud">      
       <tr>
         <th style="text-align: left">CI:</th>
@@ -189,6 +192,16 @@ h3.text-center:last-child {
         <td style="text-align: left"><?php echo e($paciente->apellido); ?></td>
         <td style="text-align: left"><?php echo e($paciente->edad); ?></td>
       </tr>  
+    </table>
+    <table class="table table-striped">
+        <thead class="cabecera">                                
+            <th class=cabdistrito style="text-align:left">Diagnostico Clinico:</th>
+            <td class=cabdistrito2 style="text-align:center"><?php echo e($resultado->diagnostico_clinico); ?></td>
+        </thead>          
+        <thead class="cabecera">                                
+            <th class=cabdistrito style="text-align:left">Datos Relevantes:</th>
+            <td class=cabdistrito2 style="text-align:center"><?php echo e($resultado->datos_relevantes); ?></td>
+        </thead>          
     </table>
         <h4 class="text-center">RESULTADOS:</h4>
         <table class="table table-striped">

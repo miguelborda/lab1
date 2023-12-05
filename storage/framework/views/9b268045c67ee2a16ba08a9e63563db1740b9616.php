@@ -15,9 +15,15 @@
     </div>    
   </div>
 <?php if(session('mensaje')): ?>
-	<div class="alert alert-success">
-		<strong><?php echo e(session('mensaje')); ?></strong>
-	</div>
+<div class="row">
+	<div class="alert alert-success">		
+		<strong><?php echo e(session('mensaje')); ?></strong>		
+	</div>	
+	<div class="col-md-3">
+        	<?php echo Form::button('Crear Nuevo Resultado', ['class' => 'btn btn-primary', 'onclick' => 'window.location.href="'.route("patologia.resultadof1s.create").'"']); ?>
+
+	</div>	
+</div>
 <?php endif; ?>  
 <div class="tables-wrapper">
     <div class="row">
@@ -27,12 +33,13 @@
 		            <table class="table table-striped" id="myTable">
 					<thead>
 		                <tr>		                  
-		                  <th><h6>ID</h6></th>
+		                  <th><h6>Nº Sol.</h6></th>
 						  <th><h6>Nº EXAMEN</h6></th>
 						  <th><h6>CI</h6></th>
 						  <th><h6>NOMBRE</h6></th>
 						  <th><h6>APELLIDO</h6></th>						  
-						  <th><h6>Informes</h6></th>
+						  <th><h6>FECHA RESULTADO</h6></th>
+						  <th><h6>INFORMES</h6></th>
 						  				  
 		                </tr>
 		                <!-- end table row-->
@@ -42,7 +49,7 @@
 		              	<?php $__currentLoopData = $infors; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $infor): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 		                <tr>		                  
 		                  <td class="min-width">
-		                    <p><?php echo e($infor->id); ?></p>
+		                    <p><?php echo e($infor->num_solicitud_id); ?></p>
 		                  </td>		            
 						  <td class="min-width">
 		                    <p><?php echo e($infor->num_examen); ?></p>
@@ -56,7 +63,9 @@
 						  <td class="min-width">
 		                    <p><?php echo e($infor->paciente->apellido); ?></p>
 		                  </td>		            
-						  
+						  <td class="min-width">
+		                    <p><?php echo e($infor->fecha_resultado ? $infor->fecha_resultado : 'Aún No Llenado'); ?></p>
+		                  </td>
 						  <td width="15px">				  
 						  <a href="<?php echo e(route('patologia.resultadof1s.pdf', ['id' => $infor->id])); ?>" class="btn btn-success btn-lg" target="_blank">Imprimir</a> 
                           </td>							

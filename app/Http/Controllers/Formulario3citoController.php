@@ -123,8 +123,11 @@ class Formulario3citoController extends Controller
             $edad = '';          
 
         }           
+        $numerosolicitud = $formulario3citos->num_solicitud;
 
-        return redirect()->route('patologia.formulario3cito.index')->with('mensaje','Se creó exitosamente');
+        //return redirect()->route('patologia.formulario3cito.index')->with('mensaje','Se creó exitosamente');
+
+        return redirect()->route('patologia.formulario3cito.create')->with('mensaje',"Se creó exitosamente la Solicitud:  $numerosolicitud");
     }
     
     public function show(Formulario3cito $formulario3cito)

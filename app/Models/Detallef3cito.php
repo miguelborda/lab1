@@ -22,7 +22,7 @@ class Detallef3cito extends Model
 
     public function resultadof3()
     {
-        //return $this->hasOne(Resultadof1s::class, 'num_examen', 'num_examen');
+        
         return $this->belongsTo(Resultadof3cito::class, 'num_examen', 'num_examen');
     }
 }

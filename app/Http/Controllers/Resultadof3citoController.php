@@ -69,7 +69,10 @@ class Resultadof3citoController extends Controller
         $sector = Sector::where('id', $formulario3citos->sector_id)->first();     // Obtener la información del formulario1s relacionada        
         $area = Area::where('id', $formulario3citos->area_id)->first();     // Obtener la información del formulario1s relacionada        
         
-        $pdf = Pdf::loadView('patologia.resultadof3citos.pdf', compact('infor','paciente','formulario3citos','sector','distrito','area','resultado'));
+        $medico = Medico::where('id', $resultado->medico_id)->first();     // Obtener la información del formulario1s relacionada        
+        $servicio = Servicio::where('id', $resultado->servicio_id)->first();     // Obtener la información del formulario1s relacionada        
+
+        $pdf = Pdf::loadView('patologia.resultadof3citos.pdf', compact('infor','paciente','formulario3citos','sector','distrito','area','resultado','medico','servicio'));
         return $pdf->stream();
     }
 
@@ -101,6 +104,18 @@ class Resultadof3citoController extends Controller
         $user = auth()->user(); 
         
         $resultadof3citos = Resultadof3cito::create(array_merge($request->all(), ['creatoruser_id' => $user->id]));        
+
+        $detallef3s = Detallef3cito::where('num_examen', $request->input('num_examen'))->first();
+            if ($detallef3s) {
+                // Actualizar 'fecha_resultado' si existe el registro
+                $detallef3s->update([
+                    'fecha_resultado' => $request->input('fecha_resultado'),                
+                ]);
+            } else {
+                $detallef3s->update([
+                    'fecha_resultado' => $request->input('fecha_resultado'),                
+                ]);
+            }
         return redirect()->route('patologia.resultadof3citos.index')->with('mensaje','Se creó exitosamente');
     }          
 

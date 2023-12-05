@@ -8,9 +8,12 @@
 @section('content')
 <div class="title-wrapper pt-30">
     <div class="row align-items-center" style="height: 60px">
-        <div class="col-md-6">
+        <div class="col-md-12">
             <div class="titlemb-30">
                 <h2>Crear Formulario Solicitud RURAL</h2>
+                <div style="color: green;">
+                    {{ session('mensaje') }}
+                </div>
             </div>
         </div>
     </div>
@@ -128,7 +131,7 @@ border-radius: 10px; /* Cambia el valor para ajustar el radio del borde */
         </div><div><br></div>         
     </div><div><br><strong>DETALLE PACIENTES:</strong><br></div>        
     <div class="row custom-bg2" id="dynamicFields">
-        <div class="col-md-1-5"> 
+        <div class="col-md-2-5"> 
             <div class="form-group">
                 <strong>{!! Form::label('num_examen[]', 'Nº Examen') !!}</strong>
                 {!! Form::text('num_examen[]', null, ['class' => 'form-control', 'placeholder' => 'Ingrese Nº de Examen']) !!}

@@ -16,16 +16,13 @@
       </svg>
     </span>
     <span class="text">ADMINISTRADOR</span>
-  </a>  
+  </a>    
   <ul id="ddmenu_1" class="collapse dropdown-nav">
-    <li><a href="<?php echo e(route('sistemas.usuarios.index')); ?>"> Usuarios </a></li>
+    <li><a href="<?php echo e(route('patologia.medicos.index')); ?>">Medicos</a></li>
   </ul>
   <ul id="ddmenu_1" class="collapse dropdown-nav">
-    <li><a href="<?php echo e(route('sistemas.personas.index')); ?>"> Personas </a></li>
-  </ul>
-  <ul id="ddmenu_1" class="collapse dropdown-nav">
-    <li><a href="<?php echo e(route('sistemas.roles.index')); ?>"> Roles </a></li>
-  </ul> 
+    <li><a href="<?php echo e(route('patologia.pacientes.index')); ?>">Pacientes</a></li>    
+  </ul>  
   <ul id="ddmenu_1" class="collapse dropdown-nav">
     <li><a href="<?php echo e(route('patologia.areas.index')); ?>">Areas</a></li>
   </ul>
@@ -37,10 +34,7 @@
   </ul>
   <ul id="ddmenu_1" class="collapse dropdown-nav">
     <li><a href="<?php echo e(route('patologia.establecimientos.index')); ?>">Establecimientos</a></li>
-  </ul>
-  <ul id="ddmenu_1" class="collapse dropdown-nav">
-    <li><a href="<?php echo e(route('patologia.medicos.index')); ?>">Medicos</a></li>
-  </ul>
+  </ul>  
   <ul id="ddmenu_1" class="collapse dropdown-nav">
     <li><a href="<?php echo e(route('patologia.municipios.index')); ?>">Municipios</a></li>
   </ul>
@@ -52,10 +46,16 @@
   </ul>
   <ul id="ddmenu_1" class="collapse dropdown-nav">
     <li><a href="<?php echo e(route('patologia.servicios.index')); ?>">Servicios</a></li>
-  </ul>  
+  </ul>    
   <ul id="ddmenu_1" class="collapse dropdown-nav">
-    <li><a href="<?php echo e(route('patologia.pacientes.index')); ?>">Pacientes</a></li>
-  </ul>  
+    <li><a href="<?php echo e(route('sistemas.usuarios.index')); ?>"> Usuarios </a></li>
+  </ul>
+  <ul id="ddmenu_1" class="collapse dropdown-nav">
+    <li><a href="<?php echo e(route('sistemas.personas.index')); ?>"> Personas </a></li>
+  </ul>
+  <ul id="ddmenu_1" class="collapse dropdown-nav">
+    <li><a href="<?php echo e(route('sistemas.roles.index')); ?>"> Roles </a></li>
+  </ul> 
 </li>
 
 <li class="nav-item nav-item-has-children">

@@ -144,9 +144,13 @@ class Resultadof1sController extends Controller
                 $detallef1s->update([
                     'fecha_resultado' => $request->input('fecha_resultado'),                
                 ]);
-            }        
+            }  
 
-            return 'Se Registró exitosamente';
+            $numeroinforme = $detallef1s->num_examen;
+            return redirect()->route('patologia.resultadof1s.index2')->with('mensaje',"Se creó exitosamente el informe del examen: $numeroinforme");
+      
+
+            
         }
         else {
             return 'error';

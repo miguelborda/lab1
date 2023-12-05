@@ -104,7 +104,10 @@ class Resultadof2sController extends Controller
                     'fecha_resultado' => $request->input('fecha_resultado'),                
                 ]);
             }
-            return 'Se Registró exitosamente';
+            
+            $numeroinforme = $detallef2s->num_examen;
+            return redirect()->route('patologia.resultadof2s.index2')->with('mensaje',"Se creó exitosamente el informe del examen: $numeroinforme    ");
+            //return 'Se Registró exitosamente';
         }
         else {
             return 'error';

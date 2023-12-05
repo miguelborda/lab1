@@ -135,8 +135,11 @@ class Formulario1Controller extends Controller
             $edad = '';          
 
         }           
+        $numerosolicitud = $formulario1s->num_solicitud;
+        
+        //return redirect()->route('patologia.medicos.index')->with('mensaje',"Se creó exitosamente el médico: $nombreMedico, $apellidoMedico");    
 
-        return redirect()->route('patologia.formulario1.index')->with('mensaje','Se creó exitosamente');
+        return redirect()->route('patologia.formulario1.create')->with('mensaje',"Se creó exitosamente la Solicitud:  $numerosolicitud");
     }
     
     public function show(Formulario1 $formulario1)

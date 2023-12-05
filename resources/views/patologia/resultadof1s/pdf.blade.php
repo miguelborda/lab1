@@ -142,7 +142,7 @@ h3.text-center:last-child {
       <th class="text-center" style="margin-top: 0; vertical-align: down;">ANATOMIA PATOLOGICA - CITOLOGIA</th>      
     </tr>
     <tr>      
-      <th class="text-center" style="margin-top: 0;">Resultado Informe Patológico</th>     
+      <th class="text-center" style="margin-top: 0;">Resultado Informe Patológico - Rural</th>     
     </tr>
   </table>
   <!--<div style="text-align: center;">

@@ -32,8 +32,8 @@
 						  <th><h6>CI</h6></th>
 						  <th><h6>NOMBRE</h6></th>
 						  <th><h6>APELLIDO</h6></th>
-						  <th><h6>Reportes</h6></th>
-						  <th><h6>Fecha Resultado</h6></th>
+						  <!--<th><h6>FECHA RESULTADO</h6></th>-->
+						  <th><h6>INFORMES</h6></th>
 						  				  
 		                </tr>
 		                <!-- end table row-->
@@ -56,10 +56,10 @@
 		                  </td>		            
 						  <td class="min-width">
 		                    <p><?php echo e($infor->paciente->apellido); ?></p>
-		                  </td>		            
-						  <td class="min-width">
-		                    <p><?php echo e($infor->apellido); ?></p>
-		                  </td>
+		                  </td>						  
+						  <!--<td class="min-width">
+		                    
+		                  </td>-->
 						  <td width="15px">				  
 						  <a href="<?php echo e(route('patologia.resultadof3citos.pdf', ['id' => $infor->id])); ?>" class="btn btn-success btn-lg" target="_blank">Imprimir</a> 
                           </td>							
